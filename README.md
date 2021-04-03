@@ -2,10 +2,6 @@
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
-[![Contributors][contributors-shield]][contributors-url]
-
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-
 Dans ce projet, il s’agit de concevoir et développer l’application Cellulut, destinée à simuler des
 automates cellulaires à 2 dimensions. Avant de commencer, nous vous invitons à décourvir le mondes
 très riche des automates cellulaires en consultant, par exemple, la page WikipédiA correspondante et
