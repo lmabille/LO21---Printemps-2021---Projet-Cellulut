@@ -3,3 +3,7 @@
 //
 
 #include "fonction.h"
+
+void Cellule::set_etatcellule(Etat * e){
+    etat=e;
+}
