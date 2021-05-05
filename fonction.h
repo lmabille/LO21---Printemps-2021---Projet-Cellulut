@@ -20,4 +20,12 @@ public:
     Etat & get_Etat(){ return *etat;};
 
 };
+
+class Reseau {
+    int Longueur;
+    int Largeur;
+    friend configuration;
+    Reseau()=default;
+    Reseau(int lon=0, int lar=0) : Longueur(lon), Largeur(lar) {};
+};
 #endif //LO21_PRINTEMPS_2021_PROJET_CELLULUT_FONCTION_H
