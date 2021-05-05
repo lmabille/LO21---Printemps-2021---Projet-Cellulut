@@ -15,7 +15,7 @@ class Cellule {
 
 public:
 
-    void get_x(){ return x ;};
+    void get_x(){ return x ;};k
     void get_y(){ return y ;};
     Etat & get_Etat(){ return *etat;};
 
