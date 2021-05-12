@@ -2,27 +2,50 @@
 
 using namespace std;
 
+class Voisinnage{
+
+};
+
+class Etat{
+    string label;
+
+public :
+    const string& getLabel() const { return label; }
+
+
+};
+
+bool operator!=(const Etat& e1, const Etat& e2);
+
+class Fonction_Transition{ //classe abstraite
+protected :
+    int id;
+    Etat **etatAutorise;
+public :
+    int getId() const {return id; }
+    Etat ** const getEtat() const {return etatAutorise;} // assez sécurisé
+
+};
+
 class Modele{
     string titre; //key
     Etat **ensembleEtat;
-    Fonction_transition *fonction;
+    Fonction_Transition *fonction;
     Voisinnage *typeVoisinnage;
     string description;
     string auteur;
     unsigned int anneeCreation;
 
 public :
-    Modele(string t, Etat **e, Fonction_transition *f, Voisinnage *v, string d, string a="",unsigned int annee=0):titre(t), ensembleEtat(e), fonction(f), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
+    Modele(string t, Etat **e, Fonction_Transition *f, Voisinnage *v, string d, string a="",unsigned int annee=0):titre(t), ensembleEtat(e), fonction(f), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
     ~Modele(){
         delete[] ensembleEtat;
     }
     bool verificationEtat();
     const string& getTitre() const {return titre; }
-    const Etat **getEtat() const {return ensembleEtat;}
-    const Fonction_Transition *getFonction const {return fonction; }
-    const Fonction_Transition *getFonction const {return fonction; }
-    const Fonction_Transition *getFonction const {return fonction; }
-    const Voisinnage *getVoisin const {return typeVoisinnage; }
+    Etat ** const getEtat() const {return ensembleEtat;}
+    const Fonction_Transition *getFonction() const {return fonction; }
+    const Voisinnage *getVoisin() const {return typeVoisinnage; }
     const string& getDescription() const {return description; }
     const string& getAuteur() const {return auteur; }
     int getAnnee() const {return anneeCreation; }
@@ -35,14 +58,6 @@ public :
 
 };
 
-class Fonction_Transition{ //classe abstraite
-    int id;
-    Etat **etatAutorise;
-public :
-    int getId() const {return Id; }
-    const Etat **getEtat() const {return etatAutorise;}
-
-};
 
 class TypeFonction : Fonction_Transition{ //sous_classe regroupant les grandes familles de fonctions en fct de leur règles de transitions
 public :
@@ -54,3 +69,5 @@ public :
 
 
 };
+
+
