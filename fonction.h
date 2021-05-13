@@ -2,6 +2,7 @@
 class Simulateur
 {
 private:
+    
     int buffer_config;
     int clock;
     static Simulateur *instance_unique;
