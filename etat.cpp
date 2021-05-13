@@ -27,3 +27,8 @@ void Etat::defListEtat(string *newListe) {
 
     }
 }
+
+string *Etat::getListe() {
+
+    return this->l_etat_possible;
+}

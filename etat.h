@@ -20,6 +20,7 @@ public:
     string getEtat();
     void setEtat(string newEtat);
     void defListEtat(string newListe[10]);
+    string* getListe();
     
 
 };
