@@ -13,10 +13,12 @@ using namespace std;
 class Etat {
 private:
     string label;
-    string l_etat_possible[10];
+    string l_etat_possible[10] ;
 
 
 public:
+    Etat();
+
     string getEtat();
     void setEtat(string newEtat);
     void defListEtat(string newListe[10]);

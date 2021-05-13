@@ -12,7 +12,19 @@ string Etat::getEtat() {
 
 
 void Etat::setEtat(string newEtat) {
-    this->label = newEtat;
+    if(this->l_etat_possible[0] == ""){
+        cout << "Liste etats pas definie ! Echec " << endl;
+        return;
+    }
+    if(this->l_etat_possible->find(newEtat)<10){
+        cout << this->getListe()[0];
+        this->label = newEtat;
+    }
+    else {
+        cout << "N'apparatient pas a la liste des etats possibles" << endl;
+    }
+
+
 
 }
 
@@ -31,4 +43,11 @@ void Etat::defListEtat(string *newListe) {
 string *Etat::getListe() {
 
     return this->l_etat_possible;
+}
+
+
+
+Etat::Etat() {
+    l_etat_possible[0] = "";
+    label = "";
 }
