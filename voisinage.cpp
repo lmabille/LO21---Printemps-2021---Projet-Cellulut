@@ -28,11 +28,21 @@ void Voisinage::setNbCellule(int nb) {
         this->nbCelluleVoisi = nb;
     else
         cout << "Nombre négatif. Erreur" << endl;
-    
+
 
 }
 
 Voisinage::Voisinage() {
     nbCelluleVoisi = 0;
     typeVoisi  ="";
+    Co_X[0] = 0;
+    Co_Y[0] = 0;
+}
+
+int *Voisinage::getCoX() {
+    return this->Co_X;
+}
+
+int *Voisinage::getCoY() {
+    return this->Co_Y;
 }

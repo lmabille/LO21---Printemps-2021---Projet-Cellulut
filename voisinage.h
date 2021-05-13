@@ -11,19 +11,25 @@ using namespace  std;
 
 
 
+
+
 class Voisinage {
 private:
     int nbCelluleVoisi;
     string typeVoisi;
     void setNbCellule(int nb);
+    int Co_X[100];
+    int Co_Y[100];
 
 
 
 public:
     Voisinage();
-    string getTypeVoisi();
-    int getNbCelluleVoisi();
+    const string getTypeVoisi();
+    const int getNbCelluleVoisi();
     void initVoisinage();
+    const int* getCoX();
+    const int* getCoY();
 
 
 };
