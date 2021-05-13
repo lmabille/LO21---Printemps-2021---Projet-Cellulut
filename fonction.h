@@ -27,5 +27,14 @@ class Reseau {
     friend configuration;
     Reseau()=default;
     Reseau(int lon=0, int lar=0) : Longueur(lon), Largeur(lar) {};
+
+public:
+
+    int get_long(){return Longueur;};
+    int get_larg(){return Largeur; }
+};
+
+class Voisinnage{
+
 };
 #endif //LO21_PRINTEMPS_2021_PROJET_CELLULUT_FONCTION_H
