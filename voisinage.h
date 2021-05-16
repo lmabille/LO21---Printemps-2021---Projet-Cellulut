@@ -35,7 +35,7 @@ public:
 
 };
 
-class Case{
+class Case{ // Classe case
     int x;
     int y;
     friend Voisinage;
