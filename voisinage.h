@@ -40,6 +40,12 @@ class Case{ // Classe case
     int y;
     friend Voisinage;
     Case(int X, int Y) : x(X), y(Y){};
+
+public:
+    int getX();
+    int gety();
+    void setX(int x);
+    void setY(int y);
 };
 
 

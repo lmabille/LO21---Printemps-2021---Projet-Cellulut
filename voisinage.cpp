@@ -35,3 +35,18 @@ Case **Voisinage::getTableau() {
 }
 
 
+int Case::getX() {
+    return this->x;
+}
+
+int Case::gety() {
+    return this->y;
+}
+
+void Case::setX(int x) {
+    this->x = x;
+}
+
+void Case::setY(int y) {
+    this->y = y;
+}
