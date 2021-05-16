@@ -10,30 +10,37 @@ using namespace  std;
 #include <cstdio>
 
 
-
+class Case;
 
 
 class Voisinage {
 private:
+
+    Case ** ensemble_case;
+
     int nbCelluleVoisi;
     string typeVoisi;
     void setNbCellule(int nb);
-    int Co_X[100];
-    int Co_Y[100];
+
 
 
 
 public:
     Voisinage();
     const string getTypeVoisi();
-    const int getNbCelluleVoisi();
-    void initVoisinage();
-    const int* getCoX();
-    const int* getCoY();
+    const int getNbCelluleVoisi() const;
+
+    Case ** getTableau();
 
 
 };
 
+class Case{
+    int x;
+    int y;
+    friend Voisinage;
+    Case(int X, int Y) : x(X), y(Y){};
+};
 
 
 
