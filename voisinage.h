@@ -16,11 +16,11 @@ class Case;
 class Voisinage {
 private:
 
-    Case ** ensemble_case;
+
 
     int nbCelluleVoisi;
     string typeVoisi;
-    void setNbCellule(int nb);
+    Case*  ensemble_case;
 
 
 
@@ -29,8 +29,9 @@ public:
     Voisinage();
     const string getTypeVoisi();
     const int getNbCelluleVoisi() const;
+    void setNbCellule(int nb);
+    Case * getTableau();
 
-    Case ** getTableau();
 
 
 };
@@ -38,15 +39,17 @@ public:
 class Case{ // Classe case
     int x;
     int y;
-    friend Voisinage;
-    Case(int X, int Y) : x(X), y(Y){};
+    //friend Voisinage;
 
 public:
     int getX();
     int gety();
-    void setX(int x);
+    void setX(int newx);
     void setY(int y);
+    Case() = default;
+    Case(int X, int Y) : x(X), y(Y){};
 };
+
 
 
 

@@ -24,13 +24,13 @@ void Voisinage::setNbCellule(int nb) {
 }
 
 Voisinage::Voisinage() {
-    nbCelluleVoisi = 0;
+    nbCelluleVoisi = 10;
     typeVoisi  ="";
-    ensemble_case = nullptr;
+    ensemble_case = new Case[10]();
 
 }
 
-Case **Voisinage::getTableau() {
+Case *Voisinage::getTableau() {
     return this->ensemble_case;
 }
 
@@ -43,8 +43,9 @@ int Case::gety() {
     return this->y;
 }
 
-void Case::setX(int x) {
-    this->x = x;
+void Case::setX(int newx) {
+    //printf("test");
+    this->x = newx;
 }
 
 void Case::setY(int y) {
