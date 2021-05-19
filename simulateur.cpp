@@ -1,5 +1,5 @@
 #include <iostream>
-#include "fonction.h"
+#include "simulateur.h"
 
 Simulateur &Simulateur::donneInstance()
 {
