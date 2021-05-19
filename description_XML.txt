@@ -3,3 +3,4 @@ Description
 - voisinage (liste de coordonnées)
  - nombre d'état 
 - label des etats 
+- attributs modèle (description...)
