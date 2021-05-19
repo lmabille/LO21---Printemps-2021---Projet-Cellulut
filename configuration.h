@@ -2,6 +2,7 @@
 #define CELLULUT_H_INCLUDED
 #include <iostream>
 #include <string>
+#include "etat_reseau.h"
 
 using namespace std;
 
@@ -13,32 +14,8 @@ class Reseau
     friend class Configuration;
 };
 
-class Etat
-// L'état d'une cellule est désigné par un indice, une couleur et un label
-{
-    int indice;
-    string couleur;
-    string label;
-    friend class EnsembleEtats;
-    friend class Cellule;
-};
 
-class Cellule
-{
-    Etat etat;
-};
 
-class Voisinage
-// Un voisinage est une sous-classe de Configuration, c'est une matrice centrée autour d'une cellule en particulier
-// NB : c'est une super-classe
-{
-    Cellule** voisinage = nullptr;
-    string nom;
-
-public:
-    Voisinage(unsigned int i, unsigned int j);
-    ~Voisinage();
-};
 // Définir au moins les 3 voisinages du sujet
 
 

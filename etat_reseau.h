@@ -5,6 +5,8 @@
 #ifndef LO21_PRINTEMPS_2021_PROJET_CELLULUT_FONCTION_H
 #define LO21_PRINTEMPS_2021_PROJET_CELLULUT_FONCTION_H
 #include <stdio.h>
+#include "etat.h"
+#include "configuration.h"
 class Cellule {
     int x;
     int y;
