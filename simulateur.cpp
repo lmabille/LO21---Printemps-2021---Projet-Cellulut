@@ -24,7 +24,7 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
        dans un tableau de caractères, retourne ce tableau */
 
     Case* ptr = ensemble_case;
-    string voisinage = nullptr;
+    string& voisinage;
     int x, y;
     int ind = 0;
 

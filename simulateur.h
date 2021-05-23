@@ -10,7 +10,6 @@
 using namespace std;
 class Simulateur
 {
-
 private:
     int buffer_config;
     int clock;
@@ -30,7 +29,6 @@ public:
     void next();
     string& getVoisinage(int i, int j, const Configuration& config, Case* ensemble_case) const;
     Configuration& appliquerTransition(const Configuration &dep) const;
-
 };
 
 #endif

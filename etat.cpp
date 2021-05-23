@@ -4,7 +4,7 @@
 
 #include "etat.h"
 
-
+/*
 string Etat::getEtat() {
     return this->label;
 }
@@ -51,3 +51,4 @@ Etat::Etat() {
     l_etat_possible[0] = "";
     label = "";
 }
+*/

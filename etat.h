@@ -15,9 +15,8 @@ private:
     int indice;
     string label;
     string couleur;
-    // string l_etat_possible[10] ;
-    friend class Modele ;
-
+    // string l_etat_possible[10];
+    friend class Modele;
 
 public:
     Etat();
@@ -26,7 +25,7 @@ public:
     void setIndice(int i) {indice = i;}
     void setlabel(string s){ label = s;}
     //void setEtat(string newEtat);
-    void defListEtat(string newListe[10]);
+    //void defListEtat(string newListe[10]);
     string* getListe();
     
 
