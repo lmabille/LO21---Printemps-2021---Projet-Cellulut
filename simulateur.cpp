@@ -32,7 +32,7 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
     {
         x = ptr->getX();
         y = ptr->gety();
-        voisinage[ind] = config.grille[i+x][j+y].get_Etat().getIndice();
+        voisinage[ind] = config.grille[(i+x)%config.reseau->get_long()][(j+y)%config.reseau->get_larg()].get_Etat().getIndice();
         ptr ++;
         ind ++;
     }
@@ -79,7 +79,7 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
     Configuration * dest = new Configuration;
     *dest = dep;
     char * etatDepart;
-    char etatDest;
+    char etatDest ;
     Etat * e= new Etat;
 
     for (int i=0; i<dep.reseau->get_long(); i++)
@@ -88,7 +88,7 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
         {
             sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().getIndice());
             etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage->ensemble_case), modele.fonctionTrans->tableau, etatDepart);
-            e = Modele.ensembleEtat[char_to_int(etatDest)];
+            e = Modele.ensembleEtat[char_to_int(&etatDest)];
             dest->grille[i][j].set_etatcellule(e);
         }
     }

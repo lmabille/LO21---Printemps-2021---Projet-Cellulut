@@ -24,7 +24,9 @@ public:
     Etat();
     int getIndice(){return indice;}
     string getEtat();
-    void setEtat(string newEtat);
+    void setIndice(int i) {indice = i;}
+    void setlabel(string s){ label = s;}
+    //void setEtat(string newEtat);
     void defListEtat(string newListe[10]);
     string* getListe();
     
