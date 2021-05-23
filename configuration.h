@@ -15,7 +15,8 @@ class Configuration
 
 public:
     // constructeurs & destructeurs
-    Configuration(Reseau &r);
+    Configuration()=default;
+    Configuration(const Reseau &r);
     Configuration(const Configuration& c);
     ~Configuration();
     Configuration& operator=(const Configuration& c);

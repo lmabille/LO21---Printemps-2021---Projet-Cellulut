@@ -32,7 +32,7 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
     {
         x = ptr->getX();
         y = ptr->gety();
-        voisinage[ind] = config.grille[(i+x)%config.reseau->get_long()][(j+y)%config.reseau->get_larg()].get_Etat().getIndice();
+        voisinage[ind] = config.grille[(i+x)%config.reseau.get_nbCols()][(j+y)%config.reseau.get_nbLignes()].get_Etat().getIndice();
         ptr ++;
         ind ++;
     }
@@ -76,7 +76,7 @@ int char_to_int(char * c)
 Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
 /* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée */
 {
-    Configuration * dest = new Configuration;
+    Configuration * dest = new Configuration(dep.reseau);
     *dest = dep;
     char * etatDepart;
     char etatDest ;

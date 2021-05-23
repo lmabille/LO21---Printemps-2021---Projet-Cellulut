@@ -4,7 +4,7 @@
 
 /*** Classe Configuration ***/
 
-Configuration::Configuration(Reseau &r): reseau(r)
+Configuration::Configuration(const Reseau &r): reseau(r)
 {
     // Allocation mémoire
     auto grille = new Cellule* [r.nb_lignes];

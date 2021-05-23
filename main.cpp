@@ -28,4 +28,6 @@ int main() {
     Cellule c8(3,2, vivant);
     Cellule c9(3,3, vivant);
 
+    Modele(string t, Etat **e, string r[1000], Voisinnage *v, string d, string a="",unsigned int annee=0)
+
 }
