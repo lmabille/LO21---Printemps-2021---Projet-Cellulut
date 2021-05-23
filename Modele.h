@@ -13,7 +13,7 @@ class Modele{
     Etat **ensembleEtat;
     string *regles;
     Voisinage *typeVoisinnage;
-    // FonctionTransition *fonctionTrans;
+    FonctionTransition *fonctionTrans;
     string description;
     string auteur;
     unsigned int anneeCreation;

@@ -24,7 +24,7 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
        dans un tableau de caractères, retourne ce tableau */
 
     Case* ptr = ensemble_case;
-    string voisinage;
+    string * voisinage= new string;
     int x, y;
     int ind = 0;
 
@@ -32,11 +32,11 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
     {
         x = ptr->getX();
         y = ptr->gety();
-        voisinage[ind] = config.grille[(i+x)%config.reseau.get_nbCols()][(j+y)%config.reseau.get_nbLignes()].get_Etat().getIndice();
+        (*voisinage)[ind] = config.grille[(i+x)%config.reseau.get_nbCols()][(j+y)%config.reseau.get_nbLignes()].get_Etat().getIndice();
         ptr ++;
         ind ++;
     }
-    return voisinage;
+    return *voisinage;
 }
 
 char comparaison_voisinnage(string voisins, string trans[], char cel){
