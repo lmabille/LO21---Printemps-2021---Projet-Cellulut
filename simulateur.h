@@ -3,9 +3,9 @@ class Simulateur
 {
 
 private:
-
     int buffer_config;
     int clock;
+    const Modele& modele;
     static Simulateur *instance_unique;
     Simulateur();
     Simulateur(const Simulateur &) = delete;

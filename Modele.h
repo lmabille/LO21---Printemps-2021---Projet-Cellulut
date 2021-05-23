@@ -9,6 +9,7 @@ class Modele{
     Etat **ensembleEtat;
     string regles[1000];
     Voisinnage *typeVoisinnage;
+    FonctionTransition *fonctionTrans;
     string description;
     string auteur;
     unsigned int anneeCreation;

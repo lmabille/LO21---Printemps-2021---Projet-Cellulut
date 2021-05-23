@@ -12,18 +12,12 @@ using namespace  std;
 
 class Case;
 
-
 class Voisinage {
+
 private:
-
-
-
     int nbCelluleVoisi;
     string typeVoisi;
     Case*  ensemble_case;
-
-
-
 
 public:
     Voisinage();
@@ -31,8 +25,6 @@ public:
     const int getNbCelluleVoisi() const;
     void setNbCellule(int nb);
     Case * getTableau();
-
-
 
 };
 

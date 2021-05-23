@@ -12,8 +12,10 @@
 using namespace std;
 class Etat {
 private:
+    int indice;
     string label;
-    string l_etat_possible[10] ;
+    string couleur;
+    // string l_etat_possible[10] ;
 
 
 public:

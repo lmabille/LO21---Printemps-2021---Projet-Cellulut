@@ -1,6 +1,8 @@
 #include <iostream>
 #include "simulateur.h"
 
+using namespace std;
+
 Simulateur &Simulateur::donneInstance()
 {
     if (uniqueInstance == nullptr)
@@ -30,7 +32,7 @@ string& Simulateur::getVoisinage(int i, int j, Configuration& config, Case* ense
     {
         x = ptr->x;
         y = ptr->y;
-        voisinage[ind] = Configuration::getEtat(i+x, j+y);
+        voisinage[ind] = Configuration::getEtatCellule(i+x, j+y);
         ptr ++;
         ind ++;
     }
@@ -38,10 +40,10 @@ string& Simulateur::getVoisinage(int i, int j, Configuration& config, Case* ense
 }
 
 char comparaison_voisinnage(string voisins, string trans[], char cel){
+    /* pour un voisinnage donné on va vérifier si ce voisinnage est dans
+     * le tableau de fonction transition si oui on va renvoyer un caractère qui
+     * va correspondre à l'état de la cellule à la génération t+1 */
 
-    /*pour un voisinnage donné on va vérifier si ce voisinnage est dans
-     * le tableau de fonction transition si oui on va renvoyer un charactère qui
-     * va correspondre à l'état de la cellule à la génération t+1*/
     int i=0;
     int test=0;
     string st;
@@ -55,7 +57,43 @@ char comparaison_voisinnage(string voisins, string trans[], char cel){
         }
         i++;
     }
-
 }
 
-// configuration = matrice de cellules
+int char_to_int(char * c)
+{
+    int a = 0;
+    int b;
+    char * p = c;
+    while (*p != '\0'){
+        b = *p - '0';
+        a = a*10;
+        a += b;
+        p++;
+    }
+    return a;
+}
+
+Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
+/* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée */
+{
+    Configuration config = dep;
+    char etatDepart;
+    char etatDest;
+    Etat * e= new Etat;
+
+    for (int i=0; i<dep.reseau.get_long(); i++)
+    {
+        for (int j=0; j<dep.reseau.get_larg(); j++)
+        {
+            sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().indice);
+            etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele->typeVoisinage.ensemble_case), fonctionTrans->tableau, etatDepart);
+            e = Modele.ensembleEtat[char_to_int(&etatDest)];
+            dest[i][j].set_etat(&e);
+        }
+    }
+
+    return config;
+}
+
+
+

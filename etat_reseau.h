@@ -7,21 +7,20 @@
 #include <stdio.h>
 #include "etat.h"
 #include "configuration.h"
+
 class Cellule {
     int x;
     int y;
     Etat * etat;
-    friend configuration;
+    friend class Configuration;
     Cellule(int x, int y) : x(x), y(y) {};
     Cellule(int x, int y, Etat * e) : x(x), y(y) , etat(e){};
     void set_etatcellule(Etat* etat);
 
 public:
-
     int get_x(){ return x ;};
     int get_y(){ return y ;};
     Etat & get_Etat(){ return *etat;};
-
 };
 
 class Reseau {
@@ -32,7 +31,6 @@ class Reseau {
     Reseau(int lon=0, int lar=0) : Longueur(lon), Largeur(lar) {};
 
 public:
-
     int get_long(){return Longueur;};
     int get_larg(){return Largeur; }
 };
