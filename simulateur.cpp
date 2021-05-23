@@ -16,23 +16,23 @@ void Simulateur::libereInstance()
     uniqueInstance = nullptr;
 }
 
-string& Simulateur::getVoisinage(int i, int j, Configuration& config, Case* ensemble_case)
+string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case* ensemble_case) const
 {
     /* pour chaque élément du tableau ensemble de cases,
        récupère le x et le y puis va dans le tableau configuration
        et récupère l'état de la cellule i+x, j+y, stocke cet état
        dans un tableau de caractères, retourne ce tableau */
 
-    char* ptr = ensemble_case;
+    Case* ptr = ensemble_case;
     string voisinage = nullptr;
     int x, y;
     int ind = 0;
 
     while (ptr != nullptr)
     {
-        x = ptr->x;
-        y = ptr->y;
-        voisinage[ind] = Configuration::getEtatCellule(i+x, j+y);
+        x = ptr->getX();
+        y = ptr->gety();
+        voisinage[ind] = config.grille[i+x][j+y].get_Etat().getIndice();
         ptr ++;
         ind ++;
     }
@@ -77,16 +77,16 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
 /* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée */
 {
     Configuration config = dep;
-    char etatDepart;
+    char * etatDepart;
     char etatDest;
     Etat * e= new Etat;
 
-    for (int i=0; i<dep.reseau.get_long(); i++)
+    for (int i=0; i<dep.reseau->get_long(); i++)
     {
-        for (int j=0; j<dep.reseau.get_larg(); j++)
+        for (int j=0; j<dep.reseau->get_larg(); j++)
         {
-            sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().indice);
-            etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele->typeVoisinage.ensemble_case), fonctionTrans->tableau, etatDepart);
+            sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().getIndice());
+            etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage.ensemble_case), fonctionTrans->tableau, etatDepart);
             e = Modele.ensembleEtat[char_to_int(&etatDest)];
             dest[i][j].set_etat(&e);
         }

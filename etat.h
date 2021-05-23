@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <cstdio>
+#include "Modele.h"
 using namespace std;
 class Etat {
 private:
@@ -16,11 +17,12 @@ private:
     string label;
     string couleur;
     // string l_etat_possible[10] ;
+    friend class Modele ;
 
 
 public:
     Etat();
-
+    int getIndice(){return indice;}
     string getEtat();
     void setEtat(string newEtat);
     void defListEtat(string newListe[10]);

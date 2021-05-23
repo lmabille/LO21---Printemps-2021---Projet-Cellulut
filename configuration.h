@@ -8,10 +8,10 @@ using namespace std;
 
 class Configuration
 {
-    Cellule** grille = nullptr; // les cellules ont pour seul attribut leur état
+    // les cellules ont pour seul attribut leur état
     Reseau* reseau;
     friend class Simulateur;
-
+    Cellule** grille = nullptr;
 public:
     // constructeurs & destructeurs
     Configuration();

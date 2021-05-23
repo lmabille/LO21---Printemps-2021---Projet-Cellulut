@@ -35,20 +35,6 @@ public:
     int get_larg(){return Largeur; }
 };
 
-class Case;
 
-class Voisinage{
-    Case ** ensemble_de_case;
-    size_t taille = 0 ;
-public :
-    Voisinage();
-    Case ** Ajouter_Case(Case* c);
-};
 
-class Case{
-    int x;
-    int y;
-    friend Voisinnage;
-    Case(int X, int Y) : x(X), y(Y){};
-};
 #endif //LO21_PRINTEMPS_2021_PROJET_CELLULUT_FONCTION_H

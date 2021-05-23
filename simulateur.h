@@ -1,4 +1,12 @@
+#include <string>
+#include "configuration.h"
+#include "Modele.h"
+#include "etat.h"
+#include "configuration.h"
+#include "voisinage.h"
+#include <iostream>
 
+using namespace std;
 class Simulateur
 {
 
@@ -11,6 +19,7 @@ private:
     Simulateur(const Simulateur &) = delete;
     void operator=(const Simulateur &) = delete;
     static Simulateur *uniqueInstance;
+    friend class Configuration;
 
 public:
     static Simulateur &donneInstance();
@@ -18,6 +27,7 @@ public:
     void affichage();
     void reset();
     void next();
-    string& getVoisinage(int i, int j, Configuration& config, Case* ensemble_case);
+    string& getVoisinage(int i, int j, const Configuration& config, Case* ensemble_case) const;
+    Configuration& appliquerTransition(const Configuration &dep) const;
 
 };
