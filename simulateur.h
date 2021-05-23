@@ -1,8 +1,9 @@
 
 class Simulateur
 {
+
 private:
-    
+
     int buffer_config;
     int clock;
     static Simulateur *instance_unique;
@@ -17,4 +18,6 @@ public:
     void affichage();
     void reset();
     void next();
+    string& getVoisinage(int i, int j, Configuration& config, Case* ensemble_case);
+
 };
