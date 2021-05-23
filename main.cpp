@@ -17,6 +17,16 @@ int main() {
     Etat *vivant = new Etat;
     vivant->setIndice(2);
 
+    Etat ** ensemble = new Etat*[2];
+    ensemble[0]=mort;
+    ensemble[1]=vivant;
+
+    string s1 = "111212";
+    string s2 = "212121";
+
+    auto regles = new string[1000];
+    regles[0]=s1;
+    regles[1]=s2;
 
     Cellule c1(1,1, mort);
     Cellule c2(1,2, vivant);
@@ -28,6 +38,19 @@ int main() {
     Cellule c8(3,2, vivant);
     Cellule c9(3,3, vivant);
 
-    Modele(string t, Etat **e, string r[1000], Voisinnage *v, string d, string a="",unsigned int annee=0)
+    Case ca1(0,1);
+    Case ca2(1,0);
+    Case ca3(0,-1);
+    Case ca4(-1,0);
+
+    auto Ca = new Case[4];
+    Ca[0]=ca1;
+    Ca[1]=ca2;
+    Ca[2]=ca3;
+    Ca[3]=ca4;
+
+    auto v = new Voisinage;
+
+    Modele m("vieetmort", reinterpret_cast<stat **>(ensemble), regles, v, "tmax", "en y", 1992);
 
 }

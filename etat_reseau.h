@@ -6,14 +6,12 @@
 #define LO21_PRINTEMPS_2021_PROJET_CELLULUT_ETAT_RESEAU_H
 #include <stdio.h>
 #include "etat.h"
-#include "configuration.h"
-#include "simulateur.h"
 
 class Cellule {
     int x;
     int y;
     Etat * etat;
-    Cellule() {etat->indice = 0;} // les états sont mis à 0 par défaut
+    Cellule() {etat->setIndice(0);} // les états sont mis à 0 par défaut
     Cellule(int x, int y) : x(x), y(y) {};
     void set_etatcellule(Etat* etat);
     friend class Configuration;

@@ -9,7 +9,6 @@
 
 #include <iostream>
 #include <cstdio>
-#include "Modele.h"
 using namespace std;
 class Etat {
 private:
