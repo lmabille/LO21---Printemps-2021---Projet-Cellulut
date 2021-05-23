@@ -18,6 +18,7 @@ private:
     int nbCelluleVoisi;
     string typeVoisi;
     Case*  ensemble_case;
+    friend class Simulateur;
 
 public:
     Voisinage();

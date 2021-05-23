@@ -1,6 +1,9 @@
+#ifndef LO21_PRINTEMPS_2021_PROJET_CELLULUT_MODELE_H
+#define LO21_PRINTEMPS_2021_PROJET_CELLULUT_MODELE_H
 #include<string>
 #include<cstdio>
 #include "voisinage.h"
+#include "simulateur.h"
 
 
 using namespace std;
@@ -15,7 +18,7 @@ class Modele{
     string description;
     string auteur;
     unsigned int anneeCreation;
-    friend Simulateur;
+    friend class Simulateur;
 
 public :
     Modele(string t, Etat **e, string r[1000], Voisinnage *v, string d, string a="",unsigned int annee=0):titre(t), ensembleEtat(e), regles(r), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
@@ -36,6 +39,6 @@ public :
 
 };
 
+#endif
 
-ll
 

@@ -6,7 +6,7 @@
 Configuration::Configuration(Reseau *r): pavage(r)
 {
     // Allocation mémoire
-    valeurs = new Cellule** [r->abscisse];
+    auto valeurs = new Cellule** [r->abscisse];
     for (unsigned int i=0;i<r->abscisse;i++)
     {
         *(valeurs+i) = new Cellule* [r->ordonnee];

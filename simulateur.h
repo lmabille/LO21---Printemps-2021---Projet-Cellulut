@@ -1,5 +1,6 @@
+#ifndef LO21_PRINTEMPS_2021_PROJET_CELLULUT_SIMULATEUR_H
+#define LO21_PRINTEMPS_2021_PROJET_CELLULUT_SIMULATEUR_H
 #include <string>
-#include "configuration.h"
 #include "Modele.h"
 #include "etat.h"
 #include "configuration.h"
@@ -31,3 +32,5 @@ public:
     Configuration& appliquerTransition(const Configuration &dep) const;
 
 };
+
+#endif

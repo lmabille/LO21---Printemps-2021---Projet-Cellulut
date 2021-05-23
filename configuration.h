@@ -1,5 +1,5 @@
-#ifndef _CONFIGURATION_H
-#define _CONFIGURATION_H
+#ifndef LO21_PRINTEMPS_2021_PROJET_CELLULUT_CONFIGURATION_H
+#define LO21_PRINTEMPS_2021_PROJET_CELLULUT_CONFIGURATION_H
 #include <iostream>
 #include <string>
 #include "etat_reseau.h"

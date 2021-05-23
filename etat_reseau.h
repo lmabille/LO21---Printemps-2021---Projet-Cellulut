@@ -2,11 +2,12 @@
 // Created by Anne LAHNECHE on 05/05/2021.
 //
 
-#ifndef _ETAT_RESEAU_H
-#define _ETAT_RESEAU_H
+#ifndef LO21_PRINTEMPS_2021_PROJET_CELLULUT_ETAT_RESEAU_H
+#define LO21_PRINTEMPS_2021_PROJET_CELLULUT_ETAT_RESEAU_H
 #include <stdio.h>
 #include "etat.h"
 #include "configuration.h"
+#include "simulateur.h"
 
 class Cellule {
     int x;
@@ -16,6 +17,7 @@ class Cellule {
     Cellule(int x, int y) : x(x), y(y) {};
     Cellule(int x, int y, Etat * e) : x(x), y(y) , etat(e){};
     void set_etatcellule(Etat* etat);
+    friend class Simulateur;
 
 public:
     int get_x(){ return x ;};

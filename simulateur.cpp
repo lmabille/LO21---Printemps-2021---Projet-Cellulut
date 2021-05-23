@@ -76,7 +76,8 @@ int char_to_int(char * c)
 Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
 /* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée */
 {
-    Configuration config = dep;
+    Configuration * dest = new Configuration;
+    *dest = dep;
     char * etatDepart;
     char etatDest;
     Etat * e= new Etat;
@@ -86,13 +87,13 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
         for (int j=0; j<dep.reseau->get_larg(); j++)
         {
             sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().getIndice());
-            etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage.ensemble_case), fonctionTrans->tableau, etatDepart);
-            e = Modele.ensembleEtat[char_to_int(&etatDest)];
-            dest[i][j].set_etat(&e);
+            etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage->ensemble_case), modele.fonctionTrans->tableau, etatDepart);
+            e = Modele.ensembleEtat[char_to_int(etatDest)];
+            dest->grille[i][j].set_etatcellule(e);
         }
     }
 
-    return config;
+    return *dest;
 }
 
 
