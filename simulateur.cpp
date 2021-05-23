@@ -24,7 +24,7 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
        dans un tableau de caractères, retourne ce tableau */
 
     Case* ptr = ensemble_case;
-    string& voisinage;
+    string voisinage;
     int x, y;
     int ind = 0;
 
@@ -90,7 +90,7 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
             while((modele.regles)[p][0]!=dep.grille[i][j].etat->getIndice()) p++;
             sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().getIndice());
             etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage->ensemble_case), modele.fonctionTrans->tableau + p, etatDepart);
-            e = Modele.ensembleEtat[char_to_int(&etatDest)];
+            e = modele.ensembleEtat[char_to_int(&etatDest)];
             dest->grille[i][j].set_etatcellule(e);
         }
     }
