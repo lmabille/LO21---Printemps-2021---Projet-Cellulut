@@ -9,17 +9,17 @@ using namespace std;
 class Configuration
 {
     // les cellules ont pour seul attribut leur état
-    Reseau* reseau;
-    friend class Simulateur;
+    Reseau reseau;
     Cellule** grille = nullptr;
+    friend class Simulateur;
+
 public:
     // constructeurs & destructeurs
-    Configuration();
+    Configuration(Reseau &r);
     Configuration(const Configuration& c);
     ~Configuration();
     Configuration& operator=(const Configuration& c);
-    // accesseurs cellule
-    Etat& getEtatCellule(int i, int j) const;
+    // friend de cellule
 };
 
 #endif // CELLULUT_H_INCLUDED

@@ -13,10 +13,11 @@ class Cellule {
     int x;
     int y;
     Etat * etat;
-    friend class Configuration;
+    Cellule() {etat->indice = 0;} // les états sont mis à 0 par défaut
     Cellule(int x, int y) : x(x), y(y) {};
     Cellule(int x, int y, Etat * e) : x(x), y(y) , etat(e){};
     void set_etatcellule(Etat* etat);
+    friend class Configuration;
     friend class Simulateur;
 
 public:
@@ -26,15 +27,16 @@ public:
 };
 
 class Reseau {
-    int Longueur;
-    int Largeur;
-    friend configuration;
-    Reseau()=default;
-    Reseau(int lon=0, int lar=0) : Longueur(lon), Largeur(lar) {};
+    int nb_lignes;
+    int nb_colonnes;
+    Reseau() = default;
+    Reseau(int l=0, int c=0) : nb_lignes(l), nb_colonnes(c) {};
+    friend class Configuration;
 
 public:
-    int get_long(){return Longueur;};
-    int get_larg(){return Largeur; }
+    int get_nbLignes(){return nb_lignes;}
+    int get_nbCols(){return nb_colonnes; }
+    Reseau& operator=(const Reseau& c);
 };
 
 
