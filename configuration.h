@@ -1,18 +1,10 @@
-#ifndef CELLULUT_H_INCLUDED
-#define CELLULUT_H_INCLUDED
+#ifndef _CONFIGURATION_H
+#define _CONFIGURATION_H
 #include <iostream>
 #include <string>
 #include "etat_reseau.h"
 
 using namespace std;
-
-class Reseau
-// Le réseau donnne les dimensions x et y du pavage pour la simulation
-{
-    unsigned int abscisse;
-    unsigned int ordonnee;
-    friend class Configuration;
-};
 
 
 

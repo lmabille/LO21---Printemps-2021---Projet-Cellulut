@@ -2,8 +2,8 @@
 // Created by Anne LAHNECHE on 05/05/2021.
 //
 
-#ifndef LO21_PRINTEMPS_2021_PROJET_CELLULUT_FONCTION_H
-#define LO21_PRINTEMPS_2021_PROJET_CELLULUT_FONCTION_H
+#ifndef _ETAT_RESEAU_H
+#define _ETAT_RESEAU_H
 #include <stdio.h>
 #include "etat.h"
 #include "configuration.h"
@@ -18,8 +18,8 @@ class Cellule {
 
 public:
 
-    void get_x(){ return x ;};
-    void get_y(){ return y ;};
+    int get_x(){ return x ;};
+    int get_y(){ return y ;};
     Etat & get_Etat(){ return *etat;};
 
 };

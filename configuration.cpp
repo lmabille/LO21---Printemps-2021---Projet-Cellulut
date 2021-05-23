@@ -1,5 +1,5 @@
 #include <iostream>
-#include "cellulut.h"
+#include "configuration.h"
 
 /*** Etats ***/
 
