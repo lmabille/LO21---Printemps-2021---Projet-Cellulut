@@ -12,4 +12,5 @@ Reseau& Reseau::operator=(const Reseau& c)
 {
     nb_lignes = c.nb_lignes;
     nb_colonnes = c.nb_colonnes;
+    return *this;
 }
