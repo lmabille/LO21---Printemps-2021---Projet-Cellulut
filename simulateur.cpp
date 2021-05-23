@@ -82,9 +82,9 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
     char etatDest;
     Etat * e= new Etat;
 
-    for (int i=0; i<dep.reseau->get_long(); i++)
+    for (int i=0; i<dep.reseau.get_nbLignes(); i++)
     {
-        for (int j=0; j<dep.reseau->get_larg(); j++)
+        for (int j=0; j<dep.reseau.get_nbCols(); j++)
         {
             sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().getIndice());
             etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage->ensemble_case), modele.fonctionTrans->tableau, etatDepart);

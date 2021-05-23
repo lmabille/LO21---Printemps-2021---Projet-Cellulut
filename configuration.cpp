@@ -1,27 +1,31 @@
 #include <iostream>
 #include "configuration.h"
+#include "etat_reseau.h"
 
 /*** Classe Configuration ***/
 
-Configuration::Configuration(Reseau *r): pavage(r)
+Configuration::Configuration(Reseau &r): reseau(r)
 {
     // Allocation mémoire
-    auto valeurs = new Cellule** [r->abscisse];
-    for (unsigned int i=0;i<r->abscisse;i++)
+    auto grille = new Cellule* [r.nb_lignes];
+    for (unsigned int i=0; i<r.nb_lignes; i++)
     {
-        *(valeurs+i) = new Cellule* [r->ordonnee];
-    }
-    // Remplissage initial (tous les états = 0)
-    for (unsigned int i=0;i<r->abscisse;i++)
-    {
-        for (unsigned int j=0;j<r->ordonnee;j++)
-        {
-            *(*(valeurs+i) +j) = new Cellule(i,j);
-        }
+        *(grille+i) = new Cellule[r.nb_colonnes];
     }
 }
 
-Configuration::getEtatCellule(int i, int j) const
+Configuration::Configuration(const Configuration& c): reseau(c.reseau)
 {
-    return grille[i][j].etat;
+    // reseau = c.reseau;
+    auto grille = new Cellule* [reseau.nb_lignes];
+    for (unsigned int i=0; i<reseau.nb_lignes; i++)
+    {
+        *(grille+i) = new Cellule[reseau.nb_colonnes];
+    }
+}
+
+Configuration::~Configuration()
+{
+    for
+    delete[] grille;
 }
