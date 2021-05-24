@@ -20,6 +20,7 @@ public:
     Configuration(const Configuration& c);
     ~Configuration();
     Configuration& operator=(const Configuration& c);
+    void setGrille(Cellule **c){grille=c;}
     // friend de cellule
 };
 

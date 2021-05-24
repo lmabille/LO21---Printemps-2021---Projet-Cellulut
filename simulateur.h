@@ -15,13 +15,13 @@ private:
     int clock;
     Modele const & modele;
     static Simulateur *instance_unique;
-    Simulateur(Modele & m) : modele(m){};
     Simulateur(const Simulateur &) = delete;
     void operator=(const Simulateur &) = delete;
     static Simulateur *uniqueInstance ;
     friend class Configuration;
 
 public:
+    Simulateur(Modele & m) : modele(m){};//remettre en private
     static Simulateur &donneInstance(Modele & m);
     static void libereInstance();
     void affichage();

@@ -52,7 +52,29 @@ int main() {
     Ca[3]=ca4;
 
     auto v = new Voisinage;
+    v->setensemble_case(Ca);
+    v->setNbCellule(4);
 
-    Modele m("vieetmort", (ensemble), regles, v, "tmax", "en y", 1992);
+    Modele m("vieetmort", ensemble, regles, v, "tmax", "en y", 1992);
+
+    Simulateur s(m);
+
+    Configuration C(r);
+
+    Cellule **grille = new Cellule*[3];
+
+    grille[0][0]=c1;
+    grille[1][0]=c2;
+    grille[2][0]=c3;
+    grille[0][1]=c4;
+    grille[1][1]=c5;
+    grille[2][1]=c6;
+    grille[0][2]=c7;
+    grille[1][2]=c8;
+    grille[2][2]=c9;
+
+    C.setGrille(grille);
+
+    s.appliquerTransition()
 
 }
