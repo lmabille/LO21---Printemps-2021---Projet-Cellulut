@@ -13,6 +13,7 @@ class FonctionTransition{
 
 public:
     FonctionTransition(string * tab) : tableau(tab){};
+    FonctionTransition()=default;
 };
 
 

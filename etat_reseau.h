@@ -11,7 +11,7 @@ class Cellule {
     int x;
     int y;
     Etat * etat;
-    Cellule() {etat->setIndice(0);} // les états sont mis à 0 par défaut
+    Cellule() {etat->setIndice(0); x=0; y=0;} // les états sont mis à 0 par défaut
     Cellule(int x, int y) : x(x), y(y) {};
     void set_etatcellule(Etat* etat);
     friend class Configuration;
