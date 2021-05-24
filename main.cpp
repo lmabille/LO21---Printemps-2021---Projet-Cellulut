@@ -7,6 +7,7 @@
 #include "Modele.h"
 #include "simulateur.h"
 #include "voisinage.h"
+#include "outils.h"
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
@@ -26,7 +27,7 @@ int main() {
     string s1 = "111212";
     string s2 = "212121";
 
-    auto regles = new string[1000];
+    auto regles = new string[2];
     regles[0]=s1;
     regles[1]=s2;
 
