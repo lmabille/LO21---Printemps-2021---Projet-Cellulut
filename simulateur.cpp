@@ -77,8 +77,11 @@ int char_to_int(char * c)
 Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
 /* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée */
 {
+    cout<<"pass3";
     Configuration * dest = new Configuration(dep.reseau);
+    cout<<"passe4";
     *dest = dep;
+    cout<<"passe5";
     char * etatDepart = new char;
     char etatDest ;
     Etat * e= new Etat;
