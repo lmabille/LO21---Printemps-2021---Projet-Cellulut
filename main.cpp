@@ -51,6 +51,6 @@ int main() {
 
     auto v = new Voisinage;
 
-    Modele m("vieetmort", reinterpret_cast<stat **>(ensemble), regles, v, "tmax", "en y", 1992);
+    Modele m("vieetmort", (ensemble), regles, v, "tmax", "en y", 1992);
 
 }
