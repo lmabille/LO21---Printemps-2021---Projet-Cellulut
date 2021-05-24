@@ -77,22 +77,26 @@ int char_to_int(char * c)
 Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
 /* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée */
 {
-    cout<<"pass3";
     Configuration * dest = new Configuration(dep.reseau);
-    cout<<"passe4";
     *dest = dep;
-    cout<<"passe5";
     char * etatDepart = new char;
     char etatDest ;
     Etat * e= new Etat;
     int p =0;
-    cout<<"passe2";
 
     for (int i=0; i<dep.reseau.get_nbLignes(); i++)
     {
         for (int j=0; j<dep.reseau.get_nbCols(); j++)
         {
-            while((modele.regles)[p][0]!=dep.grille[i][j].etat->getIndice()) p++;
+            //cout<<"passe11";
+            cout<<dep.grille[i][j].etat->getIndice();
+            char * t = (char*)(modele.regles)[p][0]));
+            cout<<t;
+            if (char_to_int(&((modele.regles)[p][0]))!=dep.grille[i][j].etat->getIndice()) cout<<"vrai";
+            while(char_to_int(&((modele.regles)[p][0]))!=dep.grille[i][j].etat->getIndice()) {
+                cout<<(modele.regles)[p][0];
+                p++;
+            };
             cout<<"pass1";
             sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().getIndice());
             etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage->ensemble_case), modele.fonctionTrans->tableau + p, *etatDepart);

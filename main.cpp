@@ -80,6 +80,8 @@ int main() {
 
     C->setGrille(grille);
 
+
+
     s.appliquerTransition(*C);
 
     return 0;
