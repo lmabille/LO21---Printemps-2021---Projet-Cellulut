@@ -57,6 +57,7 @@ char comparaison_voisinnage(string voisins, string trans[], char cel){
         }
         i++;
     }
+    return 0;
 }
 
 int char_to_int(char * c)
@@ -89,7 +90,7 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
         {
             while((modele.regles)[p][0]!=dep.grille[i][j].etat->getIndice()) p++;
             sprintf(etatDepart, "%d", dep.grille[i][j].get_Etat().getIndice());
-            etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage->ensemble_case), modele.fonctionTrans->tableau + p, etatDepart);
+            etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage->ensemble_case), modele.fonctionTrans->tableau + p, *etatDepart);
             e = modele.ensembleEtat[char_to_int(&etatDest)];
             dest->grille[i][j].set_etatcellule(e);
         }

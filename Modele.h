@@ -7,6 +7,14 @@
 
 using namespace std;
 
+class FonctionTransition{
+    string * tableau;
+    friend class Simulateur;
+
+public:
+    FonctionTransition(string * tab) : tableau(tab){};
+};
+
 
 class Modele{
     string titre; //key
