@@ -8,6 +8,8 @@
 #include "simulateur.h"
 #include "voisinage.h"
 
+Simulateur *Simulateur::uniqueInstance = nullptr;
+
 int main() {
 
     Reseau r(3, 3);
