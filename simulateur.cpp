@@ -3,10 +3,10 @@
 
 using namespace std;
 
-Simulateur &Simulateur::donneInstance()
+Simulateur &Simulateur::donneInstance(Modele & m)
 {
     if (uniqueInstance == nullptr)
-        uniqueInstance = new Simulateur();
+        uniqueInstance = new Simulateur(m);
     return *uniqueInstance;
 }
 

@@ -13,17 +13,16 @@ class Simulateur
 private:
     int buffer_config;
     int clock;
-    //Modele const & modele;
-    Modele modele;
+    Modele const & modele;
     static Simulateur *instance_unique;
-    Simulateur()=default;
+    Simulateur(Modele & m) : modele(m){};
     Simulateur(const Simulateur &) = delete;
     void operator=(const Simulateur &) = delete;
     static Simulateur *uniqueInstance ;
     friend class Configuration;
 
 public:
-    static Simulateur &donneInstance();
+    static Simulateur &donneInstance(Modele & m);
     static void libereInstance();
     void affichage();
     void reset();
