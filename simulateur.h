@@ -15,7 +15,7 @@ private:
     int clock;
     Modele const & modele;
     static Simulateur *instance_unique;
-    Simulateur();
+    Simulateur()=default;
     Simulateur(const Simulateur &) = delete;
     void operator=(const Simulateur &) = delete;
     static Simulateur *uniqueInstance;

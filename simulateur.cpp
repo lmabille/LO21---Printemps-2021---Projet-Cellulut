@@ -79,7 +79,7 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
 {
     Configuration * dest = new Configuration(dep.reseau);
     *dest = dep;
-    char * etatDepart;
+    char * etatDepart = new char;
     char etatDest ;
     Etat * e= new Etat;
     int p =0;

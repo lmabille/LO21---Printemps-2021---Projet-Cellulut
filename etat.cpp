@@ -4,14 +4,14 @@
 
 #include "etat.h"
 
-/*
+
 string Etat::getEtat() {
     return this->label;
 }
 
 
 
-void Etat::setEtat(string newEtat) {
+/*void Etat::setEtat(string newEtat) {
     if(this->l_etat_possible[0] == ""){
         cout << "Liste etats pas definie ! Echec " << endl;
         return;
@@ -43,12 +43,12 @@ void Etat::defListEtat(string *newListe) {
 string *Etat::getListe() {
 
     return this->l_etat_possible;
-}
+}*/
 
 
 
 Etat::Etat() {
-    l_etat_possible[0] = "";
+    //l_etat_possible[0] = "";
     label = "";
+    indice=0;
 }
-*/

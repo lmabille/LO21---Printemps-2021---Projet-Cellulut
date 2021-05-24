@@ -28,6 +28,7 @@ class Modele{
     friend class Simulateur;
 
 public :
+    Modele()=default;
     Modele(string t, Etat **e, string r[1000], Voisinage *v, string d, string a="",unsigned int annee=0):titre(t), ensembleEtat(e), regles(r), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
     ~Modele(){
         delete[] ensembleEtat;
