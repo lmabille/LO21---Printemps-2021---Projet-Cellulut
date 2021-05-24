@@ -21,20 +21,20 @@ public:
     int get_y(){ return y ;};
     Etat & get_Etat(){ return *etat;};
     Cellule(int x, int y, Etat * e) : x(x), y(y) , etat(e){};//le remettre en private
-    Cellule() {etat->setIndice(0); x=0; y=0;} // les états sont mis à 0 par défaut //remettre en private
+    Cellule() = default; // les états sont mis à 0 par défaut //remettre en private
 };
 
 class Reseau {
-    int nb_lignes;
-    int nb_colonnes;
-    Reseau() = default;
+    int nb_lignes=0;
+    int nb_colonnes=0;
     friend class Configuration;
 
 public:
     int get_nbLignes() const {return nb_lignes;};
     int get_nbCols() const {return nb_colonnes; } ;
     Reseau& operator=(const Reseau& c);
-    Reseau(int l=0, int c=0) : nb_lignes(l), nb_colonnes(c) {};//le remettre en private
+    Reseau(int l, int c) : nb_lignes(l), nb_colonnes(c) {};//le remettre en private
+    Reseau() = default;//le remettre en private
 };
 
 

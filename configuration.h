@@ -21,6 +21,7 @@ public:
     ~Configuration();
     Configuration& operator=(const Configuration& c);
     void setGrille(Cellule **c){grille=c;}
+    void setReseau(Reseau &r){reseau=r;}
     // friend de cellule
 };
 

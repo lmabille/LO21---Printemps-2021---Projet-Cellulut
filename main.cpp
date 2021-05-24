@@ -59,9 +59,14 @@ int main() {
 
     Simulateur s(m);
 
-    Configuration C(r);
+    Configuration * C = new Configuration;
 
-    Cellule **grille = new Cellule*[3];
+    C->setReseau(r);
+
+    auto **grille = new Cellule*[3];
+    grille[0]=new Cellule[3];
+    grille[1]=new Cellule[3];
+    grille[2]=new Cellule[3];
 
     grille[0][0]=c1;
     grille[1][0]=c2;
@@ -73,8 +78,10 @@ int main() {
     grille[1][2]=c8;
     grille[2][2]=c9;
 
-    C.setGrille(grille);
+    C->setGrille(grille);
 
-    s.appliquerTransition()
+    s.appliquerTransition(*C);
+
+    return 0;
 
 }
