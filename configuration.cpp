@@ -38,18 +38,13 @@ Configuration& Configuration::operator=(const Configuration& c)
     if (this != &c)
     {
         reseau = c.reseau;
-        cout<<"passe6";
         Cellule** newGrille = new Cellule* [reseau.nb_lignes];
-        cout<<"passe7";
         for (unsigned int i=0; i<reseau.nb_lignes; i++)
         {
             *(newGrille+i) = new Cellule[reseau.nb_colonnes];
-            cout<<"passe8";
         }
         Cellule** oldGrille = grille;
-        cout<<"passe9";
         grille = newGrille;
-        cout<<"passe10";
         delete oldGrille;
         /*for (int i = 0; i<reseau.nb_lignes; i++)
         {
