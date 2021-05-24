@@ -27,6 +27,7 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
     string * voisinage= new string;
     int x, y;
     int ind = 0;
+    int compte=0;
 
     while (ptr != nullptr)
     {
