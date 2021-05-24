@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Modele>
+	<titre name="Game of life"></titre>
+	<Description name="Le jeu de la vie "></Description>
+	<Auteur name="M.Dupont "></Auteur>
+	<AnneeCreation name="2021"></AnneeCreation>
+	<Etat>
+		<NombreEtat name="2"></NombreEtat>
+		<Label name="noir"></Label>
+		<Label name="blanc"></Label>
+	</Etat>
+	<Voisinage>
+		<Nom name="VonNeumann"></Nom>
+		<Rayon name="1"></Rayon>
+		<Element>
+			<Case X="1 Y="-1"> //Soit élément soit rayon
+		</Element>
+	</Voisinage>
+	<ListeRegle>
+		<Regle>101001</Regle>
+		<Regle>000101</Regle>
+	</ListeRegle>
+</Modele>
