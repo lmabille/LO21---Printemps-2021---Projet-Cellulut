@@ -40,7 +40,7 @@ Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): re
 Configuration::Configuration(const Configuration& c): reseau(c.reseau)
 {
     // reseau = c.reseau;
-    auto grille = new Cellule* [reseau.nb_lignes];
+    grille = new Cellule* [reseau.nb_lignes];
     for (unsigned int i=0; i<reseau.nb_lignes; i++)
     {
         *(grille+i) = new Cellule[reseau.nb_colonnes];
