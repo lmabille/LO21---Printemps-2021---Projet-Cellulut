@@ -8,7 +8,7 @@ Configuration::Configuration(const Reseau &r): reseau(r)
 /* Initialise simplement une grille de cellules avec les bonnes dimensions (se charge des allocations mémoire) */
 {
     // Allocation mémoire
-    auto grille = new Cellule* [r.nb_lignes];
+    grille = new Cellule* [r.nb_lignes];
     for (unsigned int i=0; i<r.nb_lignes; i++)
     {
         *(grille+i) = new Cellule[r.nb_colonnes];
