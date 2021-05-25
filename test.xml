@@ -13,7 +13,7 @@
 		<Nom name="VonNeumann"></Nom>
 		<Rayon name="1"></Rayon>
 		<Element>
-			<Case X="1 Y="-1"> //Soit élément soit rayon
+			<Case X="1" Y="-1"/> //Soit élément soit rayon
 		</Element>
 	</Voisinage>
 	<ListeRegle>
