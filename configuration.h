@@ -32,7 +32,7 @@ public:
     int getReseauLignes() const {return reseau.get_nbLignes();}
     int getReseauColonnes() const {return reseau.get_nbCols();}
     Etat& getEtatCellule (int i, int j) const {return grille[i][j].get_Etat();}
-    string& getVoisinage (int i, int j, Voisinage& typeVois) const;
+    string getVoisinage (int i, int j, Voisinage& typeVois) const;
     // friend de cellule
 };
 

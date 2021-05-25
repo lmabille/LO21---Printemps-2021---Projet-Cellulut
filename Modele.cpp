@@ -42,8 +42,8 @@ int char_to_int(char * c)
 }
 
 void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) const
-/* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée */
-{ // ça arrive
+/* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée qu'elle place dans la confifuration de destinationn*/
+{
     if (dep.getReseauLignes() != dest.getReseauLignes() || dep.getReseauColonnes() != dest.getReseauColonnes()) dest = dep;
     char * etatDepart = new char;
     char etatDest ;

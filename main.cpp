@@ -9,6 +9,11 @@
 #include "voisinage.h"
 #include "outils.h"
 
+#include <stdio.h>
+#include <string.h>
+
+using namespace std;
+
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main() {
@@ -28,25 +33,45 @@ int main() {
     // test getVoisinage
     Etat* mort = ensembleEtats[0];
     Etat* vivant = ensembleEtats[1];
+/*    cout << "\ntests recup mort et vivant\n";
+    cout << mort->getIndice() << " " << mort->getLabel() << endl;
+    cout << vivant->getIndice() << " " << vivant->getLabel() << endl;*/// ok
 
-    configDepart->setEtatCellule(-1,0,vivant);
-    configDepart->setEtatCellule(0,1,vivant); // les autres sont à "mort" par initialisation
+    configDepart->setEtatCellule(1,0,vivant); // cell de gauche
+    configDepart->setEtatCellule(0,1,vivant); // cell du haut // les autres sont à "mort" par initialisation
+/*    cout << "tests setEtatCellule" << endl;
+    cout << configDepart->getEtatCellule(1,0).getIndice() << " " << configDepart->getEtatCellule(1,0).getLabel() << endl;
+    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;*/// ok
 
-    Case* liste_cases = new Case[2];
-    Case gauche(-1,0);
-    Case haute(0,1);
-    Case droite(1,0);
-    Case bas(0,-1);
+    Case* liste_cases = new Case[4];
+    Case gauche(0,-1);
+    Case haute(-1,0);
+    Case droite(0,1);
+    Case bas(1,0);
     liste_cases[0] = gauche;
     liste_cases[1] = haute;
     liste_cases[2] = droite;
     liste_cases[3] = bas;
+/*    cout << "tests set up liste cases" << endl;
+    cout << "[" << gauche.getL() << "," << gauche.getC() << "]" << endl;*/ // ok
 
     Voisinage* v = new Voisinage;
-    v->setNbCellule(2);
+    v->setNbCellule(4);
     v->setensemble_case(liste_cases);
-    string testVois = configDepart->getVoisinage(0,0,*v);
-    cout << testVois[0]; // segmentation fault pour l'instant j'ai cours oups c'était mon premier test
+
+    cout << configDepart->getVoisinage(1,1,*v);
+
+
+
+
+    /*tests conversion int to char
+    int i = 0;
+    string* test = new string;
+    *test="";
+    string* a = new string;
+    strcpy(a,i);
+    strncat(test,a,1); */ // no need sprintf pour de simples char
+
 
     return 0;
 }

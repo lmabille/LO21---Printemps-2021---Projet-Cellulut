@@ -2,24 +2,32 @@
 #include "configuration.h"
 #include "etat_reseau.h"
 
+#include <stdio.h>
+#include <string.h>
+
+using namespace std;
+
 /*** Classe Configuration ***/
 
-string& Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const // à testers
+string Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const // à tester
 {
     /* pour chaque élément du tableau ensemble de cases,
        récupère le déplacement relatif en ligne et en colonne en fonction du voisinage passé en argument,
        puis récupère l'état de la cellule i+ligneRel, j+colRel, stocke cet état
        dans un tableau de caractères, retourne ce tableau */
 
-    string * voisinage= new string;
+    string voisinage;
     int ligneRel,colRel;
+    int indice;
     for (int c = 0; c < typeVoisi.getNbCelluleVoisi(); c++)
     {
         ligneRel = typeVoisi[c].getL();
         colRel = typeVoisi[c].getC();
-        voisinage[c] = getEtatCellule((i+ligneRel)%reseau.nb_lignes, (j+colRel)%reseau.nb_colonnes).getIndice();
+        indice = getEtatCellule(((i+ligneRel)%reseau.nb_lignes),((j+colRel)%reseau.nb_colonnes)).getIndice();
+        voisinage += to_string(indice);
+        // cout << "test OK" << endl;
     }
-    return *voisinage;
+    return voisinage;
 }
 
 Configuration::Configuration(const Reseau &r): reseau(r)
