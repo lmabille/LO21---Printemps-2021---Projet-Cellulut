@@ -4,6 +4,7 @@
 #include<cstdio>
 #include "voisinage.h"
 #include "etat.h"
+#include "configuration.h"
 
 using namespace std;
 
@@ -15,7 +16,6 @@ public:
     FonctionTransition(string * tab) : tableau(tab){};
     FonctionTransition()=default;
 };
-
 
 class Modele{
     string titre; //key
@@ -30,12 +30,10 @@ class Modele{
 
 public :
     Modele()=default;
-    /*Modele(string t, Etat **e, string r[1000], Voisinage *v, string d, string a="",unsigned int annee=0):titre(t), ensembleEtat(e), regles(r), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
-    ~Modele(){
-        delete[] ensembleEtat;
-    }
+    Modele(string t, EnsembleEtats *e, string r[1000], Voisinage *v, string d, string a="",unsigned int annee=0):titre(t), etatsPossibles(e), regles(r), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
+    ~Modele(){delete[] etatsPossibles;} // pas sûr de ça // + voir le destructeur de la classe EnsembleEtats
     const string& getTitre() const {return titre; }
-    Etat ** const getEtat() const {return ensembleEtat;}*/
+    EnsembleEtats* const getEtatsPossibles() const {return etatsPossibles;}
     const string& getRegles() const {return *regles; }
     const Voisinage *getVoisin() const {return typeVoisinnage; }
     const string& getDescription() const {return description; }
@@ -44,8 +42,7 @@ public :
     void chargerModele(FILE *f);//charge les éléments du fichier puis fait appel au constructeur
     void creerModele();//propose choix à l'utilisateur, génère règles puis fait appel au constructeur
     FILE *sauvegarderModele();//sauvegarde l'ensemble des attributs dans un fichier xml
-    void appliquerTransition();
-
+    void appliquerTransition(const Configuration &dep, Configuration &dest) const;
 };
 
 #endif

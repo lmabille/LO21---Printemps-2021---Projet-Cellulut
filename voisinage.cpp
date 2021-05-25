@@ -30,20 +30,18 @@ Case *Voisinage::getTableau() {
     return this->ensemble_case;
 }
 
-
-int Case::getX() {
-    return this->x;
+Case& Voisinage::operator[](int indice)
+{
+    try {
+        if (indice < 0 || indice >= nbCelluleVoisi)
+            throw string("case n'existe pas !"); // à remplacer par AutomateException comme dans le td
+        else
+            return ensemble_case[indice];
+    }
+    catch (string const& erreur)
+    {
+        cout << erreur << endl;
+    }
 }
 
-int Case::gety() {
-    return this->y;
-}
 
-void Case::setX(int newx) {
-    //printf("test");
-    this->x = newx;
-}
-
-void Case::setY(int y) {
-    this->y = y;
-}

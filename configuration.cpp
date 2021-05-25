@@ -4,6 +4,24 @@
 
 /*** Classe Configuration ***/
 
+string& Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const // à testers
+{
+    /* pour chaque élément du tableau ensemble de cases,
+       récupère le déplacement relatif en ligne et en colonne en fonction du voisinage passé en argument,
+       puis récupère l'état de la cellule i+ligneRel, j+colRel, stocke cet état
+       dans un tableau de caractères, retourne ce tableau */
+
+    string * voisinage= new string;
+    int ligneRel,colRel;
+    for (int c = 0; c < typeVoisi.getNbCelluleVoisi(); c++)
+    {
+        ligneRel = typeVoisi[c].getL();
+        colRel = typeVoisi[c].getC();
+        voisinage[c] = getEtatCellule((i+ligneRel)%reseau.nb_lignes, (j+colRel)%reseau.nb_colonnes).getIndice();
+    }
+    return *voisinage;
+}
+
 Configuration::Configuration(const Reseau &r): reseau(r)
 /* Initialise simplement une grille de cellules avec les bonnes dimensions (se charge des allocations mémoire) */
 {
@@ -16,7 +34,7 @@ Configuration::Configuration(const Reseau &r): reseau(r)
 }
 
 Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): reseau(r)
-/* Initialise une grille de cellule et met par défaut toutes les cellules à l'état 0 */
+/* Initialise une grille de cellule et met par défaut toutes les cellules à l'état 0 du tableau d'états possible */
 {
     // Allocation mémoire
     grille = new Cellule* [r.nb_lignes];
@@ -30,8 +48,6 @@ Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): re
         for (unsigned int j = 0; j<r.nb_colonnes; j++)
         {
             grille[i][j].set_etatcellule(etatsPossibles[0]);
-            // cout << "[" << i << "," << j << "] : " << grille[i][j].get_Etat().getIndice() << " "; // fonctionne bien
-            // cout << "[" << i << "," << j << "] : " << grille[i][j].get_Etat().getLabel() << "\n"; // fonctionne bien
         }
     }
 }

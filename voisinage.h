@@ -13,13 +13,11 @@ using namespace  std;
 class Case;
 
 class Voisinage {
-
-private:
     int nbCelluleVoisi;
     string typeVoisi;
     Case*  ensemble_case;
-    friend class Simulateur;
-
+    friend class Modele;
+    // friend class Simulateur;
 public:
     Voisinage();
     const string getTypeVoisi();
@@ -27,21 +25,21 @@ public:
     void setNbCellule(int nb);
     void setensemble_case(Case * c){ensemble_case=c;};
     Case * getTableau();
-
+    Case& operator[](int indice);
 };
 
 class Case{ // Classe case
-    int x;
-    int y;
+    int l;
+    int c;
     //friend Voisinage;
 
 public:
-    int getX();
-    int gety();
-    void setX(int newx);
-    void setY(int y);
+    int getL() const {return l;};
+    int getC() const {return c;};
+    void setL(int newL) {this->l = newL;}
+    void setC(int newC) {this->c = newC;}
     Case() = default;
-    Case(int X, int Y) : x(X), y(Y){};
+    Case(int L, int C) : l(L), c(C){};
 };
 
 
