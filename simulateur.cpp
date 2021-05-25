@@ -88,7 +88,7 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
     {
         for (int j=0; j<dep.reseau.get_nbCols(); j++)
         {
-            while(((modele.regles)[p][0])!=('0' + dep.grille[i][j].etat->getIndice())) {//seulement possibilité d'état de 0 à 9
+            while(((modele.fonctionTrans->tableau)[p][0])!=('0' + dep.grille[i][j].etat->getIndice())) {//seulement possibilité d'état de 0 à 9
                 cout<<(modele.regles)[p][0];
                 p++;
             };
