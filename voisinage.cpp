@@ -12,15 +12,11 @@ const string Voisinage::getTypeVoisi() {
     return this->typeVoisi;
 }
 
-
-
 void Voisinage::setNbCellule(int nb) {
     if(nb >=0)
         this->nbCelluleVoisi = nb;
     else
         cout << "Nombre négatif. Erreur" << endl;
-
-
 }
 
 Voisinage::Voisinage() {

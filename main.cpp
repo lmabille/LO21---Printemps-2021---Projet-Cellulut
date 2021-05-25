@@ -12,7 +12,7 @@
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main() {
-
+    /*
     Reseau r(3, 3);
 
     Etat *mort = new Etat;
@@ -81,10 +81,39 @@ int main() {
 
     C->setGrille(grille);
 
-
-
     s.appliquerTransition(*C);
+     */
+
+
+    // vio
+
+    EnsembleEtats ensembleEtats(2);
+    ensembleEtats.definirEtats();
+    for (int i=0; i<ensembleEtats.getNombreEtats();i++)
+    {
+        cout << "etat[" << ensembleEtats[i]->getIndice() << "]" << " : " << ensembleEtats[i]->getLabel() << "\n";
+    }
+
+    Reseau res(3,3);
+    Configuration* configDepart = new Configuration(res, ensembleEtats);
+    Etat test = configDepart->getEtatCellule(0,0); // ne fonctionne aps pk???
+
+
+    /*for (int i = 0; i<configDepart->getReseauLignes(); i++)
+    {
+        for(int i = 0; i<configDepart->getReseauLignes();i++)
+        {
+            for(int j=0; j<configDepart->getReseauColonnes();j++)
+            {
+                cout << "[" << configDepart->getEtatCellule(i,j).getIndice() << "]";
+                cout << "";
+            }
+            cout << "\n";
+        }
+    }*/
+
+
+
 
     return 0;
-
 }

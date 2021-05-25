@@ -20,8 +20,9 @@ public:
     int get_x(){ return x ;};
     int get_y(){ return y ;};
     Etat & get_Etat(){ return *etat;};
-    Cellule(int x, int y, Etat * e) : x(x), y(y) , etat(e){};//le remettre en private
-    Cellule() = default; // les états sont mis à 0 par défaut //remettre en private
+    Cellule(int x, int y, Etat * e) : x(x), y(y) , etat(e){}; // le remettre en private
+    Cellule(Etat* e): etat(e) {}
+    Cellule() = default; // remettre en private
 };
 
 class Reseau {
@@ -31,7 +32,7 @@ class Reseau {
 
 public:
     int get_nbLignes() const {return nb_lignes;};
-    int get_nbCols() const {return nb_colonnes; } ;
+    int get_nbCols() const {return nb_colonnes;};
     Reseau& operator=(const Reseau& c);
     Reseau(int l, int c) : nb_lignes(l), nb_colonnes(c) {};//le remettre en private
     Reseau() = default;//le remettre en private

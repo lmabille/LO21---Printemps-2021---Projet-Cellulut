@@ -19,7 +19,7 @@ public:
 
 class Modele{
     string titre; //key
-    Etat **ensembleEtat;
+    EnsembleEtats* etatsPossibles; // à prendre en compte dans les constructeurs/ destructeurs!
     string *regles;
     Voisinage *typeVoisinnage;
     FonctionTransition *fonctionTrans;
@@ -30,12 +30,12 @@ class Modele{
 
 public :
     Modele()=default;
-    Modele(string t, Etat **e, string r[1000], Voisinage *v, string d, string a="",unsigned int annee=0):titre(t), ensembleEtat(e), regles(r), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
+    /*Modele(string t, Etat **e, string r[1000], Voisinage *v, string d, string a="",unsigned int annee=0):titre(t), ensembleEtat(e), regles(r), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
     ~Modele(){
         delete[] ensembleEtat;
     }
     const string& getTitre() const {return titre; }
-    Etat ** const getEtat() const {return ensembleEtat;}
+    Etat ** const getEtat() const {return ensembleEtat;}*/
     const string& getRegles() const {return *regles; }
     const Voisinage *getVoisin() const {return typeVoisinnage; }
     const string& getDescription() const {return description; }

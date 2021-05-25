@@ -1,13 +1,71 @@
 //
 // Created by thoma on 13/05/2021.
 //
-
 #include "etat.h"
+#include <string.h>
 
+Etat::Etat()
+{
+    label = "";
+    indice=0;
+}
 
-string Etat::getEtat() {
+string Etat::getLabel()
+{
     return this->label;
 }
+
+void EnsembleEtats::definirEtats()
+{
+    int num;
+    string lab;
+    // + couleur
+    for (int i=0; i<nombreEtats; i++)
+    {
+        cout << "Definition de l'etat " << i << " :\n";
+        cout << "\tNumero: ";
+        cin >> num; // check que ce soit bien un integer
+        cout << "\tLabel: ";
+        cin >> lab;
+        // + couleur
+        liste[i].setIndice(num);
+        liste[i].setlabel(lab);
+    }
+}
+
+/*
+bool EnsembleEtats::checkExisteDeja(const Etat& e)
+{
+    for (int i = 0; i<nombreEtats; i++) {
+        if (etatsPossibles[i].indice == e.indice) {
+            if (etatsPossibles[i].label.compare(e.label) == 0) {
+                // if couleur == couleur // définir les couleurs !! à faire
+                return true;
+            }
+        }
+    }
+    return false;
+}
+*/
+
+Etat* EnsembleEtats::operator[](int index)
+/* Permet de retourner un pointeur sur un état alors qu'ils sont stockés dans un tableau 1D */
+{
+    if (index >= 0 && index < nombreEtats)
+    {
+        return &liste[index];
+    }
+    else
+    {
+        cout << "etat n'existe pas\n";
+        return nullptr;
+    }
+}
+
+
+
+
+
 
 
 
@@ -47,8 +105,4 @@ string *Etat::getListe() {
 
 
 
-Etat::Etat() {
-    //l_etat_possible[0] = "";
-    label = "";
-    indice=0;
-}
+

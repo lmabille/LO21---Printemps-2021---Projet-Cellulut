@@ -1,5 +1,6 @@
 #include <iostream>
 #include "simulateur.h"
+// #include "outil.h"
 
 using namespace std;
 
@@ -96,7 +97,7 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
             cout<<"pass2";
             etatDest = comparaison_voisinnage(getVoisinage(i,j,dep,modele.typeVoisinnage->ensemble_case), modele.regles + p, *etatDepart);
             cout<<"pass3";
-            e = modele.ensembleEtat[char_to_int(&etatDest)];
+            // e = modele.etatsPossibles[char_to_int(&etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest->grille[i][j].set_etatcellule(e);
         }
     }
