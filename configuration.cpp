@@ -19,7 +19,7 @@ Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): re
 /* Initialise une grille de cellule et met par défaut toutes les cellules à l'état 0 */
 {
     // Allocation mémoire
-    auto grille = new Cellule* [r.nb_lignes];
+    grille = new Cellule* [r.nb_lignes];
     for (unsigned int i=0; i<r.nb_lignes; i++)
     {
         *(grille+i) = new Cellule[r.nb_colonnes];
