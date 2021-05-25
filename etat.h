@@ -36,7 +36,9 @@ class EnsembleEtats // désigne un ensemble donné d'états possibles // serait 
 public:
     EnsembleEtats(int n): nombreEtats(n), liste(new Etat[n]) {}
     void definirEtats();
-    int getNombreEtats() {return nombreEtats;}
+    int getNombreEtats() {return this->nombreEtats;}
+    void setListe(Etat* lst) { this->liste = lst;}
+    void setNombreEtat(int nb) { this->nombreEtats = nb; cout  << "test" <<endl;}
     // bool checkExisteDeja(const Etat& e);
     Etat* operator[](int indice);
 };

@@ -8,10 +8,23 @@
 #include "simulateur.h"
 #include "voisinage.h"
 #include "outils.h"
+#include "chargerModele.h"
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main() {
+
+    Modele* test = chargerModel("test");
+    cout << test->getAuteur() <<endl;
+    cout << test->getDescription() <<endl;
+    cout << test->getTitre() <<endl;
+    cout << test->getAnnee() <<endl;
+    cout << test->getEnsemble()->getNombreEtats();
+
+
+
+
+
     /*
     Reseau r(3, 3);
 
@@ -86,7 +99,7 @@ int main() {
 
 
     // vio
-
+    /*
     EnsembleEtats ensembleEtats(2);
     ensembleEtats.definirEtats();
     for (int i=0; i<ensembleEtats.getNombreEtats();i++)
