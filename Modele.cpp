@@ -16,14 +16,19 @@ char comparaison_voisinnage(string voisins, string *trans, char cel){
     string st;
     cout<<"compa_vois"<<"\n";
     while ( trans[i][0]==cel){
-        cout<<"passeboucle";
+        cout<<"passeboucle"<<"\n";
         st=trans[i].substr(1, trans[i].length()-2);
+        cout<<st<<"\n";
         st.append(st);
+        cout<<st<<"\n";
+        cout<<voisins<<"\n";
         test=st.find(voisins);
         if (test!=-1) {
             size_t j=(trans[i].length()-1);
+            cout<<trans[i][j];
             return trans[i][j];
         }
+        //il ne faut pas avancé dans le tableaux si il est vide donc rajouter un attribut "nombre de règles" dans FonctiondeTransition
         i++;
     }
     return 0;
@@ -62,7 +67,7 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
             };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i,j).getIndice());
             cout<<dep.getVoisinage(i,j,*typeVoisinnage)<<"\n";
-            etatDest = comparaison_voisinnage(dep.getVoisinage(i,j,*typeVoisinnage), regles + p, *etatDepart);
+            etatDest = comparaison_voisinnage(dep.getVoisinage(i,j,*typeVoisinnage), fonctionTrans->tableau + p, *etatDepart);
             cout<<etatDest;
             //e = etatsPossibles[char_to_int(&etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i,j,e);
