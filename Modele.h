@@ -10,10 +10,12 @@ using namespace std;
 
 class FonctionTransition{
     string * tableau;
+    unsigned int taille;
     friend class Modele;
 
 public:
-    FonctionTransition(string * tab) : tableau(tab){};
+    FonctionTransition(string * tab) : tableau(tab), taille(0){};
+    FonctionTransition(string * tab, unsigned int t) : tableau(tab), taille(t){};
     FonctionTransition()=default;
 };
 
