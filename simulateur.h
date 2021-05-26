@@ -5,6 +5,7 @@
 #include "etat.h"
 #include "configuration.h"
 #include "voisinage.h"
+#include "outils.h"
 #include <iostream>
 
 using namespace std;

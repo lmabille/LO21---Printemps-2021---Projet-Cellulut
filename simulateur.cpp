@@ -1,6 +1,5 @@
 #include <iostream>
 #include "simulateur.h"
-#include "outil.h"
 
 using namespace std;
 
