@@ -127,4 +127,6 @@ void Modele::creerModele()
     default:
         break;
     }
-}
+};
+
+int i;
