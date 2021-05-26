@@ -7,7 +7,7 @@
 using namespace std;
 
 // ça arrive
-char comparaison_voisinnage(string voisins, string *trans, char cel){
+char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit){
     // pour un voisinnage donné on va vérifier si ce voisinnage est dans
     // le tableau de fonction transition si oui on va renvoyer un caractère qui
     // va correspondre à l'état de la cellule à la génération t+1
@@ -15,7 +15,7 @@ char comparaison_voisinnage(string voisins, string *trans, char cel){
     int test=0;
     string st;
     cout<<"compa_vois"<<"\n";
-    while ( trans[i][0]==cel){
+    while ( i<limit && trans[i][0]==cel){
         cout<<"passeboucle"<<"\n";
         st=trans[i].substr(1, trans[i].length()-2);
         cout<<st<<"\n";
@@ -55,19 +55,19 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
     char * etatDepart = new char;
     char etatDest ;
     Etat * e= new Etat;
-    int p =0;
+    unsigned int p =0;
     cout<<"passe1"<<"\n";
 
     for (int i=0; i<dep.getReseauLignes(); i++)
     {
         for (int j=0; j<dep.getReseauColonnes(); j++)
         {
-            while((int)((fonctionTrans->tableau)[p][0])!=('0' + dep.getEtatCellule(i,j).getIndice())) {
+            while(p<fonctionTrans->taille && ((int)((fonctionTrans->tableau)[p][0])!=('0' + dep.getEtatCellule(i,j).getIndice()))) {
                 p++;
             };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i,j).getIndice());
             cout<<dep.getVoisinage(i,j,*typeVoisinnage)<<"\n";
-            etatDest = comparaison_voisinnage(dep.getVoisinage(i,j,*typeVoisinnage), fonctionTrans->tableau + p, *etatDepart);
+            etatDest = comparaison_voisinnage(dep.getVoisinage(i,j,*typeVoisinnage), fonctionTrans->tableau + p, *etatDepart, fonctionTrans->taille-p);
             cout<<etatDest;
             //e = etatsPossibles[char_to_int(&etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i,j,e);
