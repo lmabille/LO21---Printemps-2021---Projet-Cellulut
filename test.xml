@@ -4,20 +4,27 @@
 	<Description name="Le jeu de la vie "></Description>
 	<Auteur name="M.Dupont "></Auteur>
 	<AnneeCreation name="2021"></AnneeCreation>
-	<Etat>
+	<Etats>
 		<NombreEtat name="2"></NombreEtat>
-		<Label name="noir"></Label>
-		<Label name="blanc"></Label>
-	</Etat>
+		<Etat name="noir" indice="0"></Etat>
+		<Etat name="blanc" indice="1"></Etat>
+	</Etats>
 	<Voisinage>
 		<Nom name="VonNeumann"></Nom>
 		<Rayon name="1"></Rayon>
 		<Element>
-			<Case X="1" Y="-1"/> //Soit élément soit rayon
+			<Case X="1" Y="-1" />
+			//Soit élément soit rayon
 		</Element>
 	</Voisinage>
 	<ListeRegle>
-		<Regle name="100101"/>
-		<Regle name="011001"/>
+		<Regle name="100101" />
+		<Regle name="011001" />
 	</ListeRegle>
+	<configurations>
+		<configuration name="config1">
+			<case x="0" y="0" indice="1" name="blanc"></case>
+			<case x="0" y="1" indice="0" name="noir"></case>
+		</configuration>
+	</configurations>
 </Modele>
