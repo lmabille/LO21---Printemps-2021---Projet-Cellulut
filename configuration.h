@@ -24,8 +24,6 @@ public:
     ~Configuration();
     Configuration& operator=(const Configuration& c);
     // accesseurs en écriture
-    // void setGrille(Cellule **c){grille=c;}
-    // void setReseau(Reseau &r){reseau=r;}
     void setEtatCellule (int i, int j, Etat* e) {grille[i][j].set_etatcellule(e);}
     // accesseurs en lecture
     Cellule& getCellule (int i, int j) const {return grille[i][j];}

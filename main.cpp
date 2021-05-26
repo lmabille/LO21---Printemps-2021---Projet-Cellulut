@@ -59,8 +59,11 @@ int main() {
     v->setNbCellule(4);
     v->setensemble_case(liste_cases);
 
-    cout << configDepart->getVoisinage(1,1,*v)<<"\n";
+    cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
+
+
+    /* orhane
     auto tab = new string[2];
 
     tab[0]="211001";
@@ -72,18 +75,10 @@ int main() {
 
     auto configArrivee= new Configuration;
 
-
-    m.appliquerTransition(*configDepart, *configArrivee);
-
+    // m.appliquerTransition(*configDepart, *configArrivee);
 
 
-    /*tests conversion int to char
-    int i = 0;
-    string* test = new string;
-    *test="";
-    string* a = new string;
-    strcpy(a,i);
-    strncat(test,a,1); */ // no need sprintf pour de simples char
+*/
 
 
     return 0;
