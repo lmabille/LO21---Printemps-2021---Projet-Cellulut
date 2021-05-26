@@ -69,7 +69,7 @@ int main() {
     tab[0]="211001";
     tab[1]="101012";
 
-    FonctionTransition * f = new FonctionTransition(tab);
+    FonctionTransition * f = new FonctionTransition(tab, 2);
 
     Modele m("modele 1",ensembleEtats, f, v, "ta race", "Orhane", 2021);
 
