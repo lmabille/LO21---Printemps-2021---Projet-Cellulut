@@ -17,7 +17,7 @@
 		</Element>
 	</Voisinage>
 	<ListeRegle>
-		<Regle>101001</Regle>
-		<Regle>000101</Regle>
+		<Regle name="100101"/>
+		<Regle name="011001"/>
 	</ListeRegle>
 </Modele>
