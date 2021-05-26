@@ -19,13 +19,21 @@ string Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const // 
     string voisinage;
     int ligneRel,colRel;
     int indice;
+    int ligne=0, collone=0;
+    cout<<"getVoisin"<<"\n";
     for (int c = 0; c < typeVoisi.getNbCelluleVoisi(); c++)
     {
+        cout<<"debut de boucle"<<"\n";
         ligneRel = typeVoisi[c].getL();
+        //calcule des coordonnées en prenant en compte que le modulo peut renvoyer des nombres négatifs
+        if ((i+ligneRel)%reseau.nb_lignes<0) ligne = (i+ligneRel)%reseau.nb_lignes + reseau.nb_lignes;
+        else ligne = (i+ligneRel)%reseau.nb_lignes;
+        if ((j+colRel)%reseau.nb_colonnes<0) collone = (j+colRel)%reseau.nb_colonnes + reseau.nb_colonnes;
+        else collone = (j+colRel)%reseau.nb_colonnes;
         colRel = typeVoisi[c].getC();
-        indice = getEtatCellule(((i+ligneRel)%reseau.nb_lignes),((j+colRel)%reseau.nb_colonnes)).getIndice();
+        indice = getEtatCellule(ligne,collone).getIndice();
         voisinage += to_string(indice);
-        // cout << "test OK" << endl;
+        cout << "test OK" << endl;
     }
     return voisinage;
 }

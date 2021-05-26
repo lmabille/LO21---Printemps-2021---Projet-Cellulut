@@ -14,7 +14,9 @@ char comparaison_voisinnage(string voisins, string *trans, char cel){
     int i=0;
     int test=0;
     string st;
+    cout<<"compa_vois"<<"\n";
     while ( trans[i][0]==cel){
+        cout<<"passeboucle";
         st=trans[i].substr(1, trans[i].length()-2);
         st.append(st);
         test=st.find(voisins);
@@ -49,24 +51,20 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
     char etatDest ;
     Etat * e= new Etat;
     int p =0;
-    cout<<"passe1";
+    cout<<"passe1"<<"\n";
 
     for (int i=0; i<dep.getReseauLignes(); i++)
     {
         for (int j=0; j<dep.getReseauColonnes(); j++)
         {
-            cout<<(fonctionTrans->tableau)[p][0]<<"\n";
-            cout<<('0' + dep.getEtatCellule(i,j).getIndice())<<"\n";
-            while(((fonctionTrans->tableau)[p][0])!=('0' + dep.getEtatCellule(i,j).getIndice())) {
-                cout<<"regles";
+            while((int)((fonctionTrans->tableau)[p][0])!=('0' + dep.getEtatCellule(i,j).getIndice())) {
                 p++;
             };
-            cout<<"pass1";
             sprintf(etatDepart, "%d", dep.getEtatCellule(i,j).getIndice());
-            cout<<"pass2";
+            cout<<dep.getVoisinage(i,j,*typeVoisinnage)<<"\n";
             etatDest = comparaison_voisinnage(dep.getVoisinage(i,j,*typeVoisinnage), regles + p, *etatDepart);
-            cout<<"pass3";
-            // e = modele.etatsPossibles[char_to_int(&etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
+            cout<<etatDest;
+            //e = etatsPossibles[char_to_int(&etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i,j,e);
         }
     }

@@ -63,8 +63,8 @@ int main() {
 
     auto tab = new string[2];
 
-    tab[0]="101012";
-    tab[1]="211001";
+    tab[0]="211001";
+    tab[1]="101012";
 
     FonctionTransition * f = new FonctionTransition(tab);
 
