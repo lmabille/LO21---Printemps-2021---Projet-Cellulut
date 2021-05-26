@@ -40,6 +40,13 @@ public :
     const Voisinage *getVoisin() const {return typeVoisinnage; }
     const string& getDescription() const {return description; }
     const string& getAuteur() const {return auteur; }
+    const string& getTitre() const {return titre; }
+    void setAutheur(string nom){this->auteur = nom; }
+    void setTitre(string titre) { this->titre = titre ;}
+    void setDesc(string desc) {this->description = desc; }
+    void setAnnee(int annee) {this->anneeCreation = annee;}
+    void initEnsemble(int n) { this->etatsPossibles = new EnsembleEtats(n) ;}
+    EnsembleEtats* getEnsemble() {return etatsPossibles;};
     int getAnnee() const {return anneeCreation; }
     void chargerModele(FILE *f);//charge les éléments du fichier puis fait appel au constructeur
     void creerModele();//propose choix à l'utilisateur, génère règles puis fait appel au constructeur
