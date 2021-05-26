@@ -21,6 +21,7 @@ private:
     Simulateur(const Simulateur &) = delete;
     void operator=(const Simulateur &) = delete;
     static Simulateur *uniqueInstance ;
+    //
 
 public:
     Simulateur(const Modele &m, size_t buf = 2);//remettre en private
