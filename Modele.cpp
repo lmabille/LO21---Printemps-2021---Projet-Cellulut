@@ -49,13 +49,16 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
     char etatDest ;
     Etat * e= new Etat;
     int p =0;
+    cout<<"passe1";
 
     for (int i=0; i<dep.getReseauLignes(); i++)
     {
         for (int j=0; j<dep.getReseauColonnes(); j++)
         {
-            while(((regles)[p][0])!=('0' + dep.getEtatCellule(i,j).getIndice())) {
-                cout<<(regles)[p][0];
+            cout<<(fonctionTrans->tableau)[p][0]<<"\n";
+            cout<<('0' + dep.getEtatCellule(i,j).getIndice())<<"\n";
+            while(((fonctionTrans->tableau)[p][0])!=('0' + dep.getEtatCellule(i,j).getIndice())) {
+                cout<<"regles";
                 p++;
             };
             cout<<"pass1";

@@ -10,7 +10,7 @@ using namespace std;
 
 class FonctionTransition{
     string * tableau;
-    friend class Simulateur;
+    friend class Modele;
 
 public:
     FonctionTransition(string * tab) : tableau(tab){};
@@ -30,7 +30,7 @@ class Modele{
 
 public :
     Modele()=default;
-    Modele(string t, EnsembleEtats *e, string r[1000], Voisinage *v, string d, string a="",unsigned int annee=0):titre(t), etatsPossibles(e), regles(r), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
+    Modele(string t, EnsembleEtats *e, FonctionTransition * f, Voisinage *v, string d, string a="",unsigned int annee=0):titre(t), etatsPossibles(e), fonctionTrans(f), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee){}
     ~Modele(){delete[] etatsPossibles;} // pas sûr de ça // + voir le destructeur de la classe EnsembleEtats
     const string& getTitre() const {return titre; }
     EnsembleEtats* const getEtatsPossibles() const {return etatsPossibles;}
