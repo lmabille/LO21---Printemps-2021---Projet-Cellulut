@@ -129,4 +129,3 @@ void Modele::creerModele()
     }
 };
 
-int i;
