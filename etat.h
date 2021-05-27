@@ -39,6 +39,7 @@ public:
     int getNombreEtats() {return this->nombreEtats;}
     void setListe(Etat* lst) { this->liste = lst;}
     void setNombreEtat(int nb) { this->nombreEtats = nb; cout  << "test" <<endl;}
+    Etat *getListe(){return liste;}
     // bool checkExisteDeja(const Etat& e);
     Etat* operator[](int indice);
 };
