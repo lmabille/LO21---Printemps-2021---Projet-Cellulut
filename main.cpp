@@ -87,7 +87,7 @@ int main() {
 
     // vio
 
-    EnsembleEtats ensembleEtats(2);
+   /* EnsembleEtats ensembleEtats(2);
     ensembleEtats.definirEtats();
     for (int i=0; i<ensembleEtats.getNombreEtats();i++)
     {
@@ -96,7 +96,7 @@ int main() {
 
     Reseau res(3,3);
     Configuration* configDepart = new Configuration(res, ensembleEtats);
-    Etat test = configDepart->getEtatCellule(0,0); // ne fonctionne aps pk???
+    Etat test = configDepart->getEtatCellule(0,0);*/ // ne fonctionne aps pk???
 
 
     /*for (int i = 0; i<configDepart->getReseauLignes(); i++)

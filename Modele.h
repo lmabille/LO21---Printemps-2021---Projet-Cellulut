@@ -17,6 +17,7 @@ public:
     FonctionTransition(string * tab) : tableau(tab), taille(0){};
     FonctionTransition(string * tab, unsigned int t) : tableau(tab), taille(t){};
     FonctionTransition()=default;
+    string *getTableau(){return tableau;}
 };
 
 class Modele{
@@ -40,7 +41,7 @@ public :
     const Voisinage *getVoisin() const {return typeVoisinnage; }
     const string& getDescription() const {return description; }
     const string& getAuteur() const {return auteur; }
-    const string& getTitre() const {return titre; }
+    FonctionTransition *getFonction(){return fonctionTrans;}
     void setAutheur(string nom){this->auteur = nom; }
     void setTitre(string titre) { this->titre = titre ;}
     void setDesc(string desc) {this->description = desc; }
@@ -50,7 +51,7 @@ public :
     int getAnnee() const {return anneeCreation; }
     void chargerModele(FILE *f);//charge les éléments du fichier puis fait appel au constructeur
     void creerModele();//propose choix à l'utilisateur, génère règles puis fait appel au constructeur
-    FILE *sauvegarderModele();//sauvegarde l'ensemble des attributs dans un fichier xml
+    void sauvegardeM();
     void appliquerTransition(const Configuration &dep, Configuration &dest) const;
 };
 
