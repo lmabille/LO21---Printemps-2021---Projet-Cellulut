@@ -177,8 +177,8 @@ void Modele::sauvegardeM(){
     Case * listeCase = this->getVoisin()->getTableau();
     for(int i=0; i<nbrCase; i++){
         xml_node caseCoord = element.append_child("Case");
-        caseCoord.append_attribute("X")=listeCase[i].l;
-        caseCoord.append_attribute("Y")=listeCase[i].c;
+        caseCoord.append_attribute("X")=listeCase[i].getL();
+        caseCoord.append_attribute("Y")=listeCase[i].getC();
     }
     //Gestion des règles
     xml_node liste = modele.append_child("ListeRegle");

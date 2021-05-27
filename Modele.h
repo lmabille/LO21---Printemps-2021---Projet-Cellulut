@@ -38,7 +38,7 @@ public :
     const string& getTitre() const {return titre; }
     EnsembleEtats* const getEtatsPossibles() const {return etatsPossibles;}
     const string& getRegles() const {return *regles; }
-    const Voisinage *getVoisin() const {return typeVoisinnage; }
+    Voisinage *getVoisin() const {return typeVoisinnage; }
     const string& getDescription() const {return description; }
     const string& getAuteur() const {return auteur; }
     FonctionTransition *getFonction(){return fonctionTrans;}
