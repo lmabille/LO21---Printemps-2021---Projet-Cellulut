@@ -78,11 +78,11 @@ void Simulateur::libereInstance()
     uniqueInstance = nullptr;
 }
 
-void Simulateur::next()
+/*void Simulateur::next()
 // fait appel à la fonction appliquerTransition définie dans l'automate cf TD // à définir
 {
 
-}
+}*/
 
 
 

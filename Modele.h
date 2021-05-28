@@ -5,8 +5,8 @@
 #include "voisinage.h"
 #include "etat.h"
 #include "configuration.h"
-#include "sauvegarderModele.h"
-
+#include "pugiconfig.hpp"
+#include "pugixml.hpp"
 
 
 using namespace std;
@@ -21,6 +21,7 @@ public:
     FonctionTransition(string * tab, unsigned int t) : tableau(tab), taille(t){};
     FonctionTransition()=default;
     string *getTableau(){return tableau;}
+    const unsigned int getTaille() const {return taille;}
 };
 
 class Modele{
@@ -39,7 +40,7 @@ public :
     ~Modele(){delete[] etatsPossibles;} // pas sûr de ça // + voir le destructeur de la classe EnsembleEtats
     const string& getTitre() const {return titre; }
     EnsembleEtats* const getEtatsPossibles() const {return etatsPossibles;}
-    const Voisinage *getVoisin() const {return typeVoisinnage; }
+    Voisinage *getVoisin() const {return typeVoisinnage; }
     const string& getDescription() const {return description; }
     const string& getAuteur() const {return auteur; }
     FonctionTransition *getFonction(){return fonctionTrans;}

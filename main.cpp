@@ -87,30 +87,83 @@ int main() {
 
     // vio
 
-    EnsembleEtats ensembleEtats(2);
-    ensembleEtats.definirEtats();
-    for (int i=0; i<ensembleEtats.getNombreEtats();i++)
+    EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
+    ensembleEtats->definirEtats();
+    for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
-        cout << "etat[" << ensembleEtats[i]->getIndice() << "]" << " : " << ensembleEtats[i]->getLabel() << "\n";
+        cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
     }
 
     Reseau res(3,3);
-    Configuration* configDepart = new Configuration(res, ensembleEtats);
-    Etat test = configDepart->getEtatCellule(0,0); // ne fonctionne aps pk???
+    Configuration* configDepart = new Configuration(res, *ensembleEtats);
+
+    // test getVoisinage
+    Etat* mort = (*ensembleEtats)[1];
+    Etat* vivant = (*ensembleEtats)[2];
+/*    cout << "\ntests recup mort et vivant\n";
+    cout << mort->getIndice() << " " << mort->getLabel() << endl;
+    cout << vivant->getIndice() << " " << vivant->getLabel() << endl;*/// ok
+
+    configDepart->setEtatCellule(1,0,vivant); // cell de gauche
+    configDepart->setEtatCellule(0,1,vivant); // cell du haut // les autres sont à "mort" par initialisation
+/*    cout << "tests setEtatCellule" << endl;
+    cout << configDepart->getEtatCellule(1,0).getIndice() << " " << configDepart->getEtatCellule(1,0).getLabel() << endl;
+    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;*/// ok
+
+    Case* liste_cases = new Case[4];
+    Case gauche(0,-1);
+    Case haute(-1,0);
+    Case droite(0,1);
+    Case bas(1,0);
+    liste_cases[0] = gauche;
+    liste_cases[1] = haute;
+    liste_cases[2] = droite;
+    liste_cases[3] = bas;
+/*    cout << "tests set up liste cases" << endl;
+    cout << "[" << gauche.getL() << "," << gauche.getC() << "]" << endl;*/ // ok
+
+    Voisinage* v = new Voisinage;
+    v->setNbCellule(4);
+    v->setensemble_case(liste_cases);
+
+    //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
 
-    /*for (int i = 0; i<configDepart->getReseauLignes(); i++)
+
+    // orhane
+    auto tab = new string[4];
+
+    tab[0]="221211";
+    tab[1]="211121";
+    tab[2]="111222";
+    tab[3]="121122";
+
+    FonctionTransition * f = new FonctionTransition(tab, 4);
+
+    Modele m("modele 1",ensembleEtats, f, v, "ta race", "Orhane", 2021);
+
+    auto configArrivee= new Configuration;
+
+    for (int i=0; i<configDepart->getReseauLignes();i++)
     {
-        for(int i = 0; i<configDepart->getReseauLignes();i++)
-        {
-            for(int j=0; j<configDepart->getReseauColonnes();j++)
-            {
-                cout << "[" << configDepart->getEtatCellule(i,j).getIndice() << "]";
-                cout << "";
-            }
-            cout << "\n";
+        for (int j=0; j<configDepart->getReseauColonnes(); j++){
+            cout<<configDepart->getEtatCellule(i,j).getIndice();
         }
-    }*/
+        cout<<"\n";
+    }
+
+    m.appliquerTransition(*configDepart, *configArrivee);
+
+    cout<<"\n";
+
+    for (int i=0; i<configArrivee->getReseauLignes();i++)
+    {
+        for (int j=0; j<configArrivee->getReseauColonnes(); j++){
+            cout<<configArrivee->getEtatCellule(i,j).getIndice();
+        }
+        cout<<"\n";
+    }
+
 
 
 

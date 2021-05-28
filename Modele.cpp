@@ -1,13 +1,11 @@
 #include "Modele.h"
-
-#include "pugixml.hpp"
-
 #include <iostream>
-#include "simulateur.h"
 // #include "outil.h"
+#include "pugixml.hpp"
 
 using namespace std;
 using namespace pugi;
+
 // ça arrive
 char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit)
 {
@@ -17,43 +15,32 @@ char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned in
     int i = 0;
     int test = 0;
     string st;
-    cout << "compa_vois"
-         << "\n";
-    while (i < limit && trans[i][0] == cel)
+    //cout << "compa_vois"
+    //     << "\n";
+    while (i < limit && (trans[i][0] == cel))
     {
-        cout << "passeboucle"
-             << "\n";
+        //cout << "passeboucle"
+        //     << "\n\n";
         st = trans[i].substr(1, trans[i].length() - 2);
-        cout << st << "\n";
         st.append(st);
-        cout << st << "\n";
-        cout << voisins << "\n";
+        //cout << voisins << "\n";
         test = st.find(voisins);
         if (test != -1)
         {
             size_t j = (trans[i].length() - 1);
-            cout << trans[i][j];
             return trans[i][j];
         }
-        //il ne faut pas avancé dans le tableaux si il est vide donc rajouter un attribut "nombre de règles" dans FonctiondeTransition
         i++;
     }
-    return 0;
+    return cel;
 }
 
-int char_to_int(char *c)
+int char_to_int(char c)
 {
-    int a = 0;
-    int b;
-    char *p = c;
-    while (*p != '\0')
-    {
-        b = *p - '0';
-        a = a * 10;
-        a += b;
-        p++;
-    }
-    return a;
+    int b=0;
+    char p = c;
+    b = p - '0';
+    return b;
 }
 
 void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) const
@@ -63,10 +50,8 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
         dest = dep;
     char *etatDepart = new char;
     char etatDest;
-    Etat *e = new Etat;
+    Etat * e = new Etat;
     unsigned int p = 0;
-    cout << "passe1"
-         << "\n";
 
     for (int i = 0; i < dep.getReseauLignes(); i++)
     {
@@ -77,16 +62,15 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
                 p++;
             };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i, j).getIndice());
-            cout << dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
+            //cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
             etatDest = comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau + p, *etatDepart, fonctionTrans->taille - p);
-            cout << etatDest;
-            //e = etatsPossibles[char_to_int(&etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
+            //cout<<"etat dest : "<<char_to_int(etatDest)<<"\n";
+            e = (*etatsPossibles)[char_to_int(etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i, j, e);
+            p=0;
         }
     }
 }
-
-#include "Modele.h"
 
 void Modele::creerModele()
 {
@@ -129,6 +113,87 @@ void Modele::creerModele()
     default:
         break;
     }
+};
+
+
+void Modele::sauvegardeM(){
+ //Création du doc
+    xml_document doc;
+    string xmlFilePath = "Modeles/";
+    xmlFilePath += this->getTitre();
+    xmlFilePath += ".xml";
+
+     //Il faut vérifier qu'aucun modèle avec ce titre n'existe :
+
+     xml_parse_result result = doc.load_file(xmlFilePath.c_str(),parse_default|parse_declaration);
+     if(result){
+        cout<<"Il existe deja un modele avec ce titre";
+        return;
+     }
+
+    auto declarationNode = doc.append_child(pugi::node_declaration);
+    //En tête
+    declarationNode.append_attribute("version")="1.0";
+    //Déclaration balise et attribut
+    xml_node modele = doc.append_child("Modele");
+    xml_node titre = modele.append_child("titre");
+    titre.append_attribute("name")=this->getTitre().c_str();
+
+    xml_node Description = modele.append_child("Description");
+    Description.append_attribute("name")=this->getDescription().c_str();
+
+    xml_node Auteur = modele.append_child("Auteur");
+    Auteur.append_attribute("name")=this->getAuteur().c_str();
+
+    xml_node annee = modele.append_child("AnneeCreation");
+    annee.append_attribute("name")=this->getAnnee();
+
+    //Les attributs d'un état
+    xml_node etat = modele.append_child("Etat");
+    xml_node NbrEtat = etat.append_child("NombreEtat");
+    int nbr =this->getEnsemble()->getNombreEtats();
+    NbrEtat.append_attribute("name")=nbr;
+    //Faire un while sur le nbr d'état
+    Etat *laListe = this->getEnsemble()->getListe();
+    for(int i=0; i<nbr; i++){
+    xml_node label = etat.append_child("Label");
+    label.append_attribute("name")=laListe[i].getLabel().c_str();
+    }
+
+
+    //Gestion du voisinage
+    xml_node voisinage = modele.append_child("Voisinage");
+    xml_node nom = voisinage.append_child("Nom");
+    Voisinage * voi = this->getVoisin();
+    nom.append_attribute("name")=voi->getTypeVoisi().c_str();
+
+    //Quand le voisinage sera terminé
+  /*  xml_node rayon = voisinage.append_child("Rayon");
+    rayon.append_attribute("name")="1";*/
+    //Gestion des éléments, faire un while aussi
+    xml_node element = voisinage.append_child("Element");
+    int nbrCase = this->getVoisin()->getNbCelluleVoisi();
+    Case * listeCase = this->getVoisin()->getTableau();
+    for(int i=0; i<nbrCase; i++){
+        xml_node caseCoord = element.append_child("Case");
+        caseCoord.append_attribute("X")=listeCase[i].getL();
+        caseCoord.append_attribute("Y")=listeCase[i].getC();
+    }
+    //Gestion des règles
+    xml_node liste = modele.append_child("ListeRegle");
+    xml_node regle = liste.append_child("Regle");
+    const unsigned int tailleR = this->getFonction()->getTaille();
+    string *regles=this->getFonction()->getTableau();
+    for(int i=0; i<tailleR; i++){
+            xml_node regle = liste.append_child("Regle");
+            regle.append_attribute("name")=regles[i].c_str();
+    }
+
+
+
+    //Sauvegarde du doc this->getTitre().c_str()
+    bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
+    cout<<saveSuccess;
 }
 
 void Modele::sauvegardeM(){

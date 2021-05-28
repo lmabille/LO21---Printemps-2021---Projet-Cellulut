@@ -20,6 +20,7 @@ private:
 
 public:
     Etat();
+    Etat(int i, string l, string c): indice(i), label(l), couleur(c){}
     int getIndice() {return indice;}
     string getLabel();
     void setIndice(int i) {indice = i;}
@@ -42,6 +43,7 @@ public:
     Etat *getListe(){return liste;}
     // bool checkExisteDeja(const Etat& e);
     Etat* operator[](int indice);
+    Etat * getListe(){return liste;}
 };
 
 #endif //LO21_PRINTEMPS_2021_PROJET_CELLULUT_ETAT_H
