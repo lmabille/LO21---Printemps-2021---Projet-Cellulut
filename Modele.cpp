@@ -90,7 +90,6 @@ Modele creerModele()
 {
     string titre; //key
 
-    Voisinage *typeVoisinnage;
     FonctionTransition *fonctionTrans;
     string description;
     string auteur;
@@ -100,7 +99,7 @@ Modele creerModele()
     std::cin >> titre;
     std::cout << "Quel est la description de votre modèle ? ";
     std::cin >> description;
-    std::cout << "Quel est l'auteur de votre modèle ? ";
+    std::cout << "Qui est l'auteur de votre modèle ? ";
     std::cin >> auteur;
     std::cout << "Quel est la l'anne de creation de votre modèle ? ";
     std::cin >> anneeCreation;
@@ -130,8 +129,62 @@ Modele creerModele()
     std::cin >> choix;
     switch (choix)
     {
-    case 1:
-        typeVoisinnage->setNbCellule(4);
+    case 1:                                           // si voisinnage de VonNeumann
+        static Voisinage typeVoisinnage_VonNeuman(4); // type Static car doit exister en dehors du switch
+        static Case *ensemble_de_cases_VonNeuman;     // type Static car doit exister en dehors du switch
+        ensemble_de_cases_VonNeuman[0].setL(0);       //Pour l'Est de la case
+        ensemble_de_cases_VonNeuman[0].setC(1);
+        ensemble_de_cases_VonNeuman[1].setL(-1); // Pour le Sud de la case
+        ensemble_de_cases_VonNeuman[1].setC(0);
+        ensemble_de_cases_VonNeuman[2].setL(0); // Pour l'Ouest de la case
+        ensemble_de_cases_VonNeuman[2].setC(-1);
+        ensemble_de_cases_VonNeuman[3].setL(1); // Pour le Nord de la case
+        ensemble_de_cases_VonNeuman[3].setL(0);
+        break;
+
+    case 2:
+        static Voisinage typeVoisinnage_Moore(8); // type Static car doit exister en dehors du switch
+        static Case *ensemble_de_cases_Moore;     // type Static car doit exister en dehors du switch
+        ensemble_de_cases_Moore[0].setL(0);       //Pour l'Est de la case
+        ensemble_de_cases_Moore[0].setC(1);
+        ensemble_de_cases_Moore[1].setL(-1); //Pour le Sud-est de la case
+        ensemble_de_cases_Moore[1].setC(1);
+        ensemble_de_cases_Moore[2].setL(-1); // Pour le Sud de la case
+        ensemble_de_cases_Moore[2].setC(0);
+        ensemble_de_cases_Moore[3].setL(-1); // Pour le Sud-ouest de la case
+        ensemble_de_cases_Moore[3].setC(-1);
+        ensemble_de_cases_Moore[4].setL(0); // Pour l'Ouest de la case
+        ensemble_de_cases_Moore[4].setC(-1);
+        ensemble_de_cases_Moore[5].setL(1); // Pour le Nord-ouest de la case
+        ensemble_de_cases_Moore[5].setC(-1);
+        ensemble_de_cases_Moore[6].setL(1); // Pour le Nord de la case
+        ensemble_de_cases_Moore[6].setL(0);
+        ensemble_de_cases_Moore[7].setL(1); // Pour le Nord-est de la case
+        ensemble_de_cases_Moore[7].setC(1);
+        break;
+
+    case 3:
+        break;
+    case 4:
+        break;
+    case 5:
+        std::cout << "Quel est le nombre de voisin ?";
+        int nb_voisins;
+        static Voisinage typeVoisinnage_arbitraire(nb_voisins);
+        static Case *ensemble_de_cases_arbitarire;
+        int l;
+        int c;
+        for (size_t i = 0; i < 4; i++)
+        {
+            std::cout << "Quelle est la ligne du ", i, " ème voisin relativement à la position de la case ?";
+            std::cin >> l;
+            ensemble_de_cases_arbitarire[i].setL(l);
+            std::cout << "Quelle est la ligne du ", i, " ème voisin relativement à la position de la case ?";
+            std::cin >> c;
+            ensemble_de_cases_arbitarire[i].setL(c);
+        }
+        break;
+
         // typeVoisinnage->setensemble_case break;
 
     default:
