@@ -86,29 +86,39 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
 
 #include "Modele.h"
 
-void Modele::creerModele()
+Modele creerModele()
 {
     string titre; //key
-    Etat **ensembleEtat;
-    string *regles;
+
     Voisinage *typeVoisinnage;
     FonctionTransition *fonctionTrans;
     string description;
     string auteur;
-    string label;
-    unsigned int nb_etat;
+    int nb_etat;
     unsigned int anneeCreation;
-    std::cout << "Quel est le titre de votre modèle ?";
+    std::cout << "Quel est le titre de votre modèle ? ";
     std::cin >> titre;
-    std::cout << "De combien d'état est composé votre modèle ?";
+    std::cout << "Quel est la description de votre modèle ? ";
+    std::cin >> description;
+    std::cout << "Quel est l'auteur de votre modèle ? ";
+    std::cin >> auteur;
+    std::cout << "Quel est la l'anne de creation de votre modèle ? ";
+    std::cin >> anneeCreation;
+    std::cout << "De combien d'états est composé votre modèle ?";
     std::cin >> nb_etat;
+    EnsembleEtats ensembleEtat(nb_etat);
     for (size_t i = 0; i < nb_etat; i++)
     {
-        printf("Veuillez donner le label de l'état n° %d", i);
-        std::cin >> label;
-        ensembleEtat[0]->setIndice(i);
-        ensembleEtat[0]->setlabel(label);
+        string s;
+        int j;
+        std::cout << "Quelle est le label du", i, " ème état";
+        std::cin >> s;
+        ensembleEtat.getListe()[i].setlabel(s);
+        std::cout << "Quelle est l'indice du", i, " ème état";
+        std::cin >> j;
+        ensembleEtat.getListe()[i].setIndice(j);
     }
+
     std::cout << "Quel type de voisinage souhaitez-vous ? \n \
     1 - Voisinnage de von Neumann \n \
     2 - Voisinnage de von Neumann généralisé avec un rayon r \n \
@@ -129,66 +139,64 @@ void Modele::creerModele()
     }
 };
 
-
-void Modele::sauvegardeM(){
- //Création du doc
+void Modele::sauvegardeM()
+{
+    //Création du doc
     xml_document doc;
     auto declarationNode = doc.append_child(node_declaration);
     //En tête
-    declarationNode.append_attribute("version")="1.0";
+    declarationNode.append_attribute("version") = "1.0";
     //Déclaration balise et attribut
     xml_node modele = doc.append_child("Modele");
     xml_node titre = modele.append_child("titre");
-    titre.append_attribute("name")=this->getTitre().c_str();
+    titre.append_attribute("name") = this->getTitre().c_str();
 
     xml_node Description = modele.append_child("Description");
-    Description.append_attribute("name")=this->getDescription().c_str();
+    Description.append_attribute("name") = this->getDescription().c_str();
 
     xml_node Auteur = modele.append_child("Auteur");
-    Auteur.append_attribute("name")=this->getAuteur().c_str();
+    Auteur.append_attribute("name") = this->getAuteur().c_str();
 
     xml_node annee = modele.append_child("AnneeCreation");
-    annee.append_attribute("name")=this->getAnnee();
+    annee.append_attribute("name") = this->getAnnee();
 
     //Les attributs d'un état
     xml_node etat = modele.append_child("Etat");
     xml_node NbrEtat = etat.append_child("NombreEtat");
-    int nbr =this->getEnsemble()->getNombreEtats();
-    NbrEtat.append_attribute("name")=nbr;
+    int nbr = this->getEnsemble()->getNombreEtats();
+    NbrEtat.append_attribute("name") = nbr;
     //Faire un while sur le nbr d'état
     Etat *laListe = this->getEnsemble()->getListe();
-    for(int i=0; i<nbr; i++){
-    xml_node label = etat.append_child("Label");
-    label.append_attribute("name")=laListe[i].getLabel().c_str();
+    for (int i = 0; i < nbr; i++)
+    {
+        xml_node label = etat.append_child("Label");
+        label.append_attribute("name") = laListe[i].getLabel().c_str();
     }
-
 
     //Gestion du voisinage
     xml_node voisinage = modele.append_child("Voisinage");
     xml_node nom = voisinage.append_child("Nom");
-    nom.append_attribute("name")=this->getVoisin()->getTypeVoisi().c_str();
+    nom.append_attribute("name") = this->getVoisin()->getTypeVoisi().c_str();
 
     //Quand le voisinage sera terminé
-  /*  xml_node rayon = voisinage.append_child("Rayon");
+    /*  xml_node rayon = voisinage.append_child("Rayon");
     rayon.append_attribute("name")="1";*/
     //Gestion des éléments, faire un while aussi
     xml_node element = voisinage.append_child("Element");
     int nbrCase = this->getVoisin()->getNbCelluleVoisi();
-    Case * listeCase = this->getVoisin()->getTableau();
-    for(int i=0; i<nbrCase; i++){
+    Case *listeCase = this->getVoisin()->getTableau();
+    for (int i = 0; i < nbrCase; i++)
+    {
         xml_node caseCoord = element.append_child("Case");
-        caseCoord.append_attribute("X")=listeCase[i].getL();
-        caseCoord.append_attribute("Y")=listeCase[i].getC();
+        caseCoord.append_attribute("X") = listeCase[i].getL();
+        caseCoord.append_attribute("Y") = listeCase[i].getC();
     }
     //Gestion des règles
     xml_node liste = modele.append_child("ListeRegle");
     xml_node regle = liste.append_child("Regle");
-    regle.append_attribute("name")="100011";
-
-
-
+    regle.append_attribute("name") = "100011";
 
     //Sauvegarde du doc
     bool saveSuccess = doc.save_file("demo.xml", PUGIXML_TEXT("   "));
-    cout<<saveSuccess;
+    cout << saveSuccess;
 }
