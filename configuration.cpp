@@ -29,8 +29,8 @@ string Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const // 
         else ligne = (i+ligneRel)%reseau.nb_lignes;
         if ((j+colRel)%reseau.nb_colonnes<0) colonne = (j+colRel)%reseau.nb_colonnes + reseau.nb_colonnes;
         else colonne = (j+colRel)%reseau.nb_colonnes;
-        cout << "coordonnees du voisin " << c << " : " << endl;
-        cout << "\tligne : " << ligne << "\n" << "\tcolonne : " << colonne << endl;
+        //cout << "coordonnees du voisin " << c << " : " << endl;
+        //cout << "\tligne : " << ligne << "\n" << "\tcolonne : " << colonne << endl;
         indice = getEtatCellule(ligne,colonne).getIndice();
         voisinage += to_string(indice);
         //cout << "test OK" << endl;
@@ -63,7 +63,7 @@ Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): re
     {
         for (unsigned int j = 0; j<r.nb_colonnes; j++)
         {
-            grille[i][j].set_etatcellule(etatsPossibles[0]);
+            grille[i][j].set_etatcellule(&(etatsPossibles.getListe()[0])); //modification de l'overload "[]" pour utiliser l'indice
         }
     }
 }
