@@ -18,6 +18,7 @@ public:
     FonctionTransition(string * tab, unsigned int t) : tableau(tab), taille(t){};
     FonctionTransition()=default;
     string *getTableau(){return tableau;}
+    const unsigned int getTaille() const {return taille;}
 };
 
 class Modele{

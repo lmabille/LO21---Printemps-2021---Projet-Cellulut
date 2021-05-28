@@ -133,6 +133,9 @@ void Modele::creerModele()
 void Modele::sauvegardeM(){
  //Création du doc
     xml_document doc;
+    string xmlFilePath = "Modeles/";
+    xmlFilePath += this->getTitre();
+    xmlFilePath += ".xml";
     auto declarationNode = doc.append_child(node_declaration);
     //En tête
     declarationNode.append_attribute("version")="1.0";
@@ -166,7 +169,8 @@ void Modele::sauvegardeM(){
     //Gestion du voisinage
     xml_node voisinage = modele.append_child("Voisinage");
     xml_node nom = voisinage.append_child("Nom");
-    nom.append_attribute("name")=this->getVoisin()->getTypeVoisi().c_str();
+    Voisinage * voi = this->getVoisin();
+    nom.append_attribute("name")=voi->getTypeVoisi().c_str();
 
     //Quand le voisinage sera terminé
   /*  xml_node rayon = voisinage.append_child("Rayon");
@@ -183,12 +187,14 @@ void Modele::sauvegardeM(){
     //Gestion des règles
     xml_node liste = modele.append_child("ListeRegle");
     xml_node regle = liste.append_child("Regle");
-    regle.append_attribute("name")="100011";
+    const unsigned int tailleR = this->getFonction()->getTaille();
+    string *regles=this->getFonction()->getTableau();
+    for(int i=0; i<tailleR; i++)regle.append_attribute("name")=regles[i].c_str();
 
 
 
 
-    //Sauvegarde du doc
-    bool saveSuccess = doc.save_file("demo.xml", PUGIXML_TEXT("   "));
+    //Sauvegarde du doc this->getTitre().c_str()
+    bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
     cout<<saveSuccess;
 }
