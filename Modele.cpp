@@ -1,8 +1,10 @@
 #include "Modele.h"
 #include <iostream>
 // #include "outil.h"
+#include "pugixml.hpp"
 
 using namespace std;
+using namespace pugi;
 
 // ça arrive
 char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit)
@@ -116,43 +118,52 @@ void Modele::creerModele()
 
 void Modele::sauvegardeM(){
  //Création du doc
-    pugi::xml_document doc;
+    xml_document doc;
     string xmlFilePath = "Modeles/";
     xmlFilePath += this->getTitre();
     xmlFilePath += ".xml";
+
+     //Il faut vérifier qu'aucun modèle avec ce titre n'existe :
+
+     xml_parse_result result = doc.load_file(xmlFilePath.c_str(),parse_default|parse_declaration);
+     if(result){
+        cout<<"Il existe deja un modele avec ce titre";
+        return;
+     }
+
     auto declarationNode = doc.append_child(pugi::node_declaration);
     //En tête
     declarationNode.append_attribute("version")="1.0";
     //Déclaration balise et attribut
-    pugi::xml_node modele = doc.append_child("Modele");
-    pugi::xml_node titre = modele.append_child("titre");
+    xml_node modele = doc.append_child("Modele");
+    xml_node titre = modele.append_child("titre");
     titre.append_attribute("name")=this->getTitre().c_str();
 
-    pugi::xml_node Description = modele.append_child("Description");
+    xml_node Description = modele.append_child("Description");
     Description.append_attribute("name")=this->getDescription().c_str();
 
-    pugi::xml_node Auteur = modele.append_child("Auteur");
+    xml_node Auteur = modele.append_child("Auteur");
     Auteur.append_attribute("name")=this->getAuteur().c_str();
 
-    pugi::xml_node annee = modele.append_child("AnneeCreation");
+    xml_node annee = modele.append_child("AnneeCreation");
     annee.append_attribute("name")=this->getAnnee();
 
     //Les attributs d'un état
-    pugi::xml_node etat = modele.append_child("Etat");
-    pugi::xml_node NbrEtat = etat.append_child("NombreEtat");
+    xml_node etat = modele.append_child("Etat");
+    xml_node NbrEtat = etat.append_child("NombreEtat");
     int nbr =this->getEnsemble()->getNombreEtats();
     NbrEtat.append_attribute("name")=nbr;
     //Faire un while sur le nbr d'état
     Etat *laListe = this->getEnsemble()->getListe();
     for(int i=0; i<nbr; i++){
-    pugi::xml_node label = etat.append_child("Label");
+    xml_node label = etat.append_child("Label");
     label.append_attribute("name")=laListe[i].getLabel().c_str();
     }
 
 
     //Gestion du voisinage
-    pugi::xml_node voisinage = modele.append_child("Voisinage");
-    pugi::xml_node nom = voisinage.append_child("Nom");
+    xml_node voisinage = modele.append_child("Voisinage");
+    xml_node nom = voisinage.append_child("Nom");
     Voisinage * voi = this->getVoisin();
     nom.append_attribute("name")=voi->getTypeVoisi().c_str();
 
@@ -160,21 +171,23 @@ void Modele::sauvegardeM(){
   /*  xml_node rayon = voisinage.append_child("Rayon");
     rayon.append_attribute("name")="1";*/
     //Gestion des éléments, faire un while aussi
-    pugi::xml_node element = voisinage.append_child("Element");
+    xml_node element = voisinage.append_child("Element");
     int nbrCase = this->getVoisin()->getNbCelluleVoisi();
     Case * listeCase = this->getVoisin()->getTableau();
     for(int i=0; i<nbrCase; i++){
-        pugi::xml_node caseCoord = element.append_child("Case");
+        xml_node caseCoord = element.append_child("Case");
         caseCoord.append_attribute("X")=listeCase[i].getL();
         caseCoord.append_attribute("Y")=listeCase[i].getC();
     }
     //Gestion des règles
-    pugi::xml_node liste = modele.append_child("ListeRegle");
-    pugi::xml_node regle = liste.append_child("Regle");
+    xml_node liste = modele.append_child("ListeRegle");
+    xml_node regle = liste.append_child("Regle");
     const unsigned int tailleR = this->getFonction()->getTaille();
     string *regles=this->getFonction()->getTableau();
-    for(int i=0; i<tailleR; i++)regle.append_attribute("name")=regles[i].c_str();
-
+    for(int i=0; i<tailleR; i++){
+            xml_node regle = liste.append_child("Regle");
+            regle.append_attribute("name")=regles[i].c_str();
+    }
 
 
 
