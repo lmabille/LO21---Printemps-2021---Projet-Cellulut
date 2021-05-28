@@ -5,6 +5,8 @@
 #include "voisinage.h"
 #include "etat.h"
 #include "configuration.h"
+#include "pugiconfig.hpp"
+#include "pugixml.hpp"
 
 using namespace std;
 

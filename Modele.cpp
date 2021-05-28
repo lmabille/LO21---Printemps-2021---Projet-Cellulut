@@ -1,7 +1,5 @@
 #include "Modele.h"
-
 #include <iostream>
-#include "simulateur.h"
 // #include "outil.h"
 
 using namespace std;
@@ -17,26 +15,22 @@ char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned in
     string st;
     cout << "compa_vois"
          << "\n";
-    while (i < limit && trans[i][0] == cel)
+    while (i < limit && (trans[i][0] == cel))
     {
         cout << "passeboucle"
-             << "\n";
+             << "\n\n";
         st = trans[i].substr(1, trans[i].length() - 2);
-        cout << st << "\n";
         st.append(st);
-        cout << st << "\n";
-        cout << voisins << "\n";
+        //cout << voisins << "\n";
         test = st.find(voisins);
         if (test != -1)
         {
             size_t j = (trans[i].length() - 1);
-            cout << trans[i][j];
             return trans[i][j];
         }
-        //il ne faut pas avancé dans le tableaux si il est vide donc rajouter un attribut "nombre de règles" dans FonctiondeTransition
         i++;
     }
-    return 0;
+    return cel;
 }
 
 int char_to_int(char *c)
@@ -63,8 +57,6 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
     char etatDest;
     Etat *e = new Etat;
     unsigned int p = 0;
-    cout << "passe1"
-         << "\n";
 
     for (int i = 0; i < dep.getReseauLignes(); i++)
     {
@@ -75,16 +67,14 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
                 p++;
             };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i, j).getIndice());
-            cout << dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
+            cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
             etatDest = comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau + p, *etatDepart, fonctionTrans->taille - p);
-            cout << etatDest;
             //e = etatsPossibles[char_to_int(&etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i, j, e);
+            p=0;
         }
     }
 }
-
-#include "Modele.h"
 
 void Modele::creerModele()
 {
@@ -132,43 +122,43 @@ void Modele::creerModele()
 
 void Modele::sauvegardeM(){
  //Création du doc
-    xml_document doc;
+    pugi::xml_document doc;
     string xmlFilePath = "Modeles/";
     xmlFilePath += this->getTitre();
     xmlFilePath += ".xml";
-    auto declarationNode = doc.append_child(node_declaration);
+    auto declarationNode = doc.append_child(pugi::node_declaration);
     //En tête
     declarationNode.append_attribute("version")="1.0";
     //Déclaration balise et attribut
-    xml_node modele = doc.append_child("Modele");
-    xml_node titre = modele.append_child("titre");
+    pugi::xml_node modele = doc.append_child("Modele");
+    pugi::xml_node titre = modele.append_child("titre");
     titre.append_attribute("name")=this->getTitre().c_str();
 
-    xml_node Description = modele.append_child("Description");
+    pugi::xml_node Description = modele.append_child("Description");
     Description.append_attribute("name")=this->getDescription().c_str();
 
-    xml_node Auteur = modele.append_child("Auteur");
+    pugi::xml_node Auteur = modele.append_child("Auteur");
     Auteur.append_attribute("name")=this->getAuteur().c_str();
 
-    xml_node annee = modele.append_child("AnneeCreation");
+    pugi::xml_node annee = modele.append_child("AnneeCreation");
     annee.append_attribute("name")=this->getAnnee();
 
     //Les attributs d'un état
-    xml_node etat = modele.append_child("Etat");
-    xml_node NbrEtat = etat.append_child("NombreEtat");
+    pugi::xml_node etat = modele.append_child("Etat");
+    pugi::xml_node NbrEtat = etat.append_child("NombreEtat");
     int nbr =this->getEnsemble()->getNombreEtats();
     NbrEtat.append_attribute("name")=nbr;
     //Faire un while sur le nbr d'état
     Etat *laListe = this->getEnsemble()->getListe();
     for(int i=0; i<nbr; i++){
-    xml_node label = etat.append_child("Label");
+    pugi::xml_node label = etat.append_child("Label");
     label.append_attribute("name")=laListe[i].getLabel().c_str();
     }
 
 
     //Gestion du voisinage
-    xml_node voisinage = modele.append_child("Voisinage");
-    xml_node nom = voisinage.append_child("Nom");
+    pugi::xml_node voisinage = modele.append_child("Voisinage");
+    pugi::xml_node nom = voisinage.append_child("Nom");
     Voisinage * voi = this->getVoisin();
     nom.append_attribute("name")=voi->getTypeVoisi().c_str();
 
@@ -176,17 +166,17 @@ void Modele::sauvegardeM(){
   /*  xml_node rayon = voisinage.append_child("Rayon");
     rayon.append_attribute("name")="1";*/
     //Gestion des éléments, faire un while aussi
-    xml_node element = voisinage.append_child("Element");
+    pugi::xml_node element = voisinage.append_child("Element");
     int nbrCase = this->getVoisin()->getNbCelluleVoisi();
     Case * listeCase = this->getVoisin()->getTableau();
     for(int i=0; i<nbrCase; i++){
-        xml_node caseCoord = element.append_child("Case");
+        pugi::xml_node caseCoord = element.append_child("Case");
         caseCoord.append_attribute("X")=listeCase[i].getL();
         caseCoord.append_attribute("Y")=listeCase[i].getC();
     }
     //Gestion des règles
-    xml_node liste = modele.append_child("ListeRegle");
-    xml_node regle = liste.append_child("Regle");
+    pugi::xml_node liste = modele.append_child("ListeRegle");
+    pugi::xml_node regle = liste.append_child("Regle");
     const unsigned int tailleR = this->getFonction()->getTaille();
     string *regles=this->getFonction()->getTableau();
     for(int i=0; i<tailleR; i++)regle.append_attribute("name")=regles[i].c_str();
