@@ -63,7 +63,7 @@ Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): re
     {
         for (unsigned int j = 0; j<r.nb_colonnes; j++)
         {
-            grille[i][j].set_etatcellule(etatsPossibles[0]);
+            grille[i][j].set_etatcellule(&(etatsPossibles.getListe()[0])); //modification de l'overload "[]" pour utiliser l'indice
         }
     }
 }

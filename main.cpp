@@ -91,15 +91,15 @@ int main() {
     ensembleEtats->definirEtats();
     for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
-        cout << "etat[" << (*ensembleEtats)[i]->getIndice() << "]" << " : " << (*ensembleEtats)[i]->getLabel() << "\n";
+        cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
     }
 
     Reseau res(3,3);
     Configuration* configDepart = new Configuration(res, *ensembleEtats);
 
     // test getVoisinage
-    Etat* mort = (*ensembleEtats)[0];
-    Etat* vivant = (*ensembleEtats)[1];
+    Etat* mort = (*ensembleEtats)[1];
+    Etat* vivant = (*ensembleEtats)[2];
 /*    cout << "\ntests recup mort et vivant\n";
     cout << mort->getIndice() << " " << mort->getLabel() << endl;
     cout << vivant->getIndice() << " " << vivant->getLabel() << endl;*/// ok
@@ -126,7 +126,7 @@ int main() {
     v->setNbCellule(4);
     v->setensemble_case(liste_cases);
 
-    cout << configDepart->getVoisinage(2,2,*v)<<"\n";
+    //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
 
 
@@ -144,9 +144,25 @@ int main() {
 
     auto configArrivee= new Configuration;
 
+    for (int i=0; i<configDepart->getReseauLignes();i++)
+    {
+        for (int j=0; j<configDepart->getReseauColonnes(); j++){
+            cout<<configDepart->getEtatCellule(i,j).getIndice();
+        }
+        cout<<"\n";
+    }
+
     m.appliquerTransition(*configDepart, *configArrivee);
 
+    cout<<"\n";
 
+    for (int i=0; i<configArrivee->getReseauLignes();i++)
+    {
+        for (int j=0; j<configArrivee->getReseauColonnes(); j++){
+            cout<<configArrivee->getEtatCellule(i,j).getIndice();
+        }
+        cout<<"\n";
+    }
 
 
 

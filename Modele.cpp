@@ -13,12 +13,12 @@ char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned in
     int i = 0;
     int test = 0;
     string st;
-    cout << "compa_vois"
-         << "\n";
+    //cout << "compa_vois"
+    //     << "\n";
     while (i < limit && (trans[i][0] == cel))
     {
-        cout << "passeboucle"
-             << "\n\n";
+        //cout << "passeboucle"
+        //     << "\n\n";
         st = trans[i].substr(1, trans[i].length() - 2);
         st.append(st);
         //cout << voisins << "\n";
@@ -33,19 +33,12 @@ char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned in
     return cel;
 }
 
-int char_to_int(char *c)
+int char_to_int(char c)
 {
-    int a = 0;
-    int b;
-    char *p = c;
-    while (*p != '\0')
-    {
-        b = *p - '0';
-        a = a * 10;
-        a += b;
-        p++;
-    }
-    return a;
+    int b=0;
+    char p = c;
+    b = p - '0';
+    return b;
 }
 
 void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) const
@@ -55,7 +48,7 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
         dest = dep;
     char *etatDepart = new char;
     char etatDest;
-    Etat *e = new Etat;
+    Etat * e = new Etat;
     unsigned int p = 0;
 
     for (int i = 0; i < dep.getReseauLignes(); i++)
@@ -67,9 +60,10 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
                 p++;
             };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i, j).getIndice());
-            cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
+            //cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
             etatDest = comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau + p, *etatDepart, fonctionTrans->taille - p);
-            //e = etatsPossibles[char_to_int(&etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
+            //cout<<"etat dest : "<<char_to_int(etatDest)<<"\n";
+            e = (*etatsPossibles)[char_to_int(etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i, j, e);
             p=0;
         }

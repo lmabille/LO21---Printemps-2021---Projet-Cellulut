@@ -51,10 +51,11 @@ bool EnsembleEtats::checkExisteDeja(const Etat& e)
 Etat* EnsembleEtats::operator[](int index)
 /* Permet de retourner un pointeur sur un état alors qu'ils sont stockés dans un tableau 1D */
 {
-    for (int i = 0; i<nombreEtats; i++)
+    for (int i =0 ; i < nombreEtats ; i++)
     {
         if (liste[i].indice==index) return &liste[i];
     }
+
     cout << "etat n'existe pas\n";
     return nullptr;
 }
