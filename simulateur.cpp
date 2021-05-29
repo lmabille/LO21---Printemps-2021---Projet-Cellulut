@@ -1,13 +1,74 @@
 #include <iostream>
 #include "simulateur.h"
-// #include "outil.h"
 
 using namespace std;
 
-Simulateur &Simulateur::donneInstance(Modele & m)
+Simulateur::Simulateur(const Modele &m, size_t buf): modele(m), tailleBuffer(buf)
+{
+    configurations = new Configuration*[tailleBuffer];
+    for (size_t i = 0; i<tailleBuffer; i++) configurations[i] = nullptr;
+}
+
+Simulateur::Simulateur(const Modele &m, const Configuration& dep, size_t buf): modele(m), tailleBuffer(buf)
+{
+    configurations = new Configuration*[tailleBuffer];
+    for (size_t i = 0; i<tailleBuffer; i++) configurations[i] = nullptr;
+    configurations[0] = new Configuration(dep);
+}
+
+void Simulateur::setConfigDepart(const Configuration& config)
+{
+    configurationDepart = &config;
+    reset();
+}
+
+void Simulateur::next()
+{
+    if (configurationDepart == nullptr) throw AutomateException("Etat depart indefini ! \n"); // définir classe automate exception
+    rang++;
+    build(rang%tailleBuffer);
+    modele.appliquerTransition(*configurations[(rang-1)%tailleBuffer], *configurations[rang%tailleBuffer]);
+}
+
+void Simulateur::run(size_t nbSteps)
+{
+    for (size_t i = 0; i<nbSteps;i++) next();
+}
+
+const Configuration& Simulateur::getLastConfig() const
+{
+    return *configurations[rang%tailleBuffer];
+}
+
+size_t Simulateur::getRangLast() const
+{
+    return rang;
+}
+
+void Simulateur::reset()
+{
+    if (configurationDepart == nullptr) throw AutomateException("Etat depart indefini !\n");
+    rang = 0;
+    build(0);
+    *configurations[0] = *configurationDepart;
+}
+
+Simulateur::~Simulateur()
+{
+    for (size_t i =0; i<tailleBuffer;i++) delete configurations[i];
+    delete[] configurations;
+}
+
+void Simulateur::build(size_t caseBuf)
+{
+    if (caseBuf>=tailleBuffer) throw AutomateException("Erreur taille buffer !\n");
+    if (configurations[caseBuf] == nullptr) configurations[caseBuf] = new Configuration;
+}
+
+Simulateur &Simulateur::donneInstance(Modele & m, size_t buffer)
 {
     if (uniqueInstance == nullptr)
-        uniqueInstance = new Simulateur(m);
+        uniqueInstance = new Simulateur(m, buffer);
     return *uniqueInstance;
 }
 
@@ -17,12 +78,30 @@ void Simulateur::libereInstance()
     uniqueInstance = nullptr;
 }
 
+/*void Simulateur::next()
+// fait appel à la fonction appliquerTransition définie dans l'automate cf TD // à définir
+{
+
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case* ensemble_case) const
 {
     /* pour chaque élément du tableau ensemble de cases,
        récupère le x et le y puis va dans le tableau configuration
        et récupère l'état de la cellule i+x, j+y, stocke cet état
-       dans un tableau de caractères, retourne ce tableau */
+       dans un tableau de caractères, retourne ce tableau
 
     Case* ptr = ensemble_case;
     string * voisinage= new string;
@@ -43,7 +122,7 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
 char comparaison_voisinnage(string voisins, string *trans, char cel){
     /* pour un voisinnage donné on va vérifier si ce voisinnage est dans
      * le tableau de fonction transition si oui on va renvoyer un caractère qui
-     * va correspondre à l'état de la cellule à la génération t+1 */
+     * va correspondre à l'état de la cellule à la génération t+1
     int i=0;
     int test=0;
     string st;
@@ -75,7 +154,7 @@ int char_to_int(char * c)
 }
 
 Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
-/* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée */
+/* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée
 {
     Configuration * dest = new Configuration(dep.reseau);
     *dest = dep;
@@ -104,6 +183,6 @@ Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
 
     return *dest;
 }
-
+*/
 
 

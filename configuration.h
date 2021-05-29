@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "etat_reseau.h"
+#include "voisinage.h"
 
 using namespace std;
 
@@ -23,13 +24,13 @@ public:
     ~Configuration();
     Configuration& operator=(const Configuration& c);
     // accesseurs en écriture
-    void setGrille(Cellule **c){grille=c;}
-    void setReseau(Reseau &r){reseau=r;}
+    void setEtatCellule (int i, int j, Etat* e) {grille[i][j].set_etatcellule(e);}
     // accesseurs en lecture
-    Cellule& getCellule(int i, int j) {return grille[i][j];}
-    int getReseauLignes() {return reseau.get_nbLignes();}
-    int getReseauColonnes() {return reseau.get_nbCols();}
-    Etat& getEtatCellule(int i, int j) {return grille[i][j].get_Etat();}
+    Cellule& getCellule (int i, int j) const {return grille[i][j];}
+    int getReseauLignes() const {return reseau.get_nbLignes();}
+    int getReseauColonnes() const {return reseau.get_nbCols();}
+    Etat& getEtatCellule (int i, int j) const {return grille[i][j].get_Etat();}
+    string getVoisinage (int i, int j, Voisinage& typeVois) const;
     // friend de cellule
 };
 

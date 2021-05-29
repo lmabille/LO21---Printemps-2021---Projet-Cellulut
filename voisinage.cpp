@@ -4,56 +4,40 @@
 
 #include "voisinage.h"
 
-const int Voisinage::getNbCelluleVoisi() const {
+const int Voisinage::getNbCelluleVoisi() const
+{
     return this->nbCelluleVoisi;
 }
 
-const string Voisinage::getTypeVoisi() {
+const string Voisinage::getTypeVoisi()
+{
     return this->typeVoisi;
 }
 
-void Voisinage::setNbCellule(int nb) {
-    if(nb >=0)
+void Voisinage::setNbCellule(int nb)
+{
+    if (nb >= 0)
         this->nbCelluleVoisi = nb;
     else
         cout << "Nombre négatif. Erreur" << endl;
 }
 
-Voisinage::Voisinage() {
-    this->nbCelluleVoisi = 10;
-    this->typeVoisi  ="";
-    this->ensemble_case = new Case[10]();
-
-}
-
-Case *Voisinage::getTableau() {
+Case *Voisinage::getTableau()
+{
     return this->ensemble_case;
 }
 
-void Voisinage::setensemble_case(Case *c) {
-    for (int i = 0 ; i < 10 ; i++) {
-        this->ensemble_case[i] = c[i];
+Case &Voisinage::operator[](int indice)
+{
+    try
+    {
+        if (indice < 0 || indice >= nbCelluleVoisi)
+            throw string("case n'existe pas !"); // à remplacer par AutomateException comme dans le td
+        else
+            return ensemble_case[indice];
     }
-
-
-
-    //this->ensemble_case=c;
-}
-
-
-int Case::getX() {
-    return this->x;
-}
-
-int Case::gety() {
-    return this->y;
-}
-
-void Case::setX(int newx) {
-    //printf("test");
-    this->x = newx;
-}
-
-void Case::setY(int y) {
-    this->y = y;
+    catch (string const &erreur)
+    {
+        cout << erreur << endl;
+    }
 }
