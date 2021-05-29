@@ -19,7 +19,7 @@ Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main() {
 
-    Modele* test = chargerModel("test");
+    Modele* test = chargerModel("C:\\Users\\thoma\\Documents\\UTC\\ProjetLo21\\LO21---Printemps-2021---Projet-Cellulut\\test.xml");
     cout << test->getAuteur() <<endl;
     cout << test->getDescription() <<endl;
     cout << test->getTitre() <<endl;

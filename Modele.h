@@ -37,10 +37,11 @@ public :
     const string& getTitre() const {return titre; }
     Etat ** const getEtat() const {return ensembleEtat;}*/
     const string& getRegles() const {return *regles; }
-    const Voisinage *getVoisin() const {return typeVoisinnage; }
+     Voisinage *getVoisin() const {return typeVoisinnage; }
     const string& getDescription() const {return description; }
     const string& getAuteur() const {return auteur; }
     const string& getTitre() const {return titre; }
+
     void setAutheur(string nom){this->auteur = nom; }
     void setTitre(string titre) { this->titre = titre ;}
     void setDesc(string desc) {this->description = desc; }

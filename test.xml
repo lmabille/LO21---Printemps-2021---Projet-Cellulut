@@ -11,9 +11,12 @@
 	</Etat>
 	<Voisinage>
 		<Nom name="VonNeumann"></Nom>
-		<Rayon name="1"></Rayon>
+
 		<Element>
 			<Case X="1" Y="-1"/> //Soit élément soit rayon
+			<Case X="1" Y="0"/>
+			<Case X="0" Y="0"/>
+			<Case X="-1" Y="-1"/>
 		</Element>
 	</Voisinage>
 	<ListeRegle>
@@ -21,3 +24,6 @@
 		<Regle>000101</Regle>
 	</ListeRegle>
 </Modele>
+
+<!--
+<Rayon name="1"></Rayon> -->

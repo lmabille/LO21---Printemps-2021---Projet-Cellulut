@@ -20,14 +20,24 @@ void Voisinage::setNbCellule(int nb) {
 }
 
 Voisinage::Voisinage() {
-    nbCelluleVoisi = 10;
-    typeVoisi  ="";
-    ensemble_case = new Case[10]();
+    this->nbCelluleVoisi = 10;
+    this->typeVoisi  ="";
+    this->ensemble_case = new Case[10]();
 
 }
 
 Case *Voisinage::getTableau() {
     return this->ensemble_case;
+}
+
+void Voisinage::setensemble_case(Case *c) {
+    for (int i = 0 ; i < 10 ; i++) {
+        this->ensemble_case[i] = c[i];
+    }
+
+
+
+    //this->ensemble_case=c;
 }
 
 

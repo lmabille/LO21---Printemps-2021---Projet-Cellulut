@@ -25,7 +25,7 @@ public:
     const string getTypeVoisi();
     const int getNbCelluleVoisi() const;
     void setNbCellule(int nb);
-    void setensemble_case(Case * c){ensemble_case=c;};
+    void setensemble_case(Case * c);
     Case * getTableau();
 
 };

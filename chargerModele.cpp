@@ -11,13 +11,13 @@ using namespace pugi;
 using namespace std;
 
 
-Modele* chargerModel(string nomFichier) {
+Modele* chargerModel(const char *nomFichier) {
     cout << "\nParsing file.....\n\n";
 
     xml_document doc;
 
     // load the XML file
-    if (!doc.load_file("C:\\Users\\thoma\\Documents\\UTC\\ProjetLo21\\LO21---Printemps-2021---Projet-Cellulut\\test.xml")){
+    if (!doc.load_file(nomFichier)){
         cout << "echec";
         return nullptr;
     }
@@ -79,6 +79,57 @@ Modele* chargerModel(string nomFichier) {
                 cout <<endl;
             }
             charge->getEnsemble()->setListe(liste);
+        }
+
+        if (tmp == "Voisinage") {
+            cout << endl;
+
+            xml_node test = tools.child("Voisinage");
+            string name = test.begin()->attributes_begin()->value();
+            cout << "NOm : " << name << endl;
+            charge->getVoisin().
+
+            test = test.child("Element");
+
+            Case* liste_voisin = new Case[10]();
+
+
+            for (xml_node_iterator it2 = test.begin(); it2 != test.end(); ++it2) {
+
+                cout << it2->name() << ": ";
+                string nom = it2->name();
+
+                int x_y_test = 0;
+                int x = 0;
+                int y = 0;
+                int nbVoisin =0;
+                for (xml_attribute_iterator cpt = it2->attributes_begin(); cpt != it2->attributes_end(); ++cpt) {
+
+
+
+                    cout << cpt->value() << " " ;
+                    val = cpt->value();
+                    if (x_y_test == 0){
+                        x = stoi(val);
+                        x_y_test ++;
+                    }
+                    if (x_y_test == 1) {
+                        y = stoi(val);
+
+                    }
+
+                    liste_voisin[nbVoisin] = Case(x,y);
+
+                }
+
+
+
+                cout << endl;
+            }
+
+            charge->getVoisin()->setensemble_case(liste_voisin);
+
+
         }
 
         cout << endl;
