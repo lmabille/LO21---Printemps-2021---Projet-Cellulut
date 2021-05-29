@@ -21,6 +21,8 @@ public:
     FonctionTransition(string *tab, unsigned int t) : tableau(tab), taille(t){};
     FonctionTransition() = default;
     string *getTableau() { return tableau; }
+    void setTableau(string* tab) {this->tableau = tab;}
+    void setTaille(unsigned int nb) {this->taille = nb;}
     const unsigned int getTaille() const { return taille; }
 };
 
@@ -29,7 +31,7 @@ class Modele
     string titre;                  //key
     EnsembleEtats *etatsPossibles; // � prendre en compte dans les constructeurs/ destructeurs!
 
-    Voisinage *typeVoisinnage;
+    //Voisinage *typeVoisinnage;
     FonctionTransition *fonctionTrans;
     string description;
     string auteur;
@@ -37,7 +39,8 @@ class Modele
     friend class Simulateur;
 
 public:
-    Modele() = default;
+    Voisinage *typeVoisinnage;
+    Modele();
     Modele(string t, EnsembleEtats *e, FonctionTransition *f, Voisinage *v, string d, string a = "", unsigned int annee = 0) : titre(t), etatsPossibles(e), fonctionTrans(f), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee) {}
     ~Modele() { delete[] etatsPossibles; } // pas s�r de �a // + voir le destructeur de la classe EnsembleEtats
     const string &getTitre() const { return titre; }

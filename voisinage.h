@@ -9,6 +9,8 @@ using namespace std;
 #include <iostream>
 #include <cstdio>
 
+class Case;
+
 class Voisinage
 {
     int nbCelluleVoisi;
@@ -17,7 +19,8 @@ class Voisinage
     friend class Modele;
     // friend class Simulateur;
 public:
-    Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]) { typeVoisi = ""; };
+    Voisinage(int n);
+    Voisinage();
     const string getTypeVoisi();
     const int getNbCelluleVoisi() const;
     void setNbCellule(int nb);
