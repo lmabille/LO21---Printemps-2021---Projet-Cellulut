@@ -246,7 +246,6 @@ void Modele::sauvegardeM()
         caseCoord.append_attribute("X") = listeCase[i].getL();
         caseCoord.append_attribute("Y") = listeCase[i].getC();
         string *regles = this->getFonction()->getTableau();
-        == == == =
-                     bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
+        bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
         cout << saveSuccess;
     }
