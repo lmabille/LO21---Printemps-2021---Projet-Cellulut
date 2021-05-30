@@ -1,11 +1,12 @@
 #include <iostream>
 #include "configuration.h"
 #include "etat_reseau.h"
-
+#include "pugixml.hpp"
 #include <stdio.h>
 #include <string.h>
 
 using namespace std;
+using namespace pugi;
 
 /*** Classe Configuration ***/
 
@@ -116,4 +117,52 @@ Configuration& Configuration::operator=(const Configuration& c)
         }
     }
     return *this;
+}
+
+void Configuration::sauvegarderConfiguration(string titreMdodele, string nom){
+    xml_document doc;
+    string xmlFilePath = "Modeles/";
+    xmlFilePath += titreMdodele;
+    xmlFilePath += ".xml";
+    xml_parse_result result = doc.load_file(xmlFilePath.c_str(),parse_default|parse_declaration);
+    if (!result)
+    {
+        cout << "Impossible de trouver le modele";
+        return;
+    }
+
+    xml_node modele = doc.document_element();//j'espère que ça récup bien le modèle
+    xml_node config = modele.append_child("Configuration");
+    xml_node nomC = config.append_child("Configuration");
+    nomC.append_attribute("name")=nom.c_str();
+    unsigned int m = this->getReseauLignes();
+    unsigned int n = this->getReseauColonnes();
+    xml_node tailleReseau = config.append_child("Configuration");
+    tailleReseau.append_attribute("lignes")=m;
+    tailleReseau.append_attribute("colonnes")=n;
+    xml_node cellulesE = config.append_child("EnsembleCase");
+    for(int i=0; i<m; i++){
+        for(int j=0; j<n; j++){
+
+            Etat& e = getEtatCellule (i, j);
+            xml_node cellule = cellulesE.append_child("Case");
+            cellule.append_attribute("X")=i;
+            cellule.append_attribute("Y")=j;
+            cellule.append_attribute("Indice")=e.getIndice();
+            cellule.append_attribute("Label")=e.getLabel().c_str();
+            cellule.append_attribute("Couleur")=e.getCouleur().c_str();
+
+
+
+
+
+        }
+
+
+    }
+
+    bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
+    cout<<saveSuccess;
+
+
 }
