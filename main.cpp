@@ -11,7 +11,7 @@
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
-int main() {
+int main(int argc, char* argv[]) {
     /*
     Reseau r(3, 3);
 
