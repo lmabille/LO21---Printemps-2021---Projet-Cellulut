@@ -4,7 +4,7 @@
 
 #include "voisinage.h"
 
-const int Voisinage::getNbCelluleVoisi() const
+ int Voisinage::getNbCelluleVoisi() const
 {
     return this->nbCelluleVoisi;
 }

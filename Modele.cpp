@@ -12,7 +12,7 @@ char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned in
     // pour un voisinnage donné on va vérifier si ce voisinnage est dans
     // le tableau de fonction transition si oui on va renvoyer un caractère qui
     // va correspondre à l'état de la cellule à la génération t+1
-    int i = 0;
+    unsigned int i = 0;
     int test = 0;
     string st;
     //cout << "compa_vois"
@@ -94,14 +94,14 @@ Modele creerModele()
     std::cout << "De combien d'états est composé votre modèle ?";
     std::cin >> nb_etat;
     EnsembleEtats ensembleEtat(nb_etat);
-    for (size_t i = 0; i < nb_etat; i++)
+    for (int i = 0; i < nb_etat; i++)
     {
         string s;
         int j;
-        std::cout << "Quelle est le label du", i, " ème état";
+        std::cout << "Quelle est le label du"<<i<< " ème état";
         std::cin >> s;
         ensembleEtat.getListe()[i].setlabel(s);
-        std::cout << "Quelle est l'indice du", i, " ème état";
+        std::cout << "Quelle est l'indice du"<< i<< " ème état";
         std::cin >> j;
         ensembleEtat.getListe()[i].setIndice(j);
     }
@@ -164,10 +164,10 @@ Modele creerModele()
         int c;
         for (size_t i = 0; i < 4; i++)
         {
-            std::cout << "Quelle est la ligne du ", i, " ème voisin relativement à la position de la case ?";
+            std::cout << "Quelle est la ligne du "<< i<< " ème voisin relativement à la position de la case ?";
             std::cin >> l;
             ensemble_de_cases_arbitarire[i].setL(l);
-            std::cout << "Quelle est la ligne du ", i, " ème voisin relativement à la position de la case ?";
+            std::cout << "Quelle est la ligne du "<< i<< " ème voisin relativement à la position de la case ?";
             std::cin >> c;
             ensemble_de_cases_arbitarire[i].setL(c);
         }
@@ -249,3 +249,4 @@ void Modele::sauvegardeM()
         bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
         cout << saveSuccess;
     }
+}

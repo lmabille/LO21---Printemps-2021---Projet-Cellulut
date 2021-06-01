@@ -21,16 +21,16 @@ public:
     FonctionTransition(string *tab, unsigned int t) : tableau(tab), taille(t){};
     FonctionTransition() = default;
     string *getTableau() { return tableau; }
-    const unsigned int getTaille() const { return taille; }
+    unsigned int getTaille() const { return taille; }
 };
 
 class Modele
 {
     string titre;                  //key
     EnsembleEtats *etatsPossibles; // � prendre en compte dans les constructeurs/ destructeurs!
-
-    Voisinage *typeVoisinnage;
     FonctionTransition *fonctionTrans;
+    Voisinage *typeVoisinnage;
+
     string description;
     string auteur;
     unsigned int anneeCreation;
@@ -41,7 +41,7 @@ public:
     Modele(string t, EnsembleEtats *e, FonctionTransition *f, Voisinage *v, string d, string a = "", unsigned int annee = 0) : titre(t), etatsPossibles(e), fonctionTrans(f), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee) {}
     ~Modele() { delete[] etatsPossibles; } // pas s�r de �a // + voir le destructeur de la classe EnsembleEtats
     const string &getTitre() const { return titre; }
-    EnsembleEtats *const getEtatsPossibles() const { return etatsPossibles; }
+    EnsembleEtats * getEtatsPossibles() const { return etatsPossibles; }
     const FonctionTransition &getFonctionTransition() const { return *fonctionTrans; }
     Voisinage *getVoisin() const { return typeVoisinnage; }
     const string &getDescription() const { return description; }

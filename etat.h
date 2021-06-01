@@ -32,8 +32,9 @@ public:
 
 class EnsembleEtats // désigne un ensemble donné d'états possibles // serait cool en singleton car une seule instance par simulation
 {
-    Etat* liste;
     int nombreEtats = 0;
+    Etat* liste;
+
 
 public:
     EnsembleEtats(int n): nombreEtats(n), liste(new Etat[n]) {}

@@ -35,7 +35,7 @@ public:
     Voisinage()=default;
     Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]) { typeVoisi = ""; };
     const string getTypeVoisi();
-    const int getNbCelluleVoisi() const;
+    int getNbCelluleVoisi() const;
     void setNbCellule(int nb);
     void setensemble_case(Case *c) { ensemble_case = c; };
     void setType(string t) { typeVoisi = t; }

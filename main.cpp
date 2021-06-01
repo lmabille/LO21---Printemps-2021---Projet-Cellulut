@@ -1,17 +1,27 @@
 //
 // Created by Anne LAHNECHE on 24/05/2021.
 //
-#include "configuration.h"
-#include "etat.h"
-#include "etat_reseau.h"
-#include "Modele.h"
-#include "simulateur.h"
-#include "voisinage.h"
-#include "outils.h"
+//#include "configuration.h"
+//#include "etat.h"
+//#include "etat_reseau.h"
+//#include "Modele.h"
+//#include "simulateur.h"
+//#include "voisinage.h"
+//#include "outils.h"
+#include <QApplication>
+#include "affichage_info.h"
 
-Simulateur *Simulateur::uniqueInstance = nullptr;
+//Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
+    QApplication app(argc, argv);
+    information fenetre;
+    fenetre.show();
+    return app.exec();
+   }
+
+
+
     /*
     Reseau r(3, 3);
 
@@ -87,28 +97,28 @@ int main(int argc, char* argv[]) {
 
     // vio
 
-    EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
+    /* EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
     ensembleEtats->definirEtats();
     for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
         cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
     }
 
-    Reseau res(3,3);
+     Reseau res(3,3);
     Configuration* configDepart = new Configuration(res, *ensembleEtats);
 
-    // test getVoisinage
+     test getVoisinage
     Etat* mort = (*ensembleEtats)[1];
     Etat* vivant = (*ensembleEtats)[2];
-/*    cout << "\ntests recup mort et vivant\n";
+   cout << "\ntests recup mort et vivant\n";
     cout << mort->getIndice() << " " << mort->getLabel() << endl;
-    cout << vivant->getIndice() << " " << vivant->getLabel() << endl;*/// ok
+    cout << vivant->getIndice() << " " << vivant->getLabel() << endl;
 
     configDepart->setEtatCellule(1,0,vivant); // cell de gauche
     configDepart->setEtatCellule(0,1,vivant); // cell du haut // les autres sont à "mort" par initialisation
-/*    cout << "tests setEtatCellule" << endl;
+    cout << "tests setEtatCellule" << endl;
     cout << configDepart->getEtatCellule(1,0).getIndice() << " " << configDepart->getEtatCellule(1,0).getLabel() << endl;
-    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;*/// ok
+    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;*
 
     Case* liste_cases = new Case[4];
     Case gauche(0,-1);
@@ -119,8 +129,8 @@ int main(int argc, char* argv[]) {
     liste_cases[1] = haute;
     liste_cases[2] = droite;
     liste_cases[3] = bas;
-/*    cout << "tests set up liste cases" << endl;
-    cout << "[" << gauche.getL() << "," << gauche.getC() << "]" << endl;*/ // ok
+    cout << "tests set up liste cases" << endl;
+    cout << "[" << gauche.getL() << "," << gauche.getC() << "]" << endl;
 
     Voisinage* v = new Voisinage;
     v->setNbCellule(4);
@@ -164,9 +174,7 @@ int main(int argc, char* argv[]) {
         cout<<"\n";
     }
 
+ */
 
 
 
-
-    return 0;
-}
