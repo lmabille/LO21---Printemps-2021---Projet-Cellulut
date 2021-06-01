@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include "etat.h"
 
+
 class Cellule {
     int x;
     int y;

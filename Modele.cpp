@@ -71,9 +71,7 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
         }
     }
 }
-
-#include "Modele.h"
-
+/*
 Modele creerModele()
 {
     string titre; //key
@@ -179,9 +177,10 @@ Modele creerModele()
         break;
     }
 };
+*/
 
-void Modele::sauvegardeM()
-{
+/*
+void Modele::sauvegardeM() {
     //Création du doc
     xml_document doc;
     string xmlFilePath = "Modeles/";
@@ -191,8 +190,7 @@ void Modele::sauvegardeM()
     //Il faut vérifier qu'aucun modèle avec ce titre n'existe :
 
     xml_parse_result result = doc.load_file(xmlFilePath.c_str(), parse_default | parse_declaration);
-    if (result)
-    {
+    if (result) {
         cout << "Il existe deja un modele avec ce titre";
         return;
     }
@@ -221,8 +219,7 @@ void Modele::sauvegardeM()
     NbrEtat.append_attribute("name") = nbr;
     //Faire un while sur le nbr d'état
     Etat *laListe = this->getEnsemble()->getListe();
-    for (int i = 0; i < nbr; i++)
-    {
+    for (int i = 0; i < nbr; i++) {
         xml_node label = etat.append_child("Label");
         label.append_attribute("name") = laListe[i].getLabel().c_str();
     }
@@ -237,11 +234,11 @@ void Modele::sauvegardeM()
     /*  xml_node rayon = voisinage.append_child("Rayon");
     rayon.append_attribute("name")="1";*/
     //Gestion des éléments, faire un while aussi
+    /*
     xml_node element = voisinage.append_child("Element");
     int nbrCase = this->getVoisin()->getNbCelluleVoisi();
     Case *listeCase = this->getVoisin()->getTableau();
-    for (int i = 0; i < nbrCase; i++)
-    {
+    for (int i = 0; i < nbrCase; i++) {
         xml_node caseCoord = element.append_child("Case");
         caseCoord.append_attribute("X") = listeCase[i].getL();
         caseCoord.append_attribute("Y") = listeCase[i].getC();
@@ -249,4 +246,5 @@ void Modele::sauvegardeM()
         bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
         cout << saveSuccess;
     }
+}*/
 }

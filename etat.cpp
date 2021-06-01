@@ -15,6 +15,8 @@ string Etat::getLabel()
     return this->label;
 }
 
+// définir EnsembleEtats
+
 void EnsembleEtats::definirEtats()
 {
     int num;

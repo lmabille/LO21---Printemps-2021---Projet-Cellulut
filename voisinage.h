@@ -13,34 +13,68 @@ class Case
 { // Classe case
     int l;
     int c;
-    //friend Voisinage;
+    void setL(int newL) { this->l = newL; }
+    void setC(int newC) { this->c = newC; }
+    void setL_C(int newL, int newC) {this->l = newL; this->c = newC;}
+    Case() = default;
+    Case(int L, int C) : l(L), c(C){};
+    friend class Voisinage;
+    friend class V_VonNeumann;
+    friend class V_Moore;
+    friend class V_ChoixUtilisateur;
 
 public:
     int getL() const { return l; };
     int getC() const { return c; };
-    void setL(int newL) { this->l = newL; }
-    void setC(int newC) { this->c = newC; }
-    Case() = default;
-    Case(int L, int C) : l(L), c(C){};
 };
 
-class Voisinage
+class Voisinage // classe abstraite
 {
-    int nbCelluleVoisi;
-    string typeVoisi;
-    Case *ensemble_case;
+private:
+    string typeVoisi; // nom du voisinage
+
+protected:
+    int nbCelluleVoisi; // nb de cellules prises en compte
+    Case *ensemble_case; // tableau de coordonnées des cellules voisines
     friend class Modele;
-    // friend class Simulateur;
+
 public:
-    Voisinage()=default;
-    Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]) { typeVoisi = ""; };
-    const string getTypeVoisi();
-    int getNbCelluleVoisi() const;
-    void setNbCellule(int nb);
-    void setensemble_case(Case *c) { ensemble_case = c; };
-    void setType(string t) { typeVoisi = t; }
-    Case *getTableau();
-    Case &operator[](int indice);
+
+    // constructeurs pour une classe abstraite?
+    // Voisinage()=default;
+    // Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]) { typeVoisi = ""; };
+
+    const string getTypeVoisi(); // non virtual
+    const int getNbCelluleVoisi() const; // non virtual
+
+    Case *getTableau(); // non virtual
+    Case &operator[](int indice); // non virtual
+
+    virtual void definir_ensemble_case(int rayon) = 0; // Neumann et Moore de base peuvent être considérés comme des spécialisations avec un rayon 1/ L'utilisateur choisi le rayon max dans lequel il veut sélectionner ses cellules voisines.
+
 };
+
+class V_VonNeumann: public Voisinage
+        /* Ce voisinage prend en compte les cellules adjacentes horizontalement et verticalement.
+         * Il peut être généralisé avec un rayon r, donc on considèrera que le premier cas est
+         * une spécialisation du cas général, c'est-à-dire avec un rayon 1.*/
+{
+public:
+    void definir_ensemble_case(int rayon) override;
+};
+
+class V_Moore: public Voisinage
+{
+public:
+    void definir_ensemble_case(int rayon) override;
+};
+
+class V_ChoixUtilisateur: public Voisinage
+{
+public:
+    void definir_ensemble_case(int rayon) override;
+};
+
+
 
 #endif //LO21_PRINTEMPS_2021_PROJET_CELLULUT_VOISINAGE_H

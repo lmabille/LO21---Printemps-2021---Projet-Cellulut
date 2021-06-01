@@ -118,7 +118,7 @@ Configuration& Configuration::operator=(const Configuration& c)
     }
     return *this;
 }
-
+/*
 void Configuration::sauvegarderConfiguration(string titreMdodele, string nom){
     xml_document doc;
     string xmlFilePath = "Modeles/";
@@ -166,3 +166,4 @@ void Configuration::sauvegarderConfiguration(string titreMdodele, string nom){
 
 
 }
+*/

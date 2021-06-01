@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
      */
 
 
-    // vio
+    /* vio
 
     /* EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
     ensembleEtats->definirEtats();
@@ -113,13 +113,13 @@ int main(int argc, char* argv[]) {
    cout << "\ntests recup mort et vivant\n";
     cout << mort->getIndice() << " " << mort->getLabel() << endl;
     cout << vivant->getIndice() << " " << vivant->getLabel() << endl;
-
+/*
     configDepart->setEtatCellule(1,0,vivant); // cell de gauche
     configDepart->setEtatCellule(0,1,vivant); // cell du haut // les autres sont à "mort" par initialisation
     cout << "tests setEtatCellule" << endl;
     cout << configDepart->getEtatCellule(1,0).getIndice() << " " << configDepart->getEtatCellule(1,0).getLabel() << endl;
     cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;*
-
+/*
     Case* liste_cases = new Case[4];
     Case gauche(0,-1);
     Case haute(-1,0);
@@ -131,13 +131,15 @@ int main(int argc, char* argv[]) {
     liste_cases[3] = bas;
     cout << "tests set up liste cases" << endl;
     cout << "[" << gauche.getL() << "," << gauche.getC() << "]" << endl;
-
+/*
     Voisinage* v = new Voisinage;
     v->setNbCellule(4);
     v->setensemble_case(liste_cases);
 
     //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
+V_Moore moore;
+moore.definir_ensemble_case(2);
 
 
     // orhane
@@ -176,5 +178,11 @@ int main(int argc, char* argv[]) {
 
  */
 
+// vio
+/*
+V_VonNeumann vonneum;
+vonneum.definir_ensemble_case(2);
+*/
 
+*/
 
