@@ -12,7 +12,8 @@ HEADERS = \
    $$PWD/Modele.h \
    $$PWD/outils.h \
    $$PWD/simulateur.h \
-   $$PWD/voisinage.h
+   $$PWD/voisinage.h \
+   qSimulateur.h
 
 SOURCES = \
    $$PWD/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdC/CMakeCCompilerId.c \
@@ -23,7 +24,8 @@ SOURCES = \
    $$PWD/main.cpp \
    $$PWD/Modele.cpp \
    $$PWD/simulateur.cpp \
-   $$PWD/voisinage.cpp
+   $$PWD/voisinage.cpp \
+   qSimulateur.cpp
 
 INCLUDEPATH = \
     $$PWD/.
