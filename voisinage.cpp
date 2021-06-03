@@ -104,6 +104,8 @@ void Voisinage::setNbCellule(int nb)
 }
 
 */
+
+//Ne pas commenter j'en ai besoin svp ;)
 Case *Voisinage::getTableau()
 {
     return this->ensemble_case;
