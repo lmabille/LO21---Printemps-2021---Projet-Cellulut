@@ -179,7 +179,7 @@ Modele creerModele()
 };
 */
 
-/*
+
 void Modele::sauvegardeM() {
     //Création du doc
     xml_document doc;
@@ -213,16 +213,19 @@ void Modele::sauvegardeM() {
     annee.append_attribute("name") = this->getAnnee();
 
     //Les attributs d'un état
-    xml_node etat = modele.append_child("Etat");
-    xml_node NbrEtat = etat.append_child("NombreEtat");
+    xml_node etats = modele.append_child("Etat");
+    xml_node NbrEtat = etats.append_child("NombreEtat");
     int nbr = this->getEnsemble()->getNombreEtats();
     NbrEtat.append_attribute("name") = nbr;
     //Faire un while sur le nbr d'état
     Etat *laListe = this->getEnsemble()->getListe();
     for (int i = 0; i < nbr; i++) {
-        xml_node label = etat.append_child("Label");
-        label.append_attribute("name") = laListe[i].getLabel().c_str();
+        xml_node etat = etats.append_child("Etat");
+        etat.append_attribute("Label") = laListe[i].getLabel().c_str();
+        etat.append_attribute("Couleur") = laListe[i].getCouleur().c_str();
+        etat.append_attribute("Indice") = laListe[i].getIndice();
     }
+
 
     //Gestion du voisinage
     xml_node voisinage = modele.append_child("Voisinage");
@@ -234,7 +237,7 @@ void Modele::sauvegardeM() {
     /*  xml_node rayon = voisinage.append_child("Rayon");
     rayon.append_attribute("name")="1";*/
     //Gestion des éléments, faire un while aussi
-    /*
+
     xml_node element = voisinage.append_child("Element");
     int nbrCase = this->getVoisin()->getNbCelluleVoisi();
     Case *listeCase = this->getVoisin()->getTableau();
@@ -246,5 +249,4 @@ void Modele::sauvegardeM() {
         bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
         cout << saveSuccess;
     }
-}*/
 }

@@ -103,11 +103,12 @@ void Voisinage::setNbCellule(int nb)
         cout << "Nombre négatif. Erreur" << endl;
 }
 
+*/
 Case *Voisinage::getTableau()
 {
     return this->ensemble_case;
 }
-*/
+
 
 Case &Voisinage::operator[](int indice)
 {
