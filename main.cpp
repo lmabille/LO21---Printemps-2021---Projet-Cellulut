@@ -17,8 +17,9 @@ Simulateur *Simulateur::uniqueInstance = nullptr;
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
     information fenetre;
-    //Ui::MenuPrincipale_2 mn();
+    MenuPrincipale_2 mn;
     fenetre.show();
+    mn.show();
     return app.exec();
    }
 
