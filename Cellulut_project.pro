@@ -13,6 +13,10 @@ HEADERS = \
    $$PWD/outils.h \
    $$PWD/simulateur.h \
    $$PWD/voisinage.h \
+   affichage_info.h \
+   chargerModele.h \
+   pugiconfig.hpp \
+   pugixml.hpp \
    qSimulateur.h
 
 SOURCES = \
@@ -25,6 +29,8 @@ SOURCES = \
    $$PWD/Modele.cpp \
    $$PWD/simulateur.cpp \
    $$PWD/voisinage.cpp \
+   affichage_info.cpp \
+   chargerModele.cpp \
    qSimulateur.cpp
 
 INCLUDEPATH = \
