@@ -5,19 +5,19 @@
 //#include "etat.h"
 //#include "etat_reseau.h"
 //#include "Modele.h"
-//#include "simulateur.h"
+#include "simulateur.h"
 //#include "voisinage.h"
 //#include "outils.h"
 #include <QApplication>
 #include "affichage_info.h"
 #include "menuprincipale_2.h"
 
-//Simulateur *Simulateur::uniqueInstance = nullptr;
+Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
     information fenetre;
-    Ui::MenuPrincipale_2 mn();
+    //Ui::MenuPrincipale_2 mn();
     fenetre.show();
     return app.exec();
    }

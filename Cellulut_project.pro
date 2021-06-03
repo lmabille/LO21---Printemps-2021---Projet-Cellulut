@@ -21,8 +21,6 @@ HEADERS = \
    qSimulateur.h
 
 SOURCES = \
-   $$PWD/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdC/CMakeCCompilerId.c \
-   $$PWD/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdCXX/CMakeCXXCompilerId.cpp \
    $$PWD/configuration.cpp \
    $$PWD/etat.cpp \
    $$PWD/etat_reseau.cpp \
@@ -33,6 +31,7 @@ SOURCES = \
    affichage_info.cpp \
    chargerModele.cpp \
    menuprincipale_2.cpp \
+   pugixml.cpp \
    qSimulateur.cpp
 
 INCLUDEPATH = \
