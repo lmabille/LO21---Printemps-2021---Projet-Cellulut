@@ -10,12 +10,14 @@
 //#include "outils.h"
 #include <QApplication>
 #include "affichage_info.h"
+#include "menuprincipale_2.h"
 
 //Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
     information fenetre;
+    Ui::MenuPrincipale_2 mn();
     fenetre.show();
     return app.exec();
    }
@@ -184,5 +186,5 @@ V_VonNeumann vonneum;
 vonneum.definir_ensemble_case(2);
 */
 
-*/
+
 

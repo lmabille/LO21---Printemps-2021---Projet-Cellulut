@@ -1,39 +1,34 @@
 # Created by and for Qt Creator This file was created for editing the project sources only.
 # You may attempt to use it for building too, by modifying this file here.
 
-#TARGET = Cellulut_project
+#TARGET = test_auto_celle_1
 
 QT = core gui widgets
 
 HEADERS = \
+   $$PWD/chargerModele.h \
    $$PWD/configuration.h \
    $$PWD/etat.h \
    $$PWD/etat_reseau.h \
    $$PWD/Modele.h \
    $$PWD/outils.h \
+   $$PWD/pugiconfig.hpp \
+   $$PWD/pugixml.hpp \
    $$PWD/simulateur.h \
    $$PWD/voisinage.h \
-   affichage_info.h \
-   chargerModele.h \
-   menuprincipale_2.h \
-   pugiconfig.hpp \
-   pugixml.hpp \
-   qSimulateur.h
+   affichage_info.h
 
 SOURCES = \
-   $$PWD/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdC/CMakeCCompilerId.c \
-   $$PWD/cmake-build-debug/CMakeFiles/3.19.2/CompilerIdCXX/CMakeCXXCompilerId.cpp \
+   $$PWD/chargerModele.cpp \
    $$PWD/configuration.cpp \
    $$PWD/etat.cpp \
    $$PWD/etat_reseau.cpp \
    $$PWD/main.cpp \
    $$PWD/Modele.cpp \
+   $$PWD/pugixml.cpp \
    $$PWD/simulateur.cpp \
    $$PWD/voisinage.cpp \
-   affichage_info.cpp \
-   chargerModele.cpp \
-   menuprincipale_2.cpp \
-   qSimulateur.cpp
+   affichage_info.cpp
 
 INCLUDEPATH = \
     $$PWD/.
@@ -41,6 +36,5 @@ INCLUDEPATH = \
 #DEFINES = 
 
 FORMS += \
-    MenuModele.ui \
-    menuprincipale_2.ui
+    mainwindow.ui
 

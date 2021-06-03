@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="LO21___Printemps_2021___Projet_Cellulut" targetName="LO21___Printemps_2021___Projet_Cellulut" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" ENABLED="true" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="01324ba7-cd9f-4698-b11c-64565c0ced99" name="Default Changelist" comment="correction bug voisinage">
+      <change beforePath="$PROJECT_DIR$/Cellulut_project.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/Cellulut_project.pro.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_auto_celle_1.pro.user" beforeDir="false" afterPath="$PROJECT_DIR$/test_auto_celle_1.pro.user" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="thomas" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1s80nuE7y6s8tJXnqvS0tgWH55q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager" selected="CMake Application.LO21___Printemps_2021___Projet_Cellulut">
+    <configuration name="LO21___Printemps_2021___Projet_Cellulut" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LO21___Printemps_2021___Projet_Cellulut" TARGET_NAME="LO21___Printemps_2021___Projet_Cellulut" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="LO21___Printemps_2021___Projet_Cellulut" RUN_TARGET_NAME="LO21___Printemps_2021___Projet_Cellulut">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Unnamed" />
+      <item itemvalue="CMake Application.LO21___Printemps_2021___Projet_Cellulut" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="01324ba7-cd9f-4698-b11c-64565c0ced99" name="Default Changelist" comment="" />
+      <created>1620239082908</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620239082908</updated>
+      <workItem from="1620239087456" duration="1505000" />
+      <workItem from="1620240619951" duration="107000" />
+      <workItem from="1620916315508" duration="3960000" />
+      <workItem from="1621428588777" duration="5016000" />
+      <workItem from="1621779236384" duration="1683000" />
+      <workItem from="1621801052295" duration="12605000" />
+      <workItem from="1621873844043" duration="8003000" />
+      <workItem from="1621887200096" duration="168000" />
+      <workItem from="1621937705323" duration="2490000" />
+      <workItem from="1621944455094" duration="265000" />
+      <workItem from="1621945147868" duration="287000" />
+      <workItem from="1621949800941" duration="70000" />
+      <workItem from="1621950523566" duration="57000" />
+      <workItem from="1621968603646" duration="701000" />
+      <workItem from="1621969374982" duration="241000" />
+      <workItem from="1621982319289" duration="162000" />
+      <workItem from="1622012945970" duration="2161000" />
+      <workItem from="1622015191827" duration="2128000" />
+      <workItem from="1622017600031" duration="748000" />
+      <workItem from="1622024676168" duration="1159000" />
+      <workItem from="1622030627943" duration="5113000" />
+      <workItem from="1622189780087" duration="6542000" />
+      <workItem from="1622280307847" duration="1364000" />
+      <workItem from="1622381804526" duration="666000" />
+      <workItem from="1622549515348" duration="1216000" />
+      <workItem from="1622751419097" duration="1535000" />
+    </task>
+    <task id="LOCAL-00001" summary="&quot;création fichier&quot;">
+      <created>1620239160690</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620239160690</updated>
+    </task>
+    <task id="LOCAL-00002" summary="création classe cellule">
+      <created>1620239561041</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1620239561041</updated>
+    </task>
+    <task id="LOCAL-00003" summary="création classe cellule">
+      <created>1620240173827</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1620240173827</updated>
+    </task>
+    <task id="LOCAL-00004" summary="création classe cellule">
+      <created>1620240362786</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620240362786</updated>
+    </task>
+    <task id="LOCAL-00005" summary="création réseau">
+      <created>1620240658656</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1620240658656</updated>
+    </task>
+    <task id="LOCAL-00006" summary="création réseau-correction">
+      <created>1620240694827</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620240694827</updated>
+    </task>
+    <task id="LOCAL-00007" summary="classe réseaux">
+      <created>1620916927923</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620916927923</updated>
+    </task>
+    <task id="LOCAL-00008" summary="classe voisinage">
+      <created>1620917796478</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1620917796478</updated>
+    </task>
+    <task id="LOCAL-00009" summary="changement de nom">
+      <created>1621428688259</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1621428688259</updated>
+    </task>
+    <task id="LOCAL-00010" summary="changement de nom">
+      <created>1621428763473</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621428763473</updated>
+    </task>
+    <task id="LOCAL-00011" summary="changement">
+      <created>1621430548254</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1621430548254</updated>
+    </task>
+    <task id="LOCAL-00012" summary="comparer le voisinnage">
+      <created>1621784447216</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1621784447231</updated>
+    </task>
+    <task id="LOCAL-00013" summary="changement 23/05">
+      <created>1621806668256</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621806668256</updated>
+    </task>
+    <task id="LOCAL-00014" summary="changement 23/05">
+      <created>1621808327425</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1621808327425</updated>
+    </task>
+    <task id="LOCAL-00015" summary="changement 23/05">
+      <created>1621810053003</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1621810053003</updated>
+    </task>
+    <task id="LOCAL-00016" summary="changement 23/05">
+      <created>1621811006107</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1621811006107</updated>
+    </task>
+    <task id="LOCAL-00017" summary="changement 23/05">
+      <created>1621813109154</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1621813109154</updated>
+    </task>
+    <task id="LOCAL-00018" summary="changement 23/05">
+      <created>1621813786749</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1621813786749</updated>
+    </task>
+    <task id="LOCAL-00019" summary="changement 23/05">
+      <created>1621814008532</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1621814008532</updated>
+    </task>
+    <task id="LOCAL-00020" summary="changement 23/05">
+      <created>1621814384738</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1621814384738</updated>
+    </task>
+    <task id="LOCAL-00021" summary="changement 23/05">
+      <created>1621814501719</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1621814501719</updated>
+    </task>
+    <task id="LOCAL-00022" summary="changement appliquertransition">
+      <created>1621874315297</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1621874315297</updated>
+    </task>
+    <task id="LOCAL-00023" summary="correction bug etat">
+      <created>1621874671652</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1621874671652</updated>
+    </task>
+    <task id="LOCAL-00024" summary="correction bug etat">
+      <created>1621875472206</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1621875472206</updated>
+    </task>
+    <task id="LOCAL-00025" summary="correction bug">
+      <created>1621875799842</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1621875799842</updated>
+    </task>
+    <task id="LOCAL-00026" summary="correction bug">
+      <created>1621876238664</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1621876238664</updated>
+    </task>
+    <task id="LOCAL-00027" summary="correction bug">
+      <created>1621876910073</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1621876910073</updated>
+    </task>
+    <task id="LOCAL-00028" summary="correction bug">
+      <created>1621879177168</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1621879177168</updated>
+    </task>
+    <task id="LOCAL-00029" summary="correction bug">
+      <created>1621879508791</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1621879508791</updated>
+    </task>
+    <task id="LOCAL-00030" summary="correction bug">
+      <created>1621880226897</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1621880226897</updated>
+    </task>
+    <task id="LOCAL-00031" summary="correction bug">
+      <created>1621881251399</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1621881251399</updated>
+    </task>
+    <task id="LOCAL-00032" summary="correction bug">
+      <created>1621881846805</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1621881846805</updated>
+    </task>
+    <task id="LOCAL-00033" summary="correction bug">
+      <created>1621881872589</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1621881872589</updated>
+    </task>
+    <task id="LOCAL-00034" summary="correction bug">
+      <created>1621940094464</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1621940094464</updated>
+    </task>
+    <task id="LOCAL-00035" summary="correction bug">
+      <created>1621940129579</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1621940129579</updated>
+    </task>
+    <task id="LOCAL-00036" summary="correction bug">
+      <created>1621940176271</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1621940176271</updated>
+    </task>
+    <task id="LOCAL-00037" summary="correction bug">
+      <created>1621944577351</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1621944577351</updated>
+    </task>
+    <task id="LOCAL-00038" summary="correction bug">
+      <created>1621944651254</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1621944651254</updated>
+    </task>
+    <task id="LOCAL-00039" summary="correction bug">
+      <created>1621945421128</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1621945421128</updated>
+    </task>
+    <task id="LOCAL-00040" summary="appliquer transition">
+      <created>1622015097965</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1622015097965</updated>
+    </task>
+    <task id="LOCAL-00041" summary="appliquer transition + getVoisinnage">
+      <created>1622017321438</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1622017321438</updated>
+    </task>
+    <task id="LOCAL-00042" summary="appliquer transition + comparaison_voisinnage">
+      <created>1622018261389</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1622018261389</updated>
+    </task>
+    <task id="LOCAL-00043" summary="ajout attribut taille Fonctiontransition">
+      <created>1622025176938</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1622025176938</updated>
+    </task>
+    <task id="LOCAL-00044" summary="finito pipo appliquertrans">
+      <created>1622025828699</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1622025828699</updated>
+    </task>
+    <task id="LOCAL-00045" summary="s de outils">
+      <created>1622032418238</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1622032418238</updated>
+    </task>
+    <task id="LOCAL-00046" summary="appliquer transition + surcharge opérateur &quot;[]&quot; pour la classe Ensembleetat">
+      <created>1622193546984</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1622193546984</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fin appliquertransition">
+      <created>1622196095387</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1622196095387</updated>
+    </task>
+    <task id="LOCAL-00048" summary="test Qt(rien n'a été changé)">
+      <created>1622381855946</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1622381855946</updated>
+    </task>
+    <task id="LOCAL-00049" summary="correction bug voisinage">
+      <created>1622382379983</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1622382379983</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;création fichier&quot;" />
+    <MESSAGE value="création classe cellule" />
+    <MESSAGE value="création réseau" />
+    <MESSAGE value="création réseau-correction" />
+    <MESSAGE value="classe réseaux" />
+    <MESSAGE value="classe voisinage" />
+    <MESSAGE value="changement de nom" />
+    <MESSAGE value="changement" />
+    <MESSAGE value="comparer le voisinnage" />
+    <MESSAGE value="changement 23/05" />
+    <MESSAGE value="changement appliquertransition" />
+    <MESSAGE value="correction bug etat" />
+    <MESSAGE value="correction bug" />
+    <MESSAGE value="appliquer transition" />
+    <MESSAGE value="appliquer transition + getVoisinnage" />
+    <MESSAGE value="appliquer transition + comparaison_voisinnage" />
+    <MESSAGE value="ajout attribut taille Fonctiontransition" />
+    <MESSAGE value="finito pipo appliquertrans" />
+    <MESSAGE value="s de outils" />
+    <MESSAGE value="appliquer transition + surcharge opérateur &quot;[]&quot; pour la classe Ensembleetat" />
+    <MESSAGE value="fin appliquertransition" />
+    <MESSAGE value="test Qt(rien n'a été changé)" />
+    <MESSAGE value="correction bug voisinage" />
+    <option name="LAST_COMMIT_MESSAGE" value="correction bug voisinage" />
+  </component>
+</project>
