@@ -1,13 +1,13 @@
 //
 // Created by Anne LAHNECHE on 24/05/2021.
 //
-//#include "configuration.h"
-//#include "etat.h"
-//#include "etat_reseau.h"
-//#include "Modele.h"
+#include "configuration.h"
+#include "etat.h"
+#include "etat_reseau.h"
+#include "Modele.h"
 #include "simulateur.h"
-//#include "voisinage.h"
-//#include "outils.h"
+#include "voisinage.h"
+#include "outils.h"
 #include <QApplication>
 #include "affichage_info.h"
 #include "menuprincipale_2.h"
@@ -15,7 +15,7 @@
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
-    QApplication app(argc, argv);
+    /*QApplication app(argc, argv);
     information fenetre;
     MenuPrincipale_2 mn;
     fenetre.show();
@@ -98,32 +98,37 @@ int main(int argc, char* argv[]) {
      */
 
 
-    /* vio
+    // vio
 
-    /* EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
-    ensembleEtats->definirEtats();
+    EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
+    /*ensembleEtats->definirEtats();
     for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
         cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
-    }
+    }*/
+
+    ensembleEtats->getListe()[0].setIndice(1);
+    ensembleEtats->getListe()[0].setlabel("A");
+
+    ensembleEtats->getListe()[1].setIndice(2);
+    ensembleEtats->getListe()[1].setlabel("B");
 
      Reseau res(3,3);
     Configuration* configDepart = new Configuration(res, *ensembleEtats);
 
-     test getVoisinage
+     //test getVoisinage ;
     Etat* mort = (*ensembleEtats)[1];
     Etat* vivant = (*ensembleEtats)[2];
    cout << "\ntests recup mort et vivant\n";
     cout << mort->getIndice() << " " << mort->getLabel() << endl;
     cout << vivant->getIndice() << " " << vivant->getLabel() << endl;
-/*
+
     configDepart->setEtatCellule(1,0,vivant); // cell de gauche
     configDepart->setEtatCellule(0,1,vivant); // cell du haut // les autres sont à "mort" par initialisation
     cout << "tests setEtatCellule" << endl;
     cout << configDepart->getEtatCellule(1,0).getIndice() << " " << configDepart->getEtatCellule(1,0).getLabel() << endl;
-    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;*
-/*
-    Case* liste_cases = new Case[4];
+    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;
+    /*Case * liste_cases = new Case[4];
     Case gauche(0,-1);
     Case haute(-1,0);
     Case droite(0,1);
@@ -137,12 +142,12 @@ int main(int argc, char* argv[]) {
 /*
     Voisinage* v = new Voisinage;
     v->setNbCellule(4);
-    v->setensemble_case(liste_cases);
+    v->setensemble_case(liste_cases);*/
 
     //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
-V_Moore moore;
-moore.definir_ensemble_case(2);
+    V_Moore moore;
+    moore.definir_ensemble_case(2);
 
 
     // orhane
@@ -155,7 +160,7 @@ moore.definir_ensemble_case(2);
 
     FonctionTransition * f = new FonctionTransition(tab, 4);
 
-    Modele m("modele 1",ensembleEtats, f, v, "ta race", "Orhane", 2021);
+    Modele m("modele 1",ensembleEtats, f, &moore, "ta race", "Orhane", 2021);
 
     auto configArrivee= new Configuration;
 
@@ -179,13 +184,13 @@ moore.definir_ensemble_case(2);
         cout<<"\n";
     }
 
- */
 
 // vio
-/*
+
 V_VonNeumann vonneum;
 vonneum.definir_ensemble_case(2);
-*/
+return 0;
+}
 
 
 

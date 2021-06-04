@@ -17,7 +17,6 @@ class Case
     void setC(int newC) { this->c = newC; }
     void setL_C(int newL, int newC) {this->l = newL; this->c = newC;}
     Case() = default;
-    Case(int L, int C) : l(L), c(C){};
     friend class Voisinage;
     friend class V_VonNeumann;
     friend class V_Moore;
@@ -26,6 +25,7 @@ class Case
 public:
     int getL() const { return l; };
     int getC() const { return c; };
+    Case(int L, int C) : l(L), c(C){};
 };
 
 class Voisinage // classe abstraite
