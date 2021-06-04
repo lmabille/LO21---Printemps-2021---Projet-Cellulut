@@ -147,16 +147,16 @@ int main(int argc, char* argv[]) {
     //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
     V_Moore moore;
-    moore.definir_ensemble_case(2);
+    moore.definir_ensemble_case(1);
 
 
     // orhane
     auto tab = new string[4];
 
-    tab[0]="221211";
-    tab[1]="211121";
-    tab[2]="111222";
-    tab[3]="121122";
+    tab[0]="2212111111";
+    tab[1]="2111211111";
+    tab[2]="1112211112";
+    tab[3]="1212111112";
 
     FonctionTransition * f = new FonctionTransition(tab, 4);
 

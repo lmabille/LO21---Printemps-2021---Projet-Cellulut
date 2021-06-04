@@ -7,7 +7,7 @@ using namespace std;
 using namespace pugi;
 
 // ça arrive
-char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit)
+char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat)
 {
     // pour un voisinnage donné on va vérifier si ce voisinnage est dans
     // le tableau de fonction transition si oui on va renvoyer un caractère qui
@@ -23,7 +23,6 @@ char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned in
         //     << "\n\n";
         st = trans[i].substr(1, trans[i].length() - 2);
         st.append(st);
-        //cout << voisins << "\n";
         test = st.find(voisins);
         if (test != -1)
         {
@@ -34,6 +33,42 @@ char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned in
     }
     return cel;
 }
+
+char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat){
+    auto tab = new int[nb_Etat]; //initialisation du tableau
+    for (int i=0; i<nb_Etat; i++){
+        tab[i]=0;
+    }
+
+    for (int i=0; i<voisins.length();i++){
+        tab[voisins[i]-'0'] ++;//pour chaque cellule du voisinnage on va ajouter une occurence à la case du tableau correspond à son état
+    }
+
+    string tab_de_inten ;
+    char c ;
+    for (int i=0; i<nb_Etat; i++){ //ici on crée la chaîne de caractère que l'on va comparer avec les règles de transition
+        c=tab[i]+'0';
+        tab_de_inten.push_back(c);
+    }
+
+    int test = 0;
+    int i=0;
+    string st;
+
+    while (i < limit && (trans[i][0] == cel))
+    {
+        st = trans[i].substr(1, trans[i].length() - 2);//ici on prélève la partie de la règle qui nous intéresse
+        test = st.compare(tab_de_inten);
+        if (test == 0)
+        {
+            size_t j = (trans[i].length() - 1);
+            return trans[i][j];
+        }
+        i++;
+    }
+    return cel;
+
+};
 
 int char_to_int(char c)
 {
@@ -63,7 +98,7 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
             };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i, j).getIndice());
             //cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
-            etatDest = comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau + p, *etatDepart, fonctionTrans->taille - p);
+            etatDest = fonctionTrans->comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau + p, *etatDepart, fonctionTrans->taille - p, etatsPossibles->getNombreEtats());
             //cout<<"etat dest : "<<char_to_int(etatDest)<<"\n";
             e = (*etatsPossibles)[char_to_int(etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i, j, e);

@@ -12,6 +12,7 @@ using namespace std;
 
 class FonctionTransition
 {
+protected:
     string *tableau;
     unsigned int taille;
     friend class Modele;
@@ -22,6 +23,12 @@ public:
     FonctionTransition() = default;
     string *getTableau() { return tableau; }
     unsigned int getTaille() const { return taille; }
+    virtual char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat);
+};
+
+class FonctionTransitionIntention : public FonctionTransition {
+public:
+    char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat);
 };
 
 class Modele
