@@ -48,6 +48,8 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     char c ;
     for (int i=0; i<nb_Etat; i++){ //ici on crée la chaîne de caractère que l'on va comparer avec les règles de transition
         c=tab[i]+'0';
+        //cout<<tab[i]<<"=tab[i]\n";
+        //cout<<c<<"=c\n";
         tab_de_inten.push_back(c);
     }
 
@@ -58,6 +60,8 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     while (i < limit && (trans[i][0] == cel))
     {
         st = trans[i].substr(1, trans[i].length() - 2);//ici on prélève la partie de la règle qui nous intéresse
+        cout<<st<<"=st\n";
+        cout<<tab_de_inten<<"=tab_de_inten\n";
         test = st.compare(tab_de_inten);
         if (test == 0)
         {

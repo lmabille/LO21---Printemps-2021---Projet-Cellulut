@@ -28,6 +28,7 @@ public:
 
 class FonctionTransitionIntention : public FonctionTransition {
 public:
+    FonctionTransitionIntention(string *tab, unsigned int t) : FonctionTransition(tab,t){};
     char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat);
 };
 

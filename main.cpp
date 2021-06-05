@@ -107,18 +107,18 @@ int main(int argc, char* argv[]) {
         cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
     }*/
 
-    ensembleEtats->getListe()[0].setIndice(1);
+    ensembleEtats->getListe()[0].setIndice(0);
     ensembleEtats->getListe()[0].setlabel("A");
 
-    ensembleEtats->getListe()[1].setIndice(2);
+    ensembleEtats->getListe()[1].setIndice(1);
     ensembleEtats->getListe()[1].setlabel("B");
 
      Reseau res(3,3);
     Configuration* configDepart = new Configuration(res, *ensembleEtats);
 
      //test getVoisinage ;
-    Etat* mort = (*ensembleEtats)[1];
-    Etat* vivant = (*ensembleEtats)[2];
+    Etat* mort = (*ensembleEtats)[0];
+    Etat* vivant = (*ensembleEtats)[1];
    cout << "\ntests recup mort et vivant\n";
     cout << mort->getIndice() << " " << mort->getLabel() << endl;
     cout << vivant->getIndice() << " " << vivant->getLabel() << endl;
@@ -151,14 +151,18 @@ int main(int argc, char* argv[]) {
 
 
     // orhane
-    auto tab = new string[4];
+    auto tab = new string[2];
 
-    tab[0]="2212111111";
-    tab[1]="2111211111";
-    tab[2]="1112211112";
-    tab[3]="1212111112";
+    /*tab[0]="1101000000";
+    tab[1]="1000100000";
+    tab[2]="0001100001";
+    tab[3]="0101000001";*/
 
-    FonctionTransition * f = new FonctionTransition(tab, 4);
+    tab[0]="1710";
+    tab[1]="0621";
+
+    FonctionTransition * f;
+    f = new FonctionTransitionIntention(tab, 2);
 
     Modele m("modele 1",ensembleEtats, f, &moore, "ta race", "Orhane", 2021);
 
