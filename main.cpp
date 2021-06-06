@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
     fenetre.show();
     return app.exec();*/
 
-    /*std::cout<<"Yo !";
+  /*  std::cout<<"Yo !";
 
     Etat *listeEtat=new Etat[4];
     Etat e1(0, "mort", "noir");
@@ -71,20 +71,20 @@ int main(int argc, char* argv[]) {
     listeEtat[0]=e1;
     listeEtat[1]=e2;
     listeEtat[2]=e3;
-    listeEtat[3]=e4;*/
+    listeEtat[3]=e4;
 
 
     //On crée l'ensemble d'état
-   /* EnsembleEtats ensemble(4);
+    EnsembleEtats ensemble(4);
     ensemble.setListe(listeEtat);
 
 
 
     V_VonNeumann V;
-    V.definir_ensemble_case(4);*/
+    V.definir_ensemble_case(4);
 
     //On crée la fonction de transition
-    /*string * tab = new string[4];
+    string * tab = new string[4];
     tab[0]="100211";
     tab[1]="100210";
     tab[2]="123011";
@@ -94,17 +94,17 @@ int main(int argc, char* argv[]) {
 
     //On crée le modèle
 
-  /*  Modele M("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+   /* Modele M("testLolo4", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
     M.sauvegardeM();*/
 
 
 
     //Test configuration
- //   Reseau res(3,3);
+//   Reseau res(3,3);
 
     //On initialise la configuration
-   /* Configuration conf(res, ensemble);
-    conf.sauvegarderConfiguration("testLolo3", "ConfigurationInitiale");*/
+//   Configuration conf(res, ensemble);
+  //  conf.sauvegarderConfiguration("testLolo3", "ConfigurationInitiale");
 
 
 
