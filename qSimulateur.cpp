@@ -7,7 +7,8 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
 
 
 
-   S = new Simulateur(*modele, *conf);
+   S = new Simulateur(*modele);
+   S->setConfigDepart(*conf);
 
 
 

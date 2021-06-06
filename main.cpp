@@ -18,7 +18,7 @@ Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
     //Laurine
-    std::cout<<"yo";
+  /*  std::cout<<"yo";
     QApplication app(argc, argv);
     std::cout<<"yo";
     Etat *listeEtat=new Etat[4];
@@ -50,12 +50,16 @@ int main(int argc, char* argv[]) {
    Reseau res(3,3);
 
     Configuration *conf = new Configuration(res, ensemble);
+
+
+
+
    // std::cout<<"yo";
     qSimulateur fenetre(nullptr, M, conf);
     std::cout<<"yo";
 
     fenetre.show();
-    return app.exec();
+    return app.exec();*/
 
     /*std::cout<<"Yo !";
 
@@ -291,7 +295,7 @@ int main(int argc, char* argv[]) {
 
 /*V_VonNeumann vonneum;
 vonneum.definir_ensemble_case(2);*/
-//return 0;
+return 0;
 }
 
 
