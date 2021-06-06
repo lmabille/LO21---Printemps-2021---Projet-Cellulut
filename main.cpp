@@ -11,10 +11,75 @@
 #include <QApplication>
 #include "affichage_info.h"
 #include "menuprincipale_2.h"
+#include "qSimulateur.h"
+
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
+    //Laurine
+
+   /* QApplication app(argc, argv);
+    qSimulateur fenetre;
+    fenetre.show();
+    return app.exec();*/
+
+    /*std::cout<<"Yo !";
+
+    Etat *listeEtat=new Etat[4];
+    Etat e1(0, "mort", "noir");
+    Etat e2(0, "vivant", "blanc");
+    Etat e3(0, "vener", "rouge");
+    Etat e4(0, "chill", "bleu");
+    listeEtat[0]=e1;
+    listeEtat[1]=e2;
+    listeEtat[2]=e3;
+    listeEtat[3]=e4;*/
+
+
+    //On crée l'ensemble d'état
+   /* EnsembleEtats ensemble(4);
+    ensemble.setListe(listeEtat);
+
+
+
+    V_VonNeumann V;
+    V.definir_ensemble_case(4);*/
+
+    //On crée la fonction de transition
+    /*string * tab = new string[4];
+    tab[0]="100211";
+    tab[1]="100210";
+    tab[2]="123011";
+    tab[3]="210321";
+
+    FonctionTransition f(tab, 4);*/
+
+    //On crée le modèle
+
+  /*  Modele M("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+    M.sauvegardeM();*/
+
+
+
+    //Test configuration
+ //   Reseau res(3,3);
+
+    //On initialise la configuration
+   /* Configuration conf(res, ensemble);
+    conf.sauvegarderConfiguration("testLolo3", "ConfigurationInitiale");*/
+
+
+
+
+
+
+
+
+
+
+
+
     /*QApplication app(argc, argv);
     information fenetre;
     MenuPrincipale_2 mn;
@@ -100,24 +165,24 @@ int main(int argc, char* argv[]) {
 
     // vio
 
-    EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
+   // EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
     /*ensembleEtats->definirEtats();
     for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
         cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
     }*/
 
-    ensembleEtats->getListe()[0].setIndice(0);
+  /*  ensembleEtats->getListe()[0].setIndice(0);
     ensembleEtats->getListe()[0].setlabel("A");
 
     ensembleEtats->getListe()[1].setIndice(1);
     ensembleEtats->getListe()[1].setlabel("B");
 
      Reseau res(3,3);
-    Configuration* configDepart = new Configuration(res, *ensembleEtats);
+    Configuration* configDepart = new Configuration(res, *ensembleEtats);*/
 
      //test getVoisinage ;
-    Etat* mort = (*ensembleEtats)[0];
+/*    Etat* mort = (*ensembleEtats)[0];
     Etat* vivant = (*ensembleEtats)[1];
    cout << "\ntests recup mort et vivant\n";
     cout << mort->getIndice() << " " << mort->getLabel() << endl;
@@ -127,7 +192,7 @@ int main(int argc, char* argv[]) {
     configDepart->setEtatCellule(0,1,vivant); // cell du haut // les autres sont à "mort" par initialisation
     cout << "tests setEtatCellule" << endl;
     cout << configDepart->getEtatCellule(1,0).getIndice() << " " << configDepart->getEtatCellule(1,0).getLabel() << endl;
-    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;
+    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;*/
     /*Case * liste_cases = new Case[4];
     Case gauche(0,-1);
     Case haute(-1,0);
@@ -146,19 +211,19 @@ int main(int argc, char* argv[]) {
 
     //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
-    V_Moore moore;
-    moore.definir_ensemble_case(1);
+  /*  V_Moore moore;
+    moore.definir_ensemble_case(1);*/
 
 
     // orhane
-    auto tab = new string[2];
+ //   auto tab = new string[2];
 
     /*tab[0]="1101000000";
     tab[1]="1000100000";
     tab[2]="0001100001";
     tab[3]="0101000001";*/
 
-    tab[0]="1710";
+  /*  tab[0]="1710";
     tab[1]="0621";
 
     FonctionTransition * f;
@@ -186,13 +251,13 @@ int main(int argc, char* argv[]) {
             cout<<configArrivee->getEtatCellule(i,j).getIndice();
         }
         cout<<"\n";
-    }
+    }*/
 
 
 // vio
 
-V_VonNeumann vonneum;
-vonneum.definir_ensemble_case(2);
+/*V_VonNeumann vonneum;
+vonneum.definir_ensemble_case(2);*/
 return 0;
 }
 

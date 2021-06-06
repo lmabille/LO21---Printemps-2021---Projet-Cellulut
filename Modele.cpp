@@ -222,7 +222,7 @@ Modele creerModele()
 void Modele::sauvegardeM() {
     //Création du doc
     xml_document doc;
-    string xmlFilePath = "Modeles/";
+    string xmlFilePath = "../LO21---Printemps-2021---Projet-Cellulut/Modeles/";
     xmlFilePath += this->getTitre();
     xmlFilePath += ".xml";
 
@@ -284,8 +284,22 @@ void Modele::sauvegardeM() {
         xml_node caseCoord = element.append_child("Case");
         caseCoord.append_attribute("X") = listeCase[i].getL();
         caseCoord.append_attribute("Y") = listeCase[i].getC();
-        string *regles = this->getFonction()->getTableau();
-        bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
-        cout << saveSuccess;
+
     }
+
+    //gestion des règles
+
+    xml_node typeF = modele.append_child("TypeFonctionTransition");
+    typeF.append_attribute("name")=getTypeFonction().c_str();
+    xml_node liste = modele.append_child("ListeRegle");
+    const unsigned int tailleR = this->getFonction()->getTaille();
+    string *regles=this->getFonction()->getTableau();
+     for(unsigned int i=0; i<tailleR; i++){
+           xml_node regle = liste.append_child("Regle");
+           regle.append_attribute("name")=regles[i].c_str();
+        }
+
+     bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
+     cout<<saveSuccess;
+
 }

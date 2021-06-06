@@ -16,13 +16,13 @@ class Case
     void setL(int newL) { this->l = newL; }
     void setC(int newC) { this->c = newC; }
     void setL_C(int newL, int newC) {this->l = newL; this->c = newC;}
-    Case() = default;
     friend class Voisinage;
     friend class V_VonNeumann;
     friend class V_Moore;
     friend class V_ChoixUtilisateur;
 
 public:
+    Case() = default;
     int getL() const { return l; };
     int getC() const { return c; };
     Case(int L, int C) : l(L), c(C){};

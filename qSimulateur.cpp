@@ -49,7 +49,7 @@ qSimulateur::qSimulateur(QWidget* parent):QWidget(parent){
     vitesse=new QSpinBox;
     vitesse->setRange(0,100);
     vitesse->setValue(0);
-    vit = new QLabel("Vitesse de défilement (1=10 pas par seconde)");
+    vit = new QLabel("Vitesse de défilement (1= pas/par seconde)");
     gestionVitesse = new QHBoxLayout;
     gestionVitesse->addWidget(vit);
     gestionVitesse->addWidget(vitesse);

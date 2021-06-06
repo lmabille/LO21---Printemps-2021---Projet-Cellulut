@@ -38,7 +38,7 @@ class Modele
     EnsembleEtats *etatsPossibles; // � prendre en compte dans les constructeurs/ destructeurs!
     FonctionTransition *fonctionTrans;
     Voisinage *typeVoisinnage;
-
+    string typef;
     string description;
     string auteur;
     unsigned int anneeCreation;
@@ -46,7 +46,7 @@ class Modele
 
 public:
     Modele() = default;
-    Modele(string t, EnsembleEtats *e, FonctionTransition *f, Voisinage *v, string d, string a = "", unsigned int annee = 0) : titre(t), etatsPossibles(e), fonctionTrans(f), typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee) {}
+    Modele(string t, EnsembleEtats *e, FonctionTransition *f, string typeFonction,Voisinage *v, string d, string a = "", unsigned int annee = 0) : titre(t), etatsPossibles(e), fonctionTrans(f),  typef(typeFonction),typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee) {}
     ~Modele() { delete[] etatsPossibles; } // pas s�r de �a // + voir le destructeur de la classe EnsembleEtats
     const string &getTitre() const { return titre; }
     EnsembleEtats * getEtatsPossibles() const { return etatsPossibles; }
@@ -54,6 +54,7 @@ public:
     Voisinage *getVoisin() const { return typeVoisinnage; }
     const string &getDescription() const { return description; }
     const string &getAuteur() const { return auteur; }
+    const string& getTypeFonction() const {return typef; }
     FonctionTransition *getFonction() { return fonctionTrans; }
     void setAutheur(string nom) { this->auteur = nom; }
     void setTitre(string titre) { this->titre = titre; }
