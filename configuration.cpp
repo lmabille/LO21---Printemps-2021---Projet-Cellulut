@@ -121,7 +121,7 @@ Configuration& Configuration::operator=(const Configuration& c)
 
 void Configuration::sauvegarderConfiguration(string titreMdodele, string nom){
     xml_document doc;
-    string xmlFilePath = "Modeles/";
+    string xmlFilePath = "../LO21---Printemps-2021---Projet-Cellulut/Modeles/";
     xmlFilePath += titreMdodele;
     xmlFilePath += ".xml";
     xml_parse_result result = doc.load_file(xmlFilePath.c_str(),parse_default|parse_declaration);

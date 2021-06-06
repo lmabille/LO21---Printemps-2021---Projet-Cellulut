@@ -22,6 +22,7 @@ private:
     Simulateur(const Simulateur &) = delete;
     void operator=(const Simulateur &) = delete;
     static Simulateur *uniqueInstance ;
+    friend class qSimulateur;
     //
 
 public:
@@ -29,6 +30,7 @@ public:
     Simulateur(const Modele &m, const Configuration& dep, size_t buf = 2);
     ~Simulateur();
     void setConfigDepart(const Configuration& config); // définit une configuration de départ
+    const Configuration* getConfigurationDepart() const {return configurationDepart; }//pour le qSimulateur
     void next(); // applique la fonction de transition du modèle sur une génération
     void run(size_t nbSteps); // applique la fonction de transition du modèle sur un nombre de générations donnés (nbSteps)
     const Configuration& getLastConfig() const; // renvoie la dernière configuration enregistrée

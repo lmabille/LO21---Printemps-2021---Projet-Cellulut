@@ -13,11 +13,12 @@
 #include <QHeaderView>
 #include <QModelIndex>
 #include <QPushButton>
+#include "simulateur.h"
 
 class qSimulateur : public QWidget
 {
 
-    //Simulateur S;
+    Simulateur *S;
 
 
     //Boutons fenêtres
@@ -40,7 +41,7 @@ class qSimulateur : public QWidget
 
 public:
     // Constructeur
-    explicit qSimulateur(QWidget* parent = nullptr);
+    explicit qSimulateur(QWidget* parent = nullptr, Modele *modele = nullptr, Configuration *conf =nullptr );
 
 private slots:
     /*
