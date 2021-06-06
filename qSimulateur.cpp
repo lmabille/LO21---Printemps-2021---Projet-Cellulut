@@ -1,13 +1,24 @@
 #include <qSimulateur.h>
 
-qSimulateur::qSimulateur(QWidget* parent):QWidget(parent){
+qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):QWidget(parent){
+
+    //Création du simulateur
+
+
+
+
+   S = new Simulateur(*modele, *conf);
+
+
 
 
     //Création de la grille
 
     unsigned int taille = 15;//taille cellule
-    unsigned int nbLigne=15;
-    unsigned int nbColonne=20;
+    const int nbLigne= S->getConfigurationDepart()->getReseauLignes();
+    const int nbColonne= S->getConfigurationDepart()->getReseauColonnes();
+  // unsigned int nbLigne=15;
+   //unsigned int nbColonne=20;
     grille = new QTableWidget(nbLigne, nbColonne);//ici on met la taille passé en argument
     grille->setFixedSize(2.61*taille*nbColonne, 1.61*taille*nbLigne);//permet d'agrandir la fenetre en faire une fonction de la taille
 
@@ -17,13 +28,16 @@ qSimulateur::qSimulateur(QWidget* parent):QWidget(parent){
     grille->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     grille->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    for(unsigned int i=0; i<nbLigne; i++ ){//pour chaque colonne
-        for(unsigned int j=0; j<nbColonne; j++){//pour chaque ligne
+    for(int i=0; i<nbLigne; i++ ){//pour chaque colonne
+        for(int j=0; j<nbColonne; j++){//pour chaque ligne
             grille->setColumnWidth(j, taille);
             grille->setRowHeight(i, taille);
             grille->setItem(i, j, new QTableWidgetItem(""));
-            //il faudrait qu'on récupère la couleur en fct de (i,j)
-            grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+            //On récupère la couleur de l'état
+            string couleur = S->getConfigurationDepart()->getEtatCellule (i, j).getCouleur();
+            if(couleur == "noir")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
+            if(couleur == "blanc")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+           // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
         }
     }
 

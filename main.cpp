@@ -18,11 +18,44 @@ Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
     //Laurine
+    std::cout<<"yo";
+    QApplication app(argc, argv);
+    std::cout<<"yo";
+    Etat *listeEtat=new Etat[4];
+    Etat e1(0, "mort", "noir");
+    Etat e2(0, "vivant", "blanc");
+    Etat e3(0, "vener", "rouge");
+    Etat e4(0, "chill", "bleu");
+    listeEtat[0]=e1;
+    listeEtat[1]=e2;
+    listeEtat[2]=e3;
+    listeEtat[3]=e4;
 
-   /* QApplication app(argc, argv);
-    qSimulateur fenetre;
+    EnsembleEtats ensemble(4);
+    ensemble.setListe(listeEtat);
+
+    V_VonNeumann V;
+    V.definir_ensemble_case(4);
+
+    string * tab = new string[4];
+    tab[0]="100211";
+    tab[1]="100210";
+    tab[2]="123011";
+    tab[3]="210321";
+
+    FonctionTransition f(tab, 4);
+
+   Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+
+   Reseau res(3,3);
+
+    Configuration *conf = new Configuration(res, ensemble);
+   // std::cout<<"yo";
+    qSimulateur fenetre(nullptr, M, conf);
+    std::cout<<"yo";
+
     fenetre.show();
-    return app.exec();*/
+    return app.exec();
 
     /*std::cout<<"Yo !";
 
@@ -258,7 +291,7 @@ int main(int argc, char* argv[]) {
 
 /*V_VonNeumann vonneum;
 vonneum.definir_ensemble_case(2);*/
-return 0;
+//return 0;
 }
 
 
