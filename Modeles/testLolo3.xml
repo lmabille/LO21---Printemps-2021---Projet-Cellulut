@@ -4,13 +4,13 @@
    <Description name="Je suis la description" />
    <Auteur name="Newton" />
    <AnneeCreation name="2023" />
-   <Etat>
+   <Etats>
       <NombreEtat name="4" />
-      <Etat Label="mort" Couleur="noir" Indice="0" />
+      <Etat Label="mort" Couleur="noir" Indice="3" />
       <Etat Label="vivant" Couleur="blanc" Indice="0" />
       <Etat Label="vener" Couleur="rouge" Indice="0" />
       <Etat Label="chill" Couleur="bleu" Indice="0" />
-   </Etat>
+   </Etats>
    <Voisinage>
       <Nom name="" />
       <Element>
