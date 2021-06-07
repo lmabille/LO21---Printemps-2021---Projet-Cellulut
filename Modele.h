@@ -22,6 +22,8 @@ public:
     FonctionTransition(string *tab, unsigned int t) : tableau(tab), taille(t){};
     FonctionTransition() = default;
     string *getTableau() { return tableau; }
+    void setTableau(string* tab) {this->tableau = tab;}
+    void setTaille(unsigned int nb) {this->taille = nb;}
     unsigned int getTaille() const { return taille; }
     virtual char comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat);
 };
@@ -45,7 +47,7 @@ class Modele
     friend class Simulateur;
 
 public:
-    Modele() = default;
+    Modele();
     Modele(string t, EnsembleEtats *e, FonctionTransition *f, string typeFonction,Voisinage *v, string d, string a = "", unsigned int annee = 0) : titre(t), etatsPossibles(e), fonctionTrans(f),  typef(typeFonction),typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee) {}
     ~Modele() { delete[] etatsPossibles; } // pas s�r de �a // + voir le destructeur de la classe EnsembleEtats
     const string &getTitre() const { return titre; }

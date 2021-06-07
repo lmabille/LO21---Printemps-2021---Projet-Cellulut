@@ -41,11 +41,14 @@ protected:
 public:
 
     // constructeurs pour une classe abstraite?
-    // Voisinage()=default;
-    // Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]) { typeVoisi = ""; };
+    //Voisinage();
+    //Voisinage(int n);
 
     const string getTypeVoisi(); // non virtual
     const int getNbCelluleVoisi() const; // non virtual
+    void setNbCellule(int nb) {this->nbCelluleVoisi = nb;};
+    void setensemble_case(Case *c) {this->ensemble_case = c; };
+    void setType(string t) { typeVoisi = t; }
 
     Case *getTableau(); // non virtual
     Case &operator[](int indice); // non virtual
@@ -72,6 +75,7 @@ public:
 class V_ChoixUtilisateur: public Voisinage
 {
 public:
+    V_ChoixUtilisateur(int n);
     void definir_ensemble_case(int rayon) override;
 };
 

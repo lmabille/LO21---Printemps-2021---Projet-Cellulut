@@ -4,6 +4,18 @@
 
 #include "voisinage.h"
 
+
+//Voisinage::Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
+
+//Voisinage::Voisinage() : nbCelluleVoisi(10), ensemble_case(new Case[10]()) { typeVoisi = ""; }
+
+V_ChoixUtilisateur::V_ChoixUtilisateur(int n) {
+    this->nbCelluleVoisi = n;
+    this->ensemble_case = new Case[n]();
+    this->setType("");
+} //: nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
+
+
 void V_VonNeumann::definir_ensemble_case(int rayon)
 {
     nbCelluleVoisi = 4*rayon;
@@ -97,13 +109,12 @@ const string Voisinage::getTypeVoisi()
 /*
 void Voisinage::setNbCellule(int nb)
 {
-    if (nb >= 0)
+    this->nbCelluleVoisi = nb;
+    /*if (nb >= 0)
         this->nbCelluleVoisi = nb;
     else
-        cout << "Nombre négatif. Erreur" << endl;
-}
+        cout << "Nombre négatif. Erreur" << endl;*/
 
-*/
 
 //Ne pas commenter j'en ai besoin svp ;)
 Case *Voisinage::getTableau()
@@ -125,4 +136,9 @@ Case &Voisinage::operator[](int indice)
     {
         cout << erreur << endl;
     }
+
 }
+
+
+
+

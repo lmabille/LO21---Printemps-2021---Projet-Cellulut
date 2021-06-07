@@ -4,13 +4,13 @@
    <Description name="Je suis la description" />
    <Auteur name="Newton" />
    <AnneeCreation name="2023" />
-   <Etat>
+   <Etats>
       <NombreEtat name="4" />
-      <Etat Label="mort" Couleur="noir" Indice="0" />
+      <Etat Label="mort" Couleur="noir" Indice="3" />
       <Etat Label="vivant" Couleur="blanc" Indice="0" />
       <Etat Label="vener" Couleur="rouge" Indice="0" />
       <Etat Label="chill" Couleur="bleu" Indice="0" />
-   </Etat>
+   </Etats>
    <Voisinage>
       <Nom name="" />
       <Element>
@@ -39,19 +39,22 @@
       <Regle name="123011" />
       <Regle name="210321" />
    </ListeRegle>
-   <Configuration>
-      <Configuration name="ConfigurationInitiale" />
-      <Configuration lignes="3" colonnes="3" />
-      <EnsembleCase>
-         <Case X="0" Y="0" Indice="0" Label="mort" Couleur="noir" />
-         <Case X="0" Y="1" Indice="0" Label="mort" Couleur="noir" />
-         <Case X="0" Y="2" Indice="0" Label="mort" Couleur="noir" />
-         <Case X="1" Y="0" Indice="0" Label="mort" Couleur="noir" />
-         <Case X="1" Y="1" Indice="0" Label="mort" Couleur="noir" />
-         <Case X="1" Y="2" Indice="0" Label="mort" Couleur="noir" />
-         <Case X="2" Y="0" Indice="0" Label="mort" Couleur="noir" />
-         <Case X="2" Y="1" Indice="0" Label="mort" Couleur="noir" />
-         <Case X="2" Y="2" Indice="0" Label="mort" Couleur="noir" />
-      </EnsembleCase>
-   </Configuration>
+   <ListeConfig>
+      <Configuration>
+         <Nom name="ConfigurationInitiale" />
+         <Taille lignes="3" colonnes="3" />
+         <EnsembleCase>
+            <Case X="0" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="2" Indice="0" Label="mort" Couleur="noir" />
+         </EnsembleCase>
+      </Configuration>
+   </ListeConfig>
+
 </Modele>

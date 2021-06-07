@@ -24,6 +24,7 @@ public:
     int getIndice() {return indice;}
     string getLabel();
     string getCouleur(){return couleur;}
+    void setCouleur(string c) { this->couleur = c;};
     void setIndice(int i) {indice = i;}
     void setlabel(string s) { label = s;}
     // setCouleur void setCouleur; // à définir

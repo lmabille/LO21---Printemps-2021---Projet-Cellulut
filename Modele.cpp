@@ -3,8 +3,21 @@
 // #include "outil.h"
 #include "pugixml.hpp"
 
+
 using namespace std;
 using namespace pugi;
+
+
+
+Modele::Modele() {
+    //this->typeVoisinnage =
+    this->typeVoisinnage = new V_ChoixUtilisateur(10);
+    this->etatsPossibles = new EnsembleEtats(10);
+    this->fonctionTrans = new FonctionTransition;
+
+
+}
+
 
 // ça arrive
 char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat)
