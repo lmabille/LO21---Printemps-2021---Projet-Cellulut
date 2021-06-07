@@ -9,18 +9,78 @@
 #include "voisinage.h"
 #include "outils.h"
 #include <QApplication>
-#include "affichage_info.h"
 #include "menuprincipale_2.h"
 #include "qSimulateur.h"
+#include "informations.h"
+#include "choix_modele.h"
+#include "taille_reseau.h"
+#include "config.h"
 
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
+
+    //Lucas
+  /*  QApplication app(argc, argv);
+
+    config fenetre_config;
+    fenetre_config.show();
+    return app.exec();
+
+
+}*/
+
+
+
+
+
+
     //Laurine
     std::cout<<"yo";
     QApplication app(argc, argv);
     std::cout<<"yo";
+    Etat *listeEtat=new Etat[2];
+    Etat e1(0, "mort", "noir");
+    Etat e2(1, "vivant", "blanc");
+    listeEtat[0]=e1;
+    listeEtat[1]=e2;
+
+    EnsembleEtats ensemble(2);
+    ensemble.setListe(listeEtat);
+
+    V_VonNeumann V;
+    V.definir_ensemble_case(1);
+
+    string * tab = new string[2];
+    tab[0]="000001";
+    tab[1]="111110";
+
+
+    FonctionTransition f(tab, 2);
+
+   Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+
+   Reseau res(4,3);
+
+    Configuration *conf = new Configuration(res, ensemble);
+
+
+
+
+    std::cout<<"yo ";
+    qSimulateur fenetre(nullptr, M, conf);
+    std::cout<<"yo";
+    fenetre.show();
+     return app.exec();
+  /*  MenuPrincipale_2 m;
+    m.show();
+
+    fenetre.show();
+    return app.exec();
+
+    std::cout<<"Yo !";
+
     Etat *listeEtat=new Etat[4];
     Etat e1(0, "mort", "noir");
     Etat e2(0, "vivant", "blanc");
@@ -31,56 +91,18 @@ int main(int argc, char* argv[]) {
     listeEtat[2]=e3;
     listeEtat[3]=e4;
 
+
+    //On crée l'ensemble d'état
     EnsembleEtats ensemble(4);
     ensemble.setListe(listeEtat);
+
+
 
     V_VonNeumann V;
     V.definir_ensemble_case(4);
 
-    string * tab = new string[4];
-    tab[0]="100211";
-    tab[1]="100210";
-    tab[2]="123011";
-    tab[3]="210321";
-
-    FonctionTransition f(tab, 4);
-
-   Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
-
-   Reseau res(3,3);
-
-    Configuration *conf = new Configuration(res, ensemble);
-   // std::cout<<"yo";
-    qSimulateur fenetre(nullptr, M, conf);
-    std::cout<<"yo";
-
-    fenetre.show();
-    return app.exec();
-
-    /*std::cout<<"Yo !";
-
-    Etat *listeEtat=new Etat[4];
-    Etat e1(0, "mort", "noir");
-    Etat e2(0, "vivant", "blanc");
-    Etat e3(0, "vener", "rouge");
-    Etat e4(0, "chill", "bleu");
-    listeEtat[0]=e1;
-    listeEtat[1]=e2;
-    listeEtat[2]=e3;
-    listeEtat[3]=e4;*/
-
-
-    //On crée l'ensemble d'état
-   /* EnsembleEtats ensemble(4);
-    ensemble.setListe(listeEtat);
-
-
-
-    V_VonNeumann V;
-    V.definir_ensemble_case(4);*/
-
     //On crée la fonction de transition
-    /*string * tab = new string[4];
+    string * tab = new string[4];
     tab[0]="100211";
     tab[1]="100210";
     tab[2]="123011";
@@ -90,17 +112,17 @@ int main(int argc, char* argv[]) {
 
     //On crée le modèle
 
-  /*  Modele M("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
-    M.sauvegardeM();*/
+   // Modele M("testLolo4", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+    //M.sauvegardeM();
 
 
 
     //Test configuration
- //   Reseau res(3,3);
+//   Reseau res(3,3);
 
     //On initialise la configuration
-   /* Configuration conf(res, ensemble);
-    conf.sauvegarderConfiguration("testLolo3", "ConfigurationInitiale");*/
+//   Configuration conf(res, ensemble);
+  //  conf.sauvegarderConfiguration("testLolo3", "ConfigurationInitiale");
 
 
 
@@ -112,8 +134,8 @@ int main(int argc, char* argv[]) {
 
 
 
-
-    /*QApplication app(argc, argv);
+/*
+    QApplication app(argc, argv);
     information fenetre;
     MenuPrincipale_2 mn;
     fenetre.show();
@@ -123,7 +145,7 @@ int main(int argc, char* argv[]) {
 
 
 
-    /*
+
     Reseau r(3, 3);
 
     Etat *mort = new Etat;
@@ -192,30 +214,30 @@ int main(int argc, char* argv[]) {
 
     C->setGrille(grille);
 
-    s.appliquerTransition(*C);
-     */
+    s.appliquerTransition(*C);*/
+
 
 
     // vio
 
    // EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
-    /*ensembleEtats->definirEtats();
+/*    ensembleEtats->definirEtats();
     for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
         cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
-    }*/
+    }
 
-  /*  ensembleEtats->getListe()[0].setIndice(0);
+    ensembleEtats->getListe()[0].setIndice(0);
     ensembleEtats->getListe()[0].setlabel("A");
 
     ensembleEtats->getListe()[1].setIndice(1);
     ensembleEtats->getListe()[1].setlabel("B");
 
      Reseau res(3,3);
-    Configuration* configDepart = new Configuration(res, *ensembleEtats);*/
+    Configuration* configDepart = new Configuration(res, *ensembleEtats);
 
      //test getVoisinage ;
-/*    Etat* mort = (*ensembleEtats)[0];
+    Etat* mort = (*ensembleEtats)[0];
     Etat* vivant = (*ensembleEtats)[1];
    cout << "\ntests recup mort et vivant\n";
     cout << mort->getIndice() << " " << mort->getLabel() << endl;
@@ -225,8 +247,8 @@ int main(int argc, char* argv[]) {
     configDepart->setEtatCellule(0,1,vivant); // cell du haut // les autres sont à "mort" par initialisation
     cout << "tests setEtatCellule" << endl;
     cout << configDepart->getEtatCellule(1,0).getIndice() << " " << configDepart->getEtatCellule(1,0).getLabel() << endl;
-    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;*/
-    /*Case * liste_cases = new Case[4];
+    cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;
+    Case * liste_cases = new Case[4];
     Case gauche(0,-1);
     Case haute(-1,0);
     Case droite(0,1);
@@ -237,26 +259,26 @@ int main(int argc, char* argv[]) {
     liste_cases[3] = bas;
     cout << "tests set up liste cases" << endl;
     cout << "[" << gauche.getL() << "," << gauche.getC() << "]" << endl;
-/*
+
     Voisinage* v = new Voisinage;
     v->setNbCellule(4);
-    v->setensemble_case(liste_cases);*/
+    v->setensemble_case(liste_cases);
 
     //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
-  /*  V_Moore moore;
-    moore.definir_ensemble_case(1);*/
-
+    V_Moore moore;
+    moore.definir_ensemble_case(1);
+*/
 
     // orhane
  //   auto tab = new string[2];
 
-    /*tab[0]="1101000000";
+/*    tab[0]="1101000000";
     tab[1]="1000100000";
     tab[2]="0001100001";
-    tab[3]="0101000001";*/
+    tab[3]="0101000001";
 
-  /*  tab[0]="1710";
+    tab[0]="1710";
     tab[1]="0621";
 
     FonctionTransition * f;
@@ -289,10 +311,12 @@ int main(int argc, char* argv[]) {
 
 // vio
 
-/*V_VonNeumann vonneum;
-vonneum.definir_ensemble_case(2);*/
+//V_VonNeumann vonneum;
+//vonneum.definir_ensemble_case(2);
 //return 0;
 }
+
+
 
 
 

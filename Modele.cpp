@@ -3,8 +3,21 @@
 // #include "outil.h"
 #include "pugixml.hpp"
 
+
 using namespace std;
 using namespace pugi;
+
+
+
+Modele::Modele() {
+    //this->typeVoisinnage =
+    this->typeVoisinnage = new V_ChoixUtilisateur(10);
+    this->etatsPossibles = new EnsembleEtats(10);
+    this->fonctionTrans = new FonctionTransition;
+
+
+}
+
 
 // ça arrive
 char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat)
@@ -252,7 +265,7 @@ void Modele::sauvegardeM() {
     annee.append_attribute("name") = this->getAnnee();
 
     //Les attributs d'un état
-    xml_node etats = modele.append_child("Etat");
+    xml_node etats = modele.append_child("Etats");
     xml_node NbrEtat = etats.append_child("NombreEtat");
     int nbr = this->getEnsemble()->getNombreEtats();
     NbrEtat.append_attribute("name") = nbr;

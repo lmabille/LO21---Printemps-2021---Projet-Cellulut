@@ -50,10 +50,10 @@ private slots:
     void synchronizeNumBitToNum(const QString& s);
 
     // Question 2 - Interface de configuration de l'etat de départ
-    void cellActivation(const QModelIndex& index);
+    void cellActivation(const QModelIndex& index);*/
 
-    // Question 3 - Interface d'affichage des états générés
-    void faireSimulation();*/
+    // Passer à la configuration suivante
+    void configurationSuivante();
 };
 
 
