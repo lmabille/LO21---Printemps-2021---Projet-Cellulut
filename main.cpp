@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 
 
     //Laurine
-  /*  std::cout<<"yo";
+    std::cout<<"yo";
     QApplication app(argc, argv);
     std::cout<<"yo";
     Etat *listeEtat=new Etat[4];
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
 
    Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
 
-   Reseau res(3,3);
+   Reseau res(4,3);
 
     Configuration *conf = new Configuration(res, ensemble);
 
@@ -76,6 +76,9 @@ int main(int argc, char* argv[]) {
     std::cout<<"yo";
     qSimulateur fenetre(nullptr, M, conf);
     std::cout<<"yo";
+
+    MenuPrincipale_2 m;
+    m.show();
 
     fenetre.show();
     return app.exec();
