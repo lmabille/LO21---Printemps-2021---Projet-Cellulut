@@ -14,6 +14,7 @@
 #include "informations.h"
 #include "choix_modele.h"
 #include "taille_reseau.h"
+#include "config.h"
 
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
@@ -23,8 +24,8 @@ int main(int argc, char* argv[]) {
     //Lucas
     QApplication app(argc, argv);
 
-    taille_reseau taille_reseau;
-    taille_reseau.show();
+    config fenetre_config;
+    fenetre_config.show();
     return app.exec();
 
 
