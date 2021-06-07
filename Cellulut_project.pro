@@ -14,11 +14,13 @@ HEADERS = \
    $$PWD/simulateur.h \
    $$PWD/voisinage.h \
    chargerModele.h \
+   choix_modele.h \
    informations.h \
    menuprincipale_2.h \
    pugiconfig.hpp \
    pugixml.hpp \
-   qSimulateur.h
+   qSimulateur.h \
+   taille_reseau.h
 
 SOURCES = \
    $$PWD/configuration.cpp \
@@ -29,10 +31,12 @@ SOURCES = \
    $$PWD/simulateur.cpp \
    $$PWD/voisinage.cpp \
    chargerModele.cpp \
+   choix_modele.cpp \
    informations.cpp \
    menuprincipale_2.cpp \
    pugixml.cpp \
-   qSimulateur.cpp
+   qSimulateur.cpp \
+   taille_reseau.cpp
 
 INCLUDEPATH = \
     $$PWD/.
@@ -41,6 +45,8 @@ INCLUDEPATH = \
 
 FORMS += \
     MenuModele.ui \
+    choix_modele.ui \
     informations.ui \
-    menuprincipale_2.ui
+    menuprincipale_2.ui \
+    taille_reseau.ui
 

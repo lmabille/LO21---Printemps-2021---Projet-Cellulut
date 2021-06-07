@@ -12,6 +12,8 @@
 #include "menuprincipale_2.h"
 #include "qSimulateur.h"
 #include "informations.h"
+#include "choix_modele.h"
+#include "taille_reseau.h"
 
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
@@ -20,8 +22,9 @@ int main(int argc, char* argv[]) {
 
     //Lucas
     QApplication app(argc, argv);
-    informations fenetre_info;
-    fenetre_info.show();
+
+    taille_reseau taille_reseau;
+    taille_reseau.show();
     return app.exec();
 
 
