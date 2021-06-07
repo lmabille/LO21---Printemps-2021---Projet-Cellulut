@@ -53,7 +53,12 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
     boutons = new QHBoxLayout;
     depart= new QPushButton("Revenir au début");
     play= new QPushButton("Lancer la simulation");
+
+
     pas= new QPushButton("Avancer d'un pas");
+    connect(pas,SIGNAL(clicked()),this,SLOT(configurationSuivante()));
+
+
     save= new QPushButton("Enregistrer la configuration actuelle");
     boutons->addWidget(play);
     boutons->addWidget(depart);
@@ -75,5 +80,13 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
     ensemble->addLayout(gestionVitesse);
 
     setLayout(ensemble);
+
+}
+
+void qSimulateur::configurationSuivante(){
+    S->next();
+
+
+
 
 }
