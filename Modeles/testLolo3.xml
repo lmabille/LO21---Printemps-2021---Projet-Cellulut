@@ -55,6 +55,21 @@
             <Case X="2" Y="2" Indice="0" Label="mort" Couleur="noir" />
          </EnsembleCase>
       </Configuration>
+      <Configuration>
+         <Nom name="ConfigurationIle2" />
+         <Taille lignes="3" colonnes="3" />
+         <EnsembleCase>
+            <Case X="0" Y="0" Indice="0" Label="vivant" Couleur="noir" />
+            <Case X="0" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="2" Indice="0" Label="mort" Couleur="noir" />
+         </EnsembleCase>
+      </Configuration>
    </ListeConfig>
 
 </Modele>

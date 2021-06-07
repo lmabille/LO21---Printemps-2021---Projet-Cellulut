@@ -13,6 +13,6 @@
 
 
 string * getListeConfig(const char* nom_fichier);
-
+Configuration * chargerConfiguration(const char* nomFichier , string nomConfig);
 
 #endif //LO21_PRINTEMPS_2021_PROJET_CELLULUT_LOADCONFIG_H
