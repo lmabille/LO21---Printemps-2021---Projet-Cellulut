@@ -155,11 +155,12 @@ Modele* chargerModel(const char *nomFichier) {
 
 
                 if (nbVoisin == taille) {
-                    Case* tempo = new Case[taille*2]();
+                    //cout << "augmentailee ok ";
+                    Case* tempo = new Case[taille+15]();
                     for (int j =0; j< taille ; j++ ) {
                         tempo[j] = liste_voisin[j];
                     }
-                    taille = taille *2;
+                    taille = taille + 15;
                     delete [] liste_voisin;
                     liste_voisin = tempo;
 
@@ -176,6 +177,7 @@ Modele* chargerModel(const char *nomFichier) {
             //cout <<"----->" << liste_voisin[0].getL()<<endl;
             //charge->getVoisin()->setNbCellule(nbVoisin);
 
+            //Voisinage *cc = charge->getVoisin();
 
             charge->getVoisin()->setensemble_case(liste_voisin);
             charge->getVoisin()->setNbCellule(nbVoisin);
@@ -186,6 +188,7 @@ Modele* chargerModel(const char *nomFichier) {
 
 
         if (tmp == "ListeRegle") {
+            cout << "-----atteint";
             cout << endl;
 
             xml_node test = tools.child("ListeRegle");
@@ -248,7 +251,7 @@ Modele* chargerModel(const char *nomFichier) {
         cout << endl;
     }
 
-    cout << endl;
+    //cout <<"----atteint aussi" << endl;
 
 
 
