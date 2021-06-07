@@ -132,12 +132,13 @@ void Configuration::sauvegarderConfiguration(string titreMdodele, string nom){
     }
 
     xml_node modele = doc.document_element();//j'espère que ça récup bien le modèle
-    xml_node config = modele.append_child("Configuration");
-    xml_node nomC = config.append_child("Configuration");
+    xml_node configs = modele.append_child("ListeConfig");
+    xml_node config = configs.append_child("Configuration");
+    xml_node nomC = config.append_child("Nom");
     nomC.append_attribute("name")=nom.c_str();
     unsigned int m = this->getReseauLignes();
     unsigned int n = this->getReseauColonnes();
-    xml_node tailleReseau = config.append_child("Configuration");
+    xml_node tailleReseau = config.append_child("Taille");
     tailleReseau.append_attribute("lignes")=m;
     tailleReseau.append_attribute("colonnes")=n;
     xml_node cellulesE = config.append_child("EnsembleCase");

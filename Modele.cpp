@@ -265,7 +265,7 @@ void Modele::sauvegardeM() {
     annee.append_attribute("name") = this->getAnnee();
 
     //Les attributs d'un état
-    xml_node etats = modele.append_child("Etat");
+    xml_node etats = modele.append_child("Etats");
     xml_node NbrEtat = etats.append_child("NombreEtat");
     int nbr = this->getEnsemble()->getNombreEtats();
     NbrEtat.append_attribute("name") = nbr;
