@@ -22,6 +22,7 @@ HEADERS = \
    pugiconfig.hpp \
    pugixml.hpp \
    qSimulateur.h \
+   simu.h \
    taille_reseau.h
 
 SOURCES = \
@@ -40,6 +41,7 @@ SOURCES = \
    menuprincipale_2.cpp \
    pugixml.cpp \
    qSimulateur.cpp \
+   simu.cpp \
    taille_reseau.cpp
 
 INCLUDEPATH = \
@@ -54,5 +56,6 @@ FORMS += \
     informations.ui \
     menu_config.ui \
     menuprincipale_2.ui \
+    simu.ui \
     taille_reseau.ui
 
