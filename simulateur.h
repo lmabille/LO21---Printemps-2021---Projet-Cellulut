@@ -14,7 +14,7 @@ class Simulateur
 private:
     Modele const & modele;
     Configuration** configurations = nullptr;
-    const Configuration* configurationDepart = nullptr;
+    Configuration* configurationDepart = nullptr;
     size_t rang = 0;
     size_t tailleBuffer;
     void build(size_t caseBuf);
@@ -29,7 +29,7 @@ public:
     Simulateur(const Modele &m, size_t buf = 2);//remettre en private
     Simulateur(const Modele &m, const Configuration& dep, size_t buf = 2);
     ~Simulateur();
-    void setConfigDepart(const Configuration& config); // définit une configuration de départ
+    void setConfigDepart(Configuration& config); // définit une configuration de départ
     const Configuration* getConfigurationDepart() const {return configurationDepart; }//pour le qSimulateur
     void next(); // applique la fonction de transition du modèle sur une génération
     void run(size_t nbSteps); // applique la fonction de transition du modèle sur un nombre de générations donnés (nbSteps)

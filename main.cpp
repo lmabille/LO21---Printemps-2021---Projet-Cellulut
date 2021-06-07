@@ -22,14 +22,14 @@ Simulateur *Simulateur::uniqueInstance = nullptr;
 int main(int argc, char* argv[]) {
 
     //Lucas
-    QApplication app(argc, argv);
+  /*  QApplication app(argc, argv);
 
     config fenetre_config;
     fenetre_config.show();
     return app.exec();
 
 
-}
+}*/
 
 
 
@@ -40,29 +40,24 @@ int main(int argc, char* argv[]) {
     std::cout<<"yo";
     QApplication app(argc, argv);
     std::cout<<"yo";
-    Etat *listeEtat=new Etat[4];
+    Etat *listeEtat=new Etat[2];
     Etat e1(0, "mort", "noir");
-    Etat e2(0, "vivant", "blanc");
-    Etat e3(0, "vener", "rouge");
-    Etat e4(0, "chill", "bleu");
+    Etat e2(1, "vivant", "blanc");
     listeEtat[0]=e1;
     listeEtat[1]=e2;
-    listeEtat[2]=e3;
-    listeEtat[3]=e4;
 
-    EnsembleEtats ensemble(4);
+    EnsembleEtats ensemble(2);
     ensemble.setListe(listeEtat);
 
     V_VonNeumann V;
-    V.definir_ensemble_case(4);
+    V.definir_ensemble_case(1);
 
-    string * tab = new string[4];
-    tab[0]="100211";
-    tab[1]="100210";
-    tab[2]="123011";
-    tab[3]="210321";
+    string * tab = new string[2];
+    tab[0]="000001";
+    tab[1]="111110";
 
-    FonctionTransition f(tab, 4);
+
+    FonctionTransition f(tab, 2);
 
    Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
 
@@ -73,11 +68,12 @@ int main(int argc, char* argv[]) {
 
 
 
-    std::cout<<"yo";
+    std::cout<<"yo ";
     qSimulateur fenetre(nullptr, M, conf);
     std::cout<<"yo";
-
-    MenuPrincipale_2 m;
+    fenetre.show();
+     return app.exec();
+  /*  MenuPrincipale_2 m;
     m.show();
 
     fenetre.show();
@@ -112,12 +108,12 @@ int main(int argc, char* argv[]) {
     tab[2]="123011";
     tab[3]="210321";
 
-    FonctionTransition f(tab, 4);
+    FonctionTransition f(tab, 4);*/
 
     //On crée le modèle
 
-    Modele M("testLolo4", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
-    M.sauvegardeM();
+   // Modele M("testLolo4", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+    //M.sauvegardeM();
 
 
 
@@ -138,7 +134,7 @@ int main(int argc, char* argv[]) {
 
 
 
-
+/*
     QApplication app(argc, argv);
     information fenetre;
     MenuPrincipale_2 mn;
@@ -218,14 +214,14 @@ int main(int argc, char* argv[]) {
 
     C->setGrille(grille);
 
-    s.appliquerTransition(*C);
+    s.appliquerTransition(*C);*/
 
 
 
     // vio
 
    // EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
-    ensembleEtats->definirEtats();
+/*    ensembleEtats->definirEtats();
     for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
         cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
@@ -272,12 +268,12 @@ int main(int argc, char* argv[]) {
 
     V_Moore moore;
     moore.definir_ensemble_case(1);
-
+*/
 
     // orhane
  //   auto tab = new string[2];
 
-    tab[0]="1101000000";
+/*    tab[0]="1101000000";
     tab[1]="1000100000";
     tab[2]="0001100001";
     tab[3]="0101000001";
@@ -310,17 +306,17 @@ int main(int argc, char* argv[]) {
             cout<<configArrivee->getEtatCellule(i,j).getIndice();
         }
         cout<<"\n";
-    }
+    }*/
 
 
 // vio
 
-V_VonNeumann vonneum;
-vonneum.definir_ensemble_case(2);
+//V_VonNeumann vonneum;
+//vonneum.definir_ensemble_case(2);
 //return 0;
-//}
+}
 
-*/
+
 
 
 

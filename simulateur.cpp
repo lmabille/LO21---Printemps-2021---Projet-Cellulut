@@ -16,7 +16,7 @@ Simulateur::Simulateur(const Modele &m, const Configuration& dep, size_t buf): m
     configurations[0] = new Configuration(dep);
 }
 
-void Simulateur::setConfigDepart(const Configuration& config)
+void Simulateur::setConfigDepart(Configuration& config)
 {
     configurationDepart = &config;
     reset();
@@ -50,7 +50,7 @@ void Simulateur::reset()
     if (configurationDepart == nullptr) throw AutomateException("Etat depart indefini !\n");
     rang = 0;
     build(0);
-    *configurations[0] = *configurationDepart;
+    configurations[0] = configurationDepart;
 }
 
 Simulateur::~Simulateur()

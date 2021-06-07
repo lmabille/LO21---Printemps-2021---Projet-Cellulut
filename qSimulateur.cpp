@@ -1,4 +1,5 @@
 #include <qSimulateur.h>
+#include <iostream>
 
 qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):QWidget(parent){
 
@@ -84,9 +85,22 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
 }
 
 void qSimulateur::configurationSuivante(){
+
+    std::cout<<"bonjour !";
+   // std::cout<<S->getLastConfig().getEtatCellule(0,0).getCouleur();
     S->next();
+    std::cout<<S->getLastConfig().getEtatCellule(0,0).getCouleur()<<"\n";
+    const int nbLigne= S->getLastConfig().getReseauLignes();
+    const int nbColonne= S->getLastConfig().getReseauColonnes();
+    for(int i=0; i<nbLigne; i++ ){//pour chaque colonne
+        for(int j=0; j<nbColonne; j++){//pour chaque ligne
 
-
+            string couleur = S->getLastConfig().getEtatCellule (i, j).getCouleur();
+            if(couleur == "noir")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
+            if(couleur == "blanc")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+           // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+        }
+    }
 
 
 }
