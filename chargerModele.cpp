@@ -80,7 +80,7 @@ Modele* chargerModel(const char *nomFichier) {
                     if (compteur !=0)
                     {
                         //cout <<"cocuou" <<cpt->value();
-                        indice = stoi(cpt->value());
+                        //indice = stoi(cpt->value());
                         compteur =0;
                     }
                     else{
@@ -95,11 +95,38 @@ Modele* chargerModel(const char *nomFichier) {
                     charge->initEnsemble(stoi(val));
                 }
                 if (nom == "Etat") {
-                    cout << val << " " <<indice <<endl;
+                    //cout << "je suis la" <<endl;
+                    string label;
+                    string couleur;
+                    //int indice;
+                    int v_cpt = 0;
+                    for (xml_attribute_iterator cpt = it2->attributes_begin(); cpt != it2->attributes_end(); ++cpt) {
+                        if ( v_cpt == 0){
+                            label = cpt->value();
+                            //cout << "LAbel ok " <<endl;
+                            v_cpt ++;
+                        }
+
+                        if ( v_cpt == 1) {
+                            couleur = cpt->value();
+                            v_cpt ++;
+                        }
+
+                        if ( v_cpt == 2  ) {
+                            indice = 2;
+                            v_cpt ++;
+                        }
 
 
-                    liste[n].setlabel(val);
+                        //cout<< cpt->name() << " : " << cpt->value() <<endl;
+                    }
+
+
+                    liste[n].setlabel(label);
                     liste[n].setIndice(indice);
+                    liste[n].setCouleur(couleur);
+
+
                     n++;
                 }
                 cout <<endl;
@@ -107,6 +134,8 @@ Modele* chargerModel(const char *nomFichier) {
 
             cout << liste[0].getLabel() << liste[1].getLabel()<<endl;
             charge->getEnsemble()->setListe(liste);
+
+
         }
         //*/
 
