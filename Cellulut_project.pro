@@ -23,6 +23,7 @@ HEADERS = \
    pugiconfig.hpp \
    pugixml.hpp \
    qSimulateur.h \
+   qVoisinage.h \
    simu.h \
    taille_reseau.h\
    loadConfig.h
@@ -44,6 +45,7 @@ SOURCES = \
    menuprincipale_2.cpp \
    pugixml.cpp \
    qSimulateur.cpp \
+   qVoisinage.cpp \
    simu.cpp \
    taille_reseau.cpp\
    loadConfig.cpp
