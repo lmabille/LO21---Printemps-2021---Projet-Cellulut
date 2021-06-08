@@ -50,21 +50,47 @@ Configuration::Configuration(const Reseau &r): reseau(r)
     }
 }
 
+/*
 Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): reseau(r)
-/* Initialise une grille de cellule et met par défaut toutes les cellules à l'état 0 du tableau d'états possible */
+// Initialise une grille de cellule et met par d?faut toutes les cellules ? l'?tat 0 du tableau d'?tats possible
 {
-    // Allocation mémoire
+    // Allocation m?moire
     grille = new Cellule* [r.nb_lignes];
     for (unsigned int i=0; i<r.nb_lignes; i++)
     {
         *(grille+i) = new Cellule[r.nb_colonnes];
     }
-    // remplissage avec l'état[0] par défaut
+    // remplissage avec l'?tat[0] par d?faut
     for (unsigned int i=0; i<r.nb_lignes; i++)
     {
         for (unsigned int j = 0; j<r.nb_colonnes; j++)
         {
             grille[i][j].set_etatcellule(&(etatsPossibles.getListe()[0])); //modification de l'overload "[]" pour utiliser l'indice
+        }
+    }
+}
+*/
+
+// constructeur d'une configuration al?atoire (? d?placer dans une classe h?rit?e potentiellement)/ ou ? red?finir en temps que m?thode
+
+Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): reseau(r)
+// Initialise une grille de cellule et choisit un ?tat al?atoirement pour chaque cellule
+{
+    unsigned int indiceAleatoire = 0;
+
+    // Allocation m?moire
+    grille = new Cellule* [r.nb_lignes];
+    for (unsigned int i=0; i<r.nb_lignes; i++)
+    {
+        *(grille+i) = new Cellule[r.nb_colonnes];
+    }
+    // remplissage avec l'?tat[0] par d?faut
+    for (unsigned int i=0; i<r.nb_lignes; i++)
+    {
+        for (unsigned int j = 0; j<r.nb_colonnes; j++)
+        {
+            indiceAleatoire = rand()%(etatsPossibles.getNombreEtats());
+            grille[i][j].set_etatcellule(&(etatsPossibles.getListe()[indiceAleatoire]));
         }
     }
 }

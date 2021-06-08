@@ -18,9 +18,9 @@ public:
     // constructeurs & destructeurs
     Configuration()=default;
     Configuration(const Reseau &r);
+    // Configuration(const Reseau &r, EnsembleEtats& etatsPossibles);
     Configuration(const Reseau &r, EnsembleEtats& etatsPossibles);
     Configuration(const Configuration& c);
-    // + définir un constructeur qui génère une grille aléatoirement
     ~Configuration();
     Configuration& operator=(const Configuration& c);
     // accesseurs en écriture

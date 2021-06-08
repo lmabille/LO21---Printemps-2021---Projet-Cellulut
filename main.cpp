@@ -22,6 +22,62 @@
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
+
+    // viovio
+
+        QApplication app(argc, argv);
+
+        Etat *listeEtat=new Etat[2];
+        Etat e1(0, "mort", "noir");
+        Etat e2(1, "vivant", "blanc");
+        listeEtat[0]=e1;
+        listeEtat[1]=e2;
+
+        EnsembleEtats ensemble(2);
+        ensemble.setListe(listeEtat);
+
+        V_VonNeumann V;
+        V.definir_ensemble_case(1);
+
+        string * tab = new string[15]; // st+1
+
+        std::cout << "yo";
+
+        tab[0] = "0111000001";
+        tab[1] = "0011100001";
+        tab[2] = "0001110001";
+        tab[3] = "0000111001";
+        tab[4] = "0000011101";
+        tab[5] = "0111110001";
+
+        tab[6] = "1000000000";
+        tab[7] = "1100000000";
+        tab[8] = "1010000000";
+        tab[9] = "1001000000";
+        tab[10] = "1000100000";
+        tab[11] = "1000010000";
+        tab[12] = "1000001000";
+        tab[13] = "1000000100";
+        tab[14] = "1000000010";
+
+        FonctionTransition f(tab, 2);
+
+        Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+
+        Reseau res(10,10);
+
+        Configuration *c1 = new Configuration(res, ensemble);
+        Configuration *c2 = new Configuration(res, ensemble);
+        Configuration *c3 = new Configuration(res, ensemble);
+        Configuration *c4 = new Configuration(res, ensemble);
+        Configuration *c5 = new Configuration(res, ensemble);
+
+        std::cout<<"yo ";
+        qSimulateur fenetre(nullptr, M, c5);
+        std::cout<<"yo";
+        fenetre.show();
+        return app.exec();
+
     /*
     QApplication app(argc, argv);
     const char * fichier = "C:\\Users\\thoma\\Documents\\UTC\\ProjetLo21\\LO21---Printemps-2021---Projet-Cellulut\\Modeles\\testLolo3.xml";
