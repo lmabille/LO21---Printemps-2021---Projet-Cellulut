@@ -61,6 +61,8 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
 
 
     save= new QPushButton("Enregistrer la configuration actuelle");
+    connect(save,SIGNAL(clicked()),this,SLOT(sauvegarderCC()));
+
     boutons->addWidget(play);
     boutons->addWidget(depart);
     boutons->addWidget(pas);
@@ -103,4 +105,25 @@ void qSimulateur::configurationSuivante(){
     }
 
 
+}
+
+/*
+void qSimulateur::choixNomConfig(){
+    QVBoxLayout *fenetre = new QVBoxLayout;
+    QLabel *annonce = new QLabel("Veuillez choisir le nom de cette configuration");
+
+
+    setLayout(fenetre);
+}
+
+*/
+
+void qSimulateur::sauvegarderCC(){
+
+string nomConfig = "Configuration";
+int t= S->modele.getNombreConfig();
+string te = to_string(t);
+nomConfig += te;
+
+S->getLastConfig().sauvegarderConfiguration(S->modele.getTitre(), nomConfig);
 }

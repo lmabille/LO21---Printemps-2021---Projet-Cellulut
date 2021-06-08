@@ -40,7 +40,7 @@ class Modele
     EnsembleEtats *etatsPossibles; // � prendre en compte dans les constructeurs/ destructeurs!
     FonctionTransition *fonctionTrans;
     Voisinage *typeVoisinnage;
-    string typef;
+    string typef; //type de la fonction de transition : intension ou extension
     string description;
     string auteur;
     unsigned int anneeCreation;

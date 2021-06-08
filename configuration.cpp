@@ -119,7 +119,7 @@ Configuration& Configuration::operator=(const Configuration& c)
     return *this;
 }
 
-void Configuration::sauvegarderConfiguration(string titreMdodele, string nom){
+void Configuration::sauvegarderConfiguration(string titreMdodele, string nom) const {
     xml_document doc;
     string xmlFilePath = "../LO21---Printemps-2021---Projet-Cellulut/Modeles/";
     xmlFilePath += titreMdodele;
@@ -163,6 +163,9 @@ void Configuration::sauvegarderConfiguration(string titreMdodele, string nom){
     }
 
     bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
+    //On augmente le nombre de config du modèle :
+
+
     cout<<saveSuccess;
 
 

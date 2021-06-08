@@ -311,6 +311,8 @@ void Modele::sauvegardeM() {
            xml_node regle = liste.append_child("Regle");
            regle.append_attribute("name")=regles[i].c_str();
         }
+     xml_node configs = modele.append_child("ListeConfig");
+     configs.append_attribute("nombre")=0;
 
      bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
      cout<<saveSuccess;

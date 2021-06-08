@@ -44,16 +44,13 @@ public:
     explicit qSimulateur(QWidget* parent = nullptr, Modele *modele = nullptr, Configuration *conf =nullptr );
 
 private slots:
-    /*
-    // Question 1 - Interface de configuration de l'automate
-    void synchronizeNumToNumBit(int i);
-    void synchronizeNumBitToNum(const QString& s);
-
-    // Question 2 - Interface de configuration de l'etat de départ
-    void cellActivation(const QModelIndex& index);*/
 
     // Passer à la configuration suivante
     void configurationSuivante();
+
+   //Sauvegarder la configuration courante
+    //void choixNomConfig();
+    void sauvegarderCC();
 };
 
 
