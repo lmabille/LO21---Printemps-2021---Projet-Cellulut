@@ -27,16 +27,17 @@ public:
 };
 
 class Reseau {
-    int nb_lignes=0;
-    int nb_colonnes=0;
+    size_t nb_lignes=0;
+    size_t nb_colonnes=0;
     friend class Configuration;
 
 public:
-    int get_nbLignes() const {return nb_lignes;};
-    int get_nbCols() const {return nb_colonnes;};
+    size_t get_nbLignes() const {return nb_lignes;};
+    size_t get_nbCols() const {return nb_colonnes;};
     Reseau& operator=(const Reseau& c);
     Reseau(int l, int c) : nb_lignes(l), nb_colonnes(c) {};//le remettre en private
     Reseau() = default;//le remettre en private
+    Reseau(const Reseau& r) {nb_lignes = r.get_nbLignes(); nb_colonnes = r.get_nbCols();}
 };
 
 

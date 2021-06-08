@@ -63,6 +63,7 @@ int main(int argc, char* argv[]) {
         FonctionTransition f(tab, 2);
 
         Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+        M->sauvegardeM();
 
         Reseau res(10,10);
 
@@ -72,8 +73,9 @@ int main(int argc, char* argv[]) {
         Configuration *c4 = new Configuration(res, ensemble);
         Configuration *c5 = new Configuration(res, ensemble);
 
+        c1->remplissageAleatoire(ensemble);
         std::cout<<"yo ";
-        qSimulateur fenetre(nullptr, M, c5);
+        qSimulateur fenetre(nullptr, M, c1);
         std::cout<<"yo";
         fenetre.show();
         return app.exec();

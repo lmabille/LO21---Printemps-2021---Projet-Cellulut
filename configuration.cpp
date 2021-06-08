@@ -50,7 +50,7 @@ Configuration::Configuration(const Reseau &r): reseau(r)
     }
 }
 
-/*
+
 Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): reseau(r)
 // Initialise une grille de cellule et met par d?faut toutes les cellules ? l'?tat 0 du tableau d'?tats possible
 {
@@ -69,25 +69,16 @@ Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): re
         }
     }
 }
-*/
 
-// constructeur d'une configuration al?atoire (? d?placer dans une classe h?rit?e potentiellement)/ ou ? red?finir en temps que m?thode
 
-Configuration::Configuration(const Reseau &r, EnsembleEtats& etatsPossibles): reseau(r)
+void Configuration::remplissageAleatoire(EnsembleEtats& etatsPossibles)
 // Initialise une grille de cellule et choisit un ?tat al?atoirement pour chaque cellule
 {
     unsigned int indiceAleatoire = 0;
 
-    // Allocation m?moire
-    grille = new Cellule* [r.nb_lignes];
-    for (unsigned int i=0; i<r.nb_lignes; i++)
+    for (unsigned int i=0; i<reseau.nb_lignes; i++)
     {
-        *(grille+i) = new Cellule[r.nb_colonnes];
-    }
-    // remplissage avec l'?tat[0] par d?faut
-    for (unsigned int i=0; i<r.nb_lignes; i++)
-    {
-        for (unsigned int j = 0; j<r.nb_colonnes; j++)
+        for (unsigned int j = 0; j<reseau.nb_colonnes; j++)
         {
             indiceAleatoire = rand()%(etatsPossibles.getNombreEtats());
             grille[i][j].set_etatcellule(&(etatsPossibles.getListe()[indiceAleatoire]));
@@ -108,7 +99,7 @@ Configuration::Configuration(const Configuration& c): reseau(c.reseau)
 
 Configuration::~Configuration()
 {
-    for (int i = 0; i<reseau.nb_lignes; i++)
+    for (size_t i = 0; i<reseau.nb_lignes; i++)
     {
         delete[] grille[i];
     }
@@ -134,9 +125,9 @@ Configuration& Configuration::operator=(const Configuration& c)
         }*/
         //delete[] oldGrille;
         // remplissage ? nécessaire ou pas ?
-        for (int i=0; i<reseau.nb_lignes; i++)
+        for (size_t i=0; i<reseau.nb_lignes; i++)
         {
-            for (int j=0; j<reseau.nb_colonnes; j++)
+            for (size_t j=0; j<reseau.nb_colonnes; j++)
             {
                 grille[i][j] = newGrille[i][j];
             }
@@ -180,8 +171,8 @@ void Configuration::sauvegarderConfiguration(string titreMdodele) const {
     tailleReseau.append_attribute("lignes")=m;
     tailleReseau.append_attribute("colonnes")=n;
     xml_node cellulesE = config.append_child("EnsembleCase");
-    for(int i=0; i<m; i++){
-        for(int j=0; j<n; j++){
+    for(size_t i=0; i<m; i++){
+        for(size_t j=0; j<n; j++){
 
             Etat& e = getEtatCellule (i, j);
             xml_node cellule = cellulesE.append_child("Case");
