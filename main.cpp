@@ -37,9 +37,72 @@ int main(int argc, char* argv[]) {
 
 
     //Laurine
-    std::cout<<"yo";
+/*   std::cout<<"yo";
     QApplication app(argc, argv);
-    std::cout<<"yo";
+     Etat *listeEtat=new Etat[2];
+    Etat e1(0, "mort", "noir");
+    Etat e2(1, "vivant", "blanc");
+    listeEtat[0]=e1;
+    listeEtat[1]=e2;
+
+    EnsembleEtats ensemble(2);
+    ensemble.setListe(listeEtat);
+
+    V_VonNeumann V;
+    V.definir_ensemble_case(1);
+
+
+
+      auto tab = new string[2];
+
+
+       tab[0]="0401";
+       tab[1]="1040";
+
+       FonctionTransition * f;
+       f = new FonctionTransitionIntention(tab, 2);
+
+       Modele m("modele 1", &ensemble, f, "intention", &V, "ta race", "Orhane", 2021);
+       m.sauvegardeM();*/
+// Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
+      // auto configArrivee= new Configuration;
+      /* Reseau res(4,3);
+
+        Configuration *conf = new Configuration(res, ensemble);
+
+
+
+
+        std::cout<<"yo ";
+        qSimulateur fenetre(nullptr, &m, conf);
+        std::cout<<"yo";
+        fenetre.show();
+        return app.exec();*/
+
+
+    //   m.appliquerTransition(*configDepart, *configArrivee);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*  std::cout<<"yo";
     Etat *listeEtat=new Etat[2];
     Etat e1(0, "mort", "noir");
     Etat e2(1, "vivant", "blanc");
@@ -72,7 +135,7 @@ int main(int argc, char* argv[]) {
     qSimulateur fenetre(nullptr, M, conf);
     std::cout<<"yo";
     fenetre.show();
-     return app.exec();
+     return app.exec();*/
   /*  MenuPrincipale_2 m;
     m.show();
 
