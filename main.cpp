@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
 
 
     //Laurine
- /*   std::cout<<"yo";
+/*   std::cout<<"yo";
     QApplication app(argc, argv);
      Etat *listeEtat=new Etat[2];
     Etat e1(0, "mort", "noir");
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
        m.sauvegardeM();*/
 // Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
       // auto configArrivee= new Configuration;
-/*       Reseau res(4,3);
+      /* Reseau res(4,3);
 
         Configuration *conf = new Configuration(res, ensemble);
 

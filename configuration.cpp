@@ -119,7 +119,7 @@ Configuration& Configuration::operator=(const Configuration& c)
     return *this;
 }
 
-void Configuration::sauvegarderConfiguration(string titreMdodele, string nom) const {
+void Configuration::sauvegarderConfiguration(string titreMdodele) const {
     xml_document doc;
     string xmlFilePath = "../LO21---Printemps-2021---Projet-Cellulut/Modeles/";
     xmlFilePath += titreMdodele;
@@ -132,10 +132,22 @@ void Configuration::sauvegarderConfiguration(string titreMdodele, string nom) co
     }
 
     xml_node modele = doc.document_element();//j'espère que ça récup bien le modèle
-    xml_node configs = modele.append_child("ListeConfig");
+  //  xml_node configs = modele.append_child("ListeConfig");
+    xml_node configs = modele.child("ListeConfig");
+
+    //on récupère le nombre de configuration du modèle
+     string nomConfig="Configuration";
+    int t= stoi(configs.attribute("nombre").value());
+     t++;
+     string te = to_string(t);
+     nomConfig += te;
+     configs.attribute("nombre").set_value(t);
+     //modifier la valeur de l'attribut
+
+
     xml_node config = configs.append_child("Configuration");
     xml_node nomC = config.append_child("Nom");
-    nomC.append_attribute("name")=nom.c_str();
+    nomC.append_attribute("name")=nomConfig.c_str();
     unsigned int m = this->getReseauLignes();
     unsigned int n = this->getReseauColonnes();
     xml_node tailleReseau = config.append_child("Taille");

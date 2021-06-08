@@ -120,10 +120,6 @@ void qSimulateur::choixNomConfig(){
 
 void qSimulateur::sauvegarderCC(){
 
-string nomConfig = "Configuration";
-int t= S->modele.getNombreConfig();
-string te = to_string(t);
-nomConfig += te;
 
-S->getLastConfig().sauvegarderConfiguration(S->modele.getTitre(), nomConfig);
+S->getLastConfig().sauvegarderConfiguration(S->modele.getTitre());
 }
