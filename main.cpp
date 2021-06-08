@@ -15,11 +15,29 @@
 #include "choix_modele.h"
 #include "taille_reseau.h"
 #include "config.h"
+#include "fenetreconfiguration.h"
+#include "chargerModele.h"
 
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
+    /*
+    QApplication app(argc, argv);
+    const char * fichier = "C:\\Users\\thoma\\Documents\\UTC\\ProjetLo21\\LO21---Printemps-2021---Projet-Cellulut\\Modeles\\testLolo3.xml";
+
+    Modele* model = chargerModel(fichier);
+
+    Simulateur* simu = new Simulateur(*model);
+
+
+    FenetreConfiguration f_config(nullptr,model,simu,fichier);
+    f_config.show();
+
+    return app.exec();*/
+
+}
+
 
     //Lucas
   /*  QApplication app(argc, argv);
@@ -377,7 +395,7 @@ int main(int argc, char* argv[]) {
 //V_VonNeumann vonneum;
 //vonneum.definir_ensemble_case(2);
 //return 0;
-}
+//}
 
 
 

@@ -63,6 +63,7 @@ public:
     void setDesc(string desc) { this->description = desc; }
     void setAnnee(int annee) { this->anneeCreation = annee; }
     void initEnsemble(int n) { this->etatsPossibles = new EnsembleEtats(n); }
+    void setTypef(string type) {this->typef = type;}
     EnsembleEtats *getEnsemble() { return etatsPossibles; };
     int getAnnee() const { return anneeCreation; }
     void chargerModele(FILE *f); //charge les �l�ments du fichier puis fait appel au constructeur
