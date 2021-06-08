@@ -215,6 +215,12 @@ Modele* chargerModel(const char *nomFichier) {
         }
         //*/
 
+        if (tmp == "TypeFonctionTransition") {
+            cout <<"----" << it->attributes_begin()->value();
+            charge->setTypef(it->attributes_begin()->value());
+            //charge->setAnnee(stoi(val));
+        }
+
 
         if (tmp == "ListeRegle") {
             cout << "-----atteint";
