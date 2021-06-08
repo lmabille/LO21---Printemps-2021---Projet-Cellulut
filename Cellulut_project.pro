@@ -16,6 +16,7 @@ HEADERS = \
    chargerModele.h \
    choix_modele.h \
    config.h \
+   fenetreconfiguration.h \
    informations.h \
    menu_config.h \
    menuprincipale_2.h \
@@ -23,7 +24,8 @@ HEADERS = \
    pugixml.hpp \
    qSimulateur.h \
    simu.h \
-   taille_reseau.h
+   taille_reseau.h\
+   loadConfig.h
 
 SOURCES = \
    $$PWD/configuration.cpp \
@@ -36,13 +38,15 @@ SOURCES = \
    chargerModele.cpp \
    choix_modele.cpp \
    config.cpp \
+   fenetreconfiguration.cpp \
    informations.cpp \
    menu_config.cpp \
    menuprincipale_2.cpp \
    pugixml.cpp \
    qSimulateur.cpp \
    simu.cpp \
-   taille_reseau.cpp
+   taille_reseau.cpp\
+   loadConfig.cpp
 
 INCLUDEPATH = \
     $$PWD/.
@@ -53,6 +57,7 @@ FORMS += \
     MenuModele.ui \
     choix_modele.ui \
     config.ui \
+    fenetreconfiguration.ui \
     informations.ui \
     menu_config.ui \
     menuprincipale_2.ui \

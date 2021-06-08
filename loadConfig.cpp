@@ -10,6 +10,36 @@
 using namespace pugi;
 using namespace std;
 
+int getNbConfig(const char* nom_fichier) {
+    xml_document doc;
+
+
+    // load the XML file
+    if (!doc.load_file(nom_fichier)){
+        cout << "echec";
+        return -1;
+    }
+
+
+
+    xml_node tools = doc.child("Modele").child("ListeConfig");
+
+
+    int cpt = 0;
+
+
+    for (xml_node_iterator it = tools.begin(); it != tools.end(); ++it) {
+
+        cpt ++ ;
+
+
+    }
+
+
+    return cpt;
+}
+
+
 string * getListeConfig(const char* nomFichier) {
 
     xml_document doc;
