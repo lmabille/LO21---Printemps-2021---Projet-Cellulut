@@ -45,7 +45,7 @@ public:
     //Voisinage(int n);
 
     const string getTypeVoisi(); // non virtual
-    const int getNbCelluleVoisi() const; // non virtual
+    int getNbCelluleVoisi() const; // non virtual
     void setNbCellule(int nb) {this->nbCelluleVoisi = nb;};
     void setensemble_case(Case *c) {this->ensemble_case = c; };
     void setType(string t) { typeVoisi = t; }

@@ -33,6 +33,7 @@ public:
     void sauvegarderConfiguration(string titreMdodele) const;//On sauvegarde la configuration dans un modèe choisit
     //remplissage aléatoire des états
     void remplissageAleatoire(EnsembleEtats& etatsPossibles);
+    // Reseau getReseau() const {return reseau;}
 };
 
 #endif // CELLULUT_H_INCLUDED
