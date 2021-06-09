@@ -20,7 +20,6 @@ public:
     Configuration(const Reseau &r);
     Configuration(const Reseau &r, EnsembleEtats& etatsPossibles);
     Configuration(const Configuration& c);
-    // + définir un constructeur qui génère une grille aléatoirement
     ~Configuration();
     Configuration& operator=(const Configuration& c);
     // accesseurs en écriture
@@ -32,7 +31,8 @@ public:
     Etat& getEtatCellule (int i, int j) const {return grille[i][j].get_Etat();}
     string getVoisinage(int i, int j, Voisinage& typeVois) const;
     void sauvegarderConfiguration(string titreMdodele) const;//On sauvegarde la configuration dans un modèe choisit
-    // friend de cellule
+    //remplissage aléatoire des états
+    void remplissageAleatoire(EnsembleEtats& etatsPossibles);
 };
 
 #endif // CELLULUT_H_INCLUDED
