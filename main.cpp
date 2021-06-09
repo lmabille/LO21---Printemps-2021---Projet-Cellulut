@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
         QApplication app(argc, argv);
 
         Etat *listeEtat=new Etat[2];
-        Etat e1(0, "mort", "noir");
+        Etat e1(0, "mort", "pepper mint");
         Etat e2(1, "vivant", "blanc");
         listeEtat[0]=e1;
         listeEtat[1]=e2;
@@ -74,9 +74,9 @@ int main(int argc, char* argv[]) {
         Configuration *c5 = new Configuration(res, ensemble);
 
         c1->remplissageAleatoire(ensemble);
-        std::cout<<"yo ";
+
         qSimulateur fenetre(nullptr, M, c1);
-        std::cout<<"yo";
+
         fenetre.show();
         return app.exec();
 
