@@ -1,6 +1,6 @@
 #include "ChoixVoisinage.h"
 
-ChoixVoisinage::ChoixVoisinage()
+/*ChoixVoisinage::ChoixVoisinage()
 {
 
-}
+}*/
