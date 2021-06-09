@@ -22,10 +22,10 @@
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
-
+    /*
     // viovio
 
-        QApplication app(argc, argv);
+     /*   QApplication app(argc, argv);
 
         Etat *listeEtat=new Etat[2];
         Etat e1(0, "mort", "pepper mint");
@@ -39,11 +39,11 @@ int main(int argc, char* argv[]) {
         V_VonNeumann V;
         V.definir_ensemble_case(1);
 
-        string * tab = new string[15]; // st+1
+        string * tab = new string[15]; // st+1*/
 
-        std::cout << "yo";
+       // std::cout << "yo";
 
-        tab[0] = "0111000001";
+     /*   tab[0] = "0111000001";
         tab[1] = "0011100001";
         tab[2] = "0001110001";
         tab[3] = "0000111001";
@@ -78,9 +78,12 @@ int main(int argc, char* argv[]) {
         qSimulateur fenetre(nullptr, M, c1);
 
         fenetre.show();
-        return app.exec();
+
+        return app.exec();*/
+
 
     /*
+     //Thomas
     QApplication app(argc, argv);
     const char * fichier = "C:\\Users\\thoma\\Documents\\UTC\\ProjetLo21\\LO21---Printemps-2021---Projet-Cellulut\\Modeles\\testLolo3.xml";
 
@@ -92,7 +95,8 @@ int main(int argc, char* argv[]) {
     FenetreConfiguration f_config(nullptr,model,simu,fichier);
     f_config.show();
 
-    return app.exec();*/
+    return app.exec();
+    */
 
 }
 

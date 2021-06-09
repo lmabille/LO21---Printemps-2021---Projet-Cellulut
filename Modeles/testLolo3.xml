@@ -135,13 +135,13 @@
          <Taille lignes="10" colonnes="10" />
          <EnsembleCase>
             <Case X="0" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
-            <Case X="0" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="1" Indice="0" Label="vivant" Couleur="blanc" />
             <Case X="0" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
-            <Case X="0" Y="3" Indice="0" Label="mort" Couleur="noir" />
-            <Case X="0" Y="4" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="3" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="4" Indice="0" Label="vivant" Couleur="blanc" />
             <Case X="0" Y="5" Indice="1" Label="vivant" Couleur="blanc" />
-            <Case X="0" Y="6" Indice="0" Label="mort" Couleur="noir" />
-            <Case X="0" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="6" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="7" Indice="0" Label="vivant" Couleur="blanc" />
             <Case X="0" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
             <Case X="0" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
             <Case X="1" Y="0" Indice="0" Label="mort" Couleur="noir" />
