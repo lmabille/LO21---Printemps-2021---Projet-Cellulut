@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.14.2, 2021-06-09T16:15:21. -->
+<!-- Written by QtCreator 4.14.2, 2021-06-09T15:12:20. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -294,14 +294,23 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/33637/Desktop/test git lo21/LO21---Printemps-2021---Projet-Cellulut/Cellulut_project.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/33637/Desktop/test git lo21/LO21---Printemps-2021---Projet-Cellulut/Cellulut_project.pro</value>
+=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Utilisateur/LO21---Printemps-2021---Projet-Cellulut/Cellulut_project.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Utilisateur/LO21---Printemps-2021---Projet-Cellulut/Cellulut_project.pro</value>
+>>>>>>> 88021951fd6033f6451a709df1af3550c1c6cf5e
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+<<<<<<< HEAD
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/33637/Desktop/test git lo21/build-Cellulut_project-Desktop_Qt_6_0_3_MinGW_64_bit-Debug</value>
+=======
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Utilisateur/build-Cellulut_project-Desktop_Qt_6_0_3_MinGW_64_bit-Debug</value>
+>>>>>>> 88021951fd6033f6451a709df1af3550c1c6cf5e
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

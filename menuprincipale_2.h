@@ -2,6 +2,8 @@
 #define MENUPRINCIPALE_2_H
 
 #include <QDialog>
+#include "choix_modele.h"
+#include "taille_reseau.h"
 
 namespace Ui {
 class MenuPrincipale_2;
@@ -14,6 +16,10 @@ class MenuPrincipale_2 : public QDialog
 public:
     explicit MenuPrincipale_2(QWidget *parent = nullptr);
     ~MenuPrincipale_2();
+
+public slots:
+    void afficherModeles();
+    void afficher_taille_reseaux();
 
 private:
     Ui::MenuPrincipale_2 *ui;

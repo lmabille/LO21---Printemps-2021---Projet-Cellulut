@@ -17,6 +17,7 @@
 #include "config.h"
 #include "fenetreconfiguration.h"
 #include "chargerModele.h"
+#include "ChoixVoisinage.h"
 
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
@@ -25,7 +26,16 @@ int main(int argc, char* argv[]) {
 
     // viovio
 
-       QApplication app(argc, argv);
+    QApplication app(argc, argv);
+
+    ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 5, 5); // nullptr, 3, 3 par défaut
+
+    fenetreVois->show();
+
+    return app.exec();
+
+     /*   QApplication app(argc, argv);
+
 
         Etat *listeEtat=new Etat[2];
         Etat e1(0, "mort", "pepper mint");
