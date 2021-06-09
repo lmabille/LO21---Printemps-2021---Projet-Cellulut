@@ -22,7 +22,7 @@
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
-
+    /*
     // viovio
 
      /*   QApplication app(argc, argv);
@@ -78,9 +78,12 @@ int main(int argc, char* argv[]) {
         qSimulateur fenetre(nullptr, M, c1);
 
         fenetre.show();
+
         return app.exec();*/
 
+
     /*
+     //Thomas
     QApplication app(argc, argv);
     const char * fichier = "C:\\Users\\thoma\\Documents\\UTC\\ProjetLo21\\LO21---Printemps-2021---Projet-Cellulut\\Modeles\\testLolo3.xml";
 
@@ -92,7 +95,8 @@ int main(int argc, char* argv[]) {
     FenetreConfiguration f_config(nullptr,model,simu,fichier);
     f_config.show();
 
-    return app.exec();*/
+    return app.exec();
+    */
 
 }
 

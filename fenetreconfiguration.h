@@ -6,6 +6,9 @@
 #include <QString>
 #include "loadConfig.h"
 #include "simulateur.h"
+#include <QTableWidget>
+#include <QHeaderView>
+#include "creaconfig.h"
 
 namespace Ui {
 class FenetreConfiguration;
@@ -31,6 +34,8 @@ private:
     void initConnect(Simulateur* simul);
     void chargerConfig();
     Simulateur * simul;
+    void chargerPreview();
+    void creerConfig();
 };
 
 #endif // FENETRECONFIGURATION_H
