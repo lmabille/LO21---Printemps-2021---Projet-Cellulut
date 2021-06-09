@@ -46,7 +46,6 @@ public:
     Etat *getListe(){return liste;}
     // bool checkExisteDeja(const Etat& e);
     Etat* operator[](int indice);
-    Etat * getListe(){return liste;}
 };
 
 #endif //LO21_PRINTEMPS_2021_PROJET_CELLULUT_ETAT_H

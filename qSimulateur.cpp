@@ -65,6 +65,10 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
     pas= new QPushButton("Avancer d'un pas");
     connect(pas,SIGNAL(clicked()),this,SLOT(configurationSuivante()));
 
+    //On crée le qtimer
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(configurationSuivante()));
+
 
     save= new QPushButton("Enregistrer la configuration actuelle");
     connect(save,SIGNAL(clicked()),this,SLOT(sauvegarderCC()));
@@ -76,8 +80,11 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
 
     //Gestion de la vitesse de lecture
     vitesse=new QSpinBox;
-    vitesse->setRange(0,100);
-    vitesse->setValue(0);
+    vitesse->setRange(1,100);
+    vitesse->setValue(1);
+
+
+
     vit = new QLabel("Vitesse de défilement (1= pas/par seconde)");
     gestionVitesse = new QHBoxLayout;
     gestionVitesse->addWidget(vit);
@@ -140,21 +147,19 @@ S->getLastConfig().sauvegarderConfiguration(S->modele.getTitre());
 
 
 void qSimulateur::LancerSim(){
- /*   if(tourne == 0)tourne=1;
+ if(tourne == 0)tourne=1;
     else tourne=0;
     std::cout<<"Hey !";
 
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(configurationSuivante()));
     std::cout<<"Hey 2!";
-    while(tourne ==1){
+   if (tourne ==1){
         std::cout<<"Hey 3 !";
-        timer->start(1000);
+        timer->start(10000/vitesse->value());
         std::cout<<"Hey 4 !";
     }
     if(tourne == 0)timer->stop();
 
-  delete timer;*/
+
 
 
 }

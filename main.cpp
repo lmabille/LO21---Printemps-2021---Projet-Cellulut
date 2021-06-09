@@ -22,10 +22,10 @@
 Simulateur *Simulateur::uniqueInstance = nullptr;
 
 int main(int argc, char* argv[]) {
-    /*
+
     // viovio
 
-     /*   QApplication app(argc, argv);
+       QApplication app(argc, argv);
 
         Etat *listeEtat=new Etat[2];
         Etat e1(0, "mort", "pepper mint");
@@ -39,11 +39,11 @@ int main(int argc, char* argv[]) {
         V_VonNeumann V;
         V.definir_ensemble_case(1);
 
-        string * tab = new string[15]; // st+1*/
+        string * tab = new string[21]; // st+1
 
        // std::cout << "yo";
 
-     /*   tab[0] = "0111000001";
+        tab[0] = "0111000001";
         tab[1] = "0011100001";
         tab[2] = "0001110001";
         tab[3] = "0000111001";
@@ -59,8 +59,15 @@ int main(int argc, char* argv[]) {
         tab[12] = "1000001000";
         tab[13] = "1000000100";
         tab[14] = "1000000010";
+        tab[15] = "0101010001";
+        tab[16] = "0001010001";
+        tab[17] = "0001000011";
+        tab[18] = "0001000101";
+        tab[19] = "0111000101";
+        tab[20] = "0110000001";
 
-        FonctionTransition f(tab, 2);
+
+        FonctionTransition f(tab, 21);
 
         Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
         M->sauvegardeM();
@@ -79,7 +86,7 @@ int main(int argc, char* argv[]) {
 
         fenetre.show();
 
-        return app.exec();*/
+        return app.exec();
 
 
     /*

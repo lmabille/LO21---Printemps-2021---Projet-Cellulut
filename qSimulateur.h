@@ -20,6 +20,12 @@ class qSimulateur : public QWidget
 
     Simulateur *S;
 
+    //Pour lancer la config
+    bool tourne = 0;
+
+    QTimer *timer;
+
+
 
     //Boutons fenêtres
     Q_OBJECT
@@ -51,6 +57,9 @@ private slots:
    //Sauvegarder la configuration courante
     //void choixNomConfig();
     void sauvegarderCC();
+
+    //Lancer la simulation
+    void LancerSim();
 };
 
 
