@@ -96,7 +96,7 @@ void V_ChoixUtilisateur::definir_ensemble_case(int rayon)
      * par l'utilisateur + compter le nombre de cases sélectionnées. Remplir le tableau avec ces indications.*/
 }
 
-const int Voisinage::getNbCelluleVoisi() const
+int Voisinage::getNbCelluleVoisi() const
 {
     return this->nbCelluleVoisi;
 }

@@ -1,6 +1,6 @@
-#include "qVoisinage.h"
+#include "ChoixVoisinage.h"
 
-qVoisinage::qVoisinage()
+ChoixVoisinage::ChoixVoisinage()
 {
 
 }

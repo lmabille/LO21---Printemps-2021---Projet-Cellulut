@@ -13,6 +13,7 @@ HEADERS = \
    $$PWD/outils.h \
    $$PWD/simulateur.h \
    $$PWD/voisinage.h \
+   ChoixVoisinage.h \
    chargerModele.h \
    choix_modele.h \
    config.h \
@@ -23,7 +24,6 @@ HEADERS = \
    pugiconfig.hpp \
    pugixml.hpp \
    qSimulateur.h \
-   qVoisinage.h \
    simu.h \
    taille_reseau.h\
    loadConfig.h
@@ -36,6 +36,7 @@ SOURCES = \
    $$PWD/Modele.cpp \
    $$PWD/simulateur.cpp \
    $$PWD/voisinage.cpp \
+   ChoixVoisinage.cpp \
    chargerModele.cpp \
    choix_modele.cpp \
    config.cpp \
@@ -45,7 +46,6 @@ SOURCES = \
    menuprincipale_2.cpp \
    pugixml.cpp \
    qSimulateur.cpp \
-   qVoisinage.cpp \
    simu.cpp \
    taille_reseau.cpp\
    loadConfig.cpp
