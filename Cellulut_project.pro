@@ -16,6 +16,7 @@ HEADERS = \
    chargerModele.h \
    choix_modele.h \
    config.h \
+   creaconfig.h \
    fenetreconfiguration.h \
    informations.h \
    menu_config.h \
@@ -39,6 +40,7 @@ SOURCES = \
    chargerModele.cpp \
    choix_modele.cpp \
    config.cpp \
+   creaconfig.cpp \
    fenetreconfiguration.cpp \
    informations.cpp \
    menu_config.cpp \
@@ -59,6 +61,7 @@ FORMS += \
     MenuModele.ui \
     choix_modele.ui \
     config.ui \
+    creaconfig.ui \
     fenetreconfiguration.ui \
     informations.ui \
     menu_config.ui \
