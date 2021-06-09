@@ -105,5 +105,42 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MenuPrincipale_2</receiver>
+   <slot>afficherModeles()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>238</x>
+     <y>380</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>119</x>
+     <y>310</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MenuPrincipale_2</receiver>
+   <slot>afficher_taille_reseaux()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>394</x>
+     <y>373</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>505</x>
+     <y>302</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>afficherModeles()</slot>
+  <slot>afficher_taille_reseaux()</slot>
+ </slots>
 </ui>

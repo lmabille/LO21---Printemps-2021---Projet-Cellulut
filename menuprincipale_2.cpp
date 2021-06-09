@@ -12,3 +12,16 @@ MenuPrincipale_2::~MenuPrincipale_2()
 {
     delete ui;
 }
+
+void MenuPrincipale_2::afficherModeles()
+{
+    Choix_Modele * Menu = new Choix_Modele;
+    Menu->show();
+    this->close();
+}
+
+void MenuPrincipale_2::afficher_taille_reseaux(){
+    taille_reseau * TR = new taille_reseau;
+    TR->show();
+    this->close();
+};

@@ -58,7 +58,6 @@ INCLUDEPATH = \
 #DEFINES = 
 
 FORMS += \
-    MenuModele.ui \
     choix_modele.ui \
     config.ui \
     creaconfig.ui \
