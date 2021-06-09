@@ -16,7 +16,7 @@ Simulateur::Simulateur(const Modele &m, const Configuration& dep, size_t buf): m
     configurations[0] = new Configuration(dep);
 }
 
-void Simulateur::setConfigDepart(const Configuration& config)
+void Simulateur::setConfigDepart(Configuration& config)
 {
     configurationDepart = &config;
     reset();
@@ -50,7 +50,7 @@ void Simulateur::reset()
     if (configurationDepart == nullptr) throw AutomateException("Etat depart indefini !\n");
     rang = 0;
     build(0);
-    *configurations[0] = *configurationDepart;
+    configurations[0] = configurationDepart;
 }
 
 Simulateur::~Simulateur()
@@ -96,12 +96,8 @@ void Simulateur::libereInstance()
 
 
 /*
-string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case* ensemble_case) const
+string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case* ensemble_case) const //pour chaque élément du tableau ensemble de cases, récupère le x et le y puis va dans le tableau configuration et récupère l'état de la cellule i+x, j+y, stocke cet état dans un tableau de caractères, retourne ce tableau
 {
-    /* pour chaque élément du tableau ensemble de cases,
-       récupère le x et le y puis va dans le tableau configuration
-       et récupère l'état de la cellule i+x, j+y, stocke cet état
-       dans un tableau de caractères, retourne ce tableau
 
     Case* ptr = ensemble_case;
     string * voisinage= new string;
@@ -120,11 +116,9 @@ string& Simulateur::getVoisinage(int i, int j, const Configuration& config, Case
 }
 
 char comparaison_voisinnage(string voisins, string *trans, char cel){
-    /* pour un voisinnage donné on va vérifier si ce voisinnage est dans
-     * le tableau de fonction transition si oui on va renvoyer un caractère qui
-     * va correspondre à l'état de la cellule à la génération t+1
+
+    int test=0; // pour un voisinnage donné on va vérifier si ce voisinnage est dans * le tableau de fonction transition si oui on va renvoyer un caractère qui * va correspondre à l'état de la cellule à la génération t+1
     int i=0;
-    int test=0;
     string st;
     while ( trans[i][0]==cel){
         st=trans[i].substr(1, trans[i].length()-2);
@@ -153,8 +147,7 @@ int char_to_int(char * c)
     return a;
 }
 
-Configuration& Simulateur::appliquerTransition(const Configuration &dep) const
-/* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée
+Configuration& Simulateur::appliquerTransition(const Configuration &dep) const // Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée
 {
     Configuration * dest = new Configuration(dep.reseau);
     *dest = dep;

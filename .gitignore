@@ -1,2 +1,6 @@
 *.exe
 .vscode
+CMakeCache.txt
+cmake_install.cmake
+*.cbp
+Makefile

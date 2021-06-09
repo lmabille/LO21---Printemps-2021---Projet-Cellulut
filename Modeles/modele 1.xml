@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Modele>
+   <titre name="modele 1" />
+   <Description name="ta race" />
+   <Auteur name="Orhane" />
+   <AnneeCreation name="2021" />
+   <Etats>
+      <NombreEtat name="2" />
+      <Etat Label="mort" Couleur="noir" Indice="0" />
+      <Etat Label="vivant" Couleur="blanc" Indice="1" />
+   </Etats>
+   <Voisinage>
+      <Nom name="" />
+      <Element>
+         <Case X="0" Y="-1" />
+         <Case X="1" Y="0" />
+         <Case X="0" Y="1" />
+         <Case X="-1" Y="0" />
+      </Element>
+   </Voisinage>
+   <TypeFonctionTransition name="intention" />
+   <ListeRegle>
+      <Regle name="0401" />
+      <Regle name="1040" />
+   </ListeRegle>
+   <ListeConfig nombre="2">
+      <Configuration>
+         <Nom name="Configuration1" />
+         <Taille lignes="4" colonnes="3" />
+         <EnsembleCase>
+            <Case X="0" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+         </EnsembleCase>
+      </Configuration>
+      <Configuration>
+         <Nom name="Configuration2" />
+         <Taille lignes="4" colonnes="3" />
+         <EnsembleCase>
+            <Case X="0" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="2" Indice="0" Label="mort" Couleur="noir" />
+         </EnsembleCase>
+      </Configuration>
+   </ListeConfig>
+</Modele>

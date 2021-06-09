@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<Modele>
+   <titre name="testLolo3" />
+   <Description name="Je suis la description" />
+   <Auteur name="Newton" />
+   <AnneeCreation name="2023" />
+   <Etats>
+      <NombreEtat name="2" />
+      <Etat Label="mort" Couleur="noir" Indice="0" />
+      <Etat Label="vivant" Couleur="blanc" Indice="1" />
+   </Etats>
+   <Voisinage>
+      <Nom name="" />
+      <Element>
+         <Case X="0" Y="-1" />
+         <Case X="1" Y="0" />
+         <Case X="0" Y="1" />
+         <Case X="-1" Y="0" />
+      </Element>
+   </Voisinage>
+   <TypeFonctionTransition name="extension" />
+   <ListeRegle>
+      <Regle name="0111000001" />
+      <Regle name="0011100001" />
+   </ListeRegle>
+   <ListeConfig nombre="2">
+      <Configuration>
+         <Nom name="Configuration1" />
+         <Taille lignes="10" colonnes="10" />
+         <EnsembleCase>
+            <Case X="0" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="4" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="5" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="0" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="5" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="8" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="9" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="9" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="5" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="5" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="4" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="5" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="8" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="6" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="6" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="6" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="7" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="6" Y="8" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="9" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="7" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="7" Y="4" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="5" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="7" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="7" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="8" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="8" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="8" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="8" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="7" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="9" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="7" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+         </EnsembleCase>
+      </Configuration>
+      <Configuration>
+         <Nom name="Configuration2" />
+         <Taille lignes="10" colonnes="10" />
+         <EnsembleCase>
+            <Case X="0" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="1" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="3" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="4" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="5" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="6" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="7" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="1" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="1" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="5" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="2" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="8" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="2" Y="9" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="3" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="3" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="4" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="4" Y="9" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="5" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="5" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="4" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="5" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="8" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="5" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="6" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="6" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="6" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="6" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="7" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="6" Y="8" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="6" Y="9" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="7" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="7" Y="4" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="5" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="7" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="7" Y="7" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="8" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="7" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="0" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="8" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="8" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="8" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="7" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="8" Y="9" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="1" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="2" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="3" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="5" Indice="0" Label="mort" Couleur="noir" />
+            <Case X="9" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="7" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="9" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
+         </EnsembleCase>
+      </Configuration>
+   </ListeConfig>
+</Modele>

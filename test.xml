@@ -7,14 +7,28 @@
 	<Etats>
 		<NombreEtat name="2"></NombreEtat>
 		<Etat name="noir" indice="0"></Etat>
-		<Etat name="blanc" indice="1"></Etat>
+		<Etat name="blanc" indice="1" ></Etat>
 	</Etats>
 	<Voisinage>
 		<Nom name="VonNeumann"></Nom>
 		<Rayon name="1"></Rayon>
 		<Element>
 			<Case X="1" Y="-1" />
-			//Soit élément soit rayon
+			<Case X="2" Y="3" />
+			<Case X="5" Y="4" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="2" Y="2" />
+			<Case X="1" Y="-1" />
 		</Element>
 	</Voisinage>
 	<ListeRegle>

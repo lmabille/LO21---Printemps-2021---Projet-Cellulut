@@ -23,6 +23,8 @@ public:
     Etat(int i, string l, string c): indice(i), label(l), couleur(c){}
     int getIndice() {return indice;}
     string getLabel();
+    string getCouleur(){return couleur;}
+    void setCouleur(string c) { this->couleur = c;};
     void setIndice(int i) {indice = i;}
     void setlabel(string s) { label = s;}
     // setCouleur void setCouleur; // à définir
@@ -31,8 +33,9 @@ public:
 
 class EnsembleEtats // désigne un ensemble donné d'états possibles // serait cool en singleton car une seule instance par simulation
 {
-    Etat* liste;
     int nombreEtats = 0;
+    Etat* liste;
+
 
 public:
     EnsembleEtats(int n): nombreEtats(n), liste(new Etat[n]) {}
