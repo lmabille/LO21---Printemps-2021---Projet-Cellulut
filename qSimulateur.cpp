@@ -1,5 +1,9 @@
 #include <qSimulateur.h>
 #include <iostream>
+//#include <time.h>
+//#include <dos.h>
+//#include <windows.h>
+#include <QTimer>
 
 qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):QWidget(parent){
 
@@ -53,7 +57,9 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
 
     boutons = new QHBoxLayout;
     depart= new QPushButton("Revenir au début");
-    play= new QPushButton("Lancer la simulation");
+
+    play= new QPushButton("Lancer/Arrêter la simulation");
+    connect(play,SIGNAL(clicked()),this,SLOT(LancerSim()));
 
 
     pas= new QPushButton("Avancer d'un pas");
@@ -130,4 +136,25 @@ void qSimulateur::sauvegarderCC(){
 
 
 S->getLastConfig().sauvegarderConfiguration(S->modele.getTitre());
+}
+
+
+void qSimulateur::LancerSim(){
+ /*   if(tourne == 0)tourne=1;
+    else tourne=0;
+    std::cout<<"Hey !";
+
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(configurationSuivante()));
+    std::cout<<"Hey 2!";
+    while(tourne ==1){
+        std::cout<<"Hey 3 !";
+        timer->start(1000);
+        std::cout<<"Hey 4 !";
+    }
+    if(tourne == 0)timer->stop();
+
+  delete timer;*/
+
+
 }
