@@ -11,7 +11,7 @@ using namespace pugi;
 
 Modele::Modele() {
     //this->typeVoisinnage =
-    this->typeVoisinnage = new V_ChoixUtilisateur(10);
+    this->typeVoisinnage = new V_ChoixUtilisateur();
     this->etatsPossibles = new EnsembleEtats(10);
     this->fonctionTrans = new FonctionTransition;
 

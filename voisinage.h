@@ -63,20 +63,20 @@ class V_VonNeumann: public Voisinage
          * une spécialisation du cas général, c'est-à-dire avec un rayon 1.*/
 {
 public:
-    void definir_ensemble_case(int rayon) override;
+    void definir_ensemble_case(int rayon = 1) override;
 };
 
 class V_Moore: public Voisinage
 {
 public:
-    void definir_ensemble_case(int rayon) override;
+    void definir_ensemble_case(int rayon = 1) override;
 };
 
 class V_ChoixUtilisateur: public Voisinage
 {
 public:
-    V_ChoixUtilisateur(int n);
-    void definir_ensemble_case(int rayon) override;
+    // V_ChoixUtilisateur(int n);
+    void definir_ensemble_case(int rayon = 1) override;
 };
 
 
