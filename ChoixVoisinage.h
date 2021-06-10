@@ -42,9 +42,10 @@ class ChoixVoisinage : public QWidget
     QLabel* indication;
     QPushButton* validation;
     QPushButton* retour;
+    QPushButton* appercu;
 
     // Layouts
-    QVBoxLayout* parametres; // liste + indication
+    QHBoxLayout* parametres; // liste + indication
     QHBoxLayout* affichage; // visu + rayon
     QHBoxLayout* actions; // validation + retour
     QVBoxLayout* fenetre; // contient tous les autres layouts
@@ -57,7 +58,9 @@ public:
 
 
 private slots :
-    //
+    void chargerAppercu(Voisinage* typeVois);
+
+
 };
 
 #endif // CHOIXVOISINAGE_H

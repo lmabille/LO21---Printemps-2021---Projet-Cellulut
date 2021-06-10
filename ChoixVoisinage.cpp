@@ -1,8 +1,6 @@
 #include "ChoixVoisinage.h"
 
 
-
-
 size_t ChoixVoisinage::calculRayonMax(size_t nbLignesReseau, size_t nbColonnesReseau)
 /* Calcule les dimensions max du voisinage que l'on peut afficher en fonction de la taille du reseau */
 {
@@ -22,6 +20,11 @@ size_t ChoixVoisinage::calculRayonMax(size_t nbLignesReseau, size_t nbColonnesRe
 size_t ChoixVoisinage::calculDimSide (size_t rayonMax)
 {
     return rayonMax*2 + 1;
+}
+
+void ChoixVoisinage::chargerAppercu(Voisinage* typeVois)
+{
+
 }
 
 ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
@@ -85,12 +88,15 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     listeVois->addItem("Moore");
     listeVois->addItem("Creer mon propre voisinage");
 
-    indication = new QLabel;
+    appercu = new QPushButton("Apperçu");
+
+    // indication = new QLabel;
 
 
     // layout
-    parametres = new QVBoxLayout();
+    parametres = new QHBoxLayout();
     parametres->addWidget(listeVois);
+    parametres->addWidget(appercu);
 
 
     // Layout final (fenetre)
@@ -101,6 +107,5 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     fenetre->addLayout(actions);
 
     setLayout(fenetre);
-
 
 }

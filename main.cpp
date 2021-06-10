@@ -34,7 +34,8 @@ int main(int argc, char* argv[]) {
 
     return app.exec();
 
-     /*   QApplication app(argc, argv);
+/*
+       QApplication app(argc, argv);
 
 
         Etat *listeEtat=new Etat[2];
@@ -76,7 +77,6 @@ int main(int argc, char* argv[]) {
         tab[19] = "0111000101";
         tab[20] = "0110000001";
 
-
         FonctionTransition f(tab, 21);
 
         Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
@@ -97,9 +97,9 @@ int main(int argc, char* argv[]) {
         fenetre.show();
 
         return app.exec();
+*/
+/*
 
-
-    /*
      //Thomas
     QApplication app(argc, argv);
     const char * fichier = "C:\\Users\\thoma\\Documents\\UTC\\ProjetLo21\\LO21---Printemps-2021---Projet-Cellulut\\Modeles\\testLolo3.xml";
@@ -113,7 +113,7 @@ int main(int argc, char* argv[]) {
     f_config.show();
 
     return app.exec();
-    */
+*/
 
 }
 

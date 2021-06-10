@@ -62,6 +62,7 @@ void FenetreConfiguration::on_btnCharger_clicked()
     chargerPreview();
 
 }
+
 void FenetreConfiguration::chargerPreview() {
     unsigned int taille = 20;//taille cellule
 
