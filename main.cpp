@@ -32,6 +32,10 @@ int main(int argc, char* argv[]) {
 
     fenetreVois->show();
 
+    MenuPrincipale_2 M;
+
+    M.show();
+
     return app.exec();
 
 /*

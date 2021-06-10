@@ -47,23 +47,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QListWidget" name="listWidget_2">
-      <item>
-       <property name="text">
-        <string>modele</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>modele2</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>modele3</string>
-       </property>
-      </item>
-     </widget>
+     <widget class="QListWidget" name="listWidget_2"/>
     </item>
    </layout>
   </widget>
@@ -102,5 +86,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>listWidget_2</sender>
+   <signal>itemDoubleClicked(QListWidgetItem*)</signal>
+   <receiver>Choix_Modele</receiver>
+   <slot>recupModele()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>661</x>
+     <y>361</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>935</x>
+     <y>340</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>recupModele()</slot>
+ </slots>
 </ui>
