@@ -1,10 +1,9 @@
 #include "ChoixVoisinage.h"
 
 
-size_t ChoixVoisinage::calculRayonMax(size_t nbLignesReseau, size_t nbColonnesReseau)
+void ChoixVoisinage::setRayonMax(size_t nbLignesReseau, size_t nbColonnesReseau)
 /* Calcule le rayon max du voisinage que l'on peut afficher en fonction de la taille du reseau */
 {
-    size_t rayonMax = 0;
     size_t actualSide = min(nbLignesReseau, nbColonnesReseau);
     if (actualSide%2 == 1) // impair
     {
@@ -14,27 +13,27 @@ size_t ChoixVoisinage::calculRayonMax(size_t nbLignesReseau, size_t nbColonnesRe
     {
         rayonMax = (actualSide - 1)/2;
     }
-    return rayonMax;
+    std::cout << "LE RAYON EST DE " << rayonMax << endl;
 }
 
-void ChoixVoisinage::calculDimSide (size_t rayonMax)
+size_t ChoixVoisinage::calculDimSide (size_t rayonMax)
 /* calcule les dimensions max de l'affichage du voisinage en fonction du rayon max */
 {
-    dimSide = rayonMax*2 + 1;
+    size_t dimSide = rayonMax*2 + 1;
+    return dimSide;
 }
 
 
-Voisinage* ChoixVoisinage::quelVoisinage(int i)
+Voisinage* ChoixVoisinage::quelVoisinage(int i, size_t rayon)
 /* détermine le voisinage à construire en fonction de l'index sélectionné dans la combobox */
 {
     switch(i)
     {
-    Voisinage* v;
     case 0: // Von Neumann
     {
         std::cout << "\tAOUIOUI " << i << endl;
         V_VonNeumann* vN = new V_VonNeumann();
-        vN->definir_ensemble_case(1);
+        vN->definir_ensemble_case(rayon);
         return vN;
         break;
     }
@@ -42,7 +41,7 @@ Voisinage* ChoixVoisinage::quelVoisinage(int i)
     {
         std::cout << "\tAOUIOUI " << i<< endl;
         V_Moore* vM = new V_Moore();
-        vM->definir_ensemble_case(1);
+        vM->definir_ensemble_case(rayon);
         return vM;
         break;
     }
@@ -50,7 +49,7 @@ Voisinage* ChoixVoisinage::quelVoisinage(int i)
     {
         std::cout << "\tAOUIOUI " << i<< endl;
         V_ChoixUtilisateur* vU = new V_ChoixUtilisateur();
-        vU->definir_ensemble_case(1);
+        vU->definir_ensemble_case(rayon);
         return vU;
         break;
     }
@@ -59,8 +58,10 @@ Voisinage* ChoixVoisinage::quelVoisinage(int i)
     }
 }
 
+
 void ChoixVoisinage::cleanAppercu()
 {
+    size_t dimSide = calculDimSide(rayonMax);
     for (size_t i=0;i<dimSide;i++)
     {
         for (size_t j=0;j<dimSide;j++)
@@ -73,21 +74,39 @@ void ChoixVoisinage::cleanAppercu()
     }
 }
 
+void ChoixVoisinage::afficherMessage()
+{
+    indication->setVisible(true);
+}
+
 void ChoixVoisinage::chargerAppercu()
-/* affiche l'apperçu du voisinage sélectionné dans la combobox qd l'utilisateur clique sur "Apperçu" */
+/* affiche l'apperçu du voisinage sélectionné dans la combobox (VNeum ou Moore de rayons variables) qd l'utilisateur clique sur "Apperçu" */
 {
     cleanAppercu();
+
     // la grille avec seule la case du milieu a été créé grâce au constructeur
-    // s'occuper du rayon aussi
-    // on récupère le voisinage correspondant à la comboBox
+
+    // affichage choix du rayon ou non
+    int indexChoisi = listeVois->currentIndex();
+    if (indexChoisi==0 || indexChoisi==1) // VNeum ou Moore
+    {
+        choixRayon->setVisible(true);
+    }
+    else choixRayon->setVisible(false);
+
+    int rayonChoisi = choixRayon->value();
+    std::cout << "rayon choisi = " << rayonChoisi <<endl;
+
     std::cout << "YOUHOU " << listeVois->currentIndex() << endl;
 
-    Voisinage* voisinageChoisi = quelVoisinage(listeVois->currentIndex());
+    Voisinage* voisinageChoisi = quelVoisinage(indexChoisi, rayonChoisi);
+
     std::cout << "yo";
 
     Case* coordonneesAColorier = voisinageChoisi->getTableau();
     int nombreCases = voisinageChoisi->getNbCelluleVoisi();
     size_t l, c;
+    size_t dimSide = calculDimSide(rayonMax);
     for (int p = 0; p<nombreCases; p++)
     {
         for (size_t i=0;i<dimSide;i++)
@@ -103,14 +122,6 @@ void ChoixVoisinage::chargerAppercu()
     }
 }
 
-/*
-void ChoixVoisinage::connexionVoisAppercu()
-// connecte le bouton "Apperçu" à l'affichage du voisinage
-{
-    connect(appercu, SIGNAL(clicked()),this,SLOT(chargerAppercu()));
-}
-*/
-
 ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
 /* Constructeur de la classe choix Voisinage : construit la grille de base où les apperçus des voisinages vont être affichés */
 {
@@ -119,8 +130,12 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     // grille de cellules (visu)
 
     size_t tailleCell = 15;
-    size_t rayonMax = calculRayonMax(L,C); // on récupère le rayon maximal en fonction des dimensions du réseau choisies
-    calculDimSide(rayonMax); // on recup les dimensions maximales de l'affichage
+    setRayonMax(L,C);
+    std::cout << "rayon de " << rayonMax << " OK " << endl;
+
+    size_t dimSide = calculDimSide(rayonMax); // on recup les dimensions maximales de l'affichage
+    std::cout << "dimSide = " << dimSide << endl;
+
     calculCoordMiddleCell(); // on calcule les coordonnées de la cellule du milieu
 
     visu = new QTableWidget(dimSide, dimSide);
@@ -145,15 +160,21 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     }
 
     // choix du rayon (choixRayon)
-
     choixRayon = new QSpinBox();
     choixRayon->setRange(1,rayonMax);
+    choixRayon->setVisible(false);
+    connect(choixRayon, SIGNAL(valueChanged(int)),this,SLOT(afficherMessage()));
+
+
+    // Message recharge
+    indication = new QLabel("Veuillez recharger l'apperçu");
+    indication->setVisible(false);
 
     // Layout
     affichage = new QHBoxLayout;
     affichage->addWidget(visu);
     affichage->addWidget(choixRayon);
-
+    affichage->addWidget(indication);
 
     // Layout actions
 
@@ -176,9 +197,6 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
 
     appercu = new QPushButton("Apperçu");
     connect(appercu, SIGNAL(clicked()),this,SLOT(chargerAppercu()));
-
-    // indication = new QLabel;
-
 
     // layout
     parametres = new QHBoxLayout();
