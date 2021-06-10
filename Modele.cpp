@@ -13,7 +13,37 @@ Modele::Modele()
     this->etatsPossibles = new EnsembleEtats(10);
     this->fonctionTrans = new FonctionTransition;
 }
+string *generation_regles_Brians_Brain(const unsigned int nb_voisins)
+{
+    string tab[100]; //etat depart_mort_refractaire_excite _etatarrivee
+    string nouvelle_regle;
+    int l = 0;
+    for (size_t i = 0; i < 10; i++)
+    {
+        for (size_t j = 0; j < 10; j++)
+        {
+            for (size_t k = 0; k < 10; k++)
+            {
+                if (i + k + j == nb_voisins)
+                {
+                    nouvelle_regle = "2" + to_string(i) + to_string(j) + to_string(k) + "1";
+                    tab[l] = nouvelle_regle;
+                    l++;
+                    nouvelle_regle = "1" + to_string(i) + to_string(j) + to_string(k) + "0";
+                    tab[l] = nouvelle_regle;
+                    if (k == 2)
+                    {
+                        nouvelle_regle = "0" + to_string(i) + to_string(j) + "2" + "2";
+                        tab[l] = nouvelle_regle;
+                        l++;
+                    }
+                }
+            }
+        }
+    }
 
+    return tab;
+}
 string *generation_regles_Life_game(const unsigned int nb_voisins)
 {
     string tab[nb_voisins]; //une cellule morte possédant exactement trois voisines vivantes devient vivante (elle naît)
