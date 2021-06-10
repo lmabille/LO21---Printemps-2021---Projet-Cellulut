@@ -30,7 +30,7 @@ public:
     Simulateur(const Modele &m, const Configuration& dep, size_t buf = 2);
     ~Simulateur();
     void setConfigDepart(Configuration& config); // définit une configuration de départ
-    const Configuration* getConfigurationDepart() const {return configurationDepart; }//pour le qSimulateur
+    Configuration* getConfigurationDepart() const {return configurationDepart; }//pour le qSimulateur
     void next(); // applique la fonction de transition du modèle sur une génération
     void run(size_t nbSteps); // applique la fonction de transition du modèle sur un nombre de générations donnés (nbSteps)
     const Configuration& getLastConfig() const; // renvoie la dernière configuration enregistrée

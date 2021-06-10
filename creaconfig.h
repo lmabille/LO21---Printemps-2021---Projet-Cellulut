@@ -10,6 +10,8 @@
 #include <QHeaderView>
 #include <QLabel>
 #include <QGridLayout>
+#include <QDebug>
+#include <string>
 
 namespace Ui {
 class CreaConfig;
@@ -36,4 +38,5 @@ private:
     void changeEtat(int i,int y,Configuration* config, QPushButton* button);
 };
 
+QTextStream& qStdOut();
 #endif // CREACONFIG_H

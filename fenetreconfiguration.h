@@ -9,6 +9,7 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include "creaconfig.h"
+#include "qSimulateur.h"
 
 namespace Ui {
 class FenetreConfiguration;
@@ -31,9 +32,12 @@ private slots:
 
     void on_btnReload_clicked();
 
+    void on_btnValider_clicked();
+
 private:
     Ui::FenetreConfiguration *ui;
     const char* nom_fichier;
+    Modele * modele;
     void remplirComboList(string * liste, int nb);
     void initConnect(Simulateur* simul);
     void chargerConfig();

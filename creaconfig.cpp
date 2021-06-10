@@ -1,6 +1,8 @@
 #include "creaconfig.h"
 #include "ui_creaconfig.h"
 
+QTextStream& qStdOut();
+
 CreaConfig::CreaConfig(QWidget *parent, Simulateur * simu) :
     QDialog(parent),
     ui(new Ui::CreaConfig),
@@ -27,16 +29,25 @@ CreaConfig::~CreaConfig()
 
 void CreaConfig::on_btnTaille_clicked()
 {
+    stoi("2");
     int ligne,colonne;
     ligne = ui->spinLigne->value();
     colonne = ui->spinColonne->value();
     this->res = new Reseau(ligne,colonne);
 
     Configuration * config = new Configuration(*res);
+    qStdOut() << QString::fromStdString(simu->getModele()->getEtatsPossibles()->getListe()[0].getLabel() + " " );
+    qStdOut() << QString::number(simu->getModele()->getEtatsPossibles()->getListe()[0].getIndice())<< " ";
+
+    qStdOut() << QString::fromStdString(simu->getModele()->getEtatsPossibles()->getListe()[1].getLabel() + " " );
+
+
+
+    qStdOut() << QString::number(simu->getModele()->getEtatsPossibles()->getListe()[0].getIndice());
 
     for (int i = 0; i< ligne; i ++){
         for (int j = 0; j < colonne ; j++) {
-            config->setEtatCellule(i,j,&simu->getModele()->getEtatsPossibles()->getListe()[0]);
+            config->setEtatCellule(i,j,&simu->getModele()->getEtatsPossibles()->getListe()[1]);
         }
     }
 
@@ -50,7 +61,7 @@ void CreaConfig::on_btnTaille_clicked()
 }
 
 void CreaConfig::chargerGrille() {
-    unsigned int taille = 20;//taille cellule
+    //unsigned int taille = 20;//taille cellule
 
     const int nbLigne= this->simu->getConfigurationDepart()->getReseauLignes();
     const int nbColonne= this->simu->getConfigurationDepart()->getReseauColonnes();
@@ -152,21 +163,32 @@ void CreaConfig::clearLayout(QLayout* layout) {
 }
 
 
-void CreaConfig::changeEtat(int i,int j,Configuration* config, QPushButton* button) {
+void CreaConfig::changeEtat(int j,int i,Configuration* config, QPushButton* button) {
     int indice = config->getEtatCellule(i,j).getIndice();
+    qStdOut() << QString::number(indice);
     if (indice == simu->getModele()->getEtatsPossibles()->getNombreEtats())
         indice = 0;
     else
         indice +=1;
-    config->setEtatCellule(i,j,&simu->getModele()->getEtatsPossibles()->getListe()[1]);
+    config->setEtatCellule(i,j,&simu->getModele()->getEtatsPossibles()->getListe()[indice]);
     if (indice == 0)
         button->setStyleSheet("background-color : yellow");
     else
         button->setStyleSheet("background-color : white");
     button->setText(QString::number(indice));
 
+    qStdOut() << "test" ;
+    qStdOut() << QString::fromStdString(config->getCellule(i,j).get_Etat().getLabel());
+
     this->simu->setConfigDepart(*config);
 
+}
+
+
+QTextStream& qStdOut()
+{
+    static QTextStream ts( stdout );
+    return ts;
 }
 
 

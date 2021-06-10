@@ -6,7 +6,8 @@ FenetreConfiguration::FenetreConfiguration(QWidget *parent, Modele * modele, Sim
 
     ui(new Ui::FenetreConfiguration),
     nom_fichier(nom),
-    simul(simul)
+    simul(simul),
+    modele(modele)
 {
     int nb = getNbConfig(this->nom_fichier);
     string * liste_config = new string[nb]();
@@ -67,14 +68,14 @@ void FenetreConfiguration::on_btnCharger_clicked()
 }
 
 void FenetreConfiguration::chargerPreview() {
-    unsigned int taille = 10;//taille cellule
+    unsigned int taille = 5;//taille cellule
 
     const int nbLigne= this->simul->getConfigurationDepart()->getReseauLignes();
     const int nbColonne= this->simul->getConfigurationDepart()->getReseauColonnes();
     // unsigned int nbLigne=15;
    //unsigned int nbColonne=20;
     QTableWidget * grille = new QTableWidget(nbLigne, nbColonne);//ici on met la taille passé en argument
-    grille->setFixedSize(2.61*taille*nbColonne, 1.61*taille*nbLigne);//permet d'agrandir la fenetre en faire une fonction de la taille
+    grille->setFixedSize(400,300);//permet d'agrandir la fenetre en faire une fonction de la taille
 
     //On enlève les labels et les scrollbar
     grille->horizontalHeader()->setVisible(false);
@@ -86,12 +87,14 @@ void FenetreConfiguration::chargerPreview() {
     for(int i=0; i<nbLigne; i++ ){//pour chaque colonne
         for(int j=0; j<nbColonne; j++){//pour chaque ligne
             grille->setColumnWidth(j, taille);
+
             grille->setRowHeight(i, taille);
             grille->setItem(i, j, new QTableWidgetItem(""));
             //On récupère la couleur de l'état
-            string couleur = this->simul->getConfigurationDepart()->getEtatCellule (i, j).getCouleur();
-            if(couleur == "noir")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
-            if(couleur == "blanc")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+            int indice = this->simul->getConfigurationDepart()->getEtatCellule (i, j).getIndice();
+            if(indice == 0)grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
+            if(indice == 1)grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+
            // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
         }
     }
@@ -133,4 +136,12 @@ void FenetreConfiguration::on_btnCreer_clicked()
 void FenetreConfiguration::on_btnReload_clicked()
 {
     chargerPreview();
+}
+
+void FenetreConfiguration::on_btnValider_clicked()
+{
+    qSimulateur* fenetre = new qSimulateur(nullptr, modele, simul->getConfigurationDepart());
+
+
+    fenetre->show();
 }

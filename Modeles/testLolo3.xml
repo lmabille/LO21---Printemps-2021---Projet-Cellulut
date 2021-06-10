@@ -22,6 +22,28 @@
    <ListeRegle>
       <Regle name="0111000001" />
       <Regle name="0011100001" />
+      <Regle name="0001110001" />
+      <Regle name="0000111001" />
+      <Regle name="0000011101" />
+      <Regle name="0111110001" />
+      <Regle name="1000000000" />
+      <Regle name="1100000000" />
+      <Regle name="1010000000" />
+      <Regle name="1001000000" />
+      <Regle name="1000100000" />
+      <Regle name="1000010000" />
+      <Regle name="1000001000" />
+      <Regle name="1000000100" />
+      <Regle name="1000000010" />
+      <Regle name="0101010001" />
+      <Regle name="0001010001" />
+      <Regle name="0001000011" />
+      <Regle name="0001000101" />
+      <Regle name="0111000101" />
+      <Regle name="0110000001" />
+
+
+
    </ListeRegle>
    <ListeConfig nombre="5">
       <Configuration>
@@ -135,13 +157,13 @@
          <Taille lignes="10" colonnes="10" />
          <EnsembleCase>
             <Case X="0" Y="0" Indice="1" Label="vivant" Couleur="blanc" />
-            <Case X="0" Y="1" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="1" Indice="1" Label="vivant" Couleur="blanc" />
             <Case X="0" Y="2" Indice="1" Label="vivant" Couleur="blanc" />
-            <Case X="0" Y="3" Indice="0" Label="vivant" Couleur="blanc" />
-            <Case X="0" Y="4" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="3" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="4" Indice="1" Label="vivant" Couleur="blanc" />
             <Case X="0" Y="5" Indice="1" Label="vivant" Couleur="blanc" />
-            <Case X="0" Y="6" Indice="0" Label="vivant" Couleur="blanc" />
-            <Case X="0" Y="7" Indice="0" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="6" Indice="1" Label="vivant" Couleur="blanc" />
+            <Case X="0" Y="7" Indice="1" Label="vivant" Couleur="blanc" />
             <Case X="0" Y="8" Indice="1" Label="vivant" Couleur="blanc" />
             <Case X="0" Y="9" Indice="1" Label="vivant" Couleur="blanc" />
             <Case X="1" Y="0" Indice="0" Label="mort" Couleur="noir" />
