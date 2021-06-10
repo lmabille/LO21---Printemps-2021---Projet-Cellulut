@@ -103,6 +103,19 @@
    </property>
    <layout class="QVBoxLayout" name="LayoutPreview"/>
   </widget>
+  <widget class="QPushButton" name="btnReload">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>490</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reload</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

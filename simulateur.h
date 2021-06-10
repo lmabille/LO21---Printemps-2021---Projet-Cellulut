@@ -36,6 +36,7 @@ public:
     const Configuration& getLastConfig() const; // renvoie la dernière configuration enregistrée
     size_t getRangLast() const; // renvoie le rang de la simulation cad le nombre de générations qui ont été simulées
     void reset(); // revient à l'état de départ de la simulation
+    const Modele * getModele() {return &modele;}
 
     // Iterateur pour parcourir les simulations enregistrées en lecture et en écriture
 

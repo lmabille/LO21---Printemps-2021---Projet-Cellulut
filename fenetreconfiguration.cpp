@@ -27,6 +27,8 @@ FenetreConfiguration::FenetreConfiguration(QWidget *parent, Modele * modele, Sim
     //ui->comboBox->addItem(QString::fromStdString(liste_config[0]));
     remplirComboList(liste_config,nb);
     initConnect(this->simul);
+
+    //chargerPreview();
 }
 
 FenetreConfiguration::~FenetreConfiguration()
@@ -61,10 +63,11 @@ void FenetreConfiguration::on_btnCharger_clicked()
     chargerConfig();
     chargerPreview();
 
+
 }
 
 void FenetreConfiguration::chargerPreview() {
-    unsigned int taille = 20;//taille cellule
+    unsigned int taille = 10;//taille cellule
 
     const int nbLigne= this->simul->getConfigurationDepart()->getReseauLignes();
     const int nbColonne= this->simul->getConfigurationDepart()->getReseauColonnes();
@@ -117,7 +120,17 @@ void FenetreConfiguration::chargerPreview() {
 }
 
 void FenetreConfiguration::creerConfig() {
-    CreaConfig * pageConfig = new CreaConfig();
+    CreaConfig * pageConfig = new CreaConfig(this,simul);
+    pageConfig->show();
 
+}
 
+void FenetreConfiguration::on_btnCreer_clicked()
+{
+    creerConfig();
+}
+
+void FenetreConfiguration::on_btnReload_clicked()
+{
+    chargerPreview();
 }

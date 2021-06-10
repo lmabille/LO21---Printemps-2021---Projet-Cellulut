@@ -27,6 +27,10 @@ private slots:
 
     void on_btnCharger_clicked();
 
+    void on_btnCreer_clicked();
+
+    void on_btnReload_clicked();
+
 private:
     Ui::FenetreConfiguration *ui;
     const char* nom_fichier;
