@@ -35,7 +35,8 @@ public:
 class ChoixVoisinage : public QWidget
 {
     // infos grille et cellule du milieu
-    size_t dimSide = 3;
+    size_t rayonMax = 1;
+    // size_t dimSide = 3;
     size_t lineMiddleCell;
     size_t collumnMiddleCell;
 
@@ -57,19 +58,19 @@ class ChoixVoisinage : public QWidget
 
 public:
     // Constructeur
-    size_t calculRayonMax(size_t nbLignesReseau, size_t nbLColonnesReseau);
-    void calculDimSide (size_t rayonMax);
-    void calculCoordMiddleCell () {lineMiddleCell = dimSide/2; collumnMiddleCell = dimSide/2;}
-    size_t getDimSide() const {return dimSide;}
+    void setRayonMax(size_t nbLignesReseau, size_t nbLColonnesReseau);
+    size_t calculDimSide (size_t rayonMax);
+    void calculCoordMiddleCell () {size_t dimSide = calculDimSide(rayonMax); lineMiddleCell = dimSide/2; collumnMiddleCell = dimSide/2;}
     int getLMiddCell() const {return lineMiddleCell;}
     int getCMiddCell() const {return collumnMiddleCell;}
     explicit ChoixVoisinage(QWidget* parent = nullptr, size_t nbLignesReseau = 3, size_t nbColonnesReseau = 3); // à modifier ensuite : on passe en argument les dimensions du réseaux choisies car donne les dimensions maximales du voisinage
-    Voisinage* quelVoisinage(int i);
+    Voisinage* quelVoisinage(int index, size_t rayonChoisi);
     void cleanAppercu();
 
 private slots :
     void chargerAppercu();
-    //void connexionVoisAppercu();
+    void afficherMessage();
+
 
 
 

@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 
     QApplication app(argc, argv);
 
-    ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 5, 5); // nullptr, 3, 3 par défaut
+    ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 7, 7); // nullptr, 3, 3 par défaut
 
     fenetreVois->show();
 
