@@ -30,12 +30,13 @@ public:
     Simulateur(const Modele &m, const Configuration& dep, size_t buf = 2);
     ~Simulateur();
     void setConfigDepart(Configuration& config); // définit une configuration de départ
-    const Configuration* getConfigurationDepart() const {return configurationDepart; }//pour le qSimulateur
+    Configuration* getConfigurationDepart() const {return configurationDepart; }//pour le qSimulateur
     void next(); // applique la fonction de transition du modèle sur une génération
     void run(size_t nbSteps); // applique la fonction de transition du modèle sur un nombre de générations donnés (nbSteps)
     const Configuration& getLastConfig() const; // renvoie la dernière configuration enregistrée
     size_t getRangLast() const; // renvoie le rang de la simulation cad le nombre de générations qui ont été simulées
     void reset(); // revient à l'état de départ de la simulation
+    const Modele * getModele() {return &modele;}
 
     // Iterateur pour parcourir les simulations enregistrées en lecture et en écriture
 

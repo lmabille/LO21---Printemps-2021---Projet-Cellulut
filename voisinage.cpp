@@ -8,12 +8,12 @@
 //Voisinage::Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
 
 //Voisinage::Voisinage() : nbCelluleVoisi(10), ensemble_case(new Case[10]()) { typeVoisi = ""; }
-
+/*
 V_ChoixUtilisateur::V_ChoixUtilisateur(int n) {
     this->nbCelluleVoisi = n;
     this->ensemble_case = new Case[n]();
     this->setType("");
-} //: nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
+}*/ //: nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
 
 
 void V_VonNeumann::definir_ensemble_case(int rayon)
@@ -37,7 +37,7 @@ void V_VonNeumann::definir_ensemble_case(int rayon)
 void V_Moore::definir_ensemble_case(int rayon)
 {
     nbCelluleVoisi = (2*rayon +1)*(2*rayon +1) - 1;
-    cout << "*** " << nbCelluleVoisi << " cases reservees ***" << endl; // ok
+    //cout << "*** " << nbCelluleVoisi << " cases reservees ***" << endl; // ok
 
     ensemble_case = new Case[nbCelluleVoisi]; // on réserve la place pour le bon nombre de cellules
 
@@ -45,58 +45,72 @@ void V_Moore::definir_ensemble_case(int rayon)
 
     for (int r=1; r<= rayon; r++)
     {
-        cout << "\tcouronne " << r << endl;
+        //cout << "\tcouronne " << r << endl;
 
-        cout << " ligne du haut (coins inclus) " << endl;
+        //cout << " ligne du haut (coins inclus) " << endl;
         for (int j=-r; j<=r; j++)
         {
-            cout << ind;
+            //cout << ind;
             ensemble_case[ind].setL_C(r,j);
-            cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
+            //cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
             ind++;
         }
-        cout << endl;
+        //cout << endl;
 
-        cout << "ligne de droite (coins exclus)" << endl;
+        //cout << "ligne de droite (coins exclus)" << endl;
         for (int i=r-1; i>=-r+1; i--)
         {
-            cout << ind;
+            //cout << ind;
             ensemble_case[ind].setL_C(i,r);
-            cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
+            //cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
             ind++;
         }
-        cout << endl;
+        //cout << endl;
 
-        cout << "ligne du bas (coins inclus)" << endl;
+        //cout << "ligne du bas (coins inclus)" << endl;
         for (int j=r; j>=-r; j--)
         {
-            cout << ind;
+            //cout << ind;
             ensemble_case[ind].setL_C(-r,j);
-            cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
+            //cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
             ind++;
         }
-        cout << endl;
+        //cout << endl;
 
-        cout << "ligne de gauche (coins exclus)" << endl;
+        //cout << "ligne de gauche (coins exclus)" << endl;
         for (int i=-r+1; i<=r-1; i++)
         {
-            cout << ind;
+            //cout << ind;
             ensemble_case[ind].setL_C(i,-r);
-            cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
+            //cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
             ind++;
         }
-        cout << endl;
+        //cout << endl;
     }
 
 }
 
-void V_ChoixUtilisateur::definir_ensemble_case(int rayon)
+void V_ChoixUtilisateur::ajouter_case(size_t i, size_t j)
 {
-    /* voir Qt: afficher cellule avec les cellules qui l'entourent dans le rayon r. Récupérer les coordonnées des cellules sélectionnées
-     * par l'utilisateur + compter le nombre de cases sélectionnées. Remplir le tableau avec ces indications.*/
+    // par l'utilisateur + compter le nombre de cases sélectionnées. Remplir le tableau avec ces indications.
+    Case* oldTab = ensemble_case;
+    Case* newTab = new Case[nbCelluleVoisi+1];
+    for (size_t i=0; i<nbCelluleVoisi; i++)
+    {
+        newTab[i] = ensemble_case[i];
+    }
+    newTab[nbCelluleVoisi].setL_C(i,j);
+    ensemble_case = newTab;
+    delete[] oldTab;
+    nbCelluleVoisi++;
 }
 
-int Voisinage::getNbCelluleVoisi() const
+void V_ChoixUtilisateur::definir_ensemble_case(int rayon)
+{
+
+};
+
+size_t Voisinage::getNbCelluleVoisi() const
 {
     return this->nbCelluleVoisi;
 }

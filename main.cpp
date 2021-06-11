@@ -18,6 +18,7 @@
 #include "fenetreconfiguration.h"
 #include "chargerModele.h"
 #include "ChoixVoisinage.h"
+#include "creaconfig.h"
 
 
 Simulateur *Simulateur::uniqueInstance = nullptr;
@@ -28,13 +29,14 @@ int main(int argc, char* argv[]) {
 
     QApplication app(argc, argv);
 
-    ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 5, 5); // nullptr, 3, 3 par défaut
+    ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 7, 7); // nullptr, 3, 3 par défaut
 
     fenetreVois->show();
 
     return app.exec();
 
-     /*   QApplication app(argc, argv);
+/*
+       QApplication app(argc, argv);
 
 
         Etat *listeEtat=new Etat[2];
@@ -76,7 +78,6 @@ int main(int argc, char* argv[]) {
         tab[19] = "0111000101";
         tab[20] = "0110000001";
 
-
         FonctionTransition f(tab, 21);
 
         Modele *M = new Modele("testLolo3", &ensemble,  &f, "extension", &V, "Je suis la description", "Newton", 2023);
@@ -96,7 +97,7 @@ int main(int argc, char* argv[]) {
 
         fenetre.show();
 
-        return app.exec();
+        return app.exec();*/
 
 
     /*
@@ -107,13 +108,28 @@ int main(int argc, char* argv[]) {
     Modele* model = chargerModel(fichier);
 
     Simulateur* simu = new Simulateur(*model);
-
+    Reseau res(10,10);
 
     FenetreConfiguration f_config(nullptr,model,simu,fichier);
     f_config.show();
 
-    return app.exec();
-    */
+    Configuration *c1 = new Configuration(res);
+    /*Configuration *c2 = new Configuration(res);
+    Configuration *c3 = new Configuration(res);
+    Configuration *c4 = new Configuration(res);
+    Configuration *c5 = new Configuration(res);
+
+    //c1->remplissageAleatoire(ensemble);
+
+    qStdOut() <<"indice de 0 :" <<QString::number(model->getEnsemble()->getListe()[0].getIndice());
+
+    qStdOut() <<"indice de 1 :" <<QString::number(model->getEnsemble()->getListe()[1].getIndice());
+
+
+
+
+    return app.exec();*/
+
 
 }
 

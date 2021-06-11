@@ -101,19 +101,29 @@ Modele* chargerModel(const char *nomFichier) {
                     //int indice;
                     int v_cpt = 0;
                     for (xml_attribute_iterator cpt = it2->attributes_begin(); cpt != it2->attributes_end(); ++cpt) {
+                        val = cpt->value();
                         if ( v_cpt == 0){
                             label = cpt->value();
-                            //cout << "LAbel ok " <<endl;
+                            cout << "LAbel ok " << label <<endl;
                             v_cpt ++;
                         }
 
-                        if ( v_cpt == 1) {
+                        else if ( v_cpt == 1) {
                             couleur = cpt->value();
                             v_cpt ++;
                         }
 
-                        if ( v_cpt == 2  ) {
-                            indice = 2;
+                        else if ( v_cpt == 2  ) {
+                            cout << " :::: " << cpt->value() << endl;
+                            //indice = 2;
+                            indice = stoi(cpt->value());
+                            /*
+                            const char* test =  cpt->value() ;
+                            int indi;
+                            stringstream s(test);
+                            s >> indi;
+                            indice = indi;*/
+
                             v_cpt ++;
                         }
 
@@ -291,6 +301,13 @@ Modele* chargerModel(const char *nomFichier) {
 
 
     //cout < charge->getAuteur();
+
+
+    cout <<"-------- 0 : " <<charge->getEtatsPossibles()->getListe()[0].getIndice() <<endl;
+    //cout << " ____ : " << charge->getEnsemble()->getListe()[0].getIndice() <<endl;
+
+
+    cout <<"-------- 1 : " <<charge->getEtatsPossibles()->getListe()[1].getIndice() <<endl;
 
     return charge;
 
