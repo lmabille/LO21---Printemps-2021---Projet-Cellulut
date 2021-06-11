@@ -27,19 +27,14 @@ int main(int argc, char* argv[]) {
 
     // viovio
 
-    QApplication app(argc, argv);
+ /*   QApplication app(argc, argv);
 
     ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 7, 7); // nullptr, 3, 3 par défaut
 
     fenetreVois->show();
+    return app.exec();*/
 
-    MenuPrincipale_2 M;
 
-    M.show();
-
-    return app.exec();
-
-/*
        QApplication app(argc, argv);
 
 
@@ -101,12 +96,12 @@ int main(int argc, char* argv[]) {
 
         fenetre.show();
 
-        return app.exec();*/
+        return app.exec();
 
 
-    /*
+
      //Thomas
-    QApplication app(argc, argv);
+  /*  QApplication app(argc, argv);
     const char * fichier = "C:\\Users\\thoma\\Documents\\UTC\\ProjetLo21\\LO21---Printemps-2021---Projet-Cellulut\\Modeles\\testLolo3.xml";
 
     Modele* model = chargerModel(fichier);
@@ -117,7 +112,7 @@ int main(int argc, char* argv[]) {
     FenetreConfiguration f_config(nullptr,model,simu,fichier);
     f_config.show();
 
-    Configuration *c1 = new Configuration(res);
+    Configuration *c1 = new Configuration(res);*/
     /*Configuration *c2 = new Configuration(res);
     Configuration *c3 = new Configuration(res);
     Configuration *c4 = new Configuration(res);
@@ -129,10 +124,11 @@ int main(int argc, char* argv[]) {
 
     qStdOut() <<"indice de 1 :" <<QString::number(model->getEnsemble()->getListe()[1].getIndice());
 
+*/
 
 
-
-    return app.exec();*/
+  //  return app.exec();
+   // delete c1;
 
 
 }
