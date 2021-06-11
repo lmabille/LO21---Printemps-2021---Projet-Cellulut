@@ -90,8 +90,19 @@ void FenetreConfiguration::chargerPreview() {
             grille->setItem(i, j, new QTableWidgetItem(""));
             //On récupère la couleur de l'état
             int indice = this->simul->getConfigurationDepart()->getEtatCellule (i, j).getIndice();
-            if(indice == 0)grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
-            if(indice == 1)grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+            //if(indice == 0)grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
+            //if(indice == 1)grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+            string couleur = simul->getConfigurationDepart()->getEtatCellule (i, j).getCouleur();
+            if(couleur == "noir")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
+            if(couleur == "blanc")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+            if(couleur == "rouge")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 0));
+            if(couleur == "vert")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(50, 255, 0));
+            if(couleur == "bleu")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 255));
+            if(couleur == "jaune")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 215, 50));
+            if(couleur == "magenta")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+            if(couleur == "rose")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 150, 203));
+            if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
+            if(couleur == "peppermint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
 
            // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
         }

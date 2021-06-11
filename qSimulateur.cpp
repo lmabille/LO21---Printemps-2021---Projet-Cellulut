@@ -49,8 +49,9 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
             if(couleur == "magenta")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
             if(couleur == "rose")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 150, 203));
             if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
-            if(couleur == "pepper mint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
+            if(couleur == "peppermint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
            // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+            grille->item(i,j)->setText(QString::number(S->getLastConfig().getEtatCellule(i,j).getIndice()));
         }
     }
 
@@ -129,8 +130,9 @@ void qSimulateur::configurationSuivante(){
             if(couleur == "magenta")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
             if(couleur == "rose")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 150, 203));
             if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
-            if(couleur == "pepper mint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
+            if(couleur == "peppermint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
            // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+            grille->item(i,j)->setText(QString::number(S->getLastConfig().getEtatCellule(i,j).getIndice()));
         }
     }
 
@@ -192,7 +194,7 @@ void qSimulateur::configInitiale(){
             if(couleur == "magenta")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
             if(couleur == "rose")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 150, 203));
             if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
-            if(couleur == "pepper mint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
+            if(couleur == "peppermint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
 
            // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
         }

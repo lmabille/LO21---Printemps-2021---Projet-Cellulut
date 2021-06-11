@@ -119,7 +119,23 @@ void CreaConfig::chargerGrille() {
 
                 // Set size text etc. for each button
                 button->setText(QString::number(simu->getConfigurationDepart()->getEtatCellule(j,i).getIndice()));
-                button->setStyleSheet("background-color : rgb(148, 255, 216)");
+
+                cout << simu->getConfigurationDepart()->getEtatCellule(j,i).getCouleur()  <<endl;// " " << i<< " " <<j <<endl ;
+                string couleur = simu->getConfigurationDepart()->getEtatCellule(j,i).getCouleur();
+                //string couleur = config->getEtatCellule (i, j).getCouleur();
+                if(couleur == "noir")button->setStyleSheet("background-color : rgb(0, 0, 0)");
+                if(couleur == "blanc")button->setStyleSheet("background-color : rgb(255, 255, 255)"); // (255, 255, 255));
+                if(couleur == "rouge")button->setStyleSheet("background-color : rgb(255, 0, 0)");//(255, 0, 0));
+                if(couleur == "vert")button->setStyleSheet("background-color : rgb(50, 255, 0)"); //(50, 255, 0));
+                if(couleur == "bleu")button->setStyleSheet("background-color : rgb(0, 0, 255)"); //(0, 0, 255));
+                if(couleur == "jaune")button->setStyleSheet("background-color : rgb(255, 215, 50)"); //(255, 215, 50));
+                if(couleur == "magenta")button->setStyleSheet("background-color : rgb(255, 0, 255)"); // (255, 0, 255));
+                if(couleur == "rose")button->setStyleSheet("background-color : rgb(255, 150, 203)"); //(255, 150, 203));
+                if(couleur == "orange")button->setStyleSheet("background-color : rgb(255, 130, 20)");// (255, 130, 20));
+                if(couleur == "peppermint")button->setStyleSheet("background-color : rgb(148, 255, 216)"); //(187, 254, 190));
+
+
+                //button->setStyleSheet("background-color : rgb(148, 255, 216)");
                 connect(button, &QPushButton::clicked, [=](){
                     //func(i, j);     // Call the function which uses i and j here
                     changeEtat(i,j,this->config_cour,button);
@@ -167,16 +183,46 @@ void CreaConfig::clearLayout(QLayout* layout) {
 
 void CreaConfig::changeEtat(int j,int i,Configuration* config, QPushButton* button) {
     int indice = config->getEtatCellule(i,j).getIndice();
-    qStdOut() << QString::number(indice);
-    if (indice == simu->getModele()->getEtatsPossibles()->getNombreEtats())
+    //qStdOut() << QString::number(indice);
+
+    cout <<"nb etat" <<simu->getModele()->getEtatsPossibles()->getNombreEtats() <<endl;
+    cout <<"L:" <<simu->getModele()->getEtatsPossibles()->getListe()[indice].getLabel() << " I:"<< simu->getModele()->getEtatsPossibles()->getListe()[indice].getIndice() << " C:"<< simu->getModele()->getEtatsPossibles()->getListe()[indice].getCouleur() << endl;
+
+    cout <<"Avant L:" <<config->getEtatCellule(i,j).getLabel() << " I:"<< config->getEtatCellule(i,j).getIndice() << " C:"<< config->getEtatCellule(i,j).getCouleur() << endl;
+
+    if (indice == simu->getModele()->getEtatsPossibles()->getNombreEtats()-1)
         indice = 0;
     else
         indice +=1;
     config->setEtatCellule(i,j,&simu->getModele()->getEtatsPossibles()->getListe()[indice]);
+    cout <<"Après L:" <<config->getEtatCellule(i,j).getLabel() << " I:"<< config->getEtatCellule(i,j).getIndice() << " C:"<< config->getEtatCellule(i,j).getCouleur() << endl;
+
+
+
+    string couleur = config->getEtatCellule (i, j).getCouleur();
+    if(couleur == "noir")button->setStyleSheet("background-color : rgb(0, 0, 0)");
+    if(couleur == "blanc")button->setStyleSheet("background-color : rgb(255, 255, 255)");// (255, 255, 255));
+    if(couleur == "rouge")button->setStyleSheet("background-color : rgb(255, 0, 0)");//(255, 0, 0));
+    if(couleur == "vert")button->setStyleSheet("background-color : rgb(50, 255, 0)"); //(50, 255, 0));
+    if(couleur == "bleu")button->setStyleSheet("background-color : rgb(0, 0, 255)"); //(0, 0, 255));
+    if(couleur == "jaune")button->setStyleSheet("background-color : rgb(255, 215, 50)"); //(255, 215, 50));
+    if(couleur == "magenta")button->setStyleSheet("background-color : rgb(255, 0, 255)"); // (255, 0, 255));
+    if(couleur == "rose")button->setStyleSheet("background-color : rgb(255, 150, 203)"); //(255, 150, 203));
+    if(couleur == "orange")button->setStyleSheet("background-color : rgb(255, 130, 20)");// (255, 130, 20));
+    if(couleur == "peppermint")button->setStyleSheet("background-color : rgb(148, 255, 216)"); //(187, 254, 190));
+
+
+
+
+
+
+
+    /*
+
     if (indice == 1)
         button->setStyleSheet("background-color : rgb(148, 255, 216)");
     else
-        button->setStyleSheet("background-color : white");
+        button->setStyleSheet("background-color : white");*/
     button->setText(QString::number(indice));
 
     qStdOut() << "test" ;
