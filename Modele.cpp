@@ -40,6 +40,7 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins)
                 }
             }
         }
+        return tab;
     }
 
     return tab;
