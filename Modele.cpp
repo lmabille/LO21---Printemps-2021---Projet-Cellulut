@@ -90,35 +90,46 @@ string *generation_regles_Life_game(const unsigned int nb_voisins)
 
 string *generation_regles_Griffeath(const unsigned int nb_voisins)
 {
+    //Rappel des règles :
+    // une cellule passe de l’état i à i + 1 (modulo 4) dès que i + 1 (modulo 4) est présent dans au moins 3 cellules voisines.
+
+    //etat_depart | 0 (jaune, i) |  1 (orange clair, j) | 2 (orange foncé, k) |  3 (rouge, l) | etat_arrivee
+
+    //EXEMPLE :
+    //  013401 --> passe de l'etat 0 à 1 car il y a 3 voisins dans l'état 1 (8 voisins)
+    //  004401 --> passe de l'etat 0 à 1 car il y a 4 voisins dans l'état 1 (8 voisins)
+    //  12242 --> passe de l'etat 1 à 2  car il y a 4 voisins dans l'état 2 (8 voisins)
+
+    //principe algo : on cherche à obtenir un quadruplet | nb_voisins_0 | nb_voisins_1 | nb_voisins_2 | nb_voisins_3 dont la somme de chacun est égale au nombre de voisins
 
     string tab[500];
     int m = 0;
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 10; i++) // nb_voisins à 0 (jaune)
     {
-        for (size_t j = 0; j < 10; j++)
+        for (size_t j = 0; j < 10; j++) // nb_voisins à 1 (orange clair)
         {
-            for (size_t k = 0; k < 10; k++)
+            for (size_t k = 0; k < 10; k++) //  nb_voiins à 2 (orange foncé)
             {
-                for (size_t l = 0; l < 10; l++)
+                for (size_t l = 0; l < 10; l++) // nb_voisins à 3 (rouge)
                 {
-                    if ((i + j + k + l) == nb_voisins)
+                    if ((i + j + k + l) == nb_voisins) // Si la somme du quadruplet donne le nombre de voisins
                     {
-                        if (j >= 3)
+                        if (j >= 3) // si etat 1 superieur ou egale à 3, alors on passe de l'etat 0 à 1
                         {
                             tab[m] = "0" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1";
                             m++;
                         }
-                        if (k >= 3)
+                        if (k >= 3) // si etat 2 superieur ou egale à 3, alors on passe de l'etat 1 à 2
                         {
                             tab[m] = "1" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "2";
                             m++;
                         }
-                        if (l >= 3)
+                        if (l >= 3) // si etat 3 superieur ou egale à 3, alors on passe de l'etat 2 à 3
                         {
                             tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3";
                             m++;
                         }
-                        if (i >= 3)
+                        if (i >= 3) // si etat 0 superieur ou egale à 3, alors on passe de l'etat 3 à 0 (car modulo)
                         {
                             tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "0";
                             m++;
@@ -133,6 +144,14 @@ string *generation_regles_Griffeath(const unsigned int nb_voisins)
 
 string *generation_regles_Wireworld(const unsigned int nb_voisins)
 {
+    //Rappel règles:
+
+    // Une tête d'électron devient une queue d'électron (R1)
+    // Une queue d'électron devient un conducteur (R2)
+    // Un conducteur devient une tête d'électron si une ou deux des cellules voisines sont des têtes d'électron (R3)
+
+    // etat_depart | nb_voisins_vide(i) |  nb_voisins_conducteur(j) | nb_voisins_electron_tete(k) |  nb_voisins_electron_queue(l) | etat_arrivee
+
     //0 = Vide
     //1 = conducteur
     //2 = tete electron
@@ -140,23 +159,23 @@ string *generation_regles_Wireworld(const unsigned int nb_voisins)
 
     string tab[500];
     int m = 0;
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 10; i++) //nb_voisins vide
     {
-        for (size_t j = 0; j < 10; j++)
+        for (size_t j = 0; j < 10; j++) //nb_voisins conducteur
         {
-            for (size_t k = 0; k < 10; k++)
+            for (size_t k = 0; k < 10; k++) //nb_voisins  electron tete
             {
-                for (size_t l = 0; l < 10; l++)
+                for (size_t l = 0; l < 10; l++) // nb_voisins electron queue
                 {
-                    if ((i + j + k + l) == nb_voisins)
+                    if ((i + j + k + l) == nb_voisins) //Si la somme du quadruplet donne le nombre de voisins
                     {
-                        tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3";
+                        tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3"; //Ajout de R1 (pas de condition sur voisinage)
                         m++;
-                        tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1";
+                        tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1"; //Ajout de R2 (pas de condition sur voisinage)
                         m++;
-                        if ((k == 1) || (k == 2))
+                        if ((k == 1) || (k == 2)) // si nb_voisins electron tête est de 1 ou 2
                         {
-                            tab[m] = "1" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "2";
+                            tab[m] = "1" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "2"; // alors passage de l'état conducteur à tête electron
                             m++;
                         }
                     }
