@@ -5,16 +5,7 @@
 #include "voisinage.h"
 
 
-//Voisinage::Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
-
-Voisinage::Voisinage() : nbCelluleVoisi(10), ensemble_case(new Case[10]()) { typeVoisi = ""; }
-/*
-V_ChoixUtilisateur::V_ChoixUtilisateur(int n) {
-    this->nbCelluleVoisi = n;
-    this->ensemble_case = new Case[n]();
-    this->setType("");
-}*/ //: nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
-
+Voisinage::Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
 
 void V_VonNeumann::definir_ensemble_case(int rayon)
 {
@@ -90,9 +81,12 @@ void V_Moore::definir_ensemble_case(int rayon)
 
 }
 
+
 void V_ChoixUtilisateur::ajouter_case(size_t i, size_t j)
 {
     // par l'utilisateur + compter le nombre de cases sélectionnées. Remplir le tableau avec ces indications.
+
+    std::cout<< "on va ajouter la !! " <<endl;
     Case* oldTab = ensemble_case;
     Case* newTab = new Case[nbCelluleVoisi+1];
     for (size_t i=0; i<nbCelluleVoisi; i++)
@@ -105,10 +99,7 @@ void V_ChoixUtilisateur::ajouter_case(size_t i, size_t j)
     nbCelluleVoisi++;
 }
 
-void V_ChoixUtilisateur::definir_ensemble_case(int rayon)
-{
 
-};
 
 size_t Voisinage::getNbCelluleVoisi() const
 {
