@@ -40,6 +40,8 @@ class ChoixVoisinage : public QWidget
     size_t lineMiddleCell;
     size_t collumnMiddleCell;
 
+    Voisinage* finalChoice;
+
     // Boutons
     Q_OBJECT
     QComboBox* listeVois;
@@ -49,6 +51,7 @@ class ChoixVoisinage : public QWidget
     QPushButton* validation;
     QPushButton* retour;
     QPushButton* appercu;
+    QGridLayout* grid;
 
     // Layouts
     QHBoxLayout* parametres; // liste + indication
@@ -66,14 +69,15 @@ public:
     explicit ChoixVoisinage(QWidget* parent = nullptr, size_t nbLignesReseau = 3, size_t nbColonnesReseau = 3); // à modifier ensuite : on passe en argument les dimensions du réseaux choisies car donne les dimensions maximales du voisinage
     Voisinage* quelVoisinage(int index, size_t rayonChoisi);
     void cleanAppercu();
+    void creaGridShowOnly(size_t dimSide, size_t tailleCell);
+    // void creaGridButton(size_t dimSide, size_t tailleCell);
+    // void colorerCase(QPushButton* button);
 
 private slots :
     void chargerAppercu();
     void afficherMessage();
-
-
-
-
+    void colorierCase(int i, int j);
+    void enregistrerChoixVoisinage();
 };
 
 #endif // CHOIXVOISINAGE_H
