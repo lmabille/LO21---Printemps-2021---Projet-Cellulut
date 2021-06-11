@@ -13,6 +13,7 @@ using namespace std;
 
 Modele* chargerModel(const char *nomFichier) {
     cout << "\nParsing file.....\n\n";
+    //cout<<nomFichier<<"\n";
 
     xml_document doc;
 

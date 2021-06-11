@@ -90,7 +90,7 @@
    <sender>listWidget_2</sender>
    <signal>itemDoubleClicked(QListWidgetItem*)</signal>
    <receiver>Choix_Modele</receiver>
-   <slot>recupModele()</slot>
+   <slot>recupModele(QListWidgetItem*)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>661</x>
@@ -104,6 +104,6 @@
   </connection>
  </connections>
  <slots>
-  <slot>recupModele()</slot>
+  <slot>recupModele(QListWidgetItem*)</slot>
  </slots>
 </ui>

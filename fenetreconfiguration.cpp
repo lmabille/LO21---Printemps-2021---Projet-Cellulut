@@ -20,7 +20,7 @@ FenetreConfiguration::FenetreConfiguration(QWidget *parent, Modele * modele, Sim
     //test->setText("test");
 
 
-
+    cout<<"passe1";
 
     ui->setupUi(this);
     //ui->comboBox->addItem(QString::fromStdString(liste_config[0]));

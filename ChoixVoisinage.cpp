@@ -234,8 +234,6 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
         }*/
 
     }
-    }
-}
 
 
 ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)

@@ -37,7 +37,10 @@ int main(int argc, char* argv[]) {
 
        QApplication app(argc, argv);
 
+       MenuPrincipale_2 M;
+       M.show();
 
+/*
         Etat *listeEtat=new Etat[2];
         Etat e1(0, "mort", "pepper mint");
         Etat e2(1, "vivant", "blanc");
@@ -94,7 +97,7 @@ int main(int argc, char* argv[]) {
 
         qSimulateur fenetre(nullptr, M, c1);
 
-        fenetre.show();
+        fenetre.show();*/
 
         return app.exec();
 

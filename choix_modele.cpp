@@ -22,8 +22,14 @@ Choix_Modele::~Choix_Modele()
     delete ui;
 }
 
-void Choix_Modele::recupModele(){
-    //auto fenetre = new FenetreConfiguration;
-    //fenetre->show();
+void Choix_Modele::recupModele(QListWidgetItem* QI){
+    auto M = new Modele;
+    auto txt = new QString("C:\\Users\\hocin\\Desktop\\LO21\\LO21---Printemps-2021---Projet-Cellulut\\Modeles\\");
+    txt->append(QI->text()); //on créer une variable donnant le chemin d'accès au fichier XML
+    auto NomDuFichier = new QByteArray (txt->toUtf8()); //pour convertir notre QString en char*
+    M=chargerModel(NomDuFichier->constData()); //on charge le modèle choisi
+    auto S = new Simulateur(*M);
+    auto fenetre = new FenetreConfiguration(nullptr, M,S, txt->toUtf8()); //on charge les config
+    fenetre->show();
     this->close();
 }
