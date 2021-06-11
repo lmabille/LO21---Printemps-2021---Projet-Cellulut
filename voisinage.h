@@ -36,15 +36,16 @@ private:
     string typeVoisi; // nom du voisinage
 
 protected:
-    int nbCelluleVoisi; // nb de cellules prises en compte
+    size_t nbCelluleVoisi; // nb de cellules prises en compte
     Case *ensemble_case; // tableau de coordonnées des cellules voisines
     friend class Modele;
 
 public:
 
     // constructeurs pour une classe abstraite?
-    Voisinage();
-    //Voisinage(int n);
+    Voisinage() = default;
+    Voisinage(int n);
+    ~Voisinage() {delete[] ensemble_case;}
 
     const string getTypeVoisi(); // non virtual
     size_t getNbCelluleVoisi() const; // non virtual
@@ -56,7 +57,7 @@ public:
     Case &operator[](int indice); // non virtual
 
     virtual void definir_ensemble_case(int rayon) = 0; // Neumann et Moore de base peuvent être considérés comme des spécialisations avec un rayon 1/ L'utilisateur choisi le rayon max dans lequel il veut sélectionner ses cellules voisines.
-
+    virtual void ajouter_case(size_t i, size_t j) = 0;
 };
 
 class V_VonNeumann: public Voisinage
@@ -67,20 +68,22 @@ class V_VonNeumann: public Voisinage
 public:
    // V_VonNeumann(int rayon = 1): Voisinage(){}
     void definir_ensemble_case(int rayon = 1) override;
+    void ajouter_case(size_t i, size_t j) override {}
 };
 
 class V_Moore: public Voisinage
 {
 public:
     void definir_ensemble_case(int rayon = 1) override;
+    void ajouter_case(size_t i, size_t j) override {}
 };
 
 class V_ChoixUtilisateur: public Voisinage
 {
 public:
     // V_ChoixUtilisateur(int n);
-    void definir_ensemble_case(int rayon = 1) override;
-    void ajouter_case(size_t i, size_t j);
+    void definir_ensemble_case(int rayon = 1) override {}
+    void ajouter_case(size_t i, size_t j) override;
 };
 
 

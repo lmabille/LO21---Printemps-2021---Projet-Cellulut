@@ -2,6 +2,8 @@
 #define CHOIXVOISINAGE_H
 
 #include "voisinage.h"
+#include "Modele.h"
+
 #include <stdlib.h>
 
 #include <QWidget>
@@ -21,26 +23,18 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-/*
-class ChoixVonNeumann : public QWidget
-{
-    // Boutons
-    Q_OBJECT
-    QSpinBox* choixRayon;
-public:
-    explicit ChoixVonNeumann(QWidget* parent = nullptr); // à modifier
-};
-*/
 
 class ChoixVoisinage : public QWidget
 {
+    Modele* modele;
+
     // infos grille et cellule du milieu
     size_t rayonMax = 1;
     // size_t dimSide = 3;
     size_t lineMiddleCell;
     size_t collumnMiddleCell;
 
-    Voisinage* finalChoice;
+    Voisinage* choice;
 
     // Boutons
     Q_OBJECT
@@ -67,11 +61,9 @@ public:
     int getLMiddCell() const {return lineMiddleCell;}
     int getCMiddCell() const {return collumnMiddleCell;}
     explicit ChoixVoisinage(QWidget* parent = nullptr, size_t nbLignesReseau = 3, size_t nbColonnesReseau = 3); // à modifier ensuite : on passe en argument les dimensions du réseaux choisies car donne les dimensions maximales du voisinage
-    Voisinage* quelVoisinage(int index, size_t rayonChoisi);
+    void quelVoisinage(int index, size_t rayonChoisi);
     void cleanAppercu();
     void creaGridShowOnly(size_t dimSide, size_t tailleCell);
-    // void creaGridButton(size_t dimSide, size_t tailleCell);
-    // void colorerCase(QPushButton* button);
 
 private slots :
     void chargerAppercu();

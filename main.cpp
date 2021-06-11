@@ -27,15 +27,15 @@ int main(int argc, char* argv[]) {
 
     // viovio
 
- /*   QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 7, 7); // nullptr, 3, 3 par défaut
 
     fenetreVois->show();
 
-    return app.exec();*/
+    return app.exec();
 
-
+/*
        QApplication app(argc, argv);
 
 
@@ -98,7 +98,7 @@ int main(int argc, char* argv[]) {
         fenetre.show();
 
         return app.exec();
-
+*/
 
 
      //Thomas
