@@ -80,7 +80,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins)
         nouvelle_regle = to_string(j) + to_string(nb_voisins - j);         //on tous les doublets donc la somme = nb_voisins
         if (!((nouvelle_regle == regle_2) || (nouvelle_regle == regle_3))) // si, dans ce doublet, l'un est égale à une des deux règle du dessus, alors on ne rentre pas dans le if
         {
-            tab[i] = "1" + nouvelle_regle + "0"; //ajou de la règle si il n'y a ni 2 ni 3 voisins vivant
+            tab[i] = "1" + nouvelle_regle + "0"; //ajout de la règle si il n'y a ni 2 ni 3 voisins vivants
             i++;
         }
         j++;
