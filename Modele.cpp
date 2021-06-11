@@ -15,32 +15,41 @@ Modele::Modele()
 }
 string *generation_regles_Brians_Brain(const unsigned int nb_voisins)
 {
-    string tab[100]; //etat depart_mort_refractaire_excite _etatarrivee
-    string nouvelle_regle;
+    //Rappel des règles :
+    //les cellules excitées deviennent toujours réfractaires au pas de temps suivant (R1) ;
+    //les cellules réfractaires reviennent toujours au repos (=mort) au pas de temps suivant (R2) ;
+    //une cellule au repos devient excitée au pas de temps suivant si elle a exactement 2 cellules voisines excitées (R3)
+
+    // 0 : mort | 1 : refractaire | 2 : excite
+    //etat depart| nb_mort(i) | nb_voisins_refractaire(j) | nb_voisins_excite(k) | etat arrivee
+
+    // EXEMPLE : 12423 --> execution de R1 pour avec voisins
+
+    //principe algo : on cherche à obtenir un triplet | nb_mort | nb_voisins_refractaire | nb_voisins_excite | dont la somme de chacun est égale au nombre de voisins
+
+    string tab[100];
     int l = 0;
+
     for (size_t i = 0; i < 10; i++)
     {
         for (size_t j = 0; j < 10; j++)
         {
             for (size_t k = 0; k < 10; k++)
             {
-                if (i + k + j == nb_voisins)
+                if (i + k + j == nb_voisins) //si le triplet = nb_voisins
                 {
-                    nouvelle_regle = "2" + to_string(i) + to_string(j) + to_string(k) + "1";
-                    tab[l] = nouvelle_regle;
+                    tab[l] = "2" + to_string(i) + to_string(j) + to_string(k) + "1"; //Ajout de R1 (pas de condition sur les voisins)
                     l++;
-                    nouvelle_regle = "1" + to_string(i) + to_string(j) + to_string(k) + "0";
-                    tab[l] = nouvelle_regle;
-                    if (k == 2)
+                    tab[l] = "1" + to_string(i) + to_string(j) + to_string(k) + "0"; //Ajout de R2 (pas de condition sur les voisins)
+                    l++;
+                    if (k == 2) // si nombre de voisines excités est de 3
                     {
-                        nouvelle_regle = "0" + to_string(i) + to_string(j) + "2" + "2";
-                        tab[l] = nouvelle_regle;
+                        tab[l] = "0" + to_string(i) + to_string(j) + "2" + "2"; //Ajout de R3
                         l++;
                     }
                 }
             }
         }
-        return tab;
     }
 
     return tab;
