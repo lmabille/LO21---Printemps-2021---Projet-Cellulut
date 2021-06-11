@@ -118,7 +118,7 @@ void CreaConfig::chargerGrille() {
                 grid->addWidget(button, j, i);
 
                 // Set size text etc. for each button
-                button->setText(QString::number(simu->getConfigurationDepart()->getEtatCellule(i,j).getIndice()));
+                button->setText(QString::number(simu->getConfigurationDepart()->getEtatCellule(j,i).getIndice()));
                 button->setStyleSheet("background-color : rgb(148, 255, 216)");
                 connect(button, &QPushButton::clicked, [=](){
                     //func(i, j);     // Call the function which uses i and j here
