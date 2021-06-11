@@ -28,6 +28,8 @@ public:
 private slots:
     void on_btnTaille_clicked();
 
+    void on_btnRandom_clicked();
+
 private:
     Ui::CreaConfig *ui;
     Reseau * res;

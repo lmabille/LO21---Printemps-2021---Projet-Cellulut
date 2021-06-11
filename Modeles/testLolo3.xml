@@ -5,7 +5,7 @@
    <Auteur name="Newton" />
    <AnneeCreation name="2023" />
    <Etats>
-      <NombreEtat name="3" />
+      <NombreEtat name="2" />
       <Etat Label="mort" Couleur="noir" Indice="0" />
       <Etat Label="vivant" Couleur="blanc" Indice="1" />
 

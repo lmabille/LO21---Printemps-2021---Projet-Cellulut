@@ -78,6 +78,19 @@
     </size>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnRandom">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>220</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>random</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

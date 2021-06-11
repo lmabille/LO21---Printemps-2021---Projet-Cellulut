@@ -240,3 +240,19 @@ QTextStream& qStdOut()
 }
 
 
+
+void CreaConfig::on_btnRandom_clicked()
+{
+    this->simu->getConfigurationDepart()->remplissageAleatoire(*this->simu->getModele()->getEtatsPossibles());
+
+    //ui->LayoutGrille->childAt(0,0)->childAt(0,0)->setStyleSheet("background-color : rgb(255, 0, 0)");
+    /*
+    for (int i = 0; i < this->simu->getConfigurationDepart()->getReseauColonnes(); i++) {
+        for (int j = 0 ; j < this->simu->getConfigurationDepart()->getReseauLignes(); j ++) {
+            QLayoutItem * item = ui->LayoutGrille->children()
+        }
+    }*/
+
+
+
+}
