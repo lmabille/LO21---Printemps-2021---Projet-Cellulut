@@ -21,20 +21,20 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins)
     //une cellule au repos devient excitée au pas de temps suivant si elle a exactement 2 cellules voisines excitées (R3)
 
     // 0 : mort | 1 : refractaire | 2 : excite
-    //etat depart| nb_mort(i) | nb_voisins_refractaire(j) | nb_voisins_excite(k) | etat arrivee
+    //etat depart| nb_voisins_mort(i) | nb_voisins_refractaire(j) | nb_voisins_excite(k) | etat arrivee
 
-    // EXEMPLE : 12423 --> execution de R1 pour avec voisins
+    // EXEMPLE : 12423 --> execution de R1 avec nb_voisin = 8 (2+4+2)
 
     //principe algo : on cherche à obtenir un triplet | nb_mort | nb_voisins_refractaire | nb_voisins_excite | dont la somme de chacun est égale au nombre de voisins
 
     string tab[100];
     int l = 0;
 
-    for (size_t i = 0; i < 10; i++)
+    for (size_t i = 0; i < 10; i++) //nb_mort
     {
-        for (size_t j = 0; j < 10; j++)
+        for (size_t j = 0; j < 10; j++) // nb_voisins_mort
         {
-            for (size_t k = 0; k < 10; k++)
+            for (size_t k = 0; k < 10; k++) //nb_voisins_excite
             {
                 if (i + k + j == nb_voisins) //si le triplet = nb_voisins
                 {
@@ -42,7 +42,7 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins)
                     l++;
                     tab[l] = "1" + to_string(i) + to_string(j) + to_string(k) + "0"; //Ajout de R2 (pas de condition sur les voisins)
                     l++;
-                    if (k == 2) // si nombre de voisines excités est de 3
+                    if (k == 2) // si nombre de voisins excités est de 3
                     {
                         tab[l] = "0" + to_string(i) + to_string(j) + "2" + "2"; //Ajout de R3
                         l++;
@@ -56,26 +56,31 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins)
 }
 string *generation_regles_Life_game(const unsigned int nb_voisins)
 {
-    string tab[nb_voisins]; //une cellule morte possédant exactement trois voisines vivantes devient vivante (elle naît)
-                            // une cellule vivante possédant deux voisines vivantes le reste,sinon elle meurt.
+    //Rappel des règles :
+    //Une cellule morte possédant exactement trois voisines vivantes devient vivante (R1)
+    //Une cellule ne possédant PAS deux voisines vivantes devient morte (R2)
+    //Une cellule ne possédant PAS trois voisines vivantes devient morte (R3)
 
-    tab[0] = "0" + to_string(nb_voisins - 3) + "3" + "1";
-    string regle_2 = to_string(nb_voisins - 2) + "2";
-    string regle_3 = to_string(nb_voisins - 3) + "3";
+    // 0 : mort | 1 : vivante
+    //etat depart| nb_voisins_mort(i) | nb_voisins_vivant | etat arrivee
 
+    string tab[nb_voisins];
+
+    tab[0] = "0" + to_string(nb_voisins - 3) + "3" + "1"; //Ajout de R1, le nombre de voisin vivant est forcément égale à nb_voisins - 3
+
+    //Pour R2, et R3 on crée deux cas :
+    string regle_2 = to_string(nb_voisins - 2) + "2"; //un doublet avec nb_voisins_mort est de 2
+    string regle_3 = to_string(nb_voisins - 3) + "3"; //un doublet avec nb_voisins_mort est de 3
+    //On
     string nouvelle_regle;
-    int nb_mort;
-    int nb_vivant;
-    int i = 1;
-    int j = 0;
+    int i = 1; //index du tableau débute à 1 car on a déjà ajouté une régle
+    int j = 0; // j représente le nombre de voisins mort
     while (j <= nb_voisins)
     {
-        nb_mort = j;
-        nb_vivant = nb_voisins - j;
-        nouvelle_regle = to_string(j) + to_string(nb_vivant);
-        if (!((nouvelle_regle == regle_2) || (nouvelle_regle == regle_3)))
+        nouvelle_regle = to_string(j) + to_string(nb_voisins - j);         //on tous les doublets donc la somme = nb_voisins
+        if (!((nouvelle_regle == regle_2) || (nouvelle_regle == regle_3))) // si, dans ce doublet, l'un est égale à une des deux règle du dessus, alors on ne rentre pas dans le if
         {
-            tab[i] = "1" + nouvelle_regle + "0";
+            tab[i] = "1" + nouvelle_regle + "0"; //ajou de la règle si il n'y a ni 2 ni 3 voisins vivant
             i++;
         }
         j++;
