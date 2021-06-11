@@ -29,21 +29,22 @@ CreaConfig::~CreaConfig()
 
 void CreaConfig::on_btnTaille_clicked()
 {
-    stoi("2");
+    cout<<"salut";
+    //stoi("2");
     int ligne,colonne;
     ligne = ui->spinLigne->value();
     colonne = ui->spinColonne->value();
     this->res = new Reseau(ligne,colonne);
 
     Configuration * config = new Configuration(*res);
-    qStdOut() << QString::fromStdString(simu->getModele()->getEtatsPossibles()->getListe()[0].getLabel() + " " );
+    /*qStdOut() << QString::fromStdString(simu->getModele()->getEtatsPossibles()->getListe()[0].getLabel() + " " );
     qStdOut() << QString::number(simu->getModele()->getEtatsPossibles()->getListe()[0].getIndice())<< " ";
 
     qStdOut() << QString::fromStdString(simu->getModele()->getEtatsPossibles()->getListe()[1].getLabel() + " " );
 
 
 
-    qStdOut() << QString::number(simu->getModele()->getEtatsPossibles()->getListe()[0].getIndice());
+    qStdOut() << QString::number(simu->getModele()->getEtatsPossibles()->getListe()[0].getIndice());*/
 
     for (int i = 0; i< ligne; i ++){
         for (int j = 0; j < colonne ; j++) {
@@ -141,7 +142,7 @@ void CreaConfig::chargerGrille() {
 
     //clearLayout(ui->LayoutGrille);
     //ui->LayoutGrille = new QVBoxLayout();
-           ui->LayoutGrille->setLayout(nullptr);
+           //ui->LayoutGrille->setLayout(nullptr);
 
     ui->LayoutGrille->setLayout(grid);
 }

@@ -29,7 +29,7 @@ void Choix_Modele::recupModele(QListWidgetItem* QI){
     auto NomDuFichier = new QByteArray (txt->toUtf8()); //pour convertir notre QString en char*
     M=chargerModel(NomDuFichier->constData()); //on charge le modèle choisi
     auto S = new Simulateur(*M);
-    auto fenetre = new FenetreConfiguration(nullptr, M,S, txt->toUtf8()); //on charge les config
+    auto fenetre = new FenetreConfiguration(nullptr, M,S, NomDuFichier->constData()); //on charge les config
     fenetre->show();
     this->close();
 }

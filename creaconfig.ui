@@ -114,4 +114,7 @@
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>on_btnTaille_clicked()</slot>
+ </slots>
 </ui>
