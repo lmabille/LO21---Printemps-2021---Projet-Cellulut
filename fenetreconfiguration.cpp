@@ -11,7 +11,6 @@ FenetreConfiguration::FenetreConfiguration(QWidget *parent, Modele * modele, Sim
 {
     int nb = getNbConfig(this->nom_fichier);
     string * liste_config = new string[nb]();
-
     liste_config = getListeConfig(this->nom_fichier);
 
 
@@ -19,7 +18,6 @@ FenetreConfiguration::FenetreConfiguration(QWidget *parent, Modele * modele, Sim
     //ui->comboBox->addItem(QString::fromStdString(liste_config[0]));
     //QLabel * test = new QLabel(this);
     //test->setText("test");
-
 
 
 

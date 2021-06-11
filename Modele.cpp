@@ -71,7 +71,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins)
         j++;
     }
     return tab;
-
+}
     // ça arrive
     char FonctionTransition::comparaison_voisinnage(string voisins, string * trans, char cel, unsigned int limit, int nb_Etat)
     {

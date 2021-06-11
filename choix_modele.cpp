@@ -23,5 +23,7 @@ Choix_Modele::~Choix_Modele()
 }
 
 void Choix_Modele::recupModele(){
-
+    //auto fenetre = new FenetreConfiguration;
+    //fenetre->show();
+    this->close();
 }

@@ -228,11 +228,13 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
         {
             for (size_t j=0; j<calculDimSide(rayonMax); j++)
             {
-                if (visu->item(i,j)->background().color() == QColor(0,0,0))
-                    finalChoice->
+                //if (visu->item(i,j)->background().color() == QColor(0,0,0))
+                    //finalChoice->;
             }
         }
 
+    }
+    }
 }
 
 

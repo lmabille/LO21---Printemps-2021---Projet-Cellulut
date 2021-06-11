@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include<QDir>
+#include"fenetreconfiguration.h"
 
 namespace Ui {
 class Choix_Modele;
