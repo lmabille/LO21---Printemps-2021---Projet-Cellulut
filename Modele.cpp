@@ -116,6 +116,42 @@ string *generation_regles_Griffeath(const unsigned int nb_voisins)
     }
     return tab;
 }
+
+string *generation_regles_Wireworld(const unsigned int nb_voisins)
+{
+    //0 = Vide
+    //1 = conducteur
+    //2 = tete electron
+    //3 = Electron queue
+
+    string tab[500];
+    int m = 0;
+    for (size_t i = 0; i < 10; i++)
+    {
+        for (size_t j = 0; j < 10; j++)
+        {
+            for (size_t k = 0; k < 10; k++)
+            {
+                for (size_t l = 0; l < 10; l++)
+                {
+                    if ((i + j + k + l) == nb_voisins)
+                    {
+                        tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3";
+                        m++;
+                        tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1";
+                        m++;
+                        if ((k == 1) || (k == 2))
+                        {
+                            tab[m] = "1" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "2";
+                            m++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return tab;
+}
 // ça arrive
 char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat)
 {
