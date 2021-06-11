@@ -12,9 +12,8 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
 
 
 
-   S = new Simulateur(*modele);
+   S = new Simulateur(*modele, 100);
    S->setConfigDepart(*conf);
-
 
 
 
@@ -43,6 +42,14 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
             string couleur = S->getConfigurationDepart()->getEtatCellule (i, j).getCouleur();
             if(couleur == "noir")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
             if(couleur == "blanc")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+            if(couleur == "rouge")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 0));
+            if(couleur == "vert")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(50, 255, 0));
+            if(couleur == "bleu")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 255));
+            if(couleur == "jaune")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 215, 50));
+            if(couleur == "magenta")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+            if(couleur == "rose")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 150, 203));
+            if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
+            if(couleur == "pepper mint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
            // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
         }
     }
@@ -56,7 +63,9 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
 
 
     boutons = new QHBoxLayout;
+
     depart= new QPushButton("Revenir au début");
+    connect(depart,SIGNAL(clicked()),this,SLOT(configInitiale()));
 
     play= new QPushButton("Lancer/Arrêter la simulation");
     connect(play,SIGNAL(clicked()),this,SLOT(LancerSim()));
@@ -81,11 +90,11 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
     //Gestion de la vitesse de lecture
     vitesse=new QSpinBox;
     vitesse->setRange(1,100);
-    vitesse->setValue(1);
+    vitesse->setValue(10);
 
 
 
-    vit = new QLabel("Vitesse de défilement (1= pas/par seconde)");
+    vit = new QLabel("Vitesse de défilement (1= pas/pour 10 secondes)");
     gestionVitesse = new QHBoxLayout;
     gestionVitesse->addWidget(vit);
     gestionVitesse->addWidget(vitesse);
@@ -149,15 +158,45 @@ S->getLastConfig().sauvegarderConfiguration(S->modele.getTitre());
 void qSimulateur::LancerSim(){
  if(tourne == 0)tourne=1;
     else tourne=0;
-    std::cout<<"Hey !";
+   // std::cout<<"Hey !";
 
-    std::cout<<"Hey 2!";
+    //std::cout<<"Hey 2!";
    if (tourne ==1){
         std::cout<<"Hey 3 !";
         timer->start(10000/vitesse->value());
-        std::cout<<"Hey 4 !";
+      //  std::cout<<"Hey 4 !";
     }
     if(tourne == 0)timer->stop();
+
+
+
+
+}
+
+void qSimulateur::configInitiale(){
+
+    S->reset();
+    const int nbLigne= S->getLastConfig().getReseauLignes();
+    const int nbColonne= S->getLastConfig().getReseauColonnes();
+   // std::cout<<initiale->getEtatCellule(0, 0).getCouleur();
+   for(int i=0; i<nbLigne; i++ ){//pour chaque colonne
+        for(int j=0; j<nbColonne; j++){//pour chaque ligne
+
+            string couleur = S->getLastConfig().getEtatCellule(i, j).getCouleur();
+            if(couleur == "noir")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
+            if(couleur == "blanc")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+            if(couleur == "rouge")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 0));
+            if(couleur == "vert")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(50, 255, 0));
+            if(couleur == "bleu")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 255));
+            if(couleur == "jaune")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 215, 50));
+            if(couleur == "magenta")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+            if(couleur == "rose")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 150, 203));
+            if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
+            if(couleur == "pepper mint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
+
+           // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+        }
+    }
 
 
 

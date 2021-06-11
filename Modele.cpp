@@ -71,7 +71,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins)
         j++;
     }
     return tab;
-
+}
     // ça arrive
     char FonctionTransition::comparaison_voisinnage(string voisins, string * trans, char cel, unsigned int limit, int nb_Etat)
     {
@@ -375,3 +375,4 @@ Modele creerModele()
         bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
         cout << saveSuccess;
     }
+

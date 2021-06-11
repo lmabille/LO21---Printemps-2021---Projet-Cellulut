@@ -205,7 +205,7 @@ void ChoixVoisinage::creaGridButton(size_t dimSide, size_t tailleCell)
 
 void ChoixVoisinage::enregistrerChoixVoisinage()
 {
-    size_t finalRayon = choixRayon->value();
+   /* size_t finalRayon = choixRayon->value();
 
     switch(listeVois->currentIndex())
     {
@@ -231,7 +231,7 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
                 if (visu->item(i,j)->background().color() == QColor(0,0,0))
                     finalChoice->
             }
-        }
+        }*/
 
 }
 

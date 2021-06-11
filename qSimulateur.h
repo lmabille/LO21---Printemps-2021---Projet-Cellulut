@@ -25,6 +25,8 @@ class qSimulateur : public QWidget
 
     QTimer *timer;
 
+    //configuration initiale
+
 
 
     //Boutons fenêtres
@@ -60,6 +62,9 @@ private slots:
 
     //Lancer la simulation
     void LancerSim();
+
+    //Revenir à la configuration initiale
+    void configInitiale();
 };
 
 

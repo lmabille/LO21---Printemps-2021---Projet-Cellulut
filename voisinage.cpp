@@ -7,7 +7,7 @@
 
 //Voisinage::Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
 
-//Voisinage::Voisinage() : nbCelluleVoisi(10), ensemble_case(new Case[10]()) { typeVoisi = ""; }
+Voisinage::Voisinage() : nbCelluleVoisi(10), ensemble_case(new Case[10]()) { typeVoisi = ""; }
 /*
 V_ChoixUtilisateur::V_ChoixUtilisateur(int n) {
     this->nbCelluleVoisi = n;
