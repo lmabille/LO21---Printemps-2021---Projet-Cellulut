@@ -8,6 +8,8 @@
 using namespace std;
 #include <iostream>
 #include <cstdio>
+#include <vector>
+#include <algorithm>
 
 class Case
 { // Classe case
@@ -41,11 +43,11 @@ protected:
 public:
 
     // constructeurs pour une classe abstraite?
-    //Voisinage();
+    Voisinage();
     //Voisinage(int n);
 
     const string getTypeVoisi(); // non virtual
-    int getNbCelluleVoisi() const; // non virtual
+    size_t getNbCelluleVoisi() const; // non virtual
     void setNbCellule(int nb) {this->nbCelluleVoisi = nb;};
     void setensemble_case(Case *c) {this->ensemble_case = c; };
     void setType(string t) { typeVoisi = t; }
@@ -63,6 +65,7 @@ class V_VonNeumann: public Voisinage
          * une spécialisation du cas général, c'est-à-dire avec un rayon 1.*/
 {
 public:
+   // V_VonNeumann(int rayon = 1): Voisinage(){}
     void definir_ensemble_case(int rayon = 1) override;
 };
 
@@ -77,6 +80,7 @@ class V_ChoixUtilisateur: public Voisinage
 public:
     // V_ChoixUtilisateur(int n);
     void definir_ensemble_case(int rayon = 1) override;
+    void ajouter_case(size_t i, size_t j);
 };
 
 

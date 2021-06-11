@@ -26,7 +26,7 @@ Simulateur *Simulateur::uniqueInstance = nullptr;
 int main(int argc, char* argv[]) {
 
     // viovio
-    /*
+
     QApplication app(argc, argv);
 
     ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 7, 7); // nullptr, 3, 3 par défaut

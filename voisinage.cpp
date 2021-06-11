@@ -90,13 +90,27 @@ void V_Moore::definir_ensemble_case(int rayon)
 
 }
 
-void V_ChoixUtilisateur::definir_ensemble_case(int rayon)
+void V_ChoixUtilisateur::ajouter_case(size_t i, size_t j)
 {
-    /* voir Qt: afficher cellule avec les cellules qui l'entourent dans le rayon r. Récupérer les coordonnées des cellules sélectionnées
-     * par l'utilisateur + compter le nombre de cases sélectionnées. Remplir le tableau avec ces indications.*/
+    // par l'utilisateur + compter le nombre de cases sélectionnées. Remplir le tableau avec ces indications.
+    Case* oldTab = ensemble_case;
+    Case* newTab = new Case[nbCelluleVoisi+1];
+    for (size_t i=0; i<nbCelluleVoisi; i++)
+    {
+        newTab[i] = ensemble_case[i];
+    }
+    newTab[nbCelluleVoisi].setL_C(i,j);
+    ensemble_case = newTab;
+    delete[] oldTab;
+    nbCelluleVoisi++;
 }
 
-int Voisinage::getNbCelluleVoisi() const
+void V_ChoixUtilisateur::definir_ensemble_case(int rayon)
+{
+
+};
+
+size_t Voisinage::getNbCelluleVoisi() const
 {
     return this->nbCelluleVoisi;
 }
