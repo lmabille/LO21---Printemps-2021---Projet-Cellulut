@@ -79,6 +79,12 @@ void ChoixVoisinage::afficherMessage()
     indication->setVisible(true);
 }
 
+void ChoixVoisinage::colorierCase(int i, int j)
+{
+    std::cout<<"on y est mais ***" << endl;
+    visu->item(i,j)->setData(Qt::BackgroundRole,QColor(0,0,0));
+}
+
 void ChoixVoisinage::chargerAppercu()
 /* affiche l'apperçu du voisinage sélectionné dans la combobox (VNeum ou Moore de rayons variables) qd l'utilisateur clique sur "Apperçu" */
 {
@@ -86,55 +92,51 @@ void ChoixVoisinage::chargerAppercu()
 
     // la grille avec seule la case du milieu a été créé grâce au constructeur
 
-    // affichage choix du rayon ou non
     int indexChoisi = listeVois->currentIndex();
+
     if (indexChoisi==0 || indexChoisi==1) // VNeum ou Moore
     {
         choixRayon->setVisible(true);
-    }
-    else choixRayon->setVisible(false);
+        int rayonChoisi = choixRayon->value();
+        std::cout << "rayon choisi = " << rayonChoisi <<endl;
 
-    int rayonChoisi = choixRayon->value();
-    std::cout << "rayon choisi = " << rayonChoisi <<endl;
+        std::cout << "YOUHOU " << listeVois->currentIndex() << endl;
 
-    std::cout << "YOUHOU " << listeVois->currentIndex() << endl;
+        Voisinage* voisinageChoisi = quelVoisinage(indexChoisi, rayonChoisi);
 
-    Voisinage* voisinageChoisi = quelVoisinage(indexChoisi, rayonChoisi);
+        std::cout << "yo";
 
-    std::cout << "yo";
-
-    Case* coordonneesAColorier = voisinageChoisi->getTableau();
-    int nombreCases = voisinageChoisi->getNbCelluleVoisi();
-    size_t l, c;
-    size_t dimSide = calculDimSide(rayonMax);
-    for (int p = 0; p<nombreCases; p++)
-    {
-        for (size_t i=0;i<dimSide;i++)
+        Case* coordonneesAColorier = voisinageChoisi->getTableau();
+        int nombreCases = voisinageChoisi->getNbCelluleVoisi();
+        size_t l, c;
+        size_t dimSide = calculDimSide(rayonMax);
+        for (int p = 0; p<nombreCases; p++)
         {
-            for (size_t j=0;j<dimSide;j++)
+            for (size_t i=0;i<dimSide;i++)
             {
-                if (i==lineMiddleCell+coordonneesAColorier[p].getL() && j==collumnMiddleCell+coordonneesAColorier[p].getC())
+                for (size_t j=0;j<dimSide;j++)
                 {
-                    visu->item(i,j)->setData(Qt::BackgroundRole,QColor(0,0,0));
+                    if (i==lineMiddleCell+coordonneesAColorier[p].getL() && j==collumnMiddleCell+coordonneesAColorier[p].getC())
+                    {
+                        visu->item(i,j)->setData(Qt::BackgroundRole,QColor(0,0,0));
+                    }
                 }
             }
         }
     }
+    else // personnalisé
+    {
+        std::cout<<"\nca personnalise ici ou quoi" <<endl;
+        choixRayon->setVisible(false);
+        connect(visu, SIGNAL(cellClicked(int,int)), this, SLOT(colorierCase(int,int)));
+    }
 }
 
-ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
-/* Constructeur de la classe choix Voisinage : construit la grille de base où les apperçus des voisinages vont être affichés */
+
+void ChoixVoisinage::creaGridShowOnly(size_t dimSide, size_t tailleCell)
 {
     // Layout affichage
-
     // grille de cellules (visu)
-
-    size_t tailleCell = 15;
-    setRayonMax(L,C);
-    std::cout << "rayon de " << rayonMax << " OK " << endl;
-
-    size_t dimSide = calculDimSide(rayonMax); // on recup les dimensions maximales de l'affichage
-    std::cout << "dimSide = " << dimSide << endl;
 
     calculCoordMiddleCell(); // on calcule les coordonnées de la cellule du milieu
 
@@ -162,31 +164,81 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     // choix du rayon (choixRayon)
     choixRayon = new QSpinBox();
     choixRayon->setRange(1,rayonMax);
-    choixRayon->setVisible(false);
+    // choixRayon->setVisible(false);
     connect(choixRayon, SIGNAL(valueChanged(int)),this,SLOT(afficherMessage()));
-
 
     // Message recharge
     indication = new QLabel("Veuillez recharger l'apperçu");
     indication->setVisible(false);
 
     // Layout
-    affichage = new QHBoxLayout;
     affichage->addWidget(visu);
     affichage->addWidget(choixRayon);
     affichage->addWidget(indication);
+}
 
-    // Layout actions
+/*
+void colorerCase(QPushButton* button)
+{
+    button->setStyleSheet("background-color : black");
+}
 
-    retour = new QPushButton("Retour");
-    validation = new QPushButton("Valider");
+void ChoixVoisinage::creaGridButton(size_t dimSide, size_t tailleCell)
+{
+    visu->setVisible(false);
+    choixRayon->setVisible(false);
+    indication->setText("Selectionner les cases");
+    QGridLayout* grid = new QGridLayout(this);
+    for(size_t i = 0; i < dimSide; i++)
+    {
+       for(size_t j = 0; j < dimSide; j++)
+       {
+           QPushButton * button = new QPushButton();
+           button->setFixedSize(tailleCell, tailleCell);
+           grid->addWidget(button, i, j);
+           connect(appercu, SIGNAL(clicked()),this,SLOT(colorerCase(button)));
+       }
+    }
+    affichage->addLayout(grid);
+}
+*/
 
-    // Layout
-    actions = new QHBoxLayout;
-    actions->addWidget(retour);
-    actions->addWidget(validation);
+void ChoixVoisinage::enregistrerChoixVoisinage()
+{
+    size_t finalRayon = choixRayon->value();
+
+    switch(listeVois->currentIndex())
+    {
+    case 0: // vonNeum
+    {
+        finalChoice = new V_VonNeumann();
+        finalChoice->definir_ensemble_case(finalRayon);
+        break;
+    }
+    case 1: // Moore
+    {
+        finalChoice = new V_Moore();
+        finalChoice->definir_ensemble_case(finalRayon);
+        break;
+    }
+    case 3: // perso
+    {
+        finalChoice = dynamic_cast<V_ChoixUtilisateur*> (finalChoice);
+        for (size_t i=0; i<calculDimSide(rayonMax); i++)
+        {
+            for (size_t j=0; j<calculDimSide(rayonMax); j++)
+            {
+                if (visu->item(i,j)->background().color() == QColor(0,0,0))
+                    finalChoice->
+            }
+        }
+
+}
 
 
+ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
+/* Constructeur de la classe choix Voisinage : construit la grille de base où les apperçus des voisinages vont être affichés */
+{
     // Layout parametres
 
     listeVois = new QComboBox();
@@ -203,6 +255,37 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     parametres->addWidget(listeVois);
     parametres->addWidget(appercu);
 
+    // grille
+
+    size_t tailleCell = 15;
+    setRayonMax(L,C);
+    std::cout << "rayon de " << rayonMax << " OK " << endl;
+
+    size_t dimSide = calculDimSide(rayonMax); // on recup les dimensions maximales de l'affichage
+    std::cout << "dimSide = " << dimSide << endl;
+
+    affichage = new QHBoxLayout;
+
+    std::cout << "\tOEOE TOUTDEF D'INDICE " << listeVois->currentIndex();
+    creaGridShowOnly(dimSide, tailleCell);
+
+    /*
+    else // choix Perso
+    {
+        std::cout << "\tOEOE LE PERSO D'INDICE " << listeVois->currentIndex();
+        creaGridButton(dimSide, tailleCell);
+    }*/
+
+    // Layout actions
+
+    retour = new QPushButton("Retour");
+    validation = new QPushButton("Valider");
+    connect(validation,SIGNAL(clicked()),this,SLOT(enregistrerChoixVoisinage()));
+
+    // Layout
+    actions = new QHBoxLayout;
+    actions->addWidget(retour);
+    actions->addWidget(validation);
 
     // Layout final (fenetre)
     fenetre = new QVBoxLayout;

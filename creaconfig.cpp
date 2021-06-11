@@ -117,7 +117,8 @@ void CreaConfig::chargerGrille() {
                 grid->addWidget(button, j, i);
 
                 // Set size text etc. for each button
-
+                button->setText(QString::number(simu->getConfigurationDepart()->getEtatCellule(i,j).getIndice()));
+                button->setStyleSheet("background-color : rgb(148, 255, 216)");
                 connect(button, &QPushButton::clicked, [=](){
                     //func(i, j);     // Call the function which uses i and j here
                     changeEtat(i,j,this->config_cour,button);
@@ -171,8 +172,8 @@ void CreaConfig::changeEtat(int j,int i,Configuration* config, QPushButton* butt
     else
         indice +=1;
     config->setEtatCellule(i,j,&simu->getModele()->getEtatsPossibles()->getListe()[indice]);
-    if (indice == 0)
-        button->setStyleSheet("background-color : yellow");
+    if (indice == 1)
+        button->setStyleSheet("background-color : rgb(148, 255, 216)");
     else
         button->setStyleSheet("background-color : white");
     button->setText(QString::number(indice));

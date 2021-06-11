@@ -294,14 +294,23 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
+<<<<<<< HEAD
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Utilisateur/LO21---Printemps-2021---Projet-Cellulut/Cellulut_project.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Utilisateur/LO21---Printemps-2021---Projet-Cellulut/Cellulut_project.pro</value>
+=======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/33637/Desktop/test git lo21/LO21---Printemps-2021---Projet-Cellulut/Cellulut_project.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/33637/Desktop/test git lo21/LO21---Printemps-2021---Projet-Cellulut/Cellulut_project.pro</value>
+>>>>>>> e35a0b0dd756a9af8cabb23f4e1503a359f359ac
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+<<<<<<< HEAD
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Utilisateur/build-Cellulut_project-Desktop_Qt_6_0_3_MinGW_64_bit-Debug</value>
+=======
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/33637/Desktop/test git lo21/build-Cellulut_project-Desktop_Qt_6_0_3_MinGW_64_bit-Debug</value>
+>>>>>>> e35a0b0dd756a9af8cabb23f4e1503a359f359ac
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
