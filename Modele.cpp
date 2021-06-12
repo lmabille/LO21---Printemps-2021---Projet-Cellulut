@@ -57,6 +57,16 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &i)
 
     return tab;
 }
+char to_alphabet(int n)
+{
+    int res = n;
+    if (n > 9)
+    {
+        res = n + 'A' - 10;
+        return res;
+    }
+    return '0' + res;
+}
 string *generation_regles_Life_game(const unsigned int nb_voisins)
 {
     //Rappel des règles :
