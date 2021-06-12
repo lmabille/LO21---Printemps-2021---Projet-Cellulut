@@ -27,7 +27,8 @@ HEADERS = \
    qSimulateur.h \
    simu.h \
    taille_reseau.h\
-   loadConfig.h
+   loadConfig.h\
+   choixTransition.h
 
 SOURCES = \
    $$PWD/configuration.cpp \
@@ -50,7 +51,8 @@ SOURCES = \
    qSimulateur.cpp \
    simu.cpp \
    taille_reseau.cpp\
-   loadConfig.cpp
+   loadConfig.cpp\
+   choixTransition.cpp
 
 INCLUDEPATH = \
     $$PWD/.
@@ -66,5 +68,6 @@ FORMS += \
     menu_config.ui \
     menuprincipale_2.ui \
     simu.ui \
-    taille_reseau.ui
+    taille_reseau.ui\
+
 
