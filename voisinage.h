@@ -30,6 +30,7 @@ public:
     Case(int L, int C) : l(L), c(C){};
 };
 
+
 class Voisinage // classe abstraite
 {
 private:
@@ -44,20 +45,20 @@ public:
 
     // constructeurs pour une classe abstraite?
     Voisinage() = default;
-    Voisinage(int n);
-    ~Voisinage() {delete[] ensemble_case;}
+    Voisinage(string type);
+    virtual ~Voisinage() {delete[] ensemble_case;}
 
     const string getTypeVoisi(); // non virtual
     size_t getNbCelluleVoisi() const; // non virtual
     void setNbCellule(int nb) {this->nbCelluleVoisi = nb;};
-    void setensemble_case(Case *c) {this->ensemble_case = c; };
+    void setensemble_case(std::vector<Case> tableau);
+    void setensemble_case(Case*);
     void setType(string t) { typeVoisi = t; }
 
     Case *getTableau(); // non virtual
     Case &operator[](int indice); // non virtual
 
     virtual void definir_ensemble_case(int rayon) = 0; // Neumann et Moore de base peuvent être considérés comme des spécialisations avec un rayon 1/ L'utilisateur choisi le rayon max dans lequel il veut sélectionner ses cellules voisines.
-    virtual void ajouter_case(size_t i, size_t j) = 0;
 };
 
 class V_VonNeumann: public Voisinage
@@ -66,24 +67,22 @@ class V_VonNeumann: public Voisinage
          * une spécialisation du cas général, c'est-à-dire avec un rayon 1.*/
 {
 public:
-   // V_VonNeumann(int rayon = 1): Voisinage(){}
+    //~V_VonNeumann();
     void definir_ensemble_case(int rayon = 1) override;
-    void ajouter_case(size_t i, size_t j) override {}
 };
 
 class V_Moore: public Voisinage
 {
 public:
+    //~V_Moore();
     void definir_ensemble_case(int rayon = 1) override;
-    void ajouter_case(size_t i, size_t j) override {}
 };
 
 class V_ChoixUtilisateur: public Voisinage
 {
 public:
-    // V_ChoixUtilisateur(int n);
+    //~V_ChoixUtilisateur();
     void definir_ensemble_case(int rayon = 1) override {}
-    void ajouter_case(size_t i, size_t j) override;
 };
 
 

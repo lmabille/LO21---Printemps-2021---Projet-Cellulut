@@ -4,6 +4,9 @@
 #include "voisinage.h"
 #include "Modele.h"
 
+#include <vector>
+#include <algorithm>
+
 #include <stdlib.h>
 
 #include <QWidget>
