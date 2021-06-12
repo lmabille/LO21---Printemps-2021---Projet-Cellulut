@@ -46,10 +46,10 @@ int main(int argc, char* argv[]) {
 
 
 
-    QApplication app(argc, argv);
+   /* QApplication app(argc, argv);
 
        MenuPrincipale_2 * M = new MenuPrincipale_2;
-       M->show();
+       M->show();*/
 
 
 /*
@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
 
         fenetre.show();*/
 
-        return app.exec();
+  //      return app.exec();
 
 
 
@@ -411,12 +411,12 @@ int main(int argc, char* argv[]) {
 
     // vio
 
-   /* EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
+    EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
     //ensembleEtats->definirEtats();
     /*for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
         cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
-    }
+    }*/
 
     ensembleEtats->getListe()[0].setIndice(0);
     ensembleEtats->getListe()[0].setlabel("A");
@@ -436,6 +436,7 @@ int main(int argc, char* argv[]) {
 
     configDepart->setEtatCellule(1,0,vivant); // cell de gauche
     configDepart->setEtatCellule(0,1,vivant); // cell du haut // les autres sont à "mort" par initialisation
+    configDepart->setEtatCellule(1,1,vivant);
     cout << "tests setEtatCellule" << endl;
     /*cout << configDepart->getEtatCellule(1,0).getIndice() << " " << configDepart->getEtatCellule(1,0).getLabel() << endl;
     cout << configDepart->getEtatCellule(0,1).getIndice() << " " << configDepart->getEtatCellule(0,1).getLabel() << endl;
@@ -453,7 +454,7 @@ int main(int argc, char* argv[]) {
 
     /*Voisinage* v = new Voisinage;
     v->setNbCellule(4);
-    v->setensemble_case(liste_cases);
+    v->setensemble_case(liste_cases);*/
 
     //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
@@ -461,18 +462,21 @@ int main(int argc, char* argv[]) {
     moore.definir_ensemble_case(2);
 
     // orhane
-   auto tab = new string[2];
+    auto tab = generation_regles_Life_game(24);
 
-/*    tab[0]="1101000000";
+    /*tab[0]="1101000000";
     tab[1]="1000100000";
     tab[2]="0001100001";
     tab[3]="0101000001";
 
     tab[0]="1N10";
-    tab[1]="0M21";
+    tab[1]="0M21";*/
+
+
+    //cout<<tab[0];
 
     FonctionTransition * f;
-    f = new FonctionTransitionIntention(tab, 2);
+    f = new FonctionTransitionIntention(tab, 25);
 
     Modele m("modele 1",ensembleEtats, f,"intention", &moore, "ta race", "Orhane", 2021);
 
@@ -503,7 +507,7 @@ int main(int argc, char* argv[]) {
 
 //V_VonNeumann vonneum;
 //vonneum.definir_ensemble_case(2);
-return 0;*/
+return 0;
 }
 
 

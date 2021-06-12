@@ -77,7 +77,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins)
     // 0 : mort | 1 : vivante
     //etat depart| nb_voisins_mort(i) | nb_voisins_vivant | etat arrivee
 
-    string tab[100];
+    auto tab = new string[100];
     string regle;
     regle.push_back('0');
     regle.push_back(to_alphabet(nb_voisins - 3));
@@ -267,7 +267,8 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     char c;
     for (int i = 0; i < nb_Etat; i++)
     { //ici on crée la chaîne de caractère que l'on va comparer avec les règles de transition
-        c = tab[i] + '0';
+        if (tab[i]<=9) c = tab[i] + '0';
+        else c = 'A' + tab[i] - 10;
         //cout<<tab[i]<<"=tab[i]\n";
         //cout<<c<<"=c\n";
         tab_de_inten.push_back(c);
@@ -280,8 +281,8 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     while (i < limit && (trans[i][0] == cel))
     {
         st = trans[i].substr(1, trans[i].length() - 2); //ici on prélève la partie de la règle qui nous intéresse
-        cout << st << "=st\n";
-        cout << tab_de_inten << "=tab_de_inten\n";
+        //cout << st << "=st\n";
+        //cout << tab_de_inten << "=tab_de_inten\n";
         test = st.compare(tab_de_inten);
         if (test == 0)
         {
