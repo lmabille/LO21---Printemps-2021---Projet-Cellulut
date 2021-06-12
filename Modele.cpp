@@ -176,7 +176,7 @@ string *generation_regles_Griffeath(const unsigned int nb_voisins, int &m)
                             nouvelle_regle.push_back(to_alphabet(j));
                             nouvelle_regle.push_back(to_alphabet(k));
                             nouvelle_regle.push_back(to_alphabet(l));
-                            nouvelle_regle.push_back('0');
+                            nouvelle_regle.push_back('1');
                             tab[m] = nouvelle_regle;
                             nouvelle_regle = "";
                             m++;
@@ -215,7 +215,7 @@ string *generation_regles_Griffeath(const unsigned int nb_voisins, int &m)
                             nouvelle_regle.push_back(to_alphabet(j));
                             nouvelle_regle.push_back(to_alphabet(k));
                             nouvelle_regle.push_back(to_alphabet(l));
-                            nouvelle_regle.push_back('2');
+                            nouvelle_regle.push_back('0');
                             tab[m] = nouvelle_regle;
                             nouvelle_regle = "";
                             m++;

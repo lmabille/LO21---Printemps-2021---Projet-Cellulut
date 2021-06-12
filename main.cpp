@@ -47,11 +47,14 @@ int main(int argc, char* argv[]) {
 
 
 
-   /* QApplication app(argc, argv);
+       QApplication app(argc, argv);
 
        MenuPrincipale_2 * M = new MenuPrincipale_2;
-       M->show();*/
+       M->show();
 
+
+       return app.exec();
+}
 
 /*
         Etat *listeEtat=new Etat[2];
@@ -324,7 +327,7 @@ int main(int argc, char* argv[]) {
 
 
 
-
+/*
 
 
     QApplication app(argc, argv);
@@ -337,7 +340,7 @@ int main(int argc, char* argv[]) {
     return app.exec();
    }
 
-
+*/
 /*
 
     Reseau r(3, 3);

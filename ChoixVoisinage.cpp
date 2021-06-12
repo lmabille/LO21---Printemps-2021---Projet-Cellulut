@@ -65,7 +65,8 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     // listeVois->setEditText("Choisir un voisinage");
 
     // les voisinages possibles dépendent de la fonction de transition qui a été choisie
-    if (transition.compare("Langton's Loop")==0)
+    //if (transition.compare("Langton's Loop")==0)
+    if (transition=="Langton's Loop")
     {
         std::cout << "langstonloop bro" << endl;
         listeVois->insertItem(0,"Von Neumann");
@@ -105,6 +106,9 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     fenetre->addLayout(actions);
 
     setLayout(fenetre);
+
+    // par défaut on affiche von neumann
+    chargerAppercu();
 
 }
 
@@ -318,6 +322,7 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
 
     // envoyer le voisinage et la fonction de transition à la widget etats de laurine
     ChoixEtats* fenetre_ChoixEtats = new ChoixEtats(this,choice,transition);
+    std::cout << "fenetre cree"<<endl;
     fenetre_ChoixEtats->show();
 }
 
