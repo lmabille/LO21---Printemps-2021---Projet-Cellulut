@@ -19,6 +19,7 @@
 #include "chargerModele.h"
 #include "ChoixVoisinage.h"
 #include "creaconfig.h"
+#include "choixEtats.h"
 
 
 
@@ -325,17 +326,19 @@ int main(int argc, char* argv[]) {
 
 
 
-/*
+
     QApplication app(argc, argv);
-    information fenetre;
-    MenuPrincipale_2 mn;
-    fenetre.show();
-    mn.show();
+    V_VonNeumann v;
+    v.definir_ensemble_case(1);
+
+
+    ChoixEtats *t = new ChoixEtats(nullptr,&v , "Langton's Loop");
+    t->show();
     return app.exec();
    }
 
 
-
+/*
 
     Reseau r(3, 3);
 
@@ -411,24 +414,24 @@ int main(int argc, char* argv[]) {
 
     // vio
 
-    EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
+  //  EnsembleEtats * ensembleEtats = new EnsembleEtats(2);
     //ensembleEtats->definirEtats();
     /*for (int i=0; i<ensembleEtats->getNombreEtats();i++)
     {
         cout << "etat[" << ensembleEtats->getListe()[i].getIndice() << "]" << " : " << ensembleEtats->getListe()[i].getLabel() << "\n";
     }*/
 
-    ensembleEtats->getListe()[0].setIndice(0);
+   /* ensembleEtats->getListe()[0].setIndice(0);
     ensembleEtats->getListe()[0].setlabel("A");
 
     ensembleEtats->getListe()[1].setIndice(1);
     ensembleEtats->getListe()[1].setlabel("B");
 
      Reseau res(10,10);
-    Configuration* configDepart = new Configuration(res, *ensembleEtats);
+    Configuration* configDepart = new Configuration(res, *ensembleEtats);*/
 
      //test getVoisinage ;
-    Etat* mort = (*ensembleEtats)[0];
+ /*   Etat* mort = (*ensembleEtats)[0];
     Etat* vivant = (*ensembleEtats)[1];
     cout << "\ntests recup mort et vivant\n";
     cout << mort->getIndice() << " " << mort->getLabel() << endl;
@@ -458,11 +461,11 @@ int main(int argc, char* argv[]) {
 
     //cout << configDepart->getVoisinage(2,2,*v)<<"\n";
 
-    V_Moore moore;
+ /*   V_Moore moore;
     moore.definir_ensemble_case(2);
 
     // orhane
-    auto tab = generation_regles_Life_game(24);
+    auto tab = generation_regles_Life_game(24);*/
 
     /*tab[0]="1101000000";
     tab[1]="1000100000";
@@ -475,7 +478,7 @@ int main(int argc, char* argv[]) {
 
     //cout<<tab[0];
 
-    FonctionTransition * f;
+ /*   FonctionTransition * f;
     f = new FonctionTransitionIntention(tab, 25);
 
     Modele m("modele 1",ensembleEtats, f,"intention", &moore, "ta race", "Orhane", 2021);
@@ -500,15 +503,15 @@ int main(int argc, char* argv[]) {
             cout<<configArrivee->getEtatCellule(i,j).getIndice();
         }
         cout<<"\n";
-    }
+    }*/
 
 
 // vio
 
 //V_VonNeumann vonneum;
 //vonneum.definir_ensemble_case(2);
-return 0;
-}
+//return 0;
+//}
 
 
 

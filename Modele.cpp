@@ -6,6 +6,16 @@
 using namespace std;
 using namespace pugi;
 
+char to_alphabet(int n)
+{
+    int res = n;
+    if (n > 9)
+    {
+        res = n + 'A' - 10;
+        return res;
+    }
+    return '0' + res;
+}
 Modele::Modele()
 {
     //this->typeVoisinnage =
@@ -13,7 +23,7 @@ Modele::Modele()
     this->etatsPossibles = new EnsembleEtats(10);
     this->fonctionTrans = new FonctionTransition;
 }
-string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &i)
+string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l)
 {
     //Rappel des règles :
     //les cellules excitées deviennent toujours réfractaires au pas de temps suivant (R1) ;
@@ -27,46 +37,55 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &i)
 
     //principe algo : on cherche à obtenir un triplet | nb_mort | nb_voisins_refractaire | nb_voisins_excite | dont la somme de chacun est égale au nombre de voisins
 
-    string tab[100];
-    int l = 0;
-
-    for (size_t i = 0; i < 10; i++) //nb_mort
+    string *tab;
+    tab = new string[100]; //etat depart_mort_refractaire_excite _etatarrivee
+    //string tab[100];
+    string nouvelle_regle;
+    l = 0; //indexe du tableau
+    for (size_t i = 0; i < 10; i++)
     {
-        for (size_t j = 0; j < 10; j++) // nb_voisins_mort
+        for (size_t j = 0; j < 10; j++)
         {
-            for (size_t k = 0; k < 10; k++) //nb_voisins_excite
+            for (size_t k = 0; k < 10; k++)
             {
-                if (i + k + j == nb_voisins) //si le triplet = nb_voisins
+                if (i + k + j == nb_voisins)
                 {
-                    tab[l] = "2" + to_string(i) + to_string(j) + to_string(k) + "1"; //Ajout de R1 (pas de condition sur les voisins)
+                    //nouvelle_regle = "2" + to_string(i) + to_string(j) + to_string(k) + "1";
+                    nouvelle_regle.push_back('2');
+                    nouvelle_regle.push_back(to_alphabet(i));
+                    nouvelle_regle.push_back(to_alphabet(j));
+                    nouvelle_regle.push_back(to_alphabet(k));
+                    nouvelle_regle.push_back('1');
+                    tab[l] = nouvelle_regle;
                     l++;
-                    i++;
-                    tab[l] = "1" + to_string(i) + to_string(j) + to_string(k) + "0"; //Ajout de R2 (pas de condition sur les voisins)
-                    l++;
-                    i++;
-                    if (k == 2) // si nombre de voisins excités est de 3
+                    nouvelle_regle = "";
+                    //nouvelle_regle = "1" + to_string(i) + to_string(j) + to_string(k) + "0";
+                    nouvelle_regle.push_back('1');
+                    nouvelle_regle.push_back(to_alphabet(i));
+                    nouvelle_regle.push_back(to_alphabet(j));
+                    nouvelle_regle.push_back(to_alphabet(k));
+                    nouvelle_regle.push_back('0');
+                    tab[l] = nouvelle_regle;
+                    nouvelle_regle = "";
+                    if (k == 2)
                     {
-                        tab[l] = "0" + to_string(i) + to_string(j) + "2" + "2"; //Ajout de R3
+                        //nouvelle_regle = "0" + to_string(i) + to_string(j) + "2" + "2";
+                        nouvelle_regle.push_back('0');
+                        nouvelle_regle.push_back(to_alphabet(i));
+                        nouvelle_regle.push_back(to_alphabet(j));
+                        nouvelle_regle.push_back('2');
+                        nouvelle_regle.push_back('2');
+                        tab[l] = nouvelle_regle;
+                        nouvelle_regle = "";
                         l++;
-                        i++;
                     }
                 }
             }
         }
     }
-
     return tab;
-}
-char to_alphabet(int n)
-{
-    int res = n;
-    if (n > 9)
-    {
-        res = n + 'A' - 10;
-        return res;
-    }
-    return '0' + res;
-}
+};
+
 string *generation_regles_Life_game(const unsigned int nb_voisins)
 {
     //Rappel des règles :
@@ -118,7 +137,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins)
     }
     return tab;
 }
-string *generation_regles_Griffeath(const unsigned int nb_voisins, int &i)
+string *generation_regles_Griffeath(const unsigned int nb_voisins, int &m)
 {
     //Rappel des règles :
     // une cellule passe de l’état i à i + 1 (modulo 4) dès que i + 1 (modulo 4) est présent dans au moins 3 cellules voisines.
@@ -132,8 +151,11 @@ string *generation_regles_Griffeath(const unsigned int nb_voisins, int &i)
 
     //principe algo : on cherche à obtenir un quadruplet | nb_voisins_0 | nb_voisins_1 | nb_voisins_2 | nb_voisins_3 dont la somme de chacun est égale au nombre de voisins
 
-    string tab[500];
-    int m = 0;
+    string *tab;
+    tab = new string[500];
+
+    m = 0;
+    string nouvelle_regle = "";
     for (size_t i = 0; i < 10; i++) // nb_voisins à 0 (jaune)
     {
         for (size_t j = 0; j < 10; j++) // nb_voisins à 1 (orange clair)
@@ -146,22 +168,54 @@ string *generation_regles_Griffeath(const unsigned int nb_voisins, int &i)
                     {
                         if (j >= 3) // si etat 1 superieur ou egale à 3, alors on passe de l'etat 0 à 1
                         {
-                            tab[m] = "0" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1";
+                            //tab[m] = "0" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1";
+                            nouvelle_regle.push_back('0');
+                            nouvelle_regle.push_back(to_alphabet(i));
+                            nouvelle_regle.push_back(to_alphabet(j));
+                            nouvelle_regle.push_back(to_alphabet(k));
+                            nouvelle_regle.push_back(to_alphabet(l));
+                            nouvelle_regle.push_back('0');
+                            tab[m] = nouvelle_regle;
+                            nouvelle_regle = "";
                             m++;
                         }
                         if (k >= 3) // si etat 2 superieur ou egale à 3, alors on passe de l'etat 1 à 2
                         {
-                            tab[m] = "1" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "2";
+                            //tab[m] = "1" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "2";
+                            nouvelle_regle.push_back('1');
+                            nouvelle_regle.push_back(to_alphabet(i));
+                            nouvelle_regle.push_back(to_alphabet(j));
+                            nouvelle_regle.push_back(to_alphabet(k));
+                            nouvelle_regle.push_back(to_alphabet(l));
+                            nouvelle_regle.push_back('2');
+                            tab[m] = nouvelle_regle;
+                            nouvelle_regle = "";
                             m++;
                         }
                         if (l >= 3) // si etat 3 superieur ou egale à 3, alors on passe de l'etat 2 à 3
                         {
-                            tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3";
+                            //tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3";
+                            nouvelle_regle.push_back('2');
+                            nouvelle_regle.push_back(to_alphabet(i));
+                            nouvelle_regle.push_back(to_alphabet(j));
+                            nouvelle_regle.push_back(to_alphabet(k));
+                            nouvelle_regle.push_back(to_alphabet(l));
+                            nouvelle_regle.push_back('3');
+                            tab[m] = nouvelle_regle;
+                            nouvelle_regle = "";
                             m++;
                         }
                         if (i >= 3) // si etat 0 superieur ou egale à 3, alors on passe de l'etat 3 à 0 (car modulo)
                         {
-                            tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "0";
+                            //tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "0";
+                            nouvelle_regle.push_back('3');
+                            nouvelle_regle.push_back(to_alphabet(i));
+                            nouvelle_regle.push_back(to_alphabet(j));
+                            nouvelle_regle.push_back(to_alphabet(k));
+                            nouvelle_regle.push_back(to_alphabet(l));
+                            nouvelle_regle.push_back('2');
+                            tab[m] = nouvelle_regle;
+                            nouvelle_regle = "";
                             m++;
                         }
                     }
@@ -172,7 +226,7 @@ string *generation_regles_Griffeath(const unsigned int nb_voisins, int &i)
     return tab;
 }
 
-string *generation_regles_Wireworld(const unsigned int nb_voisins)
+string *generation_regles_Wireworld(const unsigned int nb_voisins, int &m)
 {
     //Rappel règles:
 
@@ -187,8 +241,11 @@ string *generation_regles_Wireworld(const unsigned int nb_voisins)
     //2 = tete electron
     //3 = Electron queue
 
-    string tab[500];
-    int m = 0;
+    string *tab;
+    tab = new string[500];
+
+    m = 0;
+    string nouvelle_regle = "";
     for (size_t i = 0; i < 10; i++) //nb_voisins vide
     {
         for (size_t j = 0; j < 10; j++) //nb_voisins conducteur
@@ -199,13 +256,37 @@ string *generation_regles_Wireworld(const unsigned int nb_voisins)
                 {
                     if ((i + j + k + l) == nb_voisins) //Si la somme du quadruplet donne le nombre de voisins
                     {
-                        tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3"; //Ajout de R1 (pas de condition sur voisinage)
+                        //tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3"; //Ajout de R1 (pas de condition sur voisinage)
+                        nouvelle_regle.push_back('2');
+                        nouvelle_regle.push_back(to_alphabet(i));
+                        nouvelle_regle.push_back(to_alphabet(j));
+                        nouvelle_regle.push_back(to_alphabet(k));
+                        nouvelle_regle.push_back(to_alphabet(l));
+                        nouvelle_regle.push_back('3');
+                        tab[m] = nouvelle_regle;
+                        nouvelle_regle = "";
                         m++;
-                        tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1"; //Ajout de R2 (pas de condition sur voisinage)
+                        //tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1"; //Ajout de R2 (pas de condition sur voisinage)
+                        nouvelle_regle.push_back('3');
+                        nouvelle_regle.push_back(to_alphabet(i));
+                        nouvelle_regle.push_back(to_alphabet(j));
+                        nouvelle_regle.push_back(to_alphabet(k));
+                        nouvelle_regle.push_back(to_alphabet(l));
+                        nouvelle_regle.push_back('1');
+                        tab[m] = nouvelle_regle;
+                        nouvelle_regle = "";
                         m++;
                         if ((k == 1) || (k == 2)) // si nb_voisins electron tête est de 1 ou 2
                         {
                             tab[m] = "1" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "2"; // alors passage de l'état conducteur à tête electron
+                            nouvelle_regle.push_back('1');
+                            nouvelle_regle.push_back(to_alphabet(i));
+                            nouvelle_regle.push_back(to_alphabet(j));
+                            nouvelle_regle.push_back(to_alphabet(k));
+                            nouvelle_regle.push_back(to_alphabet(l));
+                            nouvelle_regle.push_back('2');
+                            tab[m] = nouvelle_regle;
+                            nouvelle_regle = "";
                             m++;
                         }
                     }
@@ -267,8 +348,10 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     char c;
     for (int i = 0; i < nb_Etat; i++)
     { //ici on crée la chaîne de caractère que l'on va comparer avec les règles de transition
-        if (tab[i]<=9) c = tab[i] + '0';
-        else c = 'A' + tab[i] - 10;
+        if (tab[i] <= 9)
+            c = tab[i] + '0';
+        else
+            c = 'A' + tab[i] - 10;
         //cout<<tab[i]<<"=tab[i]\n";
         //cout<<c<<"=c\n";
         tab_de_inten.push_back(c);

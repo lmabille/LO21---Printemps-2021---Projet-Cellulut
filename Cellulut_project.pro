@@ -15,6 +15,7 @@ HEADERS = \
    $$PWD/voisinage.h \
    ChoixVoisinage.h \
    chargerModele.h \
+   choixEtats.h \
    choix_modele.h \
    config.h \
    creaconfig.h \
@@ -40,6 +41,7 @@ SOURCES = \
    $$PWD/voisinage.cpp \
    ChoixVoisinage.cpp \
    chargerModele.cpp \
+   choixEtats.cpp \
    choix_modele.cpp \
    config.cpp \
    creaconfig.cpp \
