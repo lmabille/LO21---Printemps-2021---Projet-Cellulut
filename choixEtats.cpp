@@ -1,5 +1,6 @@
 #include "choixEtats.h"
-
+#include "informations.h"
+#include <string>
 
 
 ChoixEtats::ChoixEtats(QWidget* parent, Voisinage *v, std::string tr){
@@ -80,7 +81,11 @@ void ChoixEtats::Validation(){
 
     }
 
-
+    informations  * i;
+   if (transition == "Langton's Loop") i = new informations(nullptr, transition, voi, ee, "extension");
+   else i = new informations(nullptr, transition, voi, ee, "intension");
+    i->show();
+    this->close();
 
 
 }
