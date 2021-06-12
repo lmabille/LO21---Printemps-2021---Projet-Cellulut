@@ -21,7 +21,7 @@ choixTransition::choixTransition(QWidget* parent):QWidget(parent){
     valider = new QPushButton("valider");
     connect(valider,SIGNAL(clicked()),this,SLOT(Validation()));
 
-    titre = new QLabel;
+    titre = new QLabel("Choix de la transitiion");
 
         //Les layout
 
