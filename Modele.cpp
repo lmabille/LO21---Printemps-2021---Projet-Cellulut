@@ -99,7 +99,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins, int &l)
 
     auto tab = new string[100];
     string regle;
-    l = nb_voisins ;
+    l = nb_voisins;
     regle.push_back('0');
     regle.push_back(to_alphabet(nb_voisins - 3));
     regle.push_back('3');
@@ -125,8 +125,8 @@ string *generation_regles_Life_game(const unsigned int nb_voisins, int &l)
         //nouvelle_regle = to_string(j) + to_string(nb_voisins - j);
         nouvelle_regle = "";
         nouvelle_regle.push_back(to_alphabet(j));
-        nouvelle_regle.push_back(to_alphabet(nb_voisins - j));             //on tous les doublets donc la somme = nb_voisins
-        if (nouvelle_regle != regle_2 && nouvelle_regle != regle_3)//  (!(nouvelle_regle == regle_2) && !(nouvelle_regle == regle_3)) // si, dans ce doublet, l'un est égale à une des deux règle du dessus, alors on ne rentre pas dans le if
+        nouvelle_regle.push_back(to_alphabet(nb_voisins - j));      //on tous les doublets donc la somme = nb_voisins
+        if (nouvelle_regle != regle_2 && nouvelle_regle != regle_3) //  (!(nouvelle_regle == regle_2) && !(nouvelle_regle == regle_3)) // si, dans ce doublet, l'un est égale à une des deux règle du dessus, alors on ne rentre pas dans le if
         {
             //tab[i] = "1" + nouvelle_regle + "0";
             tab[i].push_back('1'); //ajout de la règle si il n'y a ni 2 ni 3 voisins vivants
@@ -366,7 +366,8 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
 
     while (i < limit)
     {
-        if (trans[i][0] == cel) {
+        if (trans[i][0] == cel)
+        {
             st = trans[i].substr(1, trans[i].length() - 2); //ici on prélève la partie de la règle qui nous intéresse
             //cout << st << "=st\n";
             //cout << tab_de_inten << "=tab_de_inten\n";
@@ -411,7 +412,7 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
             };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i, j).getIndice());
             //cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
-            etatDest = fonctionTrans->comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau  , *etatDepart, fonctionTrans->taille , etatsPossibles->getNombreEtats());
+            etatDest = fonctionTrans->comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau, *etatDepart, fonctionTrans->taille, etatsPossibles->getNombreEtats());
             //cout<<"etat dest : "<<char_to_int(etatDest)<<"\n";
             e = (*etatsPossibles)[char_to_int(etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i, j, e);
