@@ -165,24 +165,35 @@ void ChoixVoisinage::chargerAppercu()
     int rayonChoisi = choixRayon->value();
     quelVoisinage(index, rayonChoisi); // on crée l'objet voisinage en fonction du choix de l'utilisateur
 
-    // on colorie les cases en fonction du tableau rempli
-
-    Case* coordonneesAColorier = choice->getTableau();
-    int nombreCases = choice->getNbCelluleVoisi();
-
-    size_t dimSide = calculDimSide(rayonMax);
-    for (int p = 0; p<nombreCases; p++)
+    if (index==0 || index==1) // moore ou von neuman
     {
-        for (size_t i=0;i<dimSide;i++)
+    // on colorie les cases en fonction du tableau rempli
+        Case* coordonneesAColorier = choice->getTableau();
+        int nombreCases = choice->getNbCelluleVoisi();
+
+        size_t dimSide = calculDimSide(rayonMax);
+        for (int p = 0; p<nombreCases; p++)
         {
-            for (size_t j=0;j<dimSide;j++)
+            for (size_t i=0;i<dimSide;i++)
             {
-                if (i==lineMiddleCell+coordonneesAColorier[p].getL() && j==collumnMiddleCell+coordonneesAColorier[p].getC())
+                for (size_t j=0;j<dimSide;j++)
                 {
-                    visu->item(i,j)->setData(Qt::BackgroundRole,QColor(0,0,0));
+                    if (i==lineMiddleCell+coordonneesAColorier[p].getL() && j==collumnMiddleCell+coordonneesAColorier[p].getC())
+                    {
+                        visu->item(i,j)->setData(Qt::BackgroundRole,QColor(0,0,0));
+                    }
                 }
             }
         }
+    }
+    else
+    {
+        // on demande à l'utilisateur de choisir ses cases
+        indication->setText("Cliquez sur les voisines");
+        afficherMessage();
+
+        choixRayon->setVisible(false);
+        connect(visu, SIGNAL(cellClicked(int,int)), this, SLOT(colorierCase(int,int))); // toutes les cases choisies deviennent noires
     }
 
     choice->~Voisinage(); // on détruit le voisinage REDEFINIR LES DESTRUCTEURS
@@ -218,14 +229,7 @@ void ChoixVoisinage::quelVoisinage(int i, size_t rayon)
         V_ChoixUtilisateur* vU = new V_ChoixUtilisateur();
         vU->definir_ensemble_case(rayon);
         choice = static_cast <V_ChoixUtilisateur*> (vU);
-
-        // on demande à l'utilisateur de choisir ses cases
-        indication->setText("Cliquez sur les voisines");
-        afficherMessage();
-
-        choixRayon->setVisible(false);
-
-        connect(visu, SIGNAL(cellClicked(int,int)), this, SLOT(colorierCase(int,int)));
+        break;
     }
     }
 }
@@ -243,14 +247,8 @@ void ChoixVoisinage::afficherMessage()
 
 void ChoixVoisinage::colorierCase(int i, int j)
 {
-    std::cout<<"on y est mais ***" << endl;
     visu->item(i,j)->setData(Qt::BackgroundRole,QColor(0,0,0));
 
-    std::cout << "color trql" << endl;
-
-    choice->ajouter_case(i,j);
-
-    std::cout << "oeoe on ajoute oe";
 }
 
 
@@ -258,35 +256,28 @@ void ChoixVoisinage::colorierCase(int i, int j)
 
 void ChoixVoisinage::enregistrerChoixVoisinage()
 {
-   /* size_t finalRayon = choixRayon->value();
+    std::cout << "askip ca enregistre hehe" <<endl;
 
-    switch(listeVois->currentIndex())
+    if (listeVois->currentIndex()==2) // personnalisé : il faut ajouter les cellules à l'ensemble de cases
     {
-    case 0: // vonNeum
-    {
-        finalChoice = new V_VonNeumann();
-        finalChoice->definir_ensemble_case(finalRayon);
-        break;
-    }
-    case 1: // Moore
-    {
-        finalChoice = new V_Moore();
-        finalChoice->definir_ensemble_case(finalRayon);
-        break;
-    }
-    case 3: // perso
-    {
-        finalChoice = dynamic_cast<V_ChoixUtilisateur*> (finalChoice);
-        for (size_t i=0; i<calculDimSide(rayonMax); i++)
+        std::cout << "PERSO ? PASDESOUC " <<endl;
+
+        std::vector<Case> tableau;
+        for (size_t i = 0; i<calculDimSide(rayonMax); i++)
         {
             for (size_t j=0; j<calculDimSide(rayonMax); j++)
             {
-                //if (visu->item(i,j)->background().color() == QColor(0,0,0))
-                    //finalChoice->;
+                if (visu->item(i,j)->background().color() == QColor(0,0,0))
+                    tableau.push_back(Case(lineMiddleCell-i, collumnMiddleCell-j));
             }
-        }*/
-
+        }
+        choice->setensemble_case(tableau);
+        tableau.clear(); // on libère la mémoire du vecteur
     }
 
+    std::cout << "VOILOU TABOM" <<endl;
+
+    // création du modèle avec la fonction de transition + le voisinage choisi
+}
 
 
