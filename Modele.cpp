@@ -237,7 +237,8 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     char c;
     for (int i = 0; i < nb_Etat; i++)
     { //ici on crée la chaîne de caractère que l'on va comparer avec les règles de transition
-        c = tab[i] + '0';
+        if (tab[i]<9) c = tab[i] + '0';
+        else c = 'A' + tab[i] - 10;
         //cout<<tab[i]<<"=tab[i]\n";
         //cout<<c<<"=c\n";
         tab_de_inten.push_back(c);

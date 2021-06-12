@@ -48,7 +48,7 @@ void choixTransition::SelectionTr(){
 
 void choixTransition::Validation(){
 
-   ChoixVoisinage  * c = new ChoixVoisinage;
+   ChoixVoisinage  * c = new ChoixVoisinage(nullptr, 10, 10);
    c->setTransition(transition);
    c->show();
    this->close();

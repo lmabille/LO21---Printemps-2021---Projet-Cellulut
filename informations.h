@@ -17,7 +17,7 @@ public slots:
     void enregistrerModele();
 
 public:
-    explicit informations(QWidget *parent = nullptr);
+    explicit informations(QWidget *parent = nullptr, Modele * M=nullptr);
     ~informations();
 
 private:
