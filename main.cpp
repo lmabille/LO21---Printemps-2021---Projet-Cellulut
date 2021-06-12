@@ -332,7 +332,7 @@ int main(int argc, char* argv[]) {
     v.definir_ensemble_case(1);
 
 
-    ChoixEtats *t = new ChoixEtats(nullptr,&v , "Brian's Brain");
+    ChoixEtats *t = new ChoixEtats(nullptr,&v , "Automate circulaire de Griffeath");
     t->show();
     return app.exec();
    }

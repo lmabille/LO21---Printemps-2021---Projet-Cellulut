@@ -29,7 +29,7 @@ void informations::enregistrerModele(){
         tab = generation_regles_Life_game(nbVoisin,nbregle);}
     else if(std::strcmp(nomFctTrans.c_str(), "WireWorld") == 0) tab = generation_regles_Wireworld(nbVoisin, nbregle);
     else if(std::strcmp(nomFctTrans.c_str(), "Langton's Loop") == 0) tab = generation_regles_Langton_Loop(nbregle);
-    else if(std::strcmp(nomFctTrans.c_str(), "Griffeath") == 0) tab = generation_regles_Griffeath(nbVoisin, nbregle);
+    else if(std::strcmp(nomFctTrans.c_str(), "Automate circulaire de Griffeath") == 0) tab = generation_regles_Griffeath(nbVoisin, nbregle);
     else if(std::strcmp(nomFctTrans.c_str(), "Brian's Brain") == 0) tab = generation_regles_Brians_Brain(nbVoisin, nbregle);
 
     FonctionTransition * f ;
