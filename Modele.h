@@ -51,6 +51,7 @@ class Modele
 public:
     Modele();
     Modele(string t, EnsembleEtats *e, FonctionTransition *f, string typeFonction,Voisinage *v, string d, string a = "", unsigned int annee = 0) : titre(t), etatsPossibles(e), fonctionTrans(f),  typef(typeFonction),typeVoisinnage(v), description(d), auteur(a), anneeCreation(annee) {}
+    Modele(EnsembleEtats *e, FonctionTransition *f, string typeFonction,Voisinage *v) : etatsPossibles(e), fonctionTrans(f),  typef(typeFonction), typeVoisinnage(v) {}
     ~Modele() { delete[] etatsPossibles; } // pas s�r de �a // + voir le destructeur de la classe EnsembleEtats
     const string &getTitre() const { return titre; }
     EnsembleEtats * getEtatsPossibles() const { return etatsPossibles; }

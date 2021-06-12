@@ -2,6 +2,7 @@
 #define INFORMATIONS_H
 
 #include <QDialog>
+#include "Modele.h"
 
 namespace Ui {
 class informations;
@@ -17,6 +18,7 @@ public:
 
 private:
     Ui::informations *ui;
+    Modele * M;
 };
 
 #endif // INFORMATIONS_H

@@ -40,6 +40,9 @@ int main(int argc, char* argv[]) {
        MenuPrincipale_2 M;
        M.show();
 
+       ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 7, 7); // nullptr, 3, 3 par défaut
+
+       fenetreVois->show();
 /*
         Etat *listeEtat=new Etat[2];
         Etat e1(0, "mort", "pepper mint");
