@@ -226,7 +226,7 @@ string *generation_regles_Griffeath(const unsigned int nb_voisins, int &m)
     return tab;
 }
 
-string *generation_regles_Wireworld(const unsigned int nb_voisins)
+string *generation_regles_Wireworld(const unsigned int nb_voisins, int &m)
 {
     //Rappel règles:
 
@@ -241,8 +241,11 @@ string *generation_regles_Wireworld(const unsigned int nb_voisins)
     //2 = tete electron
     //3 = Electron queue
 
-    string tab[500];
-    int m = 0;
+    string *tab;
+    tab = new string[500];
+
+    m = 0;
+    string nouvelle_regle = "";
     for (size_t i = 0; i < 10; i++) //nb_voisins vide
     {
         for (size_t j = 0; j < 10; j++) //nb_voisins conducteur
@@ -253,13 +256,37 @@ string *generation_regles_Wireworld(const unsigned int nb_voisins)
                 {
                     if ((i + j + k + l) == nb_voisins) //Si la somme du quadruplet donne le nombre de voisins
                     {
-                        tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3"; //Ajout de R1 (pas de condition sur voisinage)
+                        //tab[m] = "2" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "3"; //Ajout de R1 (pas de condition sur voisinage)
+                        nouvelle_regle.push_back('2');
+                        nouvelle_regle.push_back(to_alphabet(i));
+                        nouvelle_regle.push_back(to_alphabet(j));
+                        nouvelle_regle.push_back(to_alphabet(k));
+                        nouvelle_regle.push_back(to_alphabet(l));
+                        nouvelle_regle.push_back('3');
+                        tab[m] = nouvelle_regle;
+                        nouvelle_regle = "";
                         m++;
-                        tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1"; //Ajout de R2 (pas de condition sur voisinage)
+                        //tab[m] = "3" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "1"; //Ajout de R2 (pas de condition sur voisinage)
+                        nouvelle_regle.push_back('3');
+                        nouvelle_regle.push_back(to_alphabet(i));
+                        nouvelle_regle.push_back(to_alphabet(j));
+                        nouvelle_regle.push_back(to_alphabet(k));
+                        nouvelle_regle.push_back(to_alphabet(l));
+                        nouvelle_regle.push_back('1');
+                        tab[m] = nouvelle_regle;
+                        nouvelle_regle = "";
                         m++;
                         if ((k == 1) || (k == 2)) // si nb_voisins electron tête est de 1 ou 2
                         {
                             tab[m] = "1" + to_string(i) + to_string(j) + to_string(k) + to_string(l) + "2"; // alors passage de l'état conducteur à tête electron
+                            nouvelle_regle.push_back('1');
+                            nouvelle_regle.push_back(to_alphabet(i));
+                            nouvelle_regle.push_back(to_alphabet(j));
+                            nouvelle_regle.push_back(to_alphabet(k));
+                            nouvelle_regle.push_back(to_alphabet(l));
+                            nouvelle_regle.push_back('2');
+                            tab[m] = nouvelle_regle;
+                            nouvelle_regle = "";
                             m++;
                         }
                     }
