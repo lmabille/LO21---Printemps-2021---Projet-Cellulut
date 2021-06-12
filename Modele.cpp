@@ -13,7 +13,7 @@ Modele::Modele()
     this->etatsPossibles = new EnsembleEtats(10);
     this->fonctionTrans = new FonctionTransition;
 }
-string *generation_regles_Brians_Brain(const unsigned int nb_voisins)
+string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &i)
 {
     //Rappel des règles :
     //les cellules excitées deviennent toujours réfractaires au pas de temps suivant (R1) ;
@@ -40,12 +40,15 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins)
                 {
                     tab[l] = "2" + to_string(i) + to_string(j) + to_string(k) + "1"; //Ajout de R1 (pas de condition sur les voisins)
                     l++;
+                    i++;
                     tab[l] = "1" + to_string(i) + to_string(j) + to_string(k) + "0"; //Ajout de R2 (pas de condition sur les voisins)
                     l++;
+                    i++;
                     if (k == 2) // si nombre de voisins excités est de 3
                     {
                         tab[l] = "0" + to_string(i) + to_string(j) + "2" + "2"; //Ajout de R3
                         l++;
+                        i++;
                     }
                 }
             }
@@ -64,31 +67,48 @@ string *generation_regles_Life_game(const unsigned int nb_voisins)
     // 0 : mort | 1 : vivante
     //etat depart| nb_voisins_mort(i) | nb_voisins_vivant | etat arrivee
 
-    string tab[nb_voisins];
-
-    tab[0] = "0" + to_string(nb_voisins - 3) + "3" + "1"; //Ajout de R1, le nombre de voisin vivant est forcément égale à nb_voisins - 3
+    string tab[100];
+    string regle;
+    regle.push_back('0');
+    regle.push_back(to_alphabet(nb_voisins - 3));
+    regle.push_back('3');
+    regle.push_back('1');
+    tab[0] = regle;
+    // tab[0] = "0" + to_alphabet(nb_voisins - 2) + "3" + "1"; //Ajout de R1, le nombre de voisin vivant est forcément égale à nb_voisins - 3
 
     //Pour R2, et R3 on crée deux cas :
-    string regle_2 = to_string(nb_voisins - 2) + "2"; //un doublet avec nb_voisins_mort est de 2
-    string regle_3 = to_string(nb_voisins - 3) + "3"; //un doublet avec nb_voisins_mort est de 3
+    //string regle_2 = to_string(to_alphabet(nb_voisins - 2)) + "2";
+    string regle_2;
+    regle_2.push_back(to_alphabet(nb_voisins - 2));
+    regle_2.push_back('2'); //un doublet avec nb_voisins_mort est de 2
+    //string regle_3 = to_string(to_alphabet(nb_voisins - 3 + 48)) + "3"; //un doublet avec nb_voisins_mort est de 3
+    string regle_3;
+    regle_3.push_back(to_alphabet(nb_voisins - 2));
+    regle_3.push_back('3');
     //On
     string nouvelle_regle;
     int i = 1; //index du tableau débute à 1 car on a déjà ajouté une régle
     int j = 0; // j représente le nombre de voisins mort
     while (j <= nb_voisins)
     {
-        nouvelle_regle = to_string(j) + to_string(nb_voisins - j);         //on tous les doublets donc la somme = nb_voisins
+        //nouvelle_regle = to_string(j) + to_string(nb_voisins - j);
+        nouvelle_regle = "";
+        nouvelle_regle.push_back(to_alphabet(j));
+        nouvelle_regle.push_back(to_alphabet(nb_voisins - j));             //on tous les doublets donc la somme = nb_voisins
         if (!((nouvelle_regle == regle_2) || (nouvelle_regle == regle_3))) // si, dans ce doublet, l'un est égale à une des deux règle du dessus, alors on ne rentre pas dans le if
         {
-            tab[i] = "1" + nouvelle_regle + "0"; //ajout de la règle si il n'y a ni 2 ni 3 voisins vivants
+            //tab[i] = "1" + nouvelle_regle + "0";
+            tab[i].push_back('1'); //ajout de la règle si il n'y a ni 2 ni 3 voisins vivants
+            tab[i].push_back(nouvelle_regle[0]);
+            tab[i].push_back(nouvelle_regle[1]);
+            tab[i].push_back('0');
             i++;
         }
         j++;
     }
     return tab;
 }
-
-string *generation_regles_Griffeath(const unsigned int nb_voisins)
+string *generation_regles_Griffeath(const unsigned int nb_voisins, int &i)
 {
     //Rappel des règles :
     // une cellule passe de l’état i à i + 1 (modulo 4) dès que i + 1 (modulo 4) est présent dans au moins 3 cellules voisines.
@@ -237,8 +257,7 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     char c;
     for (int i = 0; i < nb_Etat; i++)
     { //ici on crée la chaîne de caractère que l'on va comparer avec les règles de transition
-        if (tab[i]<9) c = tab[i] + '0';
-        else c = 'A' + tab[i] - 10;
+        c = tab[i] + '0';
         //cout<<tab[i]<<"=tab[i]\n";
         //cout<<c<<"=c\n";
         tab_de_inten.push_back(c);
@@ -251,8 +270,8 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     while (i < limit && (trans[i][0] == cel))
     {
         st = trans[i].substr(1, trans[i].length() - 2); //ici on prélève la partie de la règle qui nous intéresse
-        //cout << st << "=st\n";
-        //cout << tab_de_inten << "=tab_de_inten\n";
+        cout << st << "=st\n";
+        cout << tab_de_inten << "=tab_de_inten\n";
         test = st.compare(tab_de_inten);
         if (test == 0)
         {
