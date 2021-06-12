@@ -10,11 +10,11 @@
 
 using namespace std;
 
-string *generation_regles_Brians_Brain(const unsigned int nb_voisins);
-string *generation_regles_Life_game(const unsigned int nb_voisins);
-string *generation_regles_Griffeath(const unsigned int nb_voisins);
-string *generation_regles_Wireworld(const unsigned int nb_voisins);
-string *generation_regles_Langton_Loop();
+string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l);
+string *generation_regles_Life_game(const unsigned int nb_voisins, int &l);
+string *generation_regles_Griffeath(const unsigned int nb_voisins, int &l);
+string *generation_regles_Wireworld(const unsigned int nb_voisins, int &l);
+string *generation_regles_Langton_Loop(int &l);
 
 class FonctionTransition
 {
