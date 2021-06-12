@@ -66,6 +66,7 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l)
                     nouvelle_regle.push_back(to_alphabet(k));
                     nouvelle_regle.push_back('0');
                     tab[l] = nouvelle_regle;
+                    l++;
                     nouvelle_regle = "";
                     if (k == 2)
                     {
@@ -363,17 +364,20 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     int i = 0;
     string st;
 
-    while (i < limit && (trans[i][0] == cel))
+    while (i < limit)
     {
-        st = trans[i].substr(1, trans[i].length() - 2); //ici on prélève la partie de la règle qui nous intéresse
-        //cout << st << "=st\n";
-        //cout << tab_de_inten << "=tab_de_inten\n";
-        test = st.compare(tab_de_inten);
-        if (test == 0)
-        {
-            size_t j = (trans[i].length() - 1);
-            return trans[i][j];
+        if (trans[i][0] == cel) {
+            st = trans[i].substr(1, trans[i].length() - 2); //ici on prélève la partie de la règle qui nous intéresse
+            //cout << st << "=st\n";
+            //cout << tab_de_inten << "=tab_de_inten\n";
+            test = st.compare(tab_de_inten);
+            if (test == 0)
+            {
+                size_t j = (trans[i].length() - 1);
+                return trans[i][j];
+            }
         }
+
         i++;
     }
     return cel;
@@ -407,7 +411,7 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
             };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i, j).getIndice());
             //cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
-            etatDest = fonctionTrans->comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau + p, *etatDepart, fonctionTrans->taille - p, etatsPossibles->getNombreEtats());
+            etatDest = fonctionTrans->comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau  , *etatDepart, fonctionTrans->taille , etatsPossibles->getNombreEtats());
             //cout<<"etat dest : "<<char_to_int(etatDest)<<"\n";
             e = (*etatsPossibles)[char_to_int(etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i, j, e);
