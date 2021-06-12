@@ -3,6 +3,7 @@
 
 #include "voisinage.h"
 #include "Modele.h"
+#include "choixEtats.h"
 
 #include <vector>
 #include <algorithm>

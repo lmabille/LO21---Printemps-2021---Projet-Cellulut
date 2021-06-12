@@ -317,6 +317,8 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
     }
 
     // envoyer le voisinage et la fonction de transition à la widget etats de laurine
+    ChoixEtats* fenetre_ChoixEtats = new ChoixEtats(this,choice,transition);
+    fenetre_ChoixEtats->show();
 }
 
 
