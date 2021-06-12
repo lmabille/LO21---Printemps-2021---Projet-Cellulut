@@ -5,7 +5,7 @@
 
 ChoixEtats::ChoixEtats(QWidget* parent, Voisinage *v, std::string tr){
 
-
+    transition=tr;
     ensemble = new QVBoxLayout;
 
 
@@ -94,9 +94,10 @@ void ChoixEtats::Validation(){
 
     }
 
-    informations  * i;
+   informations  * i;
    if (transition == "Langton's Loop") i = new informations(nullptr, transition, voi, ee, "extension");
    else i = new informations(nullptr, transition, voi, ee, "intension");
+   std::cout<<"ON EST LAAAA "<<transition;
     i->show();
     this->close();
 

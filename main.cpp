@@ -328,11 +328,11 @@ int main(int argc, char* argv[]) {
 
 
     QApplication app(argc, argv);
-    V_VonNeumann v;
+    V_Moore v;
     v.definir_ensemble_case(1);
 
 
-    ChoixEtats *t = new ChoixEtats(nullptr,&v , "Langton's Loop");
+    ChoixEtats *t = new ChoixEtats(nullptr,&v , "Brian's Brain");
     t->show();
     return app.exec();
    }

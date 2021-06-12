@@ -98,7 +98,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins, int &l)
 
     auto tab = new string[100];
     string regle;
-    l = nb_voisins + 1;
+    l = nb_voisins ;
     regle.push_back('0');
     regle.push_back(to_alphabet(nb_voisins - 3));
     regle.push_back('3');
@@ -113,7 +113,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins, int &l)
     regle_2.push_back('2'); //un doublet avec nb_voisins_mort est de 2
     //string regle_3 = to_string(to_alphabet(nb_voisins - 3 + 48)) + "3"; //un doublet avec nb_voisins_mort est de 3
     string regle_3;
-    regle_3.push_back(to_alphabet(nb_voisins - 2));
+    regle_3.push_back(to_alphabet(nb_voisins - 3));
     regle_3.push_back('3');
     //On
     string nouvelle_regle;
@@ -125,7 +125,7 @@ string *generation_regles_Life_game(const unsigned int nb_voisins, int &l)
         nouvelle_regle = "";
         nouvelle_regle.push_back(to_alphabet(j));
         nouvelle_regle.push_back(to_alphabet(nb_voisins - j));             //on tous les doublets donc la somme = nb_voisins
-        if (!((nouvelle_regle == regle_2) || (nouvelle_regle == regle_3))) // si, dans ce doublet, l'un est égale à une des deux règle du dessus, alors on ne rentre pas dans le if
+        if (nouvelle_regle != regle_2 && nouvelle_regle != regle_3)//  (!(nouvelle_regle == regle_2) && !(nouvelle_regle == regle_3)) // si, dans ce doublet, l'un est égale à une des deux règle du dessus, alors on ne rentre pas dans le if
         {
             //tab[i] = "1" + nouvelle_regle + "0";
             tab[i].push_back('1'); //ajout de la règle si il n'y a ni 2 ni 3 voisins vivants

@@ -73,6 +73,7 @@ public:
     void initEnsemble(int n) { this->etatsPossibles = new EnsembleEtats(n); }
     void setTypef(string type) { this->typef = type; }
     EnsembleEtats *getEnsemble() { return etatsPossibles; };
+    void setFonction(FonctionTransition * f) {this->fonctionTrans = f;}
     int getAnnee() const { return anneeCreation; }
     //  void chargerModele(FILE *f); //charge les �l�ments du fichier puis fait appel au constructeur
     void creerModele(); //propose choix � l'utilisateur, g�n�re r�gles puis fait appel au constructeur

@@ -288,8 +288,20 @@ Modele* chargerModel(const char *nomFichier) {
             }
             //cout <<"----->" << liste_voisin[0].getL()<<endl;
             //charge->getVoisin()->setNbCellule(nbVoisin);
+
+            FonctionTransition * fct;
+            if (charge->getTypeFonction() == "extension") {
+                fct = new FonctionTransition(liste_regle,nbRegles);
+            }
+            else {
+                fct = new FonctionTransitionIntention(liste_regle,nbRegles);
+            }
+
+            /*
             charge->getFonction()->setTableau(liste_regle);
-            charge->getFonction()->setTaille(nbRegles);
+            charge->getFonction()->setTaille(nbRegles);*/
+
+            charge->setFonction(fct);
 
 
 

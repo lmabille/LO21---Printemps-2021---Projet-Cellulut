@@ -48,7 +48,7 @@ void CreaConfig::on_btnTaille_clicked()
 
     for (int i = 0; i< ligne; i ++){
         for (int j = 0; j < colonne ; j++) {
-            config->setEtatCellule(i,j,&simu->getModele()->getEtatsPossibles()->getListe()[1]);
+            config->setEtatCellule(i,j,&simu->getModele()->getEtatsPossibles()->getListe()[0]);
         }
     }
 

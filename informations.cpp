@@ -24,18 +24,20 @@ void informations::enregistrerModele(){
     int nbVoisin = V->getNbCelluleVoisi();
 
     //génération des règles correspondant à la bonne fonction de transition
-    if (std::strcmp(nomFctTrans.c_str(), "Life's_game") == 0) tab = generation_regles_Life_game(nbVoisin,nbregle);
+    if (nomFctTrans =="Game Of Life"){
+        std::cout<<"on est laa";
+        tab = generation_regles_Life_game(nbVoisin,nbregle);}
     else if(std::strcmp(nomFctTrans.c_str(), "WireWorld") == 0) tab = generation_regles_Wireworld(nbVoisin, nbregle);
-    else if(std::strcmp(nomFctTrans.c_str(), "Langston Loop") == 0) tab = generation_regles_Langton_Loop(nbregle);
+    else if(std::strcmp(nomFctTrans.c_str(), "Langton's Loop") == 0) tab = generation_regles_Langton_Loop(nbregle);
     else if(std::strcmp(nomFctTrans.c_str(), "Griffeath") == 0) tab = generation_regles_Griffeath(nbVoisin, nbregle);
-    else if(std::strcmp(nomFctTrans.c_str(), "Brians Brain") == 0) tab = generation_regles_Brians_Brain(nbVoisin, nbregle);
+    else if(std::strcmp(nomFctTrans.c_str(), "Brian's Brain") == 0) tab = generation_regles_Brians_Brain(nbVoisin, nbregle);
 
     FonctionTransition * f ;
 
-    if(std::strcmp(typeFcttrans.c_str(), "extention") == 0) f = new FonctionTransition(tab, nbregle);
+    if(typeFcttrans == "extension") f = new FonctionTransition(tab, nbregle);
     else f = new FonctionTransitionIntention(tab, nbregle);
 
-    auto m = new Modele("modele 1",e, f,typeFcttrans, V, (this->ui->textEdit->toPlainText()).toStdString(), (this->ui->lineEdit_2->text()).toStdString(), (this->ui->lineEdit->text()).toInt());
+    auto m = new Modele((this->ui->lineEdit->text()).toStdString(),e, f,typeFcttrans, V, (this->ui->textEdit->toPlainText()).toStdString(), (this->ui->lineEdit_2->text()).toStdString(), 2021);
 
     m->sauvegardeM();//sauvegarde du modèle
 
