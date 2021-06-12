@@ -1,9 +1,10 @@
 #include "informations.h"
 #include "ui_informations.h"
 
-informations::informations(QWidget *parent) :
+informations::informations(QWidget *parent, Modele * M) :
     QDialog(parent),
-    ui(new Ui::informations)
+    ui(new Ui::informations),
+    M(M)
 {
     ui->setupUi(this);
 }
