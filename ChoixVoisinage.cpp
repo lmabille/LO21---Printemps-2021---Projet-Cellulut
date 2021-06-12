@@ -66,6 +66,7 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
 
     // les voisinages possibles dépendent de la fonction de transition qui a été choisie
     //if (transition.compare("Langton's Loop")==0)
+    std::cout << "OHOHOHO LANGSTON LOOP OU PAS " << transition<<endl;
     if (transition=="Langton's Loop")
     {
         std::cout << "langstonloop bro" << endl;
