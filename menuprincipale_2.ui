@@ -126,7 +126,7 @@
    <sender>pushButton</sender>
    <signal>clicked()</signal>
    <receiver>MenuPrincipale_2</receiver>
-   <slot>afficher_taille_reseaux()</slot>
+   <slot>afficher_choix_transition()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>394</x>
@@ -141,6 +141,6 @@
  </connections>
  <slots>
   <slot>afficherModeles()</slot>
-  <slot>afficher_taille_reseaux()</slot>
+  <slot>afficher_choix_transition()</slot>
  </slots>
 </ui>

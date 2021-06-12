@@ -19,9 +19,15 @@ void MenuPrincipale_2::afficherModeles()
     Menu->show();
     this->close();
 }
-
+/*
 void MenuPrincipale_2::afficher_taille_reseaux(){
     taille_reseau * TR = new taille_reseau;
     TR->show();
+    this->close();
+};*/
+
+void MenuPrincipale_2::afficher_choix_transition(){
+    choixTransition * ct = new choixTransition;
+    ct->show();
     this->close();
 };

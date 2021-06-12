@@ -26,6 +26,10 @@
 
 class ChoixVoisinage : public QWidget
 {
+
+    //nom de la transition
+    string transition;
+
     Modele* modele;
 
     // infos grille et cellule du milieu
@@ -64,6 +68,9 @@ public:
     void quelVoisinage(int index, size_t rayonChoisi);
     void cleanAppercu();
     void creaGridShowOnly(size_t dimSide, size_t tailleCell);
+
+    //Pour transmettre le choix de la transition
+    void setTransition(string tr){transition = tr;}
 
 private slots :
     void chargerAppercu();

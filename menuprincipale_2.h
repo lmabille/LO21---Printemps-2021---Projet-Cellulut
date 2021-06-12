@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "choix_modele.h"
 #include "taille_reseau.h"
+#include "choixTransition.h"
 
 namespace Ui {
 class MenuPrincipale_2;
@@ -19,7 +20,8 @@ public:
 
 public slots:
     void afficherModeles();
-    void afficher_taille_reseaux();
+    //void afficher_taille_reseaux();
+    void afficher_choix_transition();
 
 private:
     Ui::MenuPrincipale_2 *ui;

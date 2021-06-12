@@ -8,6 +8,7 @@
 #include "chargerModele.h"
 #include <QString>
 
+
 namespace Ui {
 class Choix_Modele;
 }
