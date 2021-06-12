@@ -24,11 +24,11 @@ void informations::enregistrerModele(){
     int nbVoisin = V->getNbCelluleVoisi();
 
     //génération des règles correspondant à la bonne fonction de transition
-    if (std::strcmp(nomFctTrans.c_str(), "Life's_game") == 0) tab = generation_regles_Life_game(nbVoisin);
-    else if(std::strcmp(nomFctTrans.c_str(), "WireWorld") == 0) tab = generation_regles_Wireworld(nbVoisin);
-    else if(std::strcmp(nomFctTrans.c_str(), "Langston Loop") == 0) tab = generation_regles_Langton_Loop();
-    else if(std::strcmp(nomFctTrans.c_str(), "Griffeath") == 0) tab = generation_regles_Griffeath(nbVoisin);
-    else if(std::strcmp(nomFctTrans.c_str(), "Brians Brain") == 0) tab = generation_regles_Brians_Brain(nbVoisin);
+    if (std::strcmp(nomFctTrans.c_str(), "Life's_game") == 0) tab = generation_regles_Life_game(nbVoisin,nbregle);
+    else if(std::strcmp(nomFctTrans.c_str(), "WireWorld") == 0) tab = generation_regles_Wireworld(nbVoisin, nbregle);
+    else if(std::strcmp(nomFctTrans.c_str(), "Langston Loop") == 0) tab = generation_regles_Langton_Loop(nbregle);
+    else if(std::strcmp(nomFctTrans.c_str(), "Griffeath") == 0) tab = generation_regles_Griffeath(nbVoisin, nbregle);
+    else if(std::strcmp(nomFctTrans.c_str(), "Brians Brain") == 0) tab = generation_regles_Brians_Brain(nbVoisin, nbregle);
 
     FonctionTransition * f ;
 
