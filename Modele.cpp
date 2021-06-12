@@ -251,8 +251,8 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
     while (i < limit && (trans[i][0] == cel))
     {
         st = trans[i].substr(1, trans[i].length() - 2); //ici on prélève la partie de la règle qui nous intéresse
-        cout << st << "=st\n";
-        cout << tab_de_inten << "=tab_de_inten\n";
+        //cout << st << "=st\n";
+        //cout << tab_de_inten << "=tab_de_inten\n";
         test = st.compare(tab_de_inten);
         if (test == 0)
         {
