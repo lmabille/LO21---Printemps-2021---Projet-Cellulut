@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "Modele.h"
+#include "menuprincipale_2.h"
 
 namespace Ui {
 class informations;
@@ -11,6 +12,9 @@ class informations;
 class informations : public QDialog
 {
     Q_OBJECT
+
+public slots:
+    void enregistrerModele();
 
 public:
     explicit informations(QWidget *parent = nullptr);
