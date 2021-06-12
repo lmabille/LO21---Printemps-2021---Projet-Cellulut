@@ -33,19 +33,17 @@ public:
 
 class Voisinage // classe abstraite
 {
-private:
-    string typeVoisi; // nom du voisinage
-
 protected:
+    string typeVoisi; // nom du voisinage
     size_t nbCelluleVoisi; // nb de cellules prises en compte
-    Case *ensemble_case; // tableau de coordonnées des cellules voisines
+    Case *ensemble_case = nullptr; // tableau de coordonnées des cellules voisines
     friend class Modele;
 
 public:
 
     // constructeurs pour une classe abstraite?
     Voisinage() = default;
-    Voisinage(string type);
+    // Voisinage(string type);
     virtual ~Voisinage() {delete[] ensemble_case;}
 
     const string getTypeVoisi(); // non virtual
@@ -68,6 +66,7 @@ class V_VonNeumann: public Voisinage
 {
 public:
     //~V_VonNeumann();
+    V_VonNeumann(): Voisinage() {typeVoisi = "Von Neumann";}
     void definir_ensemble_case(int rayon = 1) override;
 };
 
@@ -75,6 +74,7 @@ class V_Moore: public Voisinage
 {
 public:
     //~V_Moore();
+    V_Moore(): Voisinage() {typeVoisi = "Moore";}
     void definir_ensemble_case(int rayon = 1) override;
 };
 
@@ -82,6 +82,7 @@ class V_ChoixUtilisateur: public Voisinage
 {
 public:
     //~V_ChoixUtilisateur();
+    V_ChoixUtilisateur(): Voisinage() {typeVoisi = "Personnalise";}
     void definir_ensemble_case(int rayon = 1) override {}
 };
 

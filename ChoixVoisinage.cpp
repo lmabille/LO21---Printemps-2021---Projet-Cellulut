@@ -49,7 +49,8 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     choixRayon = new QSpinBox();
     choixRayon->setRange(1,rayonMax);
     choixRayon->setVisible(false);
-    connect(choixRayon, SIGNAL(valueChanged(int)),this,SLOT(afficherMessage()));
+    connect(choixRayon, SIGNAL(valueChanged(int)),this,SLOT(chargerAppercu()));
+    //connect(choixRayon, SIGNAL(valueChanged(int)),this,SLOT(afficherMessage()));
 
     // layout
     affichage = new QHBoxLayout;
@@ -58,23 +59,31 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
     affichage->addWidget(indication);
 
 
-
-
     // PARAMETRES
 
     listeVois = new QComboBox();
     // listeVois->setEditText("Choisir un voisinage");
-    listeVois->insertItem(0,"Von Neumann");
-    listeVois->insertItem(1,"Moore");
-    listeVois->insertItem(2,"Personnalise");
 
-    appercu = new QPushButton("Apperçu");
-    connect(appercu, SIGNAL(clicked()),this,SLOT(chargerAppercu()));
+    // les voisinages possibles dépendent de la fonction de transition qui a été choisie
+    if (transition.compare("Langton's Loop")==0)
+    {
+        std::cout << "langstonloop bro" << endl;
+        listeVois->insertItem(0,"Von Neumann");
+        choixRayon->setMaximum(1);
+    }
+    else
+    {
+        std::cout << "pas langston loop BRO" << endl;
+        listeVois->insertItem(0,"Von Neumann");
+        listeVois->insertItem(1,"Moore");
+        listeVois->insertItem(2,"Personnalise");
+    }
+
+    connect(listeVois, SIGNAL(currentIndexChanged(int)),this, SLOT(indexChanged(int)));
 
     // layout
     parametres = new QHBoxLayout();
     parametres->addWidget(listeVois);
-    parametres->addWidget(appercu);
 
 
     // ACTIONS
@@ -196,7 +205,10 @@ void ChoixVoisinage::chargerAppercu()
         connect(visu, SIGNAL(cellClicked(int,int)), this, SLOT(colorierCase(int,int))); // toutes les cases choisies deviennent noires
     }
 
-    choice->~Voisinage(); // on détruit le voisinage REDEFINIR LES DESTRUCTEURS
+    // choice->~Voisinage(); // on détruit le voisinage REDEFINIR LES DESTRUCTEURS
+    delete choice;
+    choice = nullptr;
+    if (choice==nullptr) std::cout<< "voisinage bien detruit" <<endl; // heu marche pas??
 }
 
 
@@ -258,6 +270,13 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
 {
     std::cout << "askip ca enregistre hehe" <<endl;
 
+    // on récupère les paramètres finalement sélectionnés
+    int index = listeVois->currentIndex();
+    int rayonChoisi = choixRayon->value();
+    quelVoisinage(index, rayonChoisi);
+
+    std::cout<<"bien recu chef"<<endl;
+
     if (listeVois->currentIndex()==2) // personnalisé : il faut ajouter les cellules à l'ensemble de cases
     {
         std::cout << "PERSO ? PASDESOUC " <<endl;
@@ -268,16 +287,38 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
             for (size_t j=0; j<calculDimSide(rayonMax); j++)
             {
                 if (visu->item(i,j)->background().color() == QColor(0,0,0))
-                    tableau.push_back(Case(lineMiddleCell-i, collumnMiddleCell-j));
+                {
+                    tableau.push_back(Case(i-lineMiddleCell, j-collumnMiddleCell));
+                    //std::cout << tableau.end()->getL() << "," << tableau.end()->getC();
+                }
             }
         }
-        choice->setensemble_case(tableau);
-        tableau.clear(); // on libère la mémoire du vecteur
+        if (tableau.empty())
+        {
+            std::cout << "vide sa mere" <<endl;
+            QMessageBox* zeroCases = new QMessageBox;
+            zeroCases->setText("Veuillez selectionner au moins une case.");
+            zeroCases->show();
+        }
+        else
+        {
+            choice->setensemble_case(tableau);
+            tableau.clear(); // on libère la mémoire du vecteur
+        }
     }
 
     std::cout << "VOILOU TABOM" <<endl;
+    std::cout << "cest un voisinage " << choice->getTypeVoisi() <<endl;
+    Case* tab = choice->getTableau();
+    for (size_t i=0;i<choice->getNbCelluleVoisi();i++)
+    {
+        std::cout << "yooo" <<endl;
+        std::cout << tab[i].getL() <<","<<tab[i].getC() <<endl;
+    }
 
-    // création du modèle avec la fonction de transition + le voisinage choisi
+    // envoyer le voisinage et la fonction de transition à la widget etats de laurine
+    ChoixEtats* fenetre_ChoixEtats = new ChoixEtats(this,choice,transition);
+    fenetre_ChoixEtats->show();
 }
 
 

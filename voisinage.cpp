@@ -10,7 +10,13 @@ void Voisinage::setensemble_case(std::vector<Case> tableau)
 {
     nbCelluleVoisi = tableau.size();
 
-    if (ensemble_case != nullptr) delete[] ensemble_case;
+    if (ensemble_case == nullptr) std::cout<<"bah c nul enft"<<endl;
+    if (ensemble_case != nullptr)
+    {
+        std::cout<<"PASNUL"<<endl;
+        delete[] ensemble_case;
+        std::cout <<"bien detruit"<<endl;
+    }
 
     ensemble_case = new Case[nbCelluleVoisi];
     for (unsigned int i = 0; i < tableau.size(); i++)

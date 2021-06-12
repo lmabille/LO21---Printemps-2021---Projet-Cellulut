@@ -3,9 +3,11 @@
 
 #include "voisinage.h"
 #include "Modele.h"
+#include "choixEtats.h"
 
 #include <vector>
 #include <algorithm>
+#include <string>
 
 #include <stdlib.h>
 
@@ -26,6 +28,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
+#include <QMessageBox>
 
 class ChoixVoisinage : public QWidget
 {
@@ -33,15 +36,13 @@ class ChoixVoisinage : public QWidget
     //nom de la transition
     string transition;
 
-    Modele* modele;
-
     // infos grille et cellule du milieu
     size_t rayonMax = 1;
     // size_t dimSide = 3;
     size_t lineMiddleCell;
     size_t collumnMiddleCell;
 
-    Voisinage* choice;
+    Voisinage* choice = nullptr;
 
     // Boutons
     Q_OBJECT
@@ -51,7 +52,6 @@ class ChoixVoisinage : public QWidget
     QLabel* indication;
     QPushButton* validation;
     QPushButton* retour;
-    QPushButton* appercu;
     QGridLayout* grid;
 
     // Layouts
@@ -74,12 +74,16 @@ public:
 
     //Pour transmettre le choix de la transition
     void setTransition(string tr){transition = tr;}
+    std::string getFonctionTrans() const {return transition;}
 
 private slots :
+    void indexChanged(int) {chargerAppercu();}
     void chargerAppercu();
     void afficherMessage();
     void colorierCase(int i, int j);
     void enregistrerChoixVoisinage();
+
+    // définir un destructeur!!
 };
 
 #endif // CHOIXVOISINAGE_H
