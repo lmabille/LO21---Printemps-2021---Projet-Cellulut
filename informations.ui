@@ -106,5 +106,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>clicked(QAbstractButton*)</signal>
+   <receiver>informations</receiver>
+   <slot>enregistrerModele()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>387</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>531</x>
+     <y>317</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>enregistrerModele()</slot>
+ </slots>
 </ui>
