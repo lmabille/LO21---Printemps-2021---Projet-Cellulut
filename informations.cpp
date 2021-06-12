@@ -1,10 +1,13 @@
 #include "informations.h"
 #include "ui_informations.h"
 
-informations::informations(QWidget *parent, Modele * M) :
+informations::informations(QWidget *parent , string nomFctTrans, Voisinage *V, EnsembleEtats * e, string typeFcttrans) :
     QDialog(parent),
     ui(new Ui::informations),
-    M(M)
+    nomFctTrans(nomFctTrans),
+    V(V),
+    e(e),
+    typeFcttrans(typeFcttrans)
 {
     ui->setupUi(this);
 }
@@ -16,11 +19,25 @@ informations::~informations()
 
 void informations::enregistrerModele(){
     //enregistrement des infos manquantes du modèle
-    this->M->setAnnee((this->ui->lineEdit->text()).toInt());
-    this->M->setAutheur((this->ui->lineEdit_2->text()).toStdString());
-    this->M->setDesc((this->ui->textEdit->toPlainText()).toStdString());
+    string *tab;
+    int nbregle=0;
+    int nbVoisin = V->getNbCelluleVoisi();
 
-    M->sauvegardeM();//sauvegarde du modèle
+    //génération des règles correspondant à la bonne fonction de transition
+    if (std::strcmp(nomFctTrans.c_str(), "Life's_game") == 0) tab = generation_regles_Life_game(nbVoisin);
+    else if(std::strcmp(nomFctTrans.c_str(), "WireWorld") == 0) tab = generation_regles_Wireworld(nbVoisin);
+    else if(std::strcmp(nomFctTrans.c_str(), "Langston Loop") == 0) tab = generation_regles_Langton_Loop();
+    else if(std::strcmp(nomFctTrans.c_str(), "Griffeath") == 0) tab = generation_regles_Griffeath(nbVoisin);
+    else if(std::strcmp(nomFctTrans.c_str(), "Brians Brain") == 0) tab = generation_regles_Brians_Brain(nbVoisin);
+
+    FonctionTransition * f ;
+
+    if(std::strcmp(typeFcttrans.c_str(), "extention") == 0) f = new FonctionTransition(tab, nbregle);
+    else f = new FonctionTransitionIntention(tab, nbregle);
+
+    auto m = new Modele("modele 1",e, f,typeFcttrans, V, (this->ui->textEdit->toPlainText()).toStdString(), (this->ui->lineEdit_2->text()).toStdString(), (this->ui->lineEdit->text()).toInt());
+
+    m->sauvegardeM();//sauvegarde du modèle
 
     auto Menu = new MenuPrincipale_2;
 
