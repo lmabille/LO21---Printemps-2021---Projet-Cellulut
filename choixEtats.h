@@ -16,22 +16,26 @@
 #include <QListWidget>
 #include <QTextEdit>
 #include "voisinage.h"
+#include "etat.h"
 
-class choixEtats : public QWidget
+class ChoixEtats : public QWidget
 {
 
     std::string transition;
 
     Voisinage *voi;
 
-    //Les indices des états
-    QTableWidget *indicesE;
 
-    //Les labels
-    QTableWidget *labelsE;
+    //l'ensemble d'état
+    EnsembleEtats *ee=nullptr;
 
-    //Les couleurs voir comment Thomas a fait
-    QTableWidget *couleursE;
+
+    QHBoxLayout *ligneE[8];
+
+    QLabel *indiceE[8];
+
+    QLineEdit *labelE[8];
+
 
 
     //Boutons fenêtres
@@ -49,17 +53,16 @@ class choixEtats : public QWidget
 
 public:
     // Constructeur
-    explicit choixEtats(QWidget* parent = nullptr, Voisinage *v=nullptr, std::string tr="" );
+    explicit ChoixEtats(QWidget* parent = nullptr, Voisinage *v=nullptr, std::string tr="" );
 
 private slots:
- //   void afficher_taille_reseaux();
 
 
 
-   void Validation();
+
+void Validation();
 
 };
-
 
 
 
