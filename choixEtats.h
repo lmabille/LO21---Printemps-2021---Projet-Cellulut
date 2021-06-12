@@ -18,6 +18,29 @@
 #include "voisinage.h"
 #include "etat.h"
 
+
+#include <QComboBox>
+class ListeCouleur : public QComboBox
+{
+    Etat* etat;
+
+public:
+    ListeCouleur();
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+
 class ChoixEtats : public QWidget
 {
 
@@ -35,6 +58,8 @@ class ChoixEtats : public QWidget
     QLabel *indiceE[8];
 
     QLineEdit *labelE[8];
+
+    ListeCouleur *couleurE[8];
 
 
 

@@ -8,8 +8,7 @@ ChoixEtats::ChoixEtats(QWidget* parent, Voisinage *v, std::string tr){
 
     ensemble = new QVBoxLayout;
 
-    valider = new QPushButton("valider");
-    connect(valider,SIGNAL(clicked()),this,SLOT(Validation()));
+
 
     titre = new QLabel("Choix des états");
 
@@ -49,14 +48,17 @@ std::cout<<ee->getNombreEtats();
         ligneE[i] = new QHBoxLayout;
         labelE[i] = new QLineEdit;
         indiceE[i] = new QLabel();
+        couleurE[i] = new ListeCouleur();
+
         indiceE[i]->setText(QString::number(i));
 
         ligneE[i]->addWidget(indiceE[i]);
         ligneE[i]->addWidget(labelE[i]);
+        ligneE[i]->addWidget(couleurE[i]);
 
 
 
-        ensemble->addWidget(valider);
+
         ensemble->addLayout(ligneE[i]);
     }
 
@@ -65,6 +67,9 @@ std::cout<<ee->getNombreEtats();
 
     voi=v;
 
+    valider = new QPushButton("valider");
+    connect(valider,SIGNAL(clicked()),this,SLOT(Validation()));
+    ensemble->addWidget(valider);
 
    setLayout(ensemble);
 
@@ -77,7 +82,15 @@ void ChoixEtats::Validation(){
     for(int i=0; i<ee->getNombreEtats(); i++){
         liste[i].setIndice(i);
         liste[i].setlabel(labelE[i]->text().toStdString());
-       // liste[i].setCouleur(labelE[i]->text().toStdString()); je te laisse faire ça Thomas ;)
+
+       liste[i].setCouleur(couleurE[i]->currentText().toStdString()); //je te laisse faire ça Thomas ;)
+
+    }
+
+    for(int i=0; i<ee->getNombreEtats(); i++){
+        cout << liste[i].getIndice() <<"  ";
+        cout << liste[i].getLabel() <<"  ";
+        cout << liste[i].getCouleur() << endl;; //je te laisse faire ça Thomas ;)
 
     }
 
@@ -87,5 +100,22 @@ void ChoixEtats::Validation(){
     i->show();
     this->close();
 
+
+
+
+}
+
+
+ListeCouleur::ListeCouleur() {
+    this->addItem("blanc");
+    this->addItem("noir");
+    this->addItem("rouge");
+    this->addItem("vert");
+    this->addItem("bleu");
+    this->addItem("jaune");
+    this->addItem("magenta");
+    this->addItem("rose");
+    this->addItem("orange");
+    this->addItem("peppermint");
 
 }

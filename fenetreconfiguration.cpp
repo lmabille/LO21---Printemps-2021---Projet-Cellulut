@@ -154,3 +154,6 @@ void FenetreConfiguration::on_btnValider_clicked()
 
     fenetre->show();
 }
+
+
+
