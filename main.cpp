@@ -26,20 +26,38 @@ Simulateur *Simulateur::uniqueInstance = nullptr;
 int main(int argc, char* argv[]) {
 
     // viovio
+/*
+    QApplication app(argc, argv);
 
- /*   QApplication app(argc, argv);
+    Case* cases = new Case[3];
+    cases[0].setL_C(1,1);
+    cases[1].setL_C(-1,1);
+    cases[2].setL_C(1,-1);
+
+    V_ChoixUtilisateur* vU = new V_ChoixUtilisateur;
+    vU->setensemble_case(cases);
+
+    std::cout << vU->getNbCelluleVoisi();
+
+
+    return app.exec();
+*/
+
+
+
+    QApplication app(argc, argv);
 
     ChoixVoisinage* fenetreVois = new ChoixVoisinage(nullptr, 7, 7); // nullptr, 3, 3 par défaut
 
     fenetreVois->show();
-    return app.exec();*/
+    return app.exec();
 
 
-       QApplication app(argc, argv);
+  /*     QApplication app(argc, argv);
 
        MenuPrincipale_2 M;
        M.show();
-
+*/
 /*
         Etat *listeEtat=new Etat[2];
         Etat e1(0, "mort", "pepper mint");

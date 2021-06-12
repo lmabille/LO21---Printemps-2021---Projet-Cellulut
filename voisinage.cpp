@@ -3,9 +3,26 @@
 //
 
 #include "voisinage.h"
+#include <vector>
+#include <algorithm>
 
+void Voisinage::setensemble_case(std::vector<Case> tableau)
+{
+    nbCelluleVoisi = tableau.size();
 
-Voisinage::Voisinage(int n) : nbCelluleVoisi(n), ensemble_case(new Case[n]()) { typeVoisi = ""; }
+    if (ensemble_case != nullptr) delete[] ensemble_case;
+
+    ensemble_case = new Case[nbCelluleVoisi];
+    for (unsigned int i = 0; i < tableau.size(); i++)
+    {
+            ensemble_case[i] = tableau[i];
+    }
+}
+
+void Voisinage::setensemble_case(Case* tableau)
+{
+    this->ensemble_case = tableau;
+}
 
 void V_VonNeumann::definir_ensemble_case(int rayon)
 {
@@ -81,26 +98,6 @@ void V_Moore::definir_ensemble_case(int rayon)
 
 }
 
-
-void V_ChoixUtilisateur::ajouter_case(size_t i, size_t j)
-{
-    // par l'utilisateur + compter le nombre de cases sélectionnées. Remplir le tableau avec ces indications.
-
-    std::cout<< "on va ajouter la !! " <<endl;
-    Case* oldTab = ensemble_case;
-    Case* newTab = new Case[nbCelluleVoisi+1];
-    for (size_t i=0; i<nbCelluleVoisi; i++)
-    {
-        newTab[i] = ensemble_case[i];
-    }
-    newTab[nbCelluleVoisi].setL_C(i,j);
-    ensemble_case = newTab;
-    delete[] oldTab;
-    nbCelluleVoisi++;
-}
-
-
-
 size_t Voisinage::getNbCelluleVoisi() const
 {
     return this->nbCelluleVoisi;
@@ -110,15 +107,6 @@ const string Voisinage::getTypeVoisi()
 {
     return this->typeVoisi;
 }
-
-/*
-void Voisinage::setNbCellule(int nb)
-{
-    this->nbCelluleVoisi = nb;
-    /*if (nb >= 0)
-        this->nbCelluleVoisi = nb;
-    else
-        cout << "Nombre négatif. Erreur" << endl;*/
 
 
 //Ne pas commenter j'en ai besoin svp ;)
