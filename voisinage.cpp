@@ -1,11 +1,25 @@
-//
-// Created by thoma on 13/05/2021.
-//
+/**
+ * @file voisinage.cpp
+ * @author Thomas Guegan & Violette Durocher
+ * @brief Fichier decrivant les fonctions relatives aux voisinages et a leur ensemble de cases.
+ * @version 0.1
+ * @date 2021-06-13
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
 
 #include "voisinage.h"
 #include <vector>
 #include <algorithm>
 
+
+/**
+ * @brief Construit l'ensemble de cases de la classe Voisinage a partir d'un vecteur de cases.
+ *
+ * @param[in] tableau Vecteur de cases
+ * @return   void
+ */
 void Voisinage::setensemble_case(std::vector<Case> tableau)
 {
     nbCelluleVoisi = tableau.size();
@@ -25,20 +39,33 @@ void Voisinage::setensemble_case(std::vector<Case> tableau)
     }
 }
 
+
+/**
+ * @brief Construit l'ensemble de cases de la classe Voisinage a partir d'un pointeur sur un tableau de cases.
+ *
+ * @param[in] tableau Pointeur sur le tableau de cases
+ * @return   void
+ */
 void Voisinage::setensemble_case(Case* tableau)
 {
     this->ensemble_case = tableau;
 }
 
+
+/**
+ * @brief Redefinition de la fonction definir_ensemble_case de la classe abstraite Voisinage adaptee au voisinage de Von Neumann
+ *
+ * @param[in] rayon Rayon de definition du voisinage
+ * @return   void
+ */
 void V_VonNeumann::definir_ensemble_case(int rayon)
 {
 
     vector<Case> tableau;
     int ligneMiddleCell = 0;
-    int colonneMiddleCell = 0; // test
-    std::cout << "cellule du milieu : "<<ligneMiddleCell<<","<<colonneMiddleCell<<endl;
+    int colonneMiddleCell = 0;
 
-    if (rayon ==1) // bien trié pour langston loop
+    if (rayon ==1) // tri en escargot nécessaire pour le déroulement de langston loop
     {
         tableau.push_back(Case(-rayon,0));
         tableau.push_back(Case(0,rayon));
@@ -46,33 +73,21 @@ void V_VonNeumann::definir_ensemble_case(int rayon)
         tableau.push_back(Case(0,-rayon));
     }
 
-    else
+    else // le tri en escargot n'est pas nécessaire, on s'appuie sur la formule du Voisinage de Von Neumann generalise au rayon r
     {
         for (int r=1; r<=rayon;r++)
         {
-            std::cout<<"test rayon "<< r<<endl;
-
             for (int i = -r; i<=r; i++)
             {
-                std::cout<<"ligne "<<i<<endl;
                 for (int j = -r; j<=r; j++)
                 {
-                    std::cout<<"\tcolonne "<<j<<endl;
                     if (i!=ligneMiddleCell || j!=colonneMiddleCell)
                     {
-                        std::cout <<"\t"<<i<<","<<j<<endl;
-                        std::cout << "calcul coordonnee : "<< abs(i)<<" "<< abs(j);
-                        std::cout << ", result = " <<abs(i) + abs(j)<<endl;
                         if ((abs(i) + abs(j))<=r)
                         {
-                            std::cout <<"\t bien enregistre"<<endl;
                             tableau.push_back(Case(i,j));
                         }
-                        else std::cout <<"\t nik"<<endl;
-                        //std::cout << tableau.end()->getL() << "," << tableau.end()->getC() << endl;
                     }
-                    else std::cout <<"zarbi"<<endl;
-                    //std::cout<<"yo 2" <<endl;
                 }
             }
         }
@@ -85,10 +100,15 @@ void V_VonNeumann::definir_ensemble_case(int rayon)
 }
 
 
+/**
+ * @brief Redefinition de la fonction definir_ensemble_case de la classe abstraite Voisinage adaptee au voisinage de Moore
+ *
+ * @param[in] rayon Rayon de definition du voisinage
+ * @return   void
+ */
 void V_Moore::definir_ensemble_case(int rayon)
 {
     nbCelluleVoisi = (2*rayon +1)*(2*rayon +1) - 1;
-    //cout << "*** " << nbCelluleVoisi << " cases reservees ***" << endl; // ok
 
     ensemble_case = new Case[nbCelluleVoisi]; // on réserve la place pour le bon nombre de cellules
 
@@ -96,69 +116,72 @@ void V_Moore::definir_ensemble_case(int rayon)
 
     for (int r=1; r<= rayon; r++)
     {
-        //cout << "\tcouronne " << r << endl;
-
-        //cout << " ligne du haut (coins inclus) " << endl;
+        // ligne du haut (coins inclus)
         for (int j=-r; j<=r; j++)
         {
-            //cout << ind;
             ensemble_case[ind].setL_C(r,j);
-            //cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
             ind++;
         }
-        //cout << endl;
-
-        //cout << "ligne de droite (coins exclus)" << endl;
+        // ligne de droite (coins exclus)
         for (int i=r-1; i>=-r+1; i--)
         {
-            //cout << ind;
             ensemble_case[ind].setL_C(i,r);
-            //cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
             ind++;
         }
-        //cout << endl;
-
-        //cout << "ligne du bas (coins inclus)" << endl;
+        // ligne du bas (coins inclus)
         for (int j=r; j>=-r; j--)
         {
-            //cout << ind;
             ensemble_case[ind].setL_C(-r,j);
-            //cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
             ind++;
         }
-        //cout << endl;
-
-        //cout << "ligne de gauche (coins exclus)" << endl;
+        // ligne de gauche (coins exclus)
         for (int i=-r+1; i<=r-1; i++)
         {
-            //cout << ind;
             ensemble_case[ind].setL_C(i,-r);
-            //cout << "[" << ensemble_case[ind].getL() << "," << ensemble_case[ind].getC() << "] ";
             ind++;
         }
-        //cout << endl;
     }
-
 }
 
+
+/**
+ * @brief Retourne le nombre de cellules voisines
+ *
+ * @return   le nombre de cases de ensemble_cases
+ */
 size_t Voisinage::getNbCelluleVoisi() const
 {
     return this->nbCelluleVoisi;
 }
 
+
+/**
+ * @brief Retourne le nom du voisinage
+ *
+ * @return   l'attribut typeVoisi
+ */
 const string Voisinage::getTypeVoisi()
 {
     return this->typeVoisi;
 }
 
 
-//Ne pas commenter j'en ai besoin svp ;)
+/**
+ * @brief Retourne le tableau de cases contenant les coordonnees des cellules a prendre en compte dans le voisinage
+ *
+ * @return   l'attribut tableau de cases ensemble_case
+ */
 Case *Voisinage::getTableau()
 {
     return this->ensemble_case;
 }
 
 
+/**
+ * @brief Retourne le tableau de cases contenant les coordonnees des cellules a prendre en compte dans le voisinage
+ *
+ * @return   l'attribut tableau de cases ensemble_case
+ */
 Case &Voisinage::operator[](int indice)
 {
     try
@@ -172,7 +195,6 @@ Case &Voisinage::operator[](int indice)
     {
         cout << erreur << endl;
     }
-
 }
 
 
