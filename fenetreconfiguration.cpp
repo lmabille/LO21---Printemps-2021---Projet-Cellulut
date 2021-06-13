@@ -1,4 +1,4 @@
-/**
+    /**
  * @file fenetreconfiguration.cpp
  * @author Thomas Guegan (you@domain.com)
  * @brief fonctions de la classe FenetreConfiguration

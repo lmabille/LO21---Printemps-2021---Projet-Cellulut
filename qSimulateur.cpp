@@ -123,6 +123,17 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
     gestionVitesse->addWidget(vitesse);
 
 
+    //gestion retour en arrière
+    arriere = new QPushButton("Retour d'un pas");
+    connect(arriere, SIGNAL(clicked()), this, SLOT(configurationPrecedente()));
+    numArriere = new QLabel;
+    numArriere->setText(QString::fromStdString(to_string(S->rang)));
+    gestionVitesse->addWidget(arriere);
+    gestionVitesse->addWidget(numArriere);
+
+
+
+
     ensemble->addWidget(grille);
     ensemble->addLayout(boutons);
     ensemble->addLayout(gestionVitesse);
@@ -226,6 +237,41 @@ void qSimulateur::configInitiale(){
         }
     }
 
+
+
+
+}
+
+/**
+ * @brief Permet de retourner en arrière
+ *
+ */
+void qSimulateur::configurationPrecedente(){
+    if(S->rang == 0)return;
+    S->rang--;
+
+    const int nbLigne= S->getLastConfig().getReseauLignes();
+    const int nbColonne= S->getLastConfig().getReseauColonnes();
+   for(int i=0; i<nbLigne; i++ ){//pour chaque colonne
+        for(int j=0; j<nbColonne; j++){//pour chaque ligne
+
+            string couleur = S->getLastConfig().getEtatCellule(i, j).getCouleur();
+            if(couleur == "noir")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
+            if(couleur == "blanc")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+            if(couleur == "rouge")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 0));
+            if(couleur == "vert")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(50, 255, 0));
+            if(couleur == "bleu")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 255));
+            if(couleur == "jaune")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 215, 50));
+            if(couleur == "magenta")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+            if(couleur == "rose")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 150, 203));
+            if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
+            if(couleur == "peppermint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
+
+
+        }
+    }
+
+    numArriere->setText(QString::fromStdString(to_string(S->rang)));
 
 
 
