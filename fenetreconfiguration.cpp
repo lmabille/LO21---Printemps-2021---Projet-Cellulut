@@ -37,6 +37,10 @@ FenetreConfiguration::FenetreConfiguration(QWidget *parent, Modele * modele, Sim
     string * liste_config = new string[nb]();
     liste_config = getListeConfig(this->nom_fichier);
 
+    auto res = Reseau(0,0);
+    Configuration * conf = new  Configuration(res);
+    this->simul->setConfigDepart(*conf);
+
 
 
 

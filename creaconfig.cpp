@@ -36,9 +36,7 @@ CreaConfig::CreaConfig(QWidget *parent, Simulateur * simu) :
     ui->setupUi(this);
     ui->btnRandom->setDisabled(true); // on empeche de cliquer sur la generation de config random tant que le taille n'est pas définie
 
-    auto res = Reseau(0,0);
-    Configuration * conf = new  Configuration(res);
-    this->simu->setConfigDepart(*conf);
+
 
 
 
