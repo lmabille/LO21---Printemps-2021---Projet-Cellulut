@@ -38,8 +38,10 @@ informations::~informations()
 }
 
 /**
- * @brief appelle la fonction generatrice des règles adéquates puis crée le modèle correspondant si les règles sont en intension ou extension, puis sauvegarde le modèle
+ * @brief en fonction des différents paramètres donnés par la page précédente (voisinnage), à  la suite d'un clique sur le boutton
+ * ok cette fonction va créer un modèle puis l'enregistrer
  * 
+ * @return enregistre le modèle, ferme la page information et ouvre la page menu principal
  */
 void informations::enregistrerModele()
 {
