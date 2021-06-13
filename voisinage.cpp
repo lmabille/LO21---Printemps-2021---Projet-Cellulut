@@ -37,14 +37,15 @@ void V_VonNeumann::definir_ensemble_case(int rayon)
     int ind = 0;
     for (int r=1; r<=rayon; r++) // pour chaque couronne on remplit les 4 cases concernées
     {
-        ensemble_case[ind].setL_C(0,-r); // gauche
-        ensemble_case[ind+1].setL_C(r,0); // haut
-        ensemble_case[ind+2].setL_C(0,r); // droite
-        ensemble_case[ind+3].setL_C(-r, 0); // bas
+        ensemble_case[ind].setL_C(r,0); // haut
+        ensemble_case[ind+1].setL_C(0,r); // droite
+        ensemble_case[ind+2].setL_C(-r, 0); // bas
+        ensemble_case[ind+3].setL_C(0,-r); // gauche
         ind += 4;
     }
-    /*for (unsigned int i=0;i<nbCelluleVoisi;i++)
-        cout << "[" << ensemble_case[i].getL() << "," << ensemble_case[i].getC() << "] ";*/ // ok
+    for (unsigned int i=0;i<nbCelluleVoisi;i++)
+        cout << "[" << ensemble_case[i].getL() << "," << ensemble_case[i].getC() << "] "; // ok
+
 
 }
 

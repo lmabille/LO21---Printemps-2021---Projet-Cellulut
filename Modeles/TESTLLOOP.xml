@@ -18,10 +18,10 @@
    <Voisinage>
       <Nom name="Von Neumann" />
       <Element>
+         <Case X="-1" Y="0"/>
+         <Case X="0" Y="1"/>
+         <Case X="1" Y="0"/>
          <Case X="0" Y="-1" />
-         <Case X="1" Y="0" />
-         <Case X="0" Y="1" />
-         <Case X="-1" Y="0" />
       </Element>
    </Voisinage>
    <TypeFonctionTransition name="extension" />

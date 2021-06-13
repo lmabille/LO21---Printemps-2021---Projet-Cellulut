@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Modele>
+   <titre name="ORANGE" />
+   <Description name="E" />
+   <Auteur name="E" />
+   <AnneeCreation name="2021" />
+   <Etats>
+      <NombreEtat name="2" />
+      <Etat Label="DEE" Couleur="blanc" Indice="0" />
+      <Etat Label="KJRKJR" Couleur="orange" Indice="1" />
+   </Etats>
+   <Voisinage>
+      <Nom name="Personnalise" />
+      <Element>
+         <Case X="-1" Y="-1" />
+         <Case X="-1" Y="1" />
+         <Case X="1" Y="-1" />
+         <Case X="1" Y="1" />
+      </Element>
+   </Voisinage>
+   <TypeFonctionTransition name="intension" />
+   <ListeRegle>
+      <Regle name="0131" />
+      <Regle name="1040" />
+      <Regle name="1310" />
+      <Regle name="1400" />
+   </ListeRegle>
+   <ListeConfig nombre="0" />
+</Modele>
