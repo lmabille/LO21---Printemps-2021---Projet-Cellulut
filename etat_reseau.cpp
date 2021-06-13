@@ -12,21 +12,24 @@
  *
  */
 
-
-
 #include "etat_reseau.h"
-
 
 /**
  * @brief setter d'etat de cellule
  *
  * @param[in] nouvel etat
  */
-void Cellule::set_etatcellule(Etat * e){
-    etat=e;
+void Cellule::set_etatcellule(Etat *e)
+{
+    etat = e;
 }
-
-Reseau& Reseau::operator=(const Reseau& c)
+/**
+ * @brief redéfintiion de l'opérateur d'affectation entre deux objet reséau
+ * 
+ * @param c le nouveau réseau
+ * @return Reseau& 
+ */
+Reseau &Reseau::operator=(const Reseau &c)
 {
     nb_lignes = c.nb_lignes;
     nb_colonnes = c.nb_colonnes;
