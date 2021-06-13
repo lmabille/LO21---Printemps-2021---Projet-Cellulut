@@ -1,5 +1,29 @@
+/**
+ * @file fenetreconfiguration.cpp
+ * @author Thomas Guegan (you@domain.com)
+ * @brief fonctions de la classe FenetreConfiguration
+ * @version 0.1
+ * @date 2021-06-13
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
+
+
+
 #include "fenetreconfiguration.h"
 #include "ui_fenetreconfiguration.h"
+
+
+/**
+ * @brief Constructeur de la fenetre permettant la gestion des configurations
+ *
+ * @param[in] widget parent
+ * @param[in] Pointeur sur le modèle chargé
+ * @param[in] Instance du simulateur
+ * @param[in] nom du fichier
+ * @return fenetre graphique de gestion de configuration
+ */
 
 FenetreConfiguration::FenetreConfiguration(QWidget *parent, Modele * modele, Simulateur* simul, const char * nom ) :
     QDialog(parent),
@@ -15,31 +39,46 @@ FenetreConfiguration::FenetreConfiguration(QWidget *parent, Modele * modele, Sim
 
 
 
-    //ui->comboBox->addItem(QString::fromStdString(liste_config[0]));
-    //QLabel * test = new QLabel(this);
-    //test->setText("test");
 
 
-    cout<<"passe1";
+
+
 
     ui->setupUi(this);
-    //ui->comboBox->addItem(QString::fromStdString(liste_config[0]));
-    remplirComboList(liste_config,nb);
-    initConnect(this->simul);
 
-    //chargerPreview();
+    remplirComboList(liste_config,nb);
+    initConnect();
+
+
 }
 
+/**
+ * @brief Destructeur de la fenetre permettant la gestion des configurations
+ *
+ */
 FenetreConfiguration::~FenetreConfiguration()
 {
     delete ui;
 }
 
+
+/**
+ * @brief fonction permettant de remplir la liste déroulante des noms de configurations
+ *
+ * @param[in] liste de nom de configuration
+ * @param[in] nombre de configurations
+ * @return void
+ */
 void FenetreConfiguration::remplirComboList(string * liste,int nb) {
     for (int i =0; i<nb; i++) {
         ui->comboBox->addItem(QString::fromStdString(liste[i]));
     }
 }
+
+/**
+ * @brief Récupération du nom de configuration et chargement de celle-ci dans le simulateur
+ * @return void
+ */
 void FenetreConfiguration::chargerConfig() {
     string nom =  ui->comboBox->currentText().toStdString();
     Configuration * config = chargerConfiguration(this->nom_fichier,nom);
@@ -48,37 +87,46 @@ void FenetreConfiguration::chargerConfig() {
     ui->label->show();
 }
 
-
-void FenetreConfiguration::initConnect(Simulateur* simul) {
+/**
+ * @brief Initialisation du connect du bouton charger
+ * @return void
+ */
+void FenetreConfiguration::initConnect() {
     connect(ui->btnCharger,SIGNAL(pressed()),this,SLOT(on_btnCharger_clicked()));
 }
 
 
-
+/**
+ * @brief Fonction appelée lors du clic sur le bouton de chargement
+ * @return void
+ */
 void FenetreConfiguration::on_btnCharger_clicked()
 {
-    //ui->label->setText("test");
-    //ui->label->show();
+
     chargerConfig();
     chargerPreview();
 
 
 }
 
+
+/**
+ * @brief Affichage de la preview de la configuration dans la grille de la fenêtre
+ * @return void
+ */
 void FenetreConfiguration::chargerPreview() {
     unsigned int taille = 5;//taille cellule
 
     const int nbLigne= this->simul->getConfigurationDepart()->getReseauLignes();
     const int nbColonne= this->simul->getConfigurationDepart()->getReseauColonnes();
-    // unsigned int nbLigne=15;
-   //unsigned int nbColonne=20;
-    QTableWidget * grille = new QTableWidget(nbLigne, nbColonne);//ici on met la taille passé en argument
+
+    QTableWidget * grille = new QTableWidget(nbLigne, nbColonne);//ici on met la taille passée en argument
     grille->setFixedSize(400,300);//permet d'agrandir la fenetre en faire une fonction de la taille
 
     //On enlève les labels et les scrollbar
     grille->horizontalHeader()->setVisible(false);
     grille->verticalHeader()->setVisible(false);
-    //grille->verticalHeader().hide();
+
     grille->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     grille->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
@@ -89,9 +137,8 @@ void FenetreConfiguration::chargerPreview() {
             grille->setRowHeight(i, taille);
             grille->setItem(i, j, new QTableWidgetItem(""));
             //On récupère la couleur de l'état
-            int indice = this->simul->getConfigurationDepart()->getEtatCellule (i, j).getIndice();
-            //if(indice == 0)grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
-            //if(indice == 1)grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
+
+            //On appplique les couleurs correspondantes
             string couleur = simul->getConfigurationDepart()->getEtatCellule (i, j).getCouleur();
             if(couleur == "noir")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(0, 0, 0));
             if(couleur == "blanc")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 255, 255));
@@ -104,17 +151,14 @@ void FenetreConfiguration::chargerPreview() {
             if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
             if(couleur == "peppermint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
 
-           // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+
         }
     }
 
     QLayoutItem *item;
         while ((item = ui->LayoutPreview->takeAt(0)))
         {
-            /*if (item->layout())
-            {
-                clearLayout(item->layout());
-            }*/
+
 
             ui->LayoutPreview -> removeItem(item);
             delete item;
@@ -122,31 +166,46 @@ void FenetreConfiguration::chargerPreview() {
 
 
 
-    //ui->LayoutPreview->removeWidget(ui->LayoutPreview->widget());
-    //delete ui->LayoutPreview->widget();
+
     ui->LayoutPreview->addWidget(grille);
-    //ui->FramePreview->add
-    //ui->FramePreview->addWidget(grille);
+
 
 
 }
 
+
+/**
+ * @brief Appel de l'instance creer configuration
+ * @return void
+ */
 void FenetreConfiguration::creerConfig() {
     CreaConfig * pageConfig = new CreaConfig(this,simul);
     pageConfig->show();
 
 }
 
+/**
+ * @brief Fonction du slot du bouton creer
+ * @return void
+ */
 void FenetreConfiguration::on_btnCreer_clicked()
 {
     creerConfig();
 }
 
+/**
+ * @brief Fonction du slot du bouton reload
+ * @return void
+ */
 void FenetreConfiguration::on_btnReload_clicked()
 {
     chargerPreview();
 }
 
+/**
+ * @brief Fonction du slot du bouton valider
+ * @return void
+ */
 void FenetreConfiguration::on_btnValider_clicked()
 {
     qSimulateur* fenetre = new qSimulateur(nullptr, modele, simul->getConfigurationDepart());
