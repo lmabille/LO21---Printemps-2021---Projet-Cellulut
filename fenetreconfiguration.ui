@@ -40,14 +40,7 @@
     <item>
      <widget class="QPushButton" name="btnCreer">
       <property name="text">
-       <string>Créer configuration</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnAleatoire">
-      <property name="text">
-       <string>Aléatoire</string>
+       <string>Editer configuration</string>
       </property>
      </widget>
     </item>

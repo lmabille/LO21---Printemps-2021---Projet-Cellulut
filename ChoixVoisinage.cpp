@@ -1,23 +1,37 @@
+/**
+ * @file ChoixVoisinage.cpp
+ * @author Violette Durocher
+ * @brief Fichier fournissant les methodes de la classe ChoixVoisinage afin de permettre a l'utilisateur de parametrer son voisinage
+ * @version 0.1
+ * @date 2021-06-13
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
+
 #include "ChoixVoisinage.h"
 
 
-// CONSTRUCTEUR
-
+/**
+ * @brief Constructeur de la classe ChoixVoisinage
+ *
+ * @param[in] parent Fenetre ChoixTransition qui precede et appelle la creation de cette fenetre ChoixVoisinage
+ * @param[in] trans Nom de la fonction de transition selectionnee dans la fenetre ChoixTransition
+ * @param[in] L Nombre de lignes maximal -> determine le rayon maximal du voisinage
+ * @param[in] C Nombre de colonnes maximal -> determine le rayon maximal du voisinage
+ * @return   Fenetre ChoixVoisinage permettant le parametrage du voisinage pour un modele
+ */
 ChoixVoisinage::ChoixVoisinage(QWidget* parent, std::string trans, size_t L, size_t C): transition(trans)
-/* Constructeur de la classe choix Voisinage : construit la grille de base où les apperçus des voisinages vont être affichés */
 {
-    // GRILLE
+    /*** GRILLE ***/
 
     size_t tailleCell = 15; // taille cellule
 
-    setRayonMax(L,C); // calcul rayon
-
-    std::cout << "rayon de " << rayonMax << " OK " << endl;
+    setRayonMax(L,C); // calcul du rayon maximal du voisinage en fonction des dimensions L et C passees en arguments
 
     calculCoordMiddleCell(); // calcul des coordonnées de la cellule du milieu
 
-    size_t dimSide = calculDimSide(rayonMax); // on recup les dimensions maximales de l'affichage
-    std::cout << "dimSide = " << dimSide << endl;
+    size_t dimSide = calculDimSide(); // dimensions maximales de l'affichage en fonction du rayon
 
     visu = new QTableWidget(dimSide, dimSide);
     visu->setFixedSize(2.61*tailleCell*dimSide, 1.61*tailleCell*dimSide);
@@ -42,7 +56,6 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, std::string trans, size_t L, siz
 
     // Message recharge
     indication = new QLabel;
-    indication->setText("Veuillez rechargez l'aperçu");
     indication->setVisible(false);
 
     // choix du rayon (choixRayon)
@@ -50,7 +63,6 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, std::string trans, size_t L, siz
     choixRayon->setRange(1,rayonMax);
     choixRayon->setVisible(false);
     connect(choixRayon, SIGNAL(valueChanged(int)),this,SLOT(chargerAppercu()));
-    //connect(choixRayon, SIGNAL(valueChanged(int)),this,SLOT(afficherMessage()));
 
     // layout
     affichage = new QHBoxLayout;
@@ -59,23 +71,18 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, std::string trans, size_t L, siz
     affichage->addWidget(indication);
 
 
-    // PARAMETRES
+    /*** PARAMETRES ***/
 
     listeVois = new QComboBox();
-    // listeVois->setEditText("Choisir un voisinage");
 
-    // les voisinages possibles dépendent de la fonction de transition qui a été choisie
-    //if (transition.compare("Langton's Loop")==0)
-    std::cout << "OHOHOHO LANGSTON LOOP OU PAS " << transition<<endl;
     if (transition=="Langton's Loop")
     {
-        std::cout << "langstonloop bro" << endl;
+        // langston's loop fonctionne uniquement avec un voisiange de Von Neumann de rayon 1
         listeVois->insertItem(0,"Von Neumann");
         choixRayon->setMaximum(1);
     }
     else
     {
-        std::cout << "pas langston loop BRO" << endl;
         listeVois->insertItem(0,"Von Neumann");
         listeVois->insertItem(1,"Moore");
         listeVois->insertItem(2,"Personnalise");
@@ -88,15 +95,15 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, std::string trans, size_t L, siz
     parametres->addWidget(listeVois);
 
 
-    // ACTIONS
+    /*** ACTIONS ***/
 
-    retour = new QPushButton("Retour");
+    // retour = new QPushButton("Retour"); // non disponible pour l'instant
     validation = new QPushButton("Valider");
     connect(validation,SIGNAL(clicked()),this,SLOT(enregistrerChoixVoisinage()));
 
     // Layout
     actions = new QHBoxLayout;
-    actions->addWidget(retour);
+    // actions->addWidget(retour);
     actions->addWidget(validation);
 
     // Layout final (fenetre)
@@ -114,10 +121,14 @@ ChoixVoisinage::ChoixVoisinage(QWidget* parent, std::string trans, size_t L, siz
 }
 
 
-// CALCUL RAYON MAX DU VOISINAGE
-
+/**
+ * @brief Calcule le rayon max disponible pour les voisinages en fonction des dimensions passees en argument du constructeur
+ *
+ * @param[in] nbLignesReseau Nombre de lignes maximal du reseau sur lequel s'appliquera ce modele
+ * @param[in] trans Nombre de colonnes maximal du reseau sur lequel s'appliquera ce modele
+ * @return   void
+ */
 void ChoixVoisinage::setRayonMax(size_t nbLignesReseau, size_t nbColonnesReseau)
-/* Calcule le rayon max du voisinage que l'on peut afficher en fonction de la taille du reseau */
 {
     size_t actualSide = min(nbLignesReseau, nbColonnesReseau);
     if (actualSide%2 == 1) // impair
@@ -128,25 +139,29 @@ void ChoixVoisinage::setRayonMax(size_t nbLignesReseau, size_t nbColonnesReseau)
     {
         rayonMax = (actualSide - 1)/2;
     }
-    std::cout << "LE RAYON EST DE " << rayonMax << endl;
 }
 
 
-// CALCUL DIMENSION DE L'APPERCU EN FONCTION DU RAYON
-
-size_t ChoixVoisinage::calculDimSide (size_t rayonMax)
-/* calcule les dimensions max de l'affichage du voisinage en fonction du rayon max */
+/**
+ * @brief Calcule les dimensions de l'affichage carre de l'appercu en fonction du rayonMax
+ *
+ * @return   Dimension (x=y) de l'appercu selon le rayonMax
+ */
+size_t ChoixVoisinage::calculDimSide ()
 {
     size_t dimSide = rayonMax*2 + 1;
     return dimSide;
 }
 
 
-// REMET TOUTES LES CASES NOIRES DE L'APPERCU A BLANC (pas la cellule du milieu rouge donc)
-
+/**
+ * @brief Remet a blanc l'apercu (cases noires -> blanc)
+ *
+ * @return   void
+ */
 void ChoixVoisinage::cleanAppercu()
 {
-    size_t dimSide = calculDimSide(rayonMax);
+    size_t dimSide = calculDimSide();
     for (size_t i=0;i<dimSide;i++)
     {
         for (size_t j=0;j<dimSide;j++)
@@ -160,32 +175,32 @@ void ChoixVoisinage::cleanAppercu()
 }
 
 
-// AFFICHE L'APPERCU EN FONCTION DU VOISINAGE SELECTIONNE
-
+/**
+ * @brief Affiche l'appercu en fonction du voisinage et du rayon selectionne par l'utilisateur
+ *
+ * @return   void
+ */
 void ChoixVoisinage::chargerAppercu()
-/* affiche l'apperçu du voisinage sélectionné dans la combobox (VNeum ou Moore de rayons variables) qd l'utilisateur clique sur "Apperçu" */
 {
-    cleanAppercu(); // on remet l'apperçu à blanc
+    cleanAppercu(); // on remet l'aperçu à blanc
 
     int index = listeVois->currentIndex();
 
-    if (index==0 || index==1) // on affiche le rayon si vneum ou moore
+    if (index==0 || index==1) // Le rayon est variable pour les voisinages de Von Neumann et Moore
     {
-        std::cout << "ON VA CHARGER UN APPERCU VN OU MOOOORE" << endl;
         choixRayon->setVisible(true);
     }
-    else std::cout << "ON VA CHARGER UN APPERCU PERSOOOOOOOO" << endl;
 
     int rayonChoisi = choixRayon->value();
     quelVoisinage(index, rayonChoisi); // on crée l'objet voisinage en fonction du choix de l'utilisateur
 
     if (index==0 || index==1) // moore ou von neuman
     {
-    // on colorie les cases en fonction du tableau rempli
+    // on colorie les cases en fonction du tableau de cases déjà rempli dans ces deux voisinages
         Case* coordonneesAColorier = choice->getTableau();
         int nombreCases = choice->getNbCelluleVoisi();
 
-        size_t dimSide = calculDimSide(rayonMax);
+        size_t dimSide = calculDimSide();
         for (int p = 0; p<nombreCases; p++)
         {
             for (size_t i=0;i<dimSide;i++)
@@ -200,51 +215,50 @@ void ChoixVoisinage::chargerAppercu()
             }
         }
     }
-    else
+    else // personnalise = choix utilisateur
     {
         // on demande à l'utilisateur de choisir ses cases
         indication->setText("Cliquez sur les voisines");
         afficherMessage();
 
         choixRayon->setVisible(false);
-        connect(visu, SIGNAL(cellClicked(int,int)), this, SLOT(colorierCase(int,int))); // toutes les cases choisies deviennent noires
+        connect(visu, SIGNAL(cellClicked(int,int)), this, SLOT(colorierCase(int,int))); // les cases selectionnes deviennent noires
     }
 
-    // choice->~Voisinage(); // on détruit le voisinage REDEFINIR LES DESTRUCTEURS
-    delete choice;
+    delete choice; // appel du constructeur du voisinage pour liberer la memoireapres chaque affichage
     choice = nullptr;
-    if (choice==nullptr) std::cout<< "voisinage bien detruit" <<endl; // heu marche pas??
 }
 
 
-// CREE UN VOISINAGE SELON LE CHOIX DE L'UTILISATEUR POUR RECUPERER SES CASES
-
+/**
+ * @brief Construit un voisinage et le stocke dans l'attribut Voisinage de la classe ChoixVoisinage temporairement afin de recuperer son ensemble de cases
+ *
+ * @param[in] i Index selectionne de la QComboBox au moment ou la fonction est appelee
+ * @param[in] rayon Rayon selectionnee au moment ou la fonction est appelee
+ * @return   void
+ */
 void ChoixVoisinage::quelVoisinage(int i, size_t rayon)
-/* détermine le voisinage à construire en fonction de l'index sélectionné dans la combobox */
 {
     switch(i)
     {
     case 0: // Von Neumann
     {
-        std::cout << "\tAOUIOUI " << i << endl;
         V_VonNeumann* vN = new V_VonNeumann();
-        vN->definir_ensemble_case(rayon);
+        vN->definir_ensemble_case(rayon); // on remplit l'ensemble de cases
         choice = static_cast <V_VonNeumann*> (vN);
         break;
     }
     case 1: // Moore
     {
-        std::cout << "\tAOUIOUI " << i<< endl;
         V_Moore* vM = new V_Moore();
-        vM->definir_ensemble_case(rayon);
+        vM->definir_ensemble_case(rayon); // on remplit l'ensemble de cases
         choice = static_cast <V_Moore*> (vM);
         break;
     }
     case 2:
     {
-        std::cout << "\tAOUIOUI " << i<< endl;
         V_ChoixUtilisateur* vU = new V_ChoixUtilisateur();
-        vU->definir_ensemble_case(rayon);
+        vU->definir_ensemble_case(rayon); // cette fonction ne fait rien
         choice = static_cast <V_ChoixUtilisateur*> (vU);
         break;
     }
@@ -252,16 +266,24 @@ void ChoixVoisinage::quelVoisinage(int i, size_t rayon)
 }
 
 
-// AFFICHE UNE INDICATION A L'UTILISATEUR
-
+/**
+ * @brief Rend le QLabel indication visible
+ *
+ * @return   void
+ */
 void ChoixVoisinage::afficherMessage()
 {
     indication->setVisible(true);
 }
 
 
-// COLORIE LES CASES ET SET L'ENSEMBLE DE CASE DU VOISINAGE PERSONNALISE
-
+/**
+ * @brief Colorie les cases de la QTableView visu dont les coordonnees sont passees en argument
+ *
+ * @param[in] i Coordonnee ligne de la case a colorier
+ * @param[in] j Coordonnee colonne de la case a colorier
+ * @return   void
+ */
 void ChoixVoisinage::colorierCase(int i, int j)
 {
     visu->item(i,j)->setData(Qt::BackgroundRole,QColor(0,0,0));
@@ -269,38 +291,33 @@ void ChoixVoisinage::colorierCase(int i, int j)
 }
 
 
-// VALIDATION DU CHOIX
-
+/**
+ * @brief Enregistre le choix du voisinage final : definit l'attribut Voisinage choice afin de le passer en argument au widgent fils
+ *
+ * @return   void
+ */
 void ChoixVoisinage::enregistrerChoixVoisinage()
 {
-    std::cout << "askip ca enregistre hehe" <<endl;
-
     // on récupère les paramètres finalement sélectionnés
     int index = listeVois->currentIndex();
     int rayonChoisi = choixRayon->value();
     quelVoisinage(index, rayonChoisi);
 
-    std::cout<<"bien recu chef"<<endl;
-
     if (listeVois->currentIndex()==2) // personnalisé : il faut ajouter les cellules à l'ensemble de cases
     {
-        std::cout << "PERSO ? PASDESOUC " <<endl;
-
         std::vector<Case> tableau;
-        for (size_t i = 0; i<calculDimSide(rayonMax); i++)
+        for (size_t i = 0; i<calculDimSide(); i++)
         {
-            for (size_t j=0; j<calculDimSide(rayonMax); j++)
+            for (size_t j=0; j<calculDimSide(); j++)
             {
                 if (visu->item(i,j)->background().color() == QColor(0,0,0))
                 {
                     tableau.push_back(Case(i-lineMiddleCell, j-collumnMiddleCell));
-                    //std::cout << tableau.end()->getL() << "," << tableau.end()->getC();
                 }
             }
         }
-        if (tableau.empty())
+        if (tableau.empty()) // on affiche un message d'erreur si l'utilisateur n'a selectionne aucune case
         {
-            std::cout << "vide sa mere" <<endl;
             QMessageBox* zeroCases = new QMessageBox;
             zeroCases->setText("Veuillez selectionner au moins une case.");
             zeroCases->show();
@@ -312,18 +329,8 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
         }
     }
 
-    std::cout << "VOILOU TABOM" <<endl;
-    std::cout << "cest un voisinage " << choice->getTypeVoisi() <<endl;
-    Case* tab = choice->getTableau();
-    for (size_t i=0;i<choice->getNbCelluleVoisi();i++)
-    {
-        std::cout << "yooo" <<endl;
-        std::cout << tab[i].getL() <<","<<tab[i].getC() <<endl;
-    }
-
-    // envoyer le voisinage et la fonction de transition à la widget etats de laurine
+    // on crée une fenetre ChoixEtats pour passer à la prochaine étape de la création du modèle : la définition des états
     ChoixEtats* fenetre_ChoixEtats = new ChoixEtats(this,choice,transition);
-    std::cout << "fenetre cree"<<endl;
     fenetre_ChoixEtats->show();
 
     this->close();
