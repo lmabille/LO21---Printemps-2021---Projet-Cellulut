@@ -10,7 +10,7 @@ using namespace pugi;
 
 /*** Classe Configuration ***/
 
-string Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const // à tester
+string Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const
 {
     /* pour chaque élément du tableau ensemble de cases,
        récupère le déplacement relatif en ligne et en colonne en fonction du voisinage passé en argument,
@@ -26,16 +26,17 @@ string Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const // 
         ligneRel = typeVoisi[c].getL();
         colRel = typeVoisi[c].getC();
         //calcule des coordonnées en prenant en compte que le modulo peut renvoyer des nombres négatifs
-        if ((i+ligneRel)%reseau.nb_lignes<0) ligne = (i+ligneRel)%reseau.nb_lignes + reseau.nb_lignes;
-        else ligne = (i+ligneRel)%reseau.nb_lignes;
+        if (((i+ligneRel)%getReseauLignes())<0) ligne = ((i+ligneRel)%getReseauLignes()) + getReseauLignes();
+        else ligne = (i+ligneRel)%getReseauLignes();
         //ligne = (i+ligneRel)%reseau.nb_lignes;
         //ligne = (i+ligneRel)%reseau.nb_colonnes;
-        if ((j+colRel)%reseau.nb_colonnes<0) colonne = (j+colRel)%reseau.nb_colonnes + reseau.nb_colonnes;
-        else colonne = (j+colRel)%reseau.nb_colonnes;
+        if (((j+colRel)%getReseauColonnes())<0) colonne = ((j+colRel)%getReseauColonnes()) + getReseauColonnes();
+        else colonne = (j+colRel)%getReseauColonnes();
         //colonne = (j+colRel)%reseau.nb_colonnes;
         //colonne = (j+colRel)%reseau.nb_lignes;
         //cout << "coordonnees du voisin " << c << " : " << endl;
         //cout << "\tligne : " << ligne << "\n" << "\tcolonne : " << colonne << endl;
+        //cout<<"cellule ("<<i<<","<<j<<") voisin ("<<ligne<<","<<colonne<<") : "<<(i+ligneRel)<<"x"<<((j+colRel)%getReseauColonnes()) + getReseauColonnes()<<"\n";
         indice = getEtatCellule(ligne,colonne).getIndice();
         voisinage += to_string(indice);
         //cout << "test OK" << endl;

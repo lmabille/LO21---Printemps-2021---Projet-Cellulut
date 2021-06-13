@@ -403,23 +403,17 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
     char *etatDepart = new char;
     char etatDest;
     Etat *e = new Etat;
-    unsigned int p = 0;
 
     for (int i = 0; i < dep.getReseauLignes(); i++)
     {
         for (int j = 0; j < dep.getReseauColonnes(); j++)
         {
-            while (p < fonctionTrans->taille && ((int)((fonctionTrans->tableau)[p][0]) != ('0' + dep.getEtatCellule(i, j).getIndice())))
-            {
-                p++;
-            };
             sprintf(etatDepart, "%d", dep.getEtatCellule(i, j).getIndice());
             //cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
             etatDest = fonctionTrans->comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau, *etatDepart, fonctionTrans->taille, etatsPossibles->getNombreEtats());
             //cout<<"etat dest : "<<char_to_int(etatDest)<<"\n";
             e = (*etatsPossibles)[char_to_int(etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i, j, e);
-            p = 0;
         }
     }
 }
