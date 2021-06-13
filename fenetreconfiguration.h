@@ -39,7 +39,7 @@ private:
     const char* nom_fichier;
     Modele * modele;
     void remplirComboList(string * liste, int nb);
-    void initConnect(Simulateur* simul);
+    void initConnect();
     void chargerConfig();
     Simulateur * simul;
     void chargerPreview();

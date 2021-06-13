@@ -45,13 +45,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="btnAleatoire">
-      <property name="text">
-       <string>Aléatoire</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QPushButton" name="btnValider">
       <property name="text">
        <string>Valider</string>
