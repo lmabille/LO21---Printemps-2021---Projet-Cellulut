@@ -26,14 +26,14 @@ string Configuration::getVoisinage(int i, int j, Voisinage& typeVoisi) const // 
         ligneRel = typeVoisi[c].getL();
         colRel = typeVoisi[c].getC();
         //calcule des coordonnées en prenant en compte que le modulo peut renvoyer des nombres négatifs
-        //if ((i+ligneRel)%reseau.nb_lignes<0) ligne = (i+ligneRel)%reseau.nb_lignes + reseau.nb_lignes;
-        //else ligne = (i+ligneRel)%reseau.nb_lignes;
+        if ((i+ligneRel)%reseau.nb_lignes<0) ligne = (i+ligneRel)%reseau.nb_lignes + reseau.nb_lignes;
+        else ligne = (i+ligneRel)%reseau.nb_lignes;
         //ligne = (i+ligneRel)%reseau.nb_lignes;
-        ligne = (i+ligneRel)%reseau.nb_colonnes;
-        //if ((j+colRel)%reseau.nb_colonnes<0) colonne = (j+colRel)%reseau.nb_colonnes + reseau.nb_colonnes;
-        //else colonne = (j+colRel)%reseau.nb_colonnes;
+        //ligne = (i+ligneRel)%reseau.nb_colonnes;
+        if ((j+colRel)%reseau.nb_colonnes<0) colonne = (j+colRel)%reseau.nb_colonnes + reseau.nb_colonnes;
+        else colonne = (j+colRel)%reseau.nb_colonnes;
         //colonne = (j+colRel)%reseau.nb_colonnes;
-        colonne = (j+colRel)%reseau.nb_lignes;
+        //colonne = (j+colRel)%reseau.nb_lignes;
         //cout << "coordonnees du voisin " << c << " : " << endl;
         //cout << "\tligne : " << ligne << "\n" << "\tcolonne : " << colonne << endl;
         indice = getEtatCellule(ligne,colonne).getIndice();
