@@ -1,3 +1,16 @@
+/**
+ * @file qSimulateur.cpp
+ * @author Laurine Hamard(you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2021-06-13
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
+
+
+
 #include <qSimulateur.h>
 #include <iostream>
 //#include <time.h>
@@ -5,6 +18,15 @@
 //#include <windows.h>
 #include <QTimer>
 
+
+/**
+ * @brief constructeur de la fenêtre qSimulateur
+ *
+ * @param[in] parent pointeur sur la fenêtre parente de celle que l'on construit,
+ * @param[in] le modèle du simulateur
+ * @param[in] la configuration initiale
+ * @return pas de type de retour
+ */
 qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):QWidget(parent){
 
     //Création du simulateur
@@ -109,12 +131,15 @@ qSimulateur::qSimulateur(QWidget* parent, Modele *modele, Configuration *conf):Q
 
 }
 
+/**
+ * @brief permet d'avancer d'un pas dans les configurations
+ *
+ */
 void qSimulateur::configurationSuivante(){
 
-  //  std::cout<<"bonjour !";
-   // std::cout<<S->getLastConfig().getEtatCellule(0,0).getCouleur();
+    //on appella la fonction next() du simulateur
     S->next();
-   // std::cout<<S->getLastConfig().getEtatCellule(0,0).getCouleur()<<"\n";
+    //on met à jour chaque case de la grille
     const int nbLigne= S->getLastConfig().getReseauLignes();
     const int nbColonne= S->getLastConfig().getReseauColonnes();
     for(int i=0; i<nbLigne; i++ ){//pour chaque colonne
@@ -139,16 +164,12 @@ void qSimulateur::configurationSuivante(){
 
 }
 
-/*
-void qSimulateur::choixNomConfig(){
-    QVBoxLayout *fenetre = new QVBoxLayout;
-    QLabel *annonce = new QLabel("Veuillez choisir le nom de cette configuration");
 
 
-    setLayout(fenetre);
-}
-
-*/
+/**
+ * @brief sauvegarde la configuration courante
+ *
+ */
 
 void qSimulateur::sauvegarderCC(){
 
@@ -156,17 +177,19 @@ void qSimulateur::sauvegarderCC(){
 S->getLastConfig().sauvegarderConfiguration(S->modele.getTitre());
 }
 
+/**
+ * @brief Lance la simulation en mode automatique ou l'arrête
+ *
+ */
 
 void qSimulateur::LancerSim(){
+
+    //appelle un timer dépedant de la vitesse quand tourne = 1
  if(tourne == 0)tourne=1;
     else tourne=0;
-   // std::cout<<"Hey !";
 
-    //std::cout<<"Hey 2!";
    if (tourne ==1){
-        std::cout<<"Hey 3 !";
         timer->start(10000/vitesse->value());
-      //  std::cout<<"Hey 4 !";
     }
     if(tourne == 0)timer->stop();
 
@@ -175,12 +198,15 @@ void qSimulateur::LancerSim(){
 
 }
 
+/**
+ * @brief Permet de retourner à  la configuration initiale
+ *
+ */
 void qSimulateur::configInitiale(){
-
+    //va chercher la configuration initiale du simulateur et met à jour chaque case de la grille
     S->reset();
     const int nbLigne= S->getLastConfig().getReseauLignes();
     const int nbColonne= S->getLastConfig().getReseauColonnes();
-   // std::cout<<initiale->getEtatCellule(0, 0).getCouleur();
    for(int i=0; i<nbLigne; i++ ){//pour chaque colonne
         for(int j=0; j<nbColonne; j++){//pour chaque ligne
 
@@ -196,7 +222,7 @@ void qSimulateur::configInitiale(){
             if(couleur == "orange")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 130, 20));
             if(couleur == "peppermint")grille->item(i, j)->setData(Qt::BackgroundRole, QColor(187, 254, 190));
 
-           // grille->item(i, j)->setData(Qt::BackgroundRole, QColor(255, 0, 255));
+
         }
     }
 
