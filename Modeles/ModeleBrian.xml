@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<Modele>
+   <titre name="ModeleBrian" />
+   <Description name="modele de l automate brian s brain" />
+   <Auteur name="Groupe 4" />
+   <AnneeCreation name="2021" />
+   <Etats>
+      <NombreEtat name="3" />
+      <Etat Label="mort" Couleur="blanc" Indice="0" />
+      <Etat Label="refractaire" Couleur="rouge" Indice="1" />
+      <Etat Label="excite" Couleur="vert" Indice="2" />
+   </Etats>
+   <Voisinage>
+      <Nom name="Moore" />
+      <Element>
+         <Case X="1" Y="-1" />
+         <Case X="1" Y="0" />
+         <Case X="1" Y="1" />
+         <Case X="0" Y="1" />
+         <Case X="-1" Y="1" />
+         <Case X="-1" Y="0" />
+         <Case X="-1" Y="-1" />
+         <Case X="0" Y="-1" />
+      </Element>
+   </Voisinage>
+   <TypeFonctionTransition name="intension" />
+   <ListeRegle>
+      <Regle name="20081" />
+      <Regle name="10080" />
+      <Regle name="20171" />
+      <Regle name="10170" />
+      <Regle name="20261" />
+      <Regle name="10260" />
+      <Regle name="20351" />
+      <Regle name="10350" />
+      <Regle name="20441" />
+      <Regle name="10440" />
+      <Regle name="20531" />
+      <Regle name="10530" />
+      <Regle name="20621" />
+      <Regle name="10620" />
+      <Regle name="00622" />
+      <Regle name="20711" />
+      <Regle name="10710" />
+      <Regle name="20801" />
+      <Regle name="10800" />
+      <Regle name="21071" />
+      <Regle name="11070" />
+      <Regle name="21161" />
+      <Regle name="11160" />
+      <Regle name="21251" />
+      <Regle name="11250" />
+      <Regle name="21341" />
+      <Regle name="11340" />
+      <Regle name="21431" />
+      <Regle name="11430" />
+      <Regle name="21521" />
+      <Regle name="11520" />
+      <Regle name="01522" />
+      <Regle name="21611" />
+      <Regle name="11610" />
+      <Regle name="21701" />
+      <Regle name="11700" />
+      <Regle name="22061" />
+      <Regle name="12060" />
+      <Regle name="22151" />
+      <Regle name="12150" />
+      <Regle name="22241" />
+      <Regle name="12240" />
+      <Regle name="22331" />
+      <Regle name="12330" />
+      <Regle name="22421" />
+      <Regle name="12420" />
+      <Regle name="02422" />
+      <Regle name="22511" />
+      <Regle name="12510" />
+      <Regle name="22601" />
+      <Regle name="12600" />
+      <Regle name="23051" />
+      <Regle name="13050" />
+      <Regle name="23141" />
+      <Regle name="13140" />
+      <Regle name="23231" />
+      <Regle name="13230" />
+      <Regle name="23321" />
+      <Regle name="13320" />
+      <Regle name="03322" />
+      <Regle name="23411" />
+      <Regle name="13410" />
+      <Regle name="23501" />
+      <Regle name="13500" />
+      <Regle name="24041" />
+      <Regle name="14040" />
+      <Regle name="24131" />
+      <Regle name="14130" />
+      <Regle name="24221" />
+      <Regle name="14220" />
+      <Regle name="04222" />
+      <Regle name="24311" />
+      <Regle name="14310" />
+      <Regle name="24401" />
+      <Regle name="14400" />
+      <Regle name="25031" />
+      <Regle name="15030" />
+      <Regle name="25121" />
+      <Regle name="15120" />
+      <Regle name="05122" />
+      <Regle name="25211" />
+      <Regle name="15210" />
+      <Regle name="25301" />
+      <Regle name="15300" />
+      <Regle name="26021" />
+      <Regle name="16020" />
+      <Regle name="06022" />
+      <Regle name="26111" />
+      <Regle name="16110" />
+      <Regle name="26201" />
+      <Regle name="16200" />
+      <Regle name="27011" />
+      <Regle name="17010" />
+      <Regle name="27101" />
+      <Regle name="17100" />
+      <Regle name="28001" />
+      <Regle name="18000" />
+   </ListeRegle>
+   <ListeConfig nombre="1">
+      <Configuration>
+         <Nom name="Configuration1" />
+         <Taille lignes="10" colonnes="10" />
+         <EnsembleCase>
+            <Case X="0" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="4" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="5" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="0" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="4" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="5" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="1" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="4" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="5" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="2" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="4" Indice="1" Label="refractaire" Couleur="rouge" />
+            <Case X="3" Y="5" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="3" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="4" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="4" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="4" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="4" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="4" Y="4" Indice="2" Label="excite" Couleur="vert" />
+            <Case X="4" Y="5" Indice="2" Label="excite" Couleur="vert" />
+            <Case X="4" Y="6" Indice="1" Label="refractaire" Couleur="rouge" />
+            <Case X="4" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="4" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="4" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="5" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="5" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="5" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="5" Y="3" Indice="1" Label="refractaire" Couleur="rouge" />
+            <Case X="5" Y="4" Indice="2" Label="excite" Couleur="vert" />
+            <Case X="5" Y="5" Indice="2" Label="excite" Couleur="vert" />
+            <Case X="5" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="5" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="5" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="5" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="4" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="5" Indice="1" Label="refractaire" Couleur="rouge" />
+            <Case X="6" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="6" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="4" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="5" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="7" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="4" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="5" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="8" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="0" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="1" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="2" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="3" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="4" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="5" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="6" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="7" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="8" Indice="0" Label="mort" Couleur="blanc" />
+            <Case X="9" Y="9" Indice="0" Label="mort" Couleur="blanc" />
+         </EnsembleCase>
+      </Configuration>
+   </ListeConfig>
+</Modele>
