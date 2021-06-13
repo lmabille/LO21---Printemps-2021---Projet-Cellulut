@@ -36,7 +36,7 @@ CreaConfig::CreaConfig(QWidget *parent, Simulateur * simu) :
     ui->setupUi(this);
     ui->btnRandom->setDisabled(true); // on empeche de cliquer sur la generation de config random tant que le taille n'est pas définie
 
-
+    on_btnReload_clicked();
 
 
 
@@ -208,6 +208,7 @@ QTextStream& qStdOut()
 void CreaConfig::on_btnRandom_clicked()
 {
     this->simu->getConfigurationDepart()->remplissageAleatoire(*this->simu->getModele()->getEtatsPossibles());
+    on_btnReload_clicked();
     //close();
 
 

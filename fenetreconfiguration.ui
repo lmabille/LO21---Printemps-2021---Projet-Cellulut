@@ -40,7 +40,7 @@
     <item>
      <widget class="QPushButton" name="btnCreer">
       <property name="text">
-       <string>Créer configuration</string>
+       <string>Editer configuration</string>
       </property>
      </widget>
     </item>
