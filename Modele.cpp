@@ -464,7 +464,7 @@ int char_to_int(char c)
  * @brief applique les règles de transition à chaque cellule d'une configuration
  *
  * @param[in] dep configuration de départ sur laquelle on va appliquer la transition
- * @param[in] dest configuration qu'on va modifir afin d'obtenir dep à la génération t+1
+ * @param[out] dest configuration qu'on va modifir afin d'obtenir dep à la génération t+1
  * @return rien
  */
 void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) const
