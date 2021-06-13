@@ -91,6 +91,19 @@
     <string>random</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnReload">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>220</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reload grille</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

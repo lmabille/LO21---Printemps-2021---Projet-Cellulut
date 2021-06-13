@@ -136,7 +136,12 @@ void ChoixEtats::Validation(){
 
 }
 
-
+/**
+ * @brief constructeur de la classe de la liste déroulante des couleurs
+ *
+ *
+ * @return objet de class ListeCouleur
+ */
 ListeCouleur::ListeCouleur() {
     this->addItem("blanc");
     this->addItem("noir");
