@@ -17,7 +17,6 @@ using namespace pugi;
  *
  */
 
-
 /**
  * @brief renvoie la lettre de l'alphabete en majuscule en fonction de sa position
  *
@@ -65,12 +64,12 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l)
     // 0 : mort | 1 : refractaire | 2 : excite
     //etat depart| nb_voisins_mort(i) | nb_voisins_refractaire(j) | nb_voisins_excite(k) | etat arrivee
 
-    // EXEMPLE : 12423 --> execution de R1 avec nb_voisin = 8 (2+4+2)
+    // EXEMPLE : 12420 --> execution de R2 avec nb_voisin = 8 (2+4+2)
 
     //principe algo : on cherche à obtenir un triplet | nb_mort | nb_voisins_refractaire | nb_voisins_excite | dont la somme de chacun est égale au nombre de voisins
 
     string *tab;
-    tab = new string[100]; //etat depart_mort_refractaire_excite _etatarrivee
+    tab = new string[100]; //etatdepart_mort_refractaire_excite _etatarrivee
     //string tab[100];
     string nouvelle_regle;
     l = 0; //indexe du tableau
@@ -82,7 +81,6 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l)
             {
                 if (i + k + j == nb_voisins)
                 {
-                    //nouvelle_regle = "2" + to_string(i) + to_string(j) + to_string(k) + "1";
                     nouvelle_regle.push_back('2');
                     nouvelle_regle.push_back(to_alphabet(i));
                     nouvelle_regle.push_back(to_alphabet(j));
@@ -91,7 +89,6 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l)
                     tab[l] = nouvelle_regle;
                     l++;
                     nouvelle_regle = "";
-                    //nouvelle_regle = "1" + to_string(i) + to_string(j) + to_string(k) + "0";
                     nouvelle_regle.push_back('1');
                     nouvelle_regle.push_back(to_alphabet(i));
                     nouvelle_regle.push_back(to_alphabet(j));
@@ -102,7 +99,6 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l)
                     nouvelle_regle = "";
                     if (k == 2)
                     {
-                        //nouvelle_regle = "0" + to_string(i) + to_string(j) + "2" + "2";
                         nouvelle_regle.push_back('0');
                         nouvelle_regle.push_back(to_alphabet(i));
                         nouvelle_regle.push_back(to_alphabet(j));
@@ -144,30 +140,25 @@ string *generation_regles_Life_game(const unsigned int nb_voisins, int &l)
     regle.push_back('3');
     regle.push_back('1');
     tab[0] = regle;
-    // tab[0] = "0" + to_alphabet(nb_voisins - 2) + "3" + "1"; //Ajout de R1, le nombre de voisin vivant est forcément égale à nb_voisins - 3
 
     //Pour R2, et R3 on crée deux cas :
-    //string regle_2 = to_string(to_alphabet(nb_voisins - 2)) + "2";
     string regle_2;
     regle_2.push_back(to_alphabet(nb_voisins - 2));
     regle_2.push_back('2'); //un doublet avec nb_voisins_mort est de 2
-    //string regle_3 = to_string(to_alphabet(nb_voisins - 3 + 48)) + "3"; //un doublet avec nb_voisins_mort est de 3
     string regle_3;
     regle_3.push_back(to_alphabet(nb_voisins - 3));
-    regle_3.push_back('3');
-    //On
+    regle_3.push_back('3'); //un doublet avec nb_voisins_mort est de 2
+
     string nouvelle_regle;
     int i = 1; //index du tableau débute à 1 car on a déjà ajouté une régle
     int j = 0; // j représente le nombre de voisins mort
     while (j <= nb_voisins)
     {
-        //nouvelle_regle = to_string(j) + to_string(nb_voisins - j);
         nouvelle_regle = "";
         nouvelle_regle.push_back(to_alphabet(j));
-        nouvelle_regle.push_back(to_alphabet(nb_voisins - j));      //on tous les doublets donc la somme = nb_voisins
+        nouvelle_regle.push_back(to_alphabet(nb_voisins - j));
         if (nouvelle_regle != regle_2 && nouvelle_regle != regle_3) //  (!(nouvelle_regle == regle_2) && !(nouvelle_regle == regle_3)) // si, dans ce doublet, l'un est égale à une des deux règle du dessus, alors on ne rentre pas dans le if
         {
-            //tab[i] = "1" + nouvelle_regle + "0";
             tab[i].push_back('1'); //ajout de la règle si il n'y a ni 2 ni 3 voisins vivants
             tab[i].push_back(nouvelle_regle[0]);
             tab[i].push_back(nouvelle_regle[1]);
@@ -354,8 +345,8 @@ string *generation_regles_Wireworld(const unsigned int nb_voisins, int &m)
  */
 string *generation_regles_Langton_Loop(int &l) // defintion en extension
 {
-    string * tab;
-    tab = new string[219] {"000000", "000012", "000020", "000030", "000050", "000063", "000071", "000112", "000122", "000132", "000212", "000220", "000230", "000262", "000272", "000320", "000525", "000622", "000722", "001022", "001120", "002020", "002030", "002050", "002125", "002220", "002322", "005222", "012321", "012421", "012525", "012621", "012721", "012751", "014221", "014321", "014421", "014721", "016251", "017221", "017255", "017521", "017621", "017721", "025271", "100011", "100061", "100077", "100111", "100121", "100211", "100244", "100277", "100511", "101011", "101111", "101244", "101277", "102026", "102121", "102211", "102244", "102263", "102277", "102327", "102424", "102626", "102644", "102677", "102710", "102727", "105427", "111121", "111221", "111244", "111251", "111261", "111277", "111522", "112121", "112221", "112244", "112251", "112277", "112321", "112424", "112621", "112727", "113221", "122244", "122277", "122434", "122547", "123244", "123277", "124255", "124267", "125275", "200012", "200022", "200042", "200071", "200122", "200152", "200212", "200222", "200232", "200242", "200250", "200262", "200272", "200326", "200423", "200517", "200522", "200575", "200722", "201022", "201122", "201222", "201422", "201722", "202022", "202032", "202052", "202073", "202122", "202152", "202212", "202222", "202272", "202321", "202422", "202452", "202520", "202552", "202622", "202722", "203122", "203216", "203226", "203422", "204222", "205122", "205212", "205222", "205521", "205725", "206222", "206722", "207122", "207222", "207422", "207722", "211222", "211261", "212222", "212242", "212262", "212272", "214222", "215222", "216222", "217222", "222272", "222442", "222462", "222762", "222772", "300013", "300022", "300041", "300076", "300123", "300421", "300622", "301021", "301220", "302511", "401120", "401220", "401250", "402120", "402221", "402326", "402520", "403221", "500022", "500215", "500225", "500232", "500272", "500520", "502022", "502122", "502152", "502220", "502244", "502722", "512122", "512220", "512422", "512722", "600011", "600021", "602120", "612125", "612131", "612225", "700077", "701120", "701220", "701250", "702120", "702221", "702251", "702321", "702525", "702720"};
+    string *tab;
+    tab = new string[219]{"000000", "000012", "000020", "000030", "000050", "000063", "000071", "000112", "000122", "000132", "000212", "000220", "000230", "000262", "000272", "000320", "000525", "000622", "000722", "001022", "001120", "002020", "002030", "002050", "002125", "002220", "002322", "005222", "012321", "012421", "012525", "012621", "012721", "012751", "014221", "014321", "014421", "014721", "016251", "017221", "017255", "017521", "017621", "017721", "025271", "100011", "100061", "100077", "100111", "100121", "100211", "100244", "100277", "100511", "101011", "101111", "101244", "101277", "102026", "102121", "102211", "102244", "102263", "102277", "102327", "102424", "102626", "102644", "102677", "102710", "102727", "105427", "111121", "111221", "111244", "111251", "111261", "111277", "111522", "112121", "112221", "112244", "112251", "112277", "112321", "112424", "112621", "112727", "113221", "122244", "122277", "122434", "122547", "123244", "123277", "124255", "124267", "125275", "200012", "200022", "200042", "200071", "200122", "200152", "200212", "200222", "200232", "200242", "200250", "200262", "200272", "200326", "200423", "200517", "200522", "200575", "200722", "201022", "201122", "201222", "201422", "201722", "202022", "202032", "202052", "202073", "202122", "202152", "202212", "202222", "202272", "202321", "202422", "202452", "202520", "202552", "202622", "202722", "203122", "203216", "203226", "203422", "204222", "205122", "205212", "205222", "205521", "205725", "206222", "206722", "207122", "207222", "207422", "207722", "211222", "211261", "212222", "212242", "212262", "212272", "214222", "215222", "216222", "217222", "222272", "222442", "222462", "222762", "222772", "300013", "300022", "300041", "300076", "300123", "300421", "300622", "301021", "301220", "302511", "401120", "401220", "401250", "402120", "402221", "402326", "402520", "403221", "500022", "500215", "500225", "500232", "500272", "500520", "502022", "502122", "502152", "502220", "502244", "502722", "512122", "512220", "512422", "512722", "600011", "600021", "602120", "612125", "612131", "612225", "700077", "701120", "701220", "701250", "702120", "702221", "702251", "702321", "702525", "702720"};
     l = 219;
     return tab;
 }
@@ -381,7 +372,8 @@ char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, c
 
     while (i < limit)
     {
-        if (trans[i][0] == cel){
+        if (trans[i][0] == cel)
+        {
             st = trans[i].substr(1, trans[i].length() - 2);
             st.append(st);
             test = st.find(voisins);
