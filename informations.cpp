@@ -38,8 +38,10 @@ informations::~informations()
 }
 
 /**
- * @brief 
+ * @brief en fonction des différents paramètres donnés par la page précédente (voisinnage), à  la suite d'un clique sur le boutton
+ * ok cette fonction va créer un modèle puis l'enregistrer
  * 
+ * @return enregistre le modèle, ferme la page information et ouvre la page menu principal
  */
 void informations::enregistrerModele()
 {
