@@ -30,6 +30,8 @@ private slots:
 
     void on_btnRandom_clicked();
 
+    void on_btnReload_clicked();
+
 private:
     Ui::CreaConfig *ui;
     Reseau * res;

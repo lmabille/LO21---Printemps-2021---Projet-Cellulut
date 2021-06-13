@@ -36,6 +36,10 @@ CreaConfig::CreaConfig(QWidget *parent, Simulateur * simu) :
     ui->setupUi(this);
     ui->btnRandom->setDisabled(true); // on empeche de cliquer sur la generation de config random tant que le taille n'est pas définie
 
+    auto res = Reseau(0,0);
+    Configuration * conf = new  Configuration(res);
+    this->simu->setConfigDepart(*conf);
+
 
 
 
@@ -55,7 +59,7 @@ CreaConfig::~CreaConfig()
  */
 void CreaConfig::on_btnTaille_clicked()
 {
-
+    clearLayout(ui->LayoutGrille->layout());
     int ligne,colonne;
     ligne = ui->spinLigne->value();
     colonne = ui->spinColonne->value();
@@ -76,7 +80,7 @@ void CreaConfig::on_btnTaille_clicked()
 
     chargerGrille();
     ui->btnRandom->setDisabled(false);
-    ui->btnTaille->setDisabled(true);
+    //ui->btnTaille->setDisabled(true);
 
 }
 
@@ -97,7 +101,7 @@ void CreaConfig::chargerGrille() {
         grid->setContentsMargins(0,0,0,0);
         grid->setSpacing(0);
 
-
+        this->config_cour = simu->getConfigurationDepart();
 
         for(int i = 0; i < nbColonne; i++)
         {
@@ -146,17 +150,7 @@ void CreaConfig::chargerGrille() {
  * @param[in] layout à vider
  */
 void CreaConfig::clearLayout(QLayout* layout) {
-    QLayoutItem *item;
-        while ((item = layout->takeAt(0)))
-        {
-            if (item->layout())
-            {
-                clearLayout(item->layout());
-            }
-
-            layout -> removeItem(item);
-            delete item;
-        }
+    QWidget().setLayout(layout);
 }
 
 
@@ -216,8 +210,19 @@ QTextStream& qStdOut()
 void CreaConfig::on_btnRandom_clicked()
 {
     this->simu->getConfigurationDepart()->remplissageAleatoire(*this->simu->getModele()->getEtatsPossibles());
-    close();
+    //close();
 
 
 
+}
+/**
+ * @brief Slot du bouton reload
+ */
+void CreaConfig::on_btnReload_clicked()
+{
+    //ui->btnTaille->setDisabled(true);
+    clearLayout(ui->LayoutGrille->layout());
+    //QWidget().setLayout(ui->LayoutGrille->layout());
+
+    chargerGrille();
 }
