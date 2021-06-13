@@ -1,21 +1,41 @@
 //
 // Created by thoma on 13/05/2021.
 //
+
+/**
+ * @file etat.cpp
+ * @author Thomas
+ * @brief
+ * @version 0.1
+ * @date 2021-06-13
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
 #include "etat.h"
 #include <string.h>
 
+/**
+ * @brief constructeur de la classe Etat
+ *
+ * @return Etat avec un label Null et un indice 0
+ */
 Etat::Etat()
 {
     label = "";
     indice=0;
 }
 
+
+/**
+ * @brief fonction accesseurs du label de la classe
+ *
+ * @return label de l'objet utilisé
+ */
 string Etat::getLabel()
 {
     return this->label;
 }
-
-// définir EnsembleEtats
 
 void EnsembleEtats::definirEtats()
 {
@@ -35,21 +55,13 @@ void EnsembleEtats::definirEtats()
     }
 }
 
-/*
-bool EnsembleEtats::checkExisteDeja(const Etat& e)
-{
-    for (int i = 0; i<nombreEtats; i++) {
-        if (etatsPossibles[i].indice == e.indice) {
-            if (etatsPossibles[i].label.compare(e.label) == 0) {
-                // if couleur == couleur // définir les couleurs !! à faire
-                return true;
-            }
-        }
-    }
-    return false;
-}
-*/
 
+/**
+ * @brief surcharge de l'opérateur [] pour la classe EnsembeEtat
+ *
+ * @param[in] index indexe de l'état rechérché
+ * @return un pointeur sur l'état recherché si il exite un pointeur null sinon
+ */
 Etat* EnsembleEtats::operator[](int index)
 /* Permet de retourner un pointeur sur un état alors qu'ils sont stockés dans un tableau 1D */
 {
@@ -61,47 +73,6 @@ Etat* EnsembleEtats::operator[](int index)
     cout << "etat n'existe pas\n";
     return nullptr;
 }
-
-
-
-
-
-
-
-
-/*void Etat::setEtat(string newEtat) {
-    if(this->l_etat_possible[0] == ""){
-        cout << "Liste etats pas definie ! Echec " << endl;
-        return;
-    }
-    if(this->l_etat_possible->find(newEtat)<10){
-        cout << this->getListe()[0];
-        this->label = newEtat;
-    }
-    else {
-        cout << "N'apparatient pas a la liste des etats possibles" << endl;
-    }
-
-
-
-}
-
-void Etat::defListEtat(string *newListe) {
-    for (int i =0; i<10; i++) {
-        this->l_etat_possible[i] = "";
-    }
-    int cpt = 0;
-    while (!newListe[cpt].empty()) {
-        this->l_etat_possible[cpt] = newListe[cpt];
-        cpt ++;
-
-    }
-}
-
-string *Etat::getListe() {
-
-    return this->l_etat_possible;
-}*/
 
 
 

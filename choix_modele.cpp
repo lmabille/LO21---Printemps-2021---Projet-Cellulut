@@ -1,3 +1,14 @@
+/**
+ * @file choix_modele.cpp
+ * @author Orhane Lahneche (you@domain.com)
+ * @brief
+ * @version 0.1
+ * @date 2021-06-13
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
+
 #include "choix_modele.h"
 #include "ui_choix_modele.h"
 
