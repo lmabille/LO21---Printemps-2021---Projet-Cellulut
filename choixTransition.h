@@ -35,7 +35,7 @@ class choixTransition : public QWidget
 
 public:
     // Constructeur
-    explicit choixTransition(QWidget* parent = nullptr );
+    explicit choixTransition(QWidget* parent = nullptr);
 
 private slots:
  //   void afficher_taille_reseaux();

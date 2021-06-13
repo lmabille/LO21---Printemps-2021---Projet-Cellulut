@@ -3,7 +3,7 @@
 
 // CONSTRUCTEUR
 
-ChoixVoisinage::ChoixVoisinage(QWidget* parent, size_t L, size_t C)
+ChoixVoisinage::ChoixVoisinage(QWidget* parent, std::string trans, size_t L, size_t C): transition(trans)
 /* Constructeur de la classe choix Voisinage : construit la grille de base où les apperçus des voisinages vont être affichés */
 {
     // GRILLE
@@ -325,6 +325,8 @@ void ChoixVoisinage::enregistrerChoixVoisinage()
     ChoixEtats* fenetre_ChoixEtats = new ChoixEtats(this,choice,transition);
     std::cout << "fenetre cree"<<endl;
     fenetre_ChoixEtats->show();
+
+    this->close();
 }
 
 

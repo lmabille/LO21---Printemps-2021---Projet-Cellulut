@@ -42,15 +42,17 @@ void choixTransition::SelectionTr(){
     //std::cout<<"yo"<<current->text().toStdString();
     transition = current->text().toStdString();
 
+    std::cout << "selection : " << transition << endl;
+
 
 
 }
 
 void choixTransition::Validation(){
 
-   ChoixVoisinage  * c = new ChoixVoisinage(nullptr, 10, 10);
-   std::cout << transition << endl;
-   c->setTransition(transition);
+   ChoixVoisinage  * c = new ChoixVoisinage(nullptr, transition, 10, 10);
+   std::cout << "validation choix transition : " << transition << endl;
+   //c->setTransition(transition);
 
    c->show();
    this->close();
