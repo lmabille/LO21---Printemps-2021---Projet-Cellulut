@@ -318,17 +318,19 @@ char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, c
     string st;
     //cout << "compa_vois"
     //     << "\n";
-    while (i < limit && (trans[i][0] == cel))
+    while (i < limit)
     {
-        //cout << "passeboucle"
-        //     << "\n\n";
-        st = trans[i].substr(1, trans[i].length() - 2);
-        st.append(st);
-        test = st.find(voisins);
-        if (test != -1)
-        {
-            size_t j = (trans[i].length() - 1);
-            return trans[i][j];
+        if (trans[i][0] == cel){
+            //cout << "passeboucle"
+            //     << "\n\n";
+            st = trans[i].substr(1, trans[i].length() - 2);
+            st.append(st);
+            test = st.find(voisins);
+            if (test != -1)
+            {
+                size_t j = (trans[i].length() - 1);
+                return trans[i][j];
+            }
         }
         i++;
     }
