@@ -32,22 +32,58 @@ void Voisinage::setensemble_case(Case* tableau)
 
 void V_VonNeumann::definir_ensemble_case(int rayon)
 {
-    nbCelluleVoisi = 4*rayon;
-    ensemble_case = new Case[nbCelluleVoisi]; // on réserve la place pour 4*rayon cellules
-    int ind = 0;
-    for (int r=1; r<=rayon; r++) // pour chaque couronne on remplit les 4 cases concernées
+
+    vector<Case> tableau;
+    int ligneMiddleCell = 0;
+    int colonneMiddleCell = 0; // test
+    std::cout << "cellule du milieu : "<<ligneMiddleCell<<","<<colonneMiddleCell<<endl;
+
+    if (rayon ==1) // bien trié pour langston loop
     {
-        ensemble_case[ind].setL_C(r,0); // haut
-        ensemble_case[ind+1].setL_C(0,r); // droite
-        ensemble_case[ind+2].setL_C(-r, 0); // bas
-        ensemble_case[ind+3].setL_C(0,-r); // gauche
-        ind += 4;
+        tableau.push_back(Case(-rayon,0));
+        tableau.push_back(Case(0,rayon));
+        tableau.push_back(Case(rayon,0));
+        tableau.push_back(Case(0,-rayon));
     }
-    for (unsigned int i=0;i<nbCelluleVoisi;i++)
-        cout << "[" << ensemble_case[i].getL() << "," << ensemble_case[i].getC() << "] "; // ok
 
+    else
+    {
+        for (int r=1; r<=rayon;r++)
+        {
+            std::cout<<"test rayon "<< r<<endl;
 
+            for (int i = -r; i<=r; i++)
+            {
+                std::cout<<"ligne "<<i<<endl;
+                for (int j = -r; j<=r; j++)
+                {
+                    std::cout<<"\tcolonne "<<j<<endl;
+                    if (i!=ligneMiddleCell || j!=colonneMiddleCell)
+                    {
+                        std::cout <<"\t"<<i<<","<<j<<endl;
+                        std::cout << "calcul coordonnee : "<< abs(i)<<" "<< abs(j);
+                        std::cout << ", result = " <<abs(i) + abs(j)<<endl;
+                        if ((abs(i) + abs(j))<=r)
+                        {
+                            std::cout <<"\t bien enregistre"<<endl;
+                            tableau.push_back(Case(i,j));
+                        }
+                        else std::cout <<"\t nik"<<endl;
+                        //std::cout << tableau.end()->getL() << "," << tableau.end()->getC() << endl;
+                    }
+                    else std::cout <<"zarbi"<<endl;
+                    //std::cout<<"yo 2" <<endl;
+                }
+            }
+        }
+    }
+
+    nbCelluleVoisi = tableau.size();
+    ensemble_case = new Case[nbCelluleVoisi];
+    this->setensemble_case(tableau);
+    tableau.clear();
 }
+
 
 void V_Moore::definir_ensemble_case(int rayon)
 {
