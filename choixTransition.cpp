@@ -70,11 +70,7 @@ choixTransition::choixTransition(QWidget* parent):QWidget(parent){
 void choixTransition::SelectionTr(){
 
     auto current = choix->currentItem();
-    //std::cout<<"yo"<<current->text().toStdString();
     transition = current->text().toStdString();
-
-
-
 
 }
 
@@ -88,10 +84,7 @@ void choixTransition::SelectionTr(){
 
 void choixTransition::Validation(){
 
-   ChoixVoisinage  * c = new ChoixVoisinage(nullptr, transition, 10, 10);
-   std::cout << "validation choix transition : " << transition << endl;
-   //c->setTransition(transition);
-
+   ChoixVoisinage  * c = new ChoixVoisinage(this, transition, 10, 10);
    c->show();
    this->close();
 

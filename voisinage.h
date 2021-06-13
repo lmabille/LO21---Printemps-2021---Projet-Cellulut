@@ -28,7 +28,9 @@ public:
     int getL() const { return l; };
     int getC() const { return c; };
     Case(int L, int C) : l(L), c(C){};
+    friend bool operator<(Case const &c1, Case const &c2);
 };
+
 
 
 class Voisinage // classe abstraite
