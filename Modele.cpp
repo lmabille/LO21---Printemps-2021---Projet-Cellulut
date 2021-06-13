@@ -6,6 +6,24 @@
 using namespace std;
 using namespace pugi;
 
+/**
+ * @file Modele.cpp
+ * @author Orhane LAHNECHE
+ * @brief
+ * @version 0.1
+ * @date 2021-06-13
+ *
+ * @copyright Copyright (c) 2021
+ *
+ */
+
+
+/**
+ * @brief renvoie la lettre de l'alphabete en majuscule en fonction de sa position
+ *
+ * @param[in] n position de la letrre dans l'alphabet
+ * @return la fonction retourne la lettre à la position n
+ */
 char to_alphabet(int n)
 {
     int res = n;
@@ -16,6 +34,12 @@ char to_alphabet(int n)
     }
     return '0' + res;
 }
+
+/**
+ * @brief constructeur de la classe modèle
+ *
+ * @return Modele avec la mémoir alloué pour certains membres
+ */
 Modele::Modele()
 {
     //this->typeVoisinnage =
@@ -23,6 +47,14 @@ Modele::Modele()
     this->etatsPossibles = new EnsembleEtats(10);
     this->fonctionTrans = new FonctionTransition;
 }
+
+/**
+ * @brief génération des règles de Brians Brain
+ *
+ * @param[in] nb_voisins nombre de voisins de la cellule
+ * @param[out] l nombre de règle initialisé à 0 et modifié au cours de la génération des règles
+ * @return tableau de string correspondant aux règles de Brians Brain
+ */
 string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l)
 {
     //Rappel des règles :
@@ -87,6 +119,13 @@ string *generation_regles_Brians_Brain(const unsigned int nb_voisins, int &l)
     return tab;
 };
 
+/**
+ * @brief génération du Life Game
+ *
+ * @param[in] nb_voisins nombre de voisins de la cellule
+ * @param[out] l nombre de règle initialisé à 0 et modifié au cours de la génération des règles
+ * @return tableau de string correspondant aux règles du Life Game
+ */
 string *generation_regles_Life_game(const unsigned int nb_voisins, int &l)
 {
     //Rappel des règles :
@@ -139,6 +178,14 @@ string *generation_regles_Life_game(const unsigned int nb_voisins, int &l)
     }
     return tab;
 }
+
+/**
+ * @brief génération des règles de Griffeath
+ *
+ * @param[in] nb_voisins nombre de voisins de la cellule
+ * @param[out] l nombre de règle initialisé à 0 et modifié au cours de la génération des règles
+ * @return tableau de string correspondant aux règles de Griffeath
+ */
 string *generation_regles_Griffeath(const unsigned int nb_voisins, int &m)
 {
     //Rappel des règles :
@@ -299,6 +346,12 @@ string *generation_regles_Wireworld(const unsigned int nb_voisins, int &m)
     return tab;
 }
 
+/**
+ * @brief génération des règles de Langton Loop
+ *
+ * @param[out] l nombre de règle initialisé à 0 et modifié au cours de la génération des règles
+ * @return tableau de string correspondant aux règles de Langton Loop
+ */
 string *generation_regles_Langton_Loop(int &l) // defintion en extension
 {
     string * tab;
@@ -307,7 +360,16 @@ string *generation_regles_Langton_Loop(int &l) // defintion en extension
     return tab;
 }
 
-// ça arrive
+/**
+ * @brief compare le voisinnage aux règles de transition
+ *
+ * @param[in] voisins chaîne de caractère correspondant à l'état du voisinnage
+ * @param[in] trans pointeur sur le tableau correspondant aux règles de transition
+ * @param[in] cel caractère correspondant à l'état de la cellule
+ * @param[in] limit nombre de règles de transitions
+ * @param[in] nb_Etat nombre d'états possibles de la cellule
+ * @return caractère correspondant à l'état de la cellule à la génération t+1
+ */
 char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat)
 {
     // pour un voisinnage donné on va vérifier si ce voisinnage est dans
@@ -316,13 +378,10 @@ char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, c
     unsigned int i = 0;
     int test = 0;
     string st;
-    //cout << "compa_vois"
-    //     << "\n";
+
     while (i < limit)
     {
         if (trans[i][0] == cel){
-            //cout << "passeboucle"
-            //     << "\n\n";
             st = trans[i].substr(1, trans[i].length() - 2);
             st.append(st);
             test = st.find(voisins);
@@ -337,6 +396,16 @@ char FonctionTransition::comparaison_voisinnage(string voisins, string *trans, c
     return cel;
 }
 
+/**
+ * @brief compare le voisinnage aux règles de transition en intension
+ *
+ * @param[in] voisins chaîne de caractère correspondant à l'état du voisinnage
+ * @param[in] trans pointeur sur le tableau correspondant aux règles de transition
+ * @param[in] cel caractère correspondant à l'état de la cellule
+ * @param[in] limit nombre de règles de transitions
+ * @param[in] nb_Etat nombre d'états possibles de la cellule
+ * @return caractère correspondant à l'état de la cellule à la génération t+1
+ */
 char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string *trans, char cel, unsigned int limit, int nb_Etat)
 {
     auto tab = new int[nb_Etat]; //initialisation du tableau
@@ -358,8 +427,6 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
             c = tab[i] + '0';
         else
             c = 'A' + tab[i] - 10;
-        //cout<<tab[i]<<"=tab[i]\n";
-        //cout<<c<<"=c\n";
         tab_de_inten.push_back(c);
     }
 
@@ -372,8 +439,6 @@ char FonctionTransitionIntention::comparaison_voisinnage(string voisins, string 
         if (trans[i][0] == cel)
         {
             st = trans[i].substr(1, trans[i].length() - 2); //ici on prélève la partie de la règle qui nous intéresse
-            cout << st << "=st\n";
-            cout << tab_de_inten << "=tab_de_inten\n";
             test = st.compare(tab_de_inten);
             if (test == 0)
             {
@@ -395,6 +460,13 @@ int char_to_int(char c)
     return b;
 }
 
+/**
+ * @brief applique les règles de transition à chaque cellule d'une configuration
+ *
+ * @param[in] dep configuration de départ sur laquelle on va appliquer la transition
+ * @param[in] dest configuration qu'on va modifir afin d'obtenir dep à la génération t+1
+ * @return rien
+ */
 void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) const
 /* Pour chaque cellule de la configuration de départ, récupère ses voisins, récupère son état, et détermine son état d'arrivée qu'elle place dans la confifuration de destinationn*/
 {
@@ -409,122 +481,18 @@ void Modele::appliquerTransition(const Configuration &dep, Configuration &dest) 
         for (int j = 0; j < dep.getReseauColonnes(); j++)
         {
             sprintf(etatDepart, "%d", dep.getEtatCellule(i, j).getIndice());
-            //cout << "voisinnage : "<<dep.getVoisinage(i, j, *typeVoisinnage) << "\n";
             etatDest = fonctionTrans->comparaison_voisinnage(dep.getVoisinage(i, j, *typeVoisinnage), fonctionTrans->tableau, *etatDepart, fonctionTrans->taille, etatsPossibles->getNombreEtats());
-            //cout<<"etat dest : "<<char_to_int(etatDest)<<"\n";
             e = (*etatsPossibles)[char_to_int(etatDest)]; // vis-à-vis de la surcharge de l'opérateur [] à revoir
             dest.setEtatCellule(i, j, e);
         }
     }
 }
-/*
-Modele creerModele()
-{
-    string titre; //key
 
-    FonctionTransition *fonctionTrans;
-    string description;
-    string auteur;
-    int nb_etat;
-    unsigned int anneeCreation;
-    std::cout << "Quel est le titre de votre modèle ? ";
-    std::cin >> titre;
-    std::cout << "Quel est la description de votre modèle ? ";
-    std::cin >> description;
-    std::cout << "Qui est l'auteur de votre modèle ? ";
-    std::cin >> auteur;
-    std::cout << "Quel est la l'anne de creation de votre modèle ? ";
-    std::cin >> anneeCreation;
-    std::cout << "De combien d'états est composé votre modèle ?";
-    std::cin >> nb_etat;
-    EnsembleEtats ensembleEtat(nb_etat);
-    for (int i = 0; i < nb_etat; i++)
-    {
-        string s;
-        int j;
-        std::cout << "Quelle est le label du"<<i<< " ème état";
-        std::cin >> s;
-        ensembleEtat.getListe()[i].setlabel(s);
-        std::cout << "Quelle est l'indice du"<< i<< " ème état";
-        std::cin >> j;
-        ensembleEtat.getListe()[i].setIndice(j);
-    }
-
-    std::cout << "Quel type de voisinage souhaitez-vous ? \n \
-    1 - Voisinnage de von Neumann \n \
-    2 - Voisinnage de von Neumann généralisé avec un rayon r \n \
-    3 - Voisinnage de Moore \n \
-    4 - Voisinnage de Moore généralisé avec un rayon r \n \
-    5 - Voisinnage arbitraire \n \
-    Veuillez choisir un chiffre";
-    unsigned int choix;
-    std::cin >> choix;
-    switch (choix)
-    {
-    case 1:                                           // si voisinnage de VonNeumann
-        static Voisinage typeVoisinnage_VonNeuman(4); // type Static car doit exister en dehors du switch
-        static Case *ensemble_de_cases_VonNeuman;     // type Static car doit exister en dehors du switch
-        ensemble_de_cases_VonNeuman[0].setL(0);       //Pour l'Est de la case
-        ensemble_de_cases_VonNeuman[0].setC(1);
-        ensemble_de_cases_VonNeuman[1].setL(-1); // Pour le Sud de la case
-        ensemble_de_cases_VonNeuman[1].setC(0);
-        ensemble_de_cases_VonNeuman[2].setL(0); // Pour l'Ouest de la case
-        ensemble_de_cases_VonNeuman[2].setC(-1);
-        ensemble_de_cases_VonNeuman[3].setL(1); // Pour le Nord de la case
-        ensemble_de_cases_VonNeuman[3].setL(0);
-        break;
-
-    case 2:
-        static Voisinage typeVoisinnage_Moore(8); // type Static car doit exister en dehors du switch
-        static Case *ensemble_de_cases_Moore;     // type Static car doit exister en dehors du switch
-        ensemble_de_cases_Moore[0].setL(0);       //Pour l'Est de la case
-        ensemble_de_cases_Moore[0].setC(1);
-        ensemble_de_cases_Moore[1].setL(-1); //Pour le Sud-est de la case
-        ensemble_de_cases_Moore[1].setC(1);
-        ensemble_de_cases_Moore[2].setL(-1); // Pour le Sud de la case
-        ensemble_de_cases_Moore[2].setC(0);
-        ensemble_de_cases_Moore[3].setL(-1); // Pour le Sud-ouest de la case
-        ensemble_de_cases_Moore[3].setC(-1);
-        ensemble_de_cases_Moore[4].setL(0); // Pour l'Ouest de la case
-        ensemble_de_cases_Moore[4].setC(-1);
-        ensemble_de_cases_Moore[5].setL(1); // Pour le Nord-ouest de la case
-        ensemble_de_cases_Moore[5].setC(-1);
-        ensemble_de_cases_Moore[6].setL(1); // Pour le Nord de la case
-        ensemble_de_cases_Moore[6].setL(0);
-        ensemble_de_cases_Moore[7].setL(1); // Pour le Nord-est de la case
-        ensemble_de_cases_Moore[7].setC(1);
-        break;
-
-    case 3:
-        break;
-    case 4:
-        break;
-    case 5:
-        std::cout << "Quel est le nombre de voisin ?";
-        int nb_voisins;
-        static Voisinage typeVoisinnage_arbitraire(nb_voisins);
-        static Case *ensemble_de_cases_arbitarire;
-        int l;
-        int c;
-        for (size_t i = 0; i < 4; i++)
-        {
-            std::cout << "Quelle est la ligne du "<< i<< " ème voisin relativement à la position de la case ?";
-            std::cin >> l;
-            ensemble_de_cases_arbitarire[i].setL(l);
-            std::cout << "Quelle est la ligne du "<< i<< " ème voisin relativement à la position de la case ?";
-            std::cin >> c;
-            ensemble_de_cases_arbitarire[i].setL(c);
-        }
-        break;
-
-        // typeVoisinnage->setensemble_case break;
-
-    default:
-        break;
-    }
-};
-*/
-
+/**
+ * @brief fonction membre de la classe modèle sauvegardant le modèle
+ *
+ * @return void
+ */
 void Modele::sauvegardeM()
 {
     //Création du doc
