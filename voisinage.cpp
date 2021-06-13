@@ -27,9 +27,7 @@ void Voisinage::setensemble_case(std::vector<Case> tableau)
     if (ensemble_case == nullptr) std::cout<<"bah c nul enft"<<endl;
     if (ensemble_case != nullptr)
     {
-        std::cout<<"PASNUL"<<endl;
         delete[] ensemble_case;
-        std::cout <<"bien detruit"<<endl;
     }
 
     ensemble_case = new Case[nbCelluleVoisi];
@@ -187,7 +185,7 @@ Case &Voisinage::operator[](int indice)
     try
     {
         if (indice < 0 || indice >= nbCelluleVoisi)
-            throw string("case n'existe pas !"); // à remplacer par AutomateException comme dans le td
+            throw string("case n'existe pas !");
         else
             return ensemble_case[indice];
     }
