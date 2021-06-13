@@ -44,6 +44,10 @@ class qSimulateur : public QWidget
     QHBoxLayout *gestionVitesse;
     QVBoxLayout *ensemble;
 
+    //Retour en arrière
+    QPushButton *arriere;
+    QLabel *numArriere;
+
 
 
 
@@ -65,6 +69,9 @@ private slots:
 
     //Revenir à la configuration initiale
     void configInitiale();
+
+    //Retour à la configuration précédente
+    void configurationPrecedente();
 };
 
 

@@ -142,6 +142,7 @@ Configuration& Configuration::operator=(const Configuration& c)
 }
 
 void Configuration::sauvegarderConfiguration(string titreMdodele) const {
+    //On va chercher le modèle avec le titre
     xml_document doc;
     string xmlFilePath = "../LO21---Printemps-2021---Projet-Cellulut/Modeles/";
     xmlFilePath += titreMdodele;
@@ -153,7 +154,7 @@ void Configuration::sauvegarderConfiguration(string titreMdodele) const {
         return;
     }
 
-    xml_node modele = doc.document_element();//j'espère que ça récup bien le modèle
+    xml_node modele = doc.document_element();
   //  xml_node configs = modele.append_child("ListeConfig");
     xml_node configs = modele.child("ListeConfig");
 
@@ -166,7 +167,7 @@ void Configuration::sauvegarderConfiguration(string titreMdodele) const {
      configs.attribute("nombre").set_value(t);
      //modifier la valeur de l'attribut
 
-
+//On insère la configuration
     xml_node config = configs.append_child("Configuration");
     xml_node nomC = config.append_child("Nom");
     nomC.append_attribute("name")=nomConfig.c_str();
@@ -197,7 +198,7 @@ void Configuration::sauvegarderConfiguration(string titreMdodele) const {
     }
 
     bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
-    //On augmente le nombre de config du modèle :
+
 
 
     cout<<saveSuccess;

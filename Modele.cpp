@@ -532,7 +532,7 @@ void Modele::sauvegardeM()
     xml_node NbrEtat = etats.append_child("NombreEtat");
     int nbr = this->getEnsemble()->getNombreEtats();
     NbrEtat.append_attribute("name") = nbr;
-    //Faire un while sur le nbr d'état
+    //Faire un for sur le nbr d'état
     Etat *laListe = this->getEnsemble()->getListe();
     for (int i = 0; i < nbr; i++)
     {
@@ -548,10 +548,7 @@ void Modele::sauvegardeM()
     Voisinage *voi = this->getVoisin();
     nom.append_attribute("name") = voi->getTypeVoisi().c_str();
 
-    //Quand le voisinage sera terminé
-    /*  xml_node rayon = voisinage.append_child("Rayon");
-    rayon.append_attribute("name")="1";*/
-    //Gestion des éléments, faire un while aussi
+    //On insère les éléments du voisinage
 
     xml_node element = voisinage.append_child("Element");
     int nbrCase = this->getVoisin()->getNbCelluleVoisi();
@@ -577,6 +574,8 @@ void Modele::sauvegardeM()
     }
     xml_node configs = modele.append_child("ListeConfig");
     configs.append_attribute("nombre") = 0;
+
+    //on sauvegarde
 
     bool saveSuccess = doc.save_file(xmlFilePath.c_str(), PUGIXML_TEXT("   "));
     cout << saveSuccess;
