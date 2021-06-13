@@ -38,7 +38,7 @@ informations::~informations()
 }
 
 /**
- * @brief 
+ * @brief appelle la fonction generatrice des règles adéquates puis crée le modèle correspondant si les règles sont en intension ou extension, puis sauvegarde le modèle
  * 
  */
 void informations::enregistrerModele()
